@@ -1,0 +1,23 @@
+$(document).ready(function() {
+    $('#btnLogin').on('click', function(e) {
+        let data = $('#autentication').serialize()
+        debugger
+        $.ajax({
+            type: 'POST',
+            url: '/api/user',
+            data: data,
+            success: function(data, textStatus, xhr) {
+
+                if (data.error) {
+                    toastr.error(data.message)
+                    return false
+                } else if (data.success)
+                    location.href = '../../app/'
+                else {
+                    toastr.error('Ocurrio un error durante la conexión, Intente nuevamente')
+                    return false
+                }
+            },
+        })
+    })
+})

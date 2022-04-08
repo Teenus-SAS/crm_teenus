@@ -1,0 +1,77 @@
+.uniqueClassName {
+    text-align: center;
+}
+
+.width-350 {
+    width: 350px;
+}
+
+.salesPhasesGrid {
+    display: grid;
+    grid-template-columns: 600px 200px 1fr;
+    grid-gap: 1em;
+}
+
+.gridx2 {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-gap: 1em;
+}
+
+.gridx3 {
+    display: grid;
+    grid-template-columns: 200px 600px 1fr;
+    grid-gap: 1em;
+}
+
+.gridx4 {
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    grid-column-gap: 1em;
+}
+
+.gridx4m {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px;
+    grid-gap: 1em;
+}
+
+.gridx5 {
+    display: grid;
+    grid-template-columns: 150px 1fr 150px 150px 180px;
+    grid-column-gap: 1em;
+}
+
+.btn-img-bs {
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+.colwid {
+    width: 680px;
+    overflow: auto;
+}
+
+@media print {
+    .noImprimir {
+        display: none;
+    }
+    footer,
+    .nav-container,
+    .mobile-topbar-header,
+    nav {
+        display: none;
+    }
+    .switcher-btn {
+        display: none;
+    }
+    .btnPrint {
+        display: none;
+    }
+    .topbar {
+        display: none;
+    }
+    .page-breadcrumb {
+        display: none;
+    }
+}
