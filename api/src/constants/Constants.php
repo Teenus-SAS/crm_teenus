@@ -1,9 +1,9 @@
 <?php
 
-  namespace crmproyecformas\Constants;
+  namespace crmteenus\Constants;
   /**
    * Class Constants
-   * @package crmproyecformas\Constants
+   * @package crmteenus\Constants
    * @author Teenus <Teenus-SAS>
    */
   class Constants

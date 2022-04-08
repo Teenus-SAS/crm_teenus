@@ -9,30 +9,46 @@ include_once __DIR__ . '/AutoloaderSourceCode.php';
 $app = AppFactory::create();
 $app->setBasePath('/api');
 
-/* $app->get('/', function (Request $request, Response $response, $args) {
-  $response->getBody()->write("Hello world!");
-  return $response;
-}); */
-require_once('../api/src/routes/routeContacts.php');
-require_once('../api/src/routes/routeCompanies.php');
-require_once('../api/src/routes/routeContactForms.php');
-require_once('../api/src/routes/routePaymentMethods.php');
-require_once('../api/src/routes/routePhases.php');
-require_once('../api/src/routes/routeSalesChannels.php');
-require_once('../api/src/routes/routeBudgets.php');
-require_once('../api/src/routes/routeCategories.php');
-require_once('../api/src/routes/routeZones.php');
+/* Routes */
 
-require_once('../api/src/routes/routeUsers.php');
-require_once('../api/src/routes/routeRols.php');
+/* Proceso Comercial */
 
-require_once('../api/src/routes/routeBusiness.php');
-require_once('../api/src/routes/routeSchedules.php');
+require_once('../api/src/routes/commercialProcess/routeBusiness.php');
+require_once('../api/src/routes/commercialProcess/routeSchedules.php');
+require_once('../api/src/routes/commercialProcess/routeQuotes.php');
+require_once('../api/src/routes/commercialProcess/routeOrders.php');
 
-require_once('../api/src/routes/routeQuotes.php');
-require_once('../api/src/routes/routeOrders.php');
-require_once('../api/src/routes/routeRemissions.php');
+/* Empresas */
 
-require_once('../api/src/routes/routeDashboard.php');
+require_once('../api/src/routes/companies/routeContacts.php');
+require_once('../api/src/routes/companies/routeCompanies.php');
+
+/* Configuracion */
+
+require_once('../api/src/routes/configuration/routeContactForms.php');
+require_once('../api/src/routes/configuration/routePaymentMethods.php');
+require_once('../api/src/routes/configuration/routePhases.php');
+require_once('../api/src/routes/configuration/routeSalesChannels.php');
+require_once('../api/src/routes/configuration/routeBudgets.php');
+require_once('../api/src/routes/configuration/routeCategories.php');
+require_once('../api/src/routes/configuration/routeZones.php');
+
+/* Dashboard */
+
+require_once('../api/src/routes/dashboard/routeDashboard.php');
+
+/* Remissiones */
+
+require_once('../api/src/routes/remissionsProcess/routeRemissions.php');
+
+/* Usuarios */
+
+require_once('../api/src/routes/users/routeUsers.php');
+require_once('../api/src/routes/users/routeRols.php');
+
+
+
+
+
 
 $app->run();

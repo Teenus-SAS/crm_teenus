@@ -37,7 +37,7 @@
 							<div class="card-body">
 								<div class="border p-4 rounded">
 									<div class="text-center">
-										<img src="app/assets/images/logo/logo-proyecformas.jpg" width='230' alt="">
+										<img src="/app/assets/images/logo/logo.png" width='230' alt="">
 										<h2 class="mb-3 mt-3">Bienvenido</h2>
 									</div>
 									<hr />

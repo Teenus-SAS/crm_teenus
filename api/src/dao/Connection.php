@@ -1,8 +1,8 @@
 <?php
 
-namespace crmproyecformas\Dao;
+namespace crmteenus\Dao;
 
-use crmproyecformas\Constants\Constants;
+use crmteenus\Constants\Constants;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
@@ -12,7 +12,7 @@ use Symfony\Component\Dotenv\Dotenv;
 
 /**
  * Class Connection
- * @package crmproyecformas\Dao
+ * @package crmteenus\Dao
  * @author Teenus <Teenus-SAS>
  */
 class Connection
