@@ -1,7 +1,7 @@
 <div class="nav-container">
     <div class="mobile-topbar-header">
         <div>
-            <img src="../../../app/assets/images/icons/icono-proyecformas.png" class="logo-icon" alt="logo icon">
+            <img src="../../../app/assets/images/icons/icon.jpg" class="logo-icon" alt="logo icon">
         </div>
         <div>
             <h4 class="logo-text">Proyecformas</h4>

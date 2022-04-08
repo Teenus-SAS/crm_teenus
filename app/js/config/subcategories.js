@@ -1,37 +1,30 @@
-/* Tablas iniciales categorias */
-
-$('#categories').toggle();
-$('#subcategories').toggle();
-
-$('#cardTableCategoriesUnique').toggle();
-$('#cardTableSubCategories').toggle();
-
-$('#btnContactForm').click(function(e) {
-    e.preventDefault();
-    $('#contactForms').toggle(500);
-});
-
-
-/* Nueva categoria */
-
-$('#btnNewCategory').click(function(e) {
-    e.preventDefault();
-    $('#subcategories').hide();
-    $('#cardTableSubCategories').hide();
-    $('#cardTableCategories').hide();
-
-    $('#categories').show(500);
-    $('#cardTableCategoriesUnique').show();
-
-});
-
-
-/* Creacion Nueva Categoria */
-
 $(document).ready(function() {
-    $('#btnCreateCategory').click(function(e) {
+
+    /* Nueva subcategoria */
+
+    $('#btnNewSubcategory').click(function(e) {
+        e.preventDefault();
+
+        $('#categories').hide();
+        $('#cardTableCategories').hide();
+        $('#cardTableCategoriesUnique').hide();
+
+        $('#categories').hide();
+        $('#subcategories').show(500);
+        $('#cardTableSubCategories').show();
+
+        $("#selectCategory option:contains( Categorias)").prop('selected', true);
+        $('#subcategory').val('');
+
+    });
+
+
+    /* Creacion Nueva SubCategoria */
+
+    $('#btnCreatesubcategory').click(function(e) {
         e.preventDefault()
-        let data = $('#frmCategory').serialize()
+        debugger
+        let data = $('#frmSubcategory').serialize()
 
         if (data == undefined || data == '') {
             toastr.error('Ingrese la nueva Categoria')
@@ -40,10 +33,10 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '/api/addCategory',
+            url: '/api/addSubcategory',
             data: data,
             success: function(response, jqXHR, statusCode) {
-                $('#categories').hide(500)
+                $('#subcategories').hide(500)
                 updateTable()
                 if (response.success == true)
                     toastr.success(response.message)
@@ -97,16 +90,3 @@ $(document).ready(function() {
         )
     })
 })
-
-/* Actualizar tablas */
-
-function updateTable() {
-    $('#tableCategories').DataTable().clear()
-    $('#tableCategories').DataTable().ajax.reload()
-
-    $('#tableCategoriesUnique').DataTable().clear()
-    $('#tableCategoriesUnique').DataTable().ajax.reload()
-
-    $('#tableSubCategories').DataTable().clear()
-    $('#tableSubCategories').DataTable().ajax.reload()
-}

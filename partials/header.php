@@ -3,7 +3,7 @@
 	<nav class="navbar navbar-expand">
 		<div class="topbar-logo-header">
 			<div class="">
-				<img src="../../../app/assets/images/logo/logo-proyecformas.jpg" class="logo-icon" style="width: 55%;" alt="logo icon">
+				<img src="/app/assets/images/logo/logo.png" class="logo-icon" style="width: 55%;" alt="logo icon">
 			</div>
 		</div>
 		<div class="mobile-toggle-menu"><i class='bx bx-menu'></i></div>

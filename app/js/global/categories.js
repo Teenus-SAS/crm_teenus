@@ -3,7 +3,7 @@
 $(document).ready(function() {
 
     $.ajax({
-        url: '../../../api/categories',
+        url: '/api/categoriesUnique',
         success: function(r) {
             sessionStorage.setItem('categories', JSON.stringify(r))
 

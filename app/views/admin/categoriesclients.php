@@ -38,7 +38,7 @@
 			<label for="subcategory" class="mb-2">Subcategorias</label>
 			<input type="text" class="form-control" id="id_subcategory" name="id_subcategory" hidden>
 			<select class="form-select" name="selectCategory" id="selectCategory"></select>
-			<input type="text" class="form-control" id="subcategory">
+			<input type="text" class="form-control" id="subcategory" name="subcategory">
 			<button class="btn btn-primary" id="btnCreatesubcategory">Crear Subcategorias</button>
 		</form>
 	</div>
@@ -99,5 +99,12 @@
 	</div>
 </div>
 
-<script src="../app/js/config/categories.js"></script>
 <script src="../app/js/global/categories.js"></script>
+
+<script src="../app/js/config/categories.js"></script>
+<script src="../app/js/config/subcategories.js"></script>
+
+<script src="../app/js/config/tblCategories.js"></script>
+<script src="../app/js/config/tblCategoriesUnique.js"></script>
+<script src="../app/js/config/tblSubcategories.js"></script>
+

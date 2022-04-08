@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
-	<link rel="icon" href="../../../app/assets/images/icons/icono-proyecformas.png" type="image/png" />
+	<link rel="icon" href="../../../app/assets/images/icons/icon.jpg" type="image/png" />
 	<!--plugins-->
 	<link href="app/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
 	<link href="app/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />

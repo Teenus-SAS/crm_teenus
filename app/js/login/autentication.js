@@ -1,7 +1,6 @@
 $(document).ready(function() {
     $('#btnLogin').on('click', function(e) {
         let data = $('#autentication').serialize()
-        debugger
         $.ajax({
             type: 'POST',
             url: '/api/user',
