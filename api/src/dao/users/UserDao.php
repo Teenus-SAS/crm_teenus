@@ -67,27 +67,6 @@ class UserDao
     return $user;
   }
 
-  public function inactivateActivateUser($id_user)
-  {
-
-    $connection = Connection::getInstance()->getConnection();
-
-    $stmt = $connection->prepare("SELECT * FROM users WHERE id_user = :id_user");
-    $stmt->execute(['id_user' => $id_user]);
-    $users = $stmt->fetch($connection::FETCH_ASSOC);
-
-    $users['status'] == 0 ? $status = 1 : $status = 0;
-
-    $stmt = $connection->prepare("UPDATE users SET status = :statusUser WHERE id_user = :id_user");
-    $stmt->execute([
-      'id_user' => $id_user,
-      'statusUser' => $status
-    ]);
-    $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
-    return $status;
-  }
-
-
   public function saveUser($dataUser)
   {
     $connection = Connection::getInstance()->getConnection();
@@ -102,13 +81,14 @@ class UserDao
         if (!empty($dataUser['password'])) {
           $pass = password_hash($dataUser['password'], PASSWORD_DEFAULT);
           $stmt = $connection->prepare("UPDATE users SET firstname = :firstname, lastname = :lastname, pass = :pass, position = :position, access_delete_order = :access
-                                        WHERE id_user = id_user");
+                                        WHERE id_user = :id_user");
           $stmt->execute([
             'firstname' => ucwords(strtolower(trim($dataUser['names']))),
             'lastname' => ucwords(strtolower(trim($dataUser['lastnames']))),
             'pass' => $pass,
             'position' => $dataUser['position'],
-            'access' => $dataUser['accessDeletePedidos'],
+            //'access' => $dataUser['accessDeletePedidos'],
+            'access' => 0,
             'id_user' => $dataUser['id_user'],
           ]);
         } else {
@@ -219,54 +199,6 @@ class UserDao
 
       $error = array('info' => true, 'message' => $message);
       return $error;
-    }
-  }
-
-  public function ChangePasswordUser($id_user, $newPass)
-  {
-    $connection = Connection::getInstance()->getConnection();
-
-    $stmt = $connection->prepare("SELECT * FROM users WHERE id_user = :id_user");
-    $stmt->execute(['id_user' => $id_user]);
-    $rows = $stmt->rowCount();
-
-    if ($rows > 0) {
-      $pass = password_hash($newPass, PASSWORD_DEFAULT);
-
-      $stmt = $connection->prepare("UPDATE users SET pass = :pass WHERE id_user = :id_user");
-      $stmt->execute(['id_user' => $id_user, 'pass' => $pass]);
-      $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
-    }
-  }
-
-  public function forgotPasswordUser($email)
-  {
-    $connection = Connection::getInstance()->getConnection();
-    $stmt = $connection->prepare("SELECT * FROM users WHERE email = :email");
-    $stmt->execute(['email' => $email]);
-    $rows = $stmt->rowCount();
-
-    if ($rows > 0) {
-
-      $cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-      $longitudCadena = strlen($cadena);
-      $new_pass = "";
-      $longitudPass = 6;
-
-      for ($i = 1; $i <= $longitudPass; $i++) {
-        $pos = rand(0, $longitudCadena - 1);
-        $new_pass .= substr($cadena, $pos, 1);
-      }
-
-      /* actualizar $pass en la DB */
-      $pass = password_hash($new_pass, PASSWORD_DEFAULT);
-      $stmt = $connection->prepare("UPDATE users SET pass = :pass WHERE email = :email");
-      $stmt->execute(['email' => $email, 'pass' => $pass]);
-
-      $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
-
-      /* Enviar $new_pass por email */
-      return $new_pass;
     }
   }
 }

@@ -48,7 +48,7 @@ $(document).ready(function() {
 
     /* Actualizacion Categoria */
 
-    $(document).on('click', '.updateCategory', function(e) {
+    $(document).on('click', '.updateSubcategory', function(e) {
         e.preventDefault()
         let id = $(this).prop('id')
         let row = $(this).parent().parent()[0]

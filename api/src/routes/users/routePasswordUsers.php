@@ -1,30 +1,16 @@
 <?php
 
-use crmteenus\dao\UserDao;
+use crmteenus\dao\PasswordDao;
 
-$userDao = new UserDao();
+$passwordDao = new PasswordDao();
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 
-/* Inactivar/Activar Usuario */
-
-$app->get('/inactivateActivateUser/{id}', function (Request $request, Response $response, $args) use ($userDao) {
-    $users = $userDao->inactivateActivateUser($args['id']);
-    if ($users == 0)
-        $resp = array('info' => true, 'message' => 'Usuario inactivado correctamente');
-
-    if ($users == 1)
-        $resp = array('success' => true, 'message' => 'Usuario activado correctamente');
-
-    $response->getBody()->write(json_encode($resp));
-    return $response->withStatus(200)->withHeader('Content-Type', 'application/json');
-});
-
 /* Change Password */
 
-$app->post('/changePassword', function (Request $request, Response $response, $args) use ($userDao) {
+$app->post('/changePassword', function (Request $request, Response $response, $args) use ($passwordDao) {
     session_start();
     $id = $_SESSION['idUser'];
 
@@ -37,7 +23,7 @@ $app->post('/changePassword', function (Request $request, Response $response, $a
         if ($newpass != $newpass1)
             $resp = array('error' => true, 'message' => 'Las contraseñas no coinciden, intente nuevamente');
         else {
-            $usersChangePassword = $userDao->ChangePasswordUser($id, $newpass);
+            $usersChangePassword = $passwordDao->ChangePasswordUser($id, $newpass);
 
             if ($usersChangePassword == null)
                 $resp = array('success' => true, 'message' => 'Cambio de Password correcto');
@@ -53,11 +39,11 @@ $app->post('/changePassword', function (Request $request, Response $response, $a
 
 /* Forgot Password */
 
-$app->post('/forgotPassword', function (Request $request, Response $response, $args) use ($userDao) {
+$app->post('/forgotPassword', function (Request $request, Response $response, $args) use ($passwordDao) {
     $parsedBody = $request->getParsedBody();
     $email = trim($parsedBody["data"]);
 
-    $passwordTemp = $userDao->forgotPasswordUser($email);
+    $passwordTemp = $passwordDao->forgotPasswordUser($email);
 
     if ($passwordTemp == null)
         $resp = array('success' => true, 'message' => 'La contraseña fue enviada al email suministrado exitosamente');
