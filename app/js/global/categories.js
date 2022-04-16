@@ -1,9 +1,9 @@
 /* Load companies */
 
 $(document).ready(function() {
-
+    debugger
     $.ajax({
-        url: '/api/categoriesUnique',
+        url: '/api/categories',
         success: function(r) {
             sessionStorage.setItem('categories', JSON.stringify(r))
 
@@ -31,8 +31,7 @@ $(document).ready(function() {
 
 $('#selectCategory').change(function(e) {
     e.preventDefault();
-
-
+    debugger
     $select = $(`#selectSubcategory`)
     $select.empty()
 

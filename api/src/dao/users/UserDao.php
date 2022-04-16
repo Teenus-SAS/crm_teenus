@@ -21,6 +21,9 @@ class UserDao
     session_start();
     $connection = Connection::getInstance()->getConnection();
     $rol = $_SESSION['rol'];
+    
+    if ($rol == 2 || $rol == 3)
+      exit();
 
     if ($rol == 1)
       $stmt = $connection->prepare("SELECT * FROM users WHERE rol = 2  ORDER BY firstname");

@@ -44,9 +44,10 @@ require_once('../api/src/routes/remissionsProcess/routeRemissions.php');
 
 /* Usuarios */
 
-require_once('../api/src/routes/users/routeActionsUsers.php');
 require_once('../api/src/routes/users/routeLogin.php');
+require_once('../api/src/routes/users/routePasswordUsers.php');
 require_once('../api/src/routes/users/routeRols.php');
+require_once('../api/src/routes/users/routeStatusUsers.php');
 require_once('../api/src/routes/users/routeUsers.php');
 
 

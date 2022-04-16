@@ -23,9 +23,11 @@ class ContactsDao
     $connection = Connection::getInstance()->getConnection();
 
     if ($rol == 1) {
-      $stmt = $connection->prepare("SELECT c.id_contact, c.firstname, c.lastname, c.phone, c.phone1, c.email, c.position, cp.id_company, cp.company_name 
-                                    FROM contacts c INNER JOIN companies cp ON c.id_company = cp.id_company 
-                                    ORDER BY `c`.`firstname` ASC");
+      $stmt = $connection->prepare("SELECT c.id_contact, c.firstname, c.lastname, c.phone, c.phone1, c.email, c.position, cp.id_company, 
+                                          cp.company_name 
+                                    FROM contacts c 
+                                    INNER JOIN companies cp ON c.id_company = cp.id_company 
+                                    ORDER BY `cp`.`company_name` ASC");
       $stmt->execute();
       $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
       $contacts = $stmt->fetchAll($connection::FETCH_ASSOC);
@@ -37,7 +39,7 @@ class ContactsDao
                                       FROM contacts c 
                                       INNER JOIN companies cp ON c.id_company = cp.id_company 
                                       WHERE cp.created_by = :id_user 
-                                      ORDER BY `c`.`firstname` ASC");
+                                      ORDER BY `cp`.`company_name` ASC");
       $stmt->execute(['id_user' => $id_user]);
       $contacts = $stmt->fetchAll($connection::FETCH_ASSOC);
 
