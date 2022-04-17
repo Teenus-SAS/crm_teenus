@@ -88,7 +88,7 @@ $(document).ready(function() {
         let data = tableZones.fnGetData(row)
 
         alertify.confirm(
-            'Proyecformas',
+            'teenus',
             `¿Realmente desea <b style="color:red">Eliminar</b> la Zona <b style="color:red">${data.zone}</b>?, esta acción es permanente`,
             function() {
                 $.ajax({

@@ -43,8 +43,8 @@ $(document).on('click', '.cancelOrder', function(e) {
     let row = $(this).parent().parent()[0]
     let data = tableOrders.fnGetData(row)
 
-    alertify.confirm('Proyecformas', `¿Realmente desea <b>anular el pedido No. ${data.id_order}</b>?`, function() {
-        alertify.prompt('Proyecformas', 'Motivo de Anulación', '', function(evt, value) {
+    alertify.confirm('teenus', `¿Realmente desea <b>anular el pedido No. ${data.id_order}</b>?`, function() {
+        alertify.prompt('teenus', 'Motivo de Anulación', '', function(evt, value) {
 
             $.ajax({
                 type: "POST",

@@ -97,7 +97,7 @@ $(document).ready(function() {
         let data = tableSalesChannels.fnGetData(row)
 
         alertify.confirm(
-            'Proyecformas',
+            'teenus',
             `¿Realmente desea <b style="color:red">eliminar</b> el canal de ventas: <b style="color:red">${data.sales_channels}</b>?, esta acción es permanente`,
             function() {
                 $.ajax({

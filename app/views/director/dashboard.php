@@ -5,7 +5,7 @@
 
 <head>
 	<?php include_once('../../../partials/commercial_scripts_header.php'); ?>
-	<title>Dashboard Comercial - ProyecFormas</title>
+	<title>Dashboard Comercial - teenus</title>
 </head>
 
 <body>

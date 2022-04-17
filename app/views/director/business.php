@@ -7,7 +7,7 @@ include_once('../../../modals/modalBusiness.php')
 
 <head>
 	<?php include_once('../../../partials/commercial_scripts_header.php'); ?>
-	<title>Proyectos - ProyecFormas</title>
+	<title>Proyectos - teenus</title>
 </head>
 
 <body>

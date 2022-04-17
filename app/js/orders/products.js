@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     $('#price').prop('disabled', true);
 
-    (() => {
+    /* (() => {
         fetch('https://v2.tezliksoftware.com.co/api/products')
             .then((res) => (res.ok ? res.json() : Promise.reject(res)))
             .then((json) => {
@@ -23,7 +23,23 @@ $(document).ready(function() {
                 }
             })
             .catch((err) => { console.log(err) })
-    })();
+    })(); */
+
+    $selectRef = $(`#selectReference`)
+    $selectRef.empty()
+
+    $selectProd = $(`#selectProducts`)
+    $selectProd.empty()
+
+    $selectRef.append(`<option disabled selected>Seleccionar</option>`)
+    $selectProd.append(`<option value="1">des-m1</option>`)
+    $selectProd.append(`<option value="2">tez-t1</option>`)
+
+    $selectProd.append(`<option disabled selected>Seleccionar</option>`)
+    $selectProd.append(`<option value="1">Desarrollo a la medida</option>`)
+    $selectProd.append(`<option value="2">Tezlik</option>`)
+
+
 });
 
 $('#selectReference').change(function(e) {

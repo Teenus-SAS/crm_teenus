@@ -6,7 +6,7 @@ include_once('../../../modals/modalContact.php') ?>
 
 <head>
 	<?php include_once('../../../partials/commercial_scripts_header.php'); ?>
-	<title>Contactos - ProyecFormas</title>
+	<title>Contactos - teenus</title>
 </head>
 
 <body>

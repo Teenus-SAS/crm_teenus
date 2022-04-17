@@ -6,7 +6,7 @@ include_once('../../../modals/modalQuote.php') ?>
 
 <head>
 	<?php include_once('../../../partials/commercial_scripts_header.php'); ?>
-	<title>Cotizaciones - ProyecFormas</title>
+	<title>Cotizaciones - teenus</title>
 </head>
 
 <body>

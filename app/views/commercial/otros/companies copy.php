@@ -6,7 +6,7 @@ include_once('../../../modals/modalCompanies.php') ?>
 
 <head>
 	<?php include_once('../../../partials/commercial_scripts_header.php'); ?>
-	<title>Empresas - ProyecFormas</title>
+	<title>Empresas - teenus</title>
 </head>
 
 <body>

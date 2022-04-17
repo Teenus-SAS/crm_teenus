@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="../../../app/assets/images/logo/logo-proyecformas.jpg" class="logo-icon" style="width: 85%;" alt="logo">
+            <img src="../../../app/assets/images/logo/logo-teenus.jpg" class="logo-icon" style="width: 85%;" alt="logo">
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
         </div>

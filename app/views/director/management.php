@@ -23,7 +23,7 @@
 	<link rel="stylesheet" href="assets-commercial/css/dark-theme.css" />
 	<link rel="stylesheet" href="assets-commercial/css/semi-dark.css" />
 	<link rel="stylesheet" href="assets-commercial/css/header-colors.css" />
-	<title>Gestión Comercial - ProyecFormas</title>
+	<title>Gestión Comercial - teenus</title>
 </head>
 
 <body>

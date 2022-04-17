@@ -16,7 +16,7 @@
 	<link href="../../assets/css/app.css" rel="stylesheet">
 	<link href="../../assets/css/icons.css" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet">
-	<title>CRM - Proyecformas</title>
+	<title>CRM - teenus</title>
 </head>
 
 <body class="bg-forgot">
@@ -27,7 +27,7 @@
 			<div class="col-sm-3">
 
 				<div class="text-center">
-					<img src="../../assets/images/logo/logo-proyecformas.jpg" width="220" alt="" />
+					<img src="../../assets/images/logo/logo-teenus.jpg" width="220" alt="" />
 				</div>
 				<h4 class="mt-5 font-weight-bold text-center">¿Olvido su password?</h4>
 				<p class="text-muted text-center">Ingrese su email para enviar el password</p>

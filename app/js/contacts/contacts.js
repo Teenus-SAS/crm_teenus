@@ -64,7 +64,7 @@ $(document).on('click', '.eliminarContact', function(e) {
     let id = $(this).prop('id')
 
     alertify.confirm(
-        'Proyecformas',
+        'teenus',
         `¿Realmente desea eliminar el contacto <b>${email}</b>?, esta acción no se puede reversar`,
         function() {
             $.ajax({

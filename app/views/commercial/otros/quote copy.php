@@ -6,7 +6,7 @@ include_once('../../../modals/modalQuote.php') ?>
 
 <head>
 	<?php include_once('../../../partials/commercial_scripts_header.php'); ?>
-	<title>Cotización - ProyecFormas</title>
+	<title>Cotización - teenus</title>
 </head>
 
 <body>
@@ -60,16 +60,16 @@ include_once('../../../modals/modalQuote.php') ?>
 										<div class="row">
 											<div class="col">
 												<a href="javascript:;">
-													<img src="../../assets/images/logo/logo-proyecformas.jpg" width="50%" alt="" />
+													<img src="../../assets/images/logo/logo-teenus.jpg" width="50%" alt="" />
 												</a>
 											</div>
 											<div class="col company-details">
 												<h2 class="name">
-													<a href="javascript:;" style="color: #8DAC18;">Proyecformas</a>
+													<a href="javascript:;" style="color: #8DAC18;">teenus</a>
 												</h2>
 												<div>KM 3.5 via Funza - Siberia. Parque industrial San José (Bodega 1B / Manzana C)</div>
 												<div>601 922 2830</div>
-												<div>emoreno@proyecformas.com</div>
+												<div>emoreno@teenus.com</div>
 											</div>
 										</div>
 									</header>
@@ -150,16 +150,16 @@ include_once('../../../modals/modalQuote.php') ?>
 											<div><b>Observaciones Generales para el Despacho:</b></div>
 											<div class="notice">El cliente deberá contar con área y espacio listo para la instalación.
 												El cliente deberá confirmar datos exactos para la entrega: datos de contacto del responsable, dirección, horarios.
-												Proyecformas Ltda. no asume arreglos, instalaciones eléctricas o de obra civil. </div>
+												teenus Ltda. no asume arreglos, instalaciones eléctricas o de obra civil. </div>
 										</div>
 									</main>
 									<div class="mb-5 mt-5" style="margin-left: 30px;">
 										<img src="../../assets/images/firmas/mlom.jpg" alt="" style="width:20%"><br>
 										<label for="" style="font-size: large;"><b>Martha Lucia Olmos</b></label><br>
-										<label for="" style="font-size: large;">PROYECFORMAS LTDA</label><br>
+										<label for="" style="font-size: large;">teenus LTDA</label><br>
 										<label for="" style="font-size: large;">3214989109</label>
 									</div>
-									<footer>Autorizo a Proyecformas Ltda. para recaudar, almacenar, utilizar y actualizar mis datos personales con fines exclusivamente comerciales y garantizándome que esta información no será revelada a terceros salvo orden de autoridad competente. Ley 1581 de 2012, Decreto 1377 de 2013.</footer>
+									<footer>Autorizo a teenus Ltda. para recaudar, almacenar, utilizar y actualizar mis datos personales con fines exclusivamente comerciales y garantizándome que esta información no será revelada a terceros salvo orden de autoridad competente. Ley 1581 de 2012, Decreto 1377 de 2013.</footer>
 								</div>
 								<!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
 								<div></div>

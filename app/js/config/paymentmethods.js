@@ -98,7 +98,7 @@ $(document).ready(function() {
         let data = tablePaymentMethods.fnGetData(row)
 
         alertify.confirm(
-            'Proyecformas',
+            'teenus',
             `¿Realmente desea <b style="color:red">Eliminar</b> el Método de Pago: <b style="color:red">${data.method}</b>?, esta acción es permanente`,
             function() {
                 $.ajax({

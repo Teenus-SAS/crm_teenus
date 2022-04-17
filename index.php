@@ -21,7 +21,7 @@
 	<link href="app/assets/css/icons.css" rel="stylesheet">
 	<!-- Notify -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet">
-	<title>CRM - Proyecformas</title>
+	<title>CRM - teenus</title>
 </head>
 
 <body class="bg-login">

@@ -101,7 +101,7 @@ $(document).on('click', '.deleteZoneAssigned', function(e) {
     let data = tableZonesAssigned.fnGetData(row)
 
     alertify.confirm(
-        'Proyecformas',
+        'teenus',
         `¿Realmente desea <b style="color:red">eliminar</b> la asignación de la <b style="color:red">zona ${data.zone}</b> para el asesor(a) <b style="color:red">${data.asesor}</b>?`,
         function() {
             $.ajax({

@@ -111,7 +111,7 @@ $(document).ready(function() {
         let data = tableSalesPhases.fnGetData(row)
 
         alertify.confirm(
-            'Proyecformas',
+            'teenus',
             `¿Realmente desea <b style="color:red">eliminar</b> la fase de venta: <b style="color:red">${data.sales_phase}</b>?, esta acción es permanente`,
             function() {
                 $.ajax({

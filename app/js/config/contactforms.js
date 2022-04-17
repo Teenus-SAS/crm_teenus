@@ -99,7 +99,7 @@ $(document).ready(function() {
         let data = tableContactForm.fnGetData(row)
 
         alertify.confirm(
-            'Proyecformas',
+            'teenus',
             `¿Realmente desea <b style="color:red">eliminar</b> la Forma de Contacto <b style="color:red">${data.contact_form}</b>?, esta acción no se puede reversar`,
             function() {
                 $.ajax({

@@ -5,7 +5,7 @@
 
 <head>
 	<?php include_once('../partials/scripts_header.php'); ?>
-	<title>CRM - ProyecFormas</title>
+	<title>CRM - teenus</title>
 </head>
 
 <body>

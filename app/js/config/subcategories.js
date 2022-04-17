@@ -70,7 +70,7 @@ $(document).ready(function() {
         let data = tableCategoriesUnique.fnGetData(row)
 
         alertify.confirm(
-            'Proyecformas',
+            'teenus',
             `¿Realmente desea <b style="color:red">eliminar</b> la Categoria <b style="color:red">${data.category}</b>?, esta acción es permanente`,
             function() {
                 $.ajax({

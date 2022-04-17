@@ -37,7 +37,7 @@
                                 <option selected disabled value="0">Seleccionar...</option>
                             </select>
                         </div>
-                        
+
                         <hr style="margin-bottom:0px">
                         <h5 style="margin-bottom: 0px;"><b>Condiciones Comerciales</b></h5>
                         <hr style="margin-bottom:0px">
@@ -85,7 +85,7 @@
                             </div>
                             <div class="col-md-3 mt-1">
                                 <label for="prices" class="form-label">Precio Unitario</label>
-                                <input class="form-control text-center" type="text" name="price" id="price" readonly>
+                                <input class="form-control text-center" type="text" name="price" id="price">
                             </div>
                             <div class="col-md-2 mt-1">
                                 <label for="prices" class="form-label">Descuento</label>
@@ -129,7 +129,6 @@
                                                 <th class="text-center">Referencia</th>
                                                 <th class="text-center">Producto</th>
                                                 <th class="text-center">Descripción</th>
-                                                <th class="text-center">Img</th>
                                                 <th class="text-center">Cantidad</th>
                                                 <th class="text-center">Valor Unitario</th>
                                                 <th class="text-center">Descuento</th>

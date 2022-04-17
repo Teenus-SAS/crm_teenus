@@ -16,7 +16,7 @@
     <link href="../../assets/css/app.css" rel="stylesheet">
     <link href="../../assets/css/icons.css" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
-    <title>Password | Proyecformas</title>
+    <title>Password | teenus</title>
 </head>
 
 <body>
@@ -32,7 +32,7 @@
                                     <form id="frmChangePasword">
                                         <div class="p-5">
                                             <div class="text-center">
-                                                <img src="../../assets/images/logo/logo-proyecformas.jpg" width="180" alt="">
+                                                <img src="../../assets/images/logo/logo-teenus.jpg" width="180" alt="">
                                             </div>
                                             <h4 class="mt-5 font-weight-bold">Genere su Nuevo Password</h4>
                                             <p class="text-muted">Recibimos su solicitud de restablecimiento de contraseña. Por favor ingrese su nueva contraseña!</p>

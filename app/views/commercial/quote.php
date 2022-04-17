@@ -37,12 +37,12 @@
 						<div class="row">
 							<div class="col">
 								<a href="javascript:;">
-									<img src="../app/assets/images/logo/logo-proyecformas.jpg" id="logo-proyecformas" width="50%" alt="" />
+									<img src="../app/assets/images/logo/logo-teenus.jpg" id="logo-teenus" width="50%" alt="" />
 								</a>
 							</div>
 							<div class="col company-details">
 								<!-- <h2 class="name">
-									<a href="javascript:;" style="color: #8DAC18;">Proyecformas</a>
+									<a href="javascript:;" style="color: #8DAC18;">teenus</a>
 								</h2> -->
 								<div><b>KM 3.5 via Funza - Siberia. Parque industrial San José (Bodega 1B / Manzana C)</b></div>
 								<div><b>NIT: 830074655-2</b></div>
@@ -136,7 +136,7 @@
 							<div class="notice">El cliente deberá contar con área y espacio listo para la instalación,
 								ademas de confirmar datos exactos para la entrega:
 								datos de contacto del responsable, dirección, horarios.<br><br>
-								Proyecformas Ltda. no asume arreglos, instalaciones eléctricas o de obra civil. </div>
+								teenus Ltda. no asume arreglos, instalaciones eléctricas o de obra civil. </div>
 						</div>
 					</main>
 					<div class="mb-5 mt-1" style="margin-left: 30px;">
@@ -145,9 +145,9 @@
 						<label id="positionSeller" style="font-size: large;"><b></b></label><br>
 						<label id="emailSeller" style="font-size: large;"><b></b></label><br>
 						<label id="cellphoneSeller" style="font-size: large;"></label><br>
-						<label style="font-size: large;">PROYECFORMAS LTDA</label>
+						<label style="font-size: large;">teenus LTDA</label>
 					</div>
-					<footer>Autorizo a Proyecformas Ltda. para recaudar, almacenar, utilizar y actualizar mis datos personales con fines exclusivamente comerciales y garantizándome que esta información no será revelada a terceros salvo orden de autoridad competente. Ley 1581 de 2012, Decreto 1377 de 2013.</footer>
+					<footer>Autorizo a teenus Ltda. para recaudar, almacenar, utilizar y actualizar mis datos personales con fines exclusivamente comerciales y garantizándome que esta información no será revelada a terceros salvo orden de autoridad competente. Ley 1581 de 2012, Decreto 1377 de 2013.</footer>
 				</div>
 				<!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
 				<div class="noImprimir"></div>

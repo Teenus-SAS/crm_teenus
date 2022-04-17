@@ -47,7 +47,7 @@
 						<div class="row">
 							<div class="col">
 								<a href="javascript:;">
-									<img src="../app/assets/images/logo/logo-proyecformas.jpg" id="logo-proyecformas" width="50%" alt="" />
+									<img src="../app/assets/images/logo/logo-teenus.jpg" id="logo-teenus" width="50%" alt="" />
 								</a>
 							</div>
 							<div class="col company-details">
@@ -125,9 +125,9 @@
 						<label style="font-size: large;"><b class="nameSeller"></b></label><br>
 						<label style="font-size: large;" class="cellphoneSeller"></label><br>
 						<label style="font-size: large;" class="emailSeller"></label><br>
-						<label style="font-size: large;"><b>PROYECFORMAS LTDA</b></label><br>
+						<label style="font-size: large;"><b>teenus LTDA</b></label><br>
 					</div>
-					<footer>Autorizo a Proyecformas Ltda. para recaudar, almacenar, utilizar y actualizar mis datos personales con fines exclusivamente comerciales y garantizándome que esta información no será revelada a terceros salvo orden de autoridad competente. Ley 1581 de 2012, Decreto 1377 de 2013.</footer>
+					<footer>Autorizo a teenus Ltda. para recaudar, almacenar, utilizar y actualizar mis datos personales con fines exclusivamente comerciales y garantizándome que esta información no será revelada a terceros salvo orden de autoridad competente. Ley 1581 de 2012, Decreto 1377 de 2013.</footer>
 				</div>
 				<!--DO NOT DELETE THIS div. IT is responsible for showing footer always at the bottom-->
 				<div></div>

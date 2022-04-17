@@ -32,7 +32,7 @@ function sendEmail($emailEnvio, $passwordTemp)
                           Puedes estar tranquilo que es seguro. Las contraseñas generadas a través de la plataforma solo se envían al correo electrónico del contacto 
                           de la cuenta.
         Saludos,
-        Proyecformas";
+        teenus";
 
         $mail->AltBody = 'Body in plain text for non-HTML mail clients';
         $mail->send();

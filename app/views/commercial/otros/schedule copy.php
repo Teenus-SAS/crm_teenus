@@ -6,7 +6,7 @@ include_once('../../../modals/modalTasks.php') ?>
 
 <head>
 	<?php include_once('../../../partials/commercial_scripts_header.php'); ?>
-	<title>Agenda - ProyecFormas</title>
+	<title>Agenda - teenus</title>
 </head>
 
 <body>

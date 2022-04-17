@@ -67,7 +67,7 @@ $(document).ready(function() {
 
         let reference = $("#selectReference option:selected").text();
         let product = $("#selectProducts option:selected").text();
-        let img = $("#imgProduct").prop('src');
+        //let img = $("#imgProduct").prop('src');
         let description = $('#descriptionProduct').val();
         let quantity = $('#quantity').val();
         let discount = $('#discount').val();
@@ -106,7 +106,7 @@ $(document).ready(function() {
         discount = parseFloat(discount)
         total = (quantity * price * (1 - (discount / 100))).toLocaleString('de-DE')
 
-        product = { reference, product, img, description, quantity, price, discount, total }
+        product = { reference, product, description, quantity, price, discount, total }
         products.push(product)
 
         addProducts();
@@ -300,7 +300,6 @@ $(document).ready(function() {
                 <td class="text-center">${products[i].reference}</td>
                 <td width="12%">${products[i].product}</td>
                 <td>${products[i].description == undefined ? '' : products[i].description}</td>
-                <td class="text-center"><img src="${products[i].img}" width="100%" id="image${i + 1}"></td>
                 <td class="text-center">${products[i].quantity}</td>
                 <td class="text-center">${products[i].price.toLocaleString('de-DE')}</td>
                 <td class="text-center">${products[i].discount}%</td>

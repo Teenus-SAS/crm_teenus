@@ -57,7 +57,7 @@ $(document).ready(function() {
         const email = $(texto1).text()
 
         alertify.confirm(
-            'Proyecformas',
+            'teenus',
             `¿Realmente desea eliminar el usuario <b b > ${email}</b >?, esta acción no se puede reversar`,
             function() {
                 $.ajax({

@@ -28,4 +28,4 @@
 <link rel="stylesheet" href="../../../app/assets/css/header-colors.css" />
 <!-- Notification -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet">
-<title>Administrador | CRM Proyecformas</title>
+<title>Administrador | CRM teenus</title>
