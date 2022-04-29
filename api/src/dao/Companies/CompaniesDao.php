@@ -37,9 +37,9 @@ class CompaniesDao
 
       $id_user = $_SESSION['idUser'];
       $stmt = $connection->prepare("SELECT c.id_company, c.nit, c.company_name, c.address, c.phone, c.city, CONCAT(u.firstname, ' ', u.lastname) as seller, cg.category, s.subcategory
-                                      FROM companies c INNER JOIN users u ON u.id_user = c.created_by 
-                                      INNER JOIN subcategories s ON s.id_subcategory = c.id_subcategory 
-                                      INNER JOIN categories cg ON cg.id_category = s.id_category 
+                                      FROM companies c LEFT JOIN users u ON u.id_user = c.created_by 
+                                      LEFT JOIN subcategories s ON s.id_subcategory = c.id_subcategory 
+                                      LEFT JOIN categories cg ON cg.id_category = s.id_category 
                                       WHERE created_by = :id_user
                                       ORDER BY `c`.`company_name` ASC;");
       $stmt->execute(['id_user' => $id_user]);
@@ -57,9 +57,9 @@ class CompaniesDao
 
     if (empty($dataCompany['id_company'])) {
 
-      $stmt = $connection->prepare("SELECT * FROM companies WHERE nit = :nit OR company_name = :company_name");
+      $stmt = $connection->prepare("SELECT * FROM companies WHERE company_name = :company_name");
       $stmt->execute([
-        'nit' => trim($dataCompany['nit']),
+        //'nit' => trim($dataCompany['nit']),
         'company_name' => ucwords(strtolower(trim($dataCompany['company_name']))),
       ]);
       $rows = $stmt->rowCount();
@@ -67,16 +67,17 @@ class CompaniesDao
       if ($rows != 1) {
         session_start();
         $id_user = $_SESSION['idUser'];
-
+        $dataCompany['subcategory'] == null ? $dataCompany['subcategory'] = 1 : $dataCompany['subcategory'];
+        
         $stmt = $connection->prepare("INSERT INTO companies (nit, company_name, address, phone, city, id_subcategory, created_by) 
                                     VALUES(:nit, :company_name, :address, :phone, :city, :id_subcategory, :created_by)");
         $stmt->execute([
           'nit' => trim($dataCompany['nit']),
-          'company_name' => ucwords(strtolower(trim($dataCompany['company_name']))),
+          'company_name' => strtoupper(trim($dataCompany['company_name'])),
           'address' => trim($dataCompany['address']),
           'phone' => trim($dataCompany['phone']),
           'city' => ucwords(strtolower(trim($dataCompany['city']))),
-          'id_subcategory' => trim($dataCompany['subcategory']),
+          'id_subcategory' => $dataCompany['subcategory'],
           'created_by' => $id_user
         ]);
         $r = 1;
@@ -88,7 +89,7 @@ class CompaniesDao
       $stmt->execute([
         'id_company' => trim($dataCompany['id_company']),
         'nit' => trim($dataCompany['nit']),
-        'company_name' => ucwords(strtolower(trim($dataCompany['company_name']))),
+        'company_name' => strtoupper(trim($dataCompany['company_name'])),
         'address' => trim($dataCompany['address']),
         'phone' => trim($dataCompany['phone']),
         'city' => ucwords(strtolower(trim($dataCompany['city']))),

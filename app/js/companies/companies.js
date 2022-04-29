@@ -11,12 +11,12 @@ $(document).ready(function() {
     $('#btnSaveCompany').click(function(e) {
         e.preventDefault()
         sessionStorage.removeItem('companies_contacts')
-        nit = $('#nit').val();
+            /* nit = $('#nit').val();
 
-        if (nit == '') {
-            toastr.error('Ingrese el Nit sin puntos, comas o guiones')
-            return false
-        }
+            if (nit == '') {
+                toastr.error('Ingrese el Nit sin puntos, comas o guiones')
+                return false
+            } */
 
         let data = $('#formNewCompany').serialize()
 

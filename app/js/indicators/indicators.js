@@ -221,7 +221,7 @@ newCustomers = (id) => {
                     month.push(resp[i].Month);
                     quantity.push(resp[i].Quantity);
                 }
-
+                debugger
                 var quantityCustomers = new Chart(ctx, {
                     type: 'bar',
                     data: {

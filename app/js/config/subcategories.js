@@ -23,7 +23,7 @@ $(document).ready(function() {
 
     $('#btnCreatesubcategory').click(function(e) {
         e.preventDefault()
-        debugger
+
         let data = $('#frmSubcategory').serialize()
 
         if (data == undefined || data == '') {

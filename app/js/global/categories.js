@@ -1,7 +1,7 @@
 /* Load companies */
 
 $(document).ready(function() {
-    debugger
+
     $.ajax({
         url: '/api/categories',
         success: function(r) {
@@ -31,7 +31,7 @@ $(document).ready(function() {
 
 $('#selectCategory').change(function(e) {
     e.preventDefault();
-    debugger
+
     $select = $(`#selectSubcategory`)
     $select.empty()
 
