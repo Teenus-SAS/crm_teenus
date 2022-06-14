@@ -259,25 +259,25 @@ class DashboardDao
 
     if ($rol == 1) {
       if ($id == '1') {
-        $stmt = $connection->prepare("SELECT MonthName(created_at) AS Month, COUNT(*) AS Quantity
+        $stmt = $connection->prepare("SELECT Month(created_at) AS Month, MonthName(created_at) AS MonthName, COUNT(*) AS Quantity
                                     FROM companies
                                     WHERE year(created_at) = year(curdate())
-                                    GROUP BY MonthName(created_at)");
+                                    GROUP BY MonthName(created_at) ORDER BY `Month` ASC");
         $stmt->execute();
       } else {
         $id_user = $id;
-        $stmt = $connection->prepare("SELECT MonthName(created_at) AS Month, COUNT(*) AS Quantity
+        $stmt = $connection->prepare("SELECT Month(created_at) AS Month, MonthName(created_at) AS MonthName, COUNT(*) AS Quantity
                                     FROM companies
                                     WHERE year(created_at) = year(curdate()) AND companies.created_by = :id_user
-                                    GROUP BY MonthName(created_at);");
+                                    GROUP BY MonthName(created_at) ORDER BY `Month` ASC;");
         $stmt->execute(['id_user' => $id_user]);
       }
     } else if ($rol == 2) {
       $id_user = $_SESSION['idUser'];
-      $stmt = $connection->prepare("SELECT MonthName(created_at) AS Month, COUNT(*) AS Quantity
+      $stmt = $connection->prepare("SELECT Month(created_at) AS Month, MonthName(created_at) AS MonthName, COUNT(*) AS Quantity
                                     FROM companies
                                     WHERE year(created_at) = year(curdate()) AND companies.created_by = :id_user
-                                    GROUP BY MonthName(created_at);");
+                                    GROUP BY MonthName(created_at) ORDER BY `Month` ASC;");
       $stmt->execute(['id_user' => $id_user]);
     }
 

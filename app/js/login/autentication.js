@@ -6,7 +6,7 @@ $(document).ready(function() {
             url: '/api/user',
             data: data,
             success: function(data, textStatus, xhr) {
-
+                debugger
                 if (data.error) {
                     toastr.error(data.message)
                     return false

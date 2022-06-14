@@ -216,9 +216,9 @@ newCustomers = (id) => {
 
                 month = []
                 quantity = []
-
+                debugger
                 for (let i = 0; i < resp.length; i++) {
-                    month.push(resp[i].Month);
+                    month.push(resp[i].MonthName);
                     quantity.push(resp[i].Quantity);
                 }
                 debugger
