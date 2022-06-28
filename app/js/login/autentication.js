@@ -6,12 +6,12 @@ $(document).ready(function() {
             url: '/api/user',
             data: data,
             success: function(data, textStatus, xhr) {
-                debugger
-                if (data.error) {
+
+                if (data.error == true) {
                     toastr.error(data.message)
                     return false
-                } else if (data.success)
-                    location.href = '../../app/'
+                } else if (data.success == true)
+                    location.href = 'app'
                 else {
                     toastr.error('Ocurrio un error durante la conexión, Intente nuevamente')
                     return false

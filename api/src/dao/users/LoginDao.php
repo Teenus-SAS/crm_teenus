@@ -19,6 +19,7 @@ class LoginDao
   public function login($password, $user)
   {
     if (password_verify($password, $user['pass'])) {
+      session_start();
       $_SESSION['active'] = true;
       $_SESSION['idUser'] = $user['id_user'];
       $_SESSION['name'] = $user['firstname'];
