@@ -26,9 +26,11 @@ include_once('../../../modals/modalBusiness.php') ?>
 		<div class="btn-group">
 			<a href="javascript:;" onclick="cargarContenido('page-content','views/commercial/business.php')" type="button" class="btn btn-warning btn-img-bs"><i class='bx bx-list-check'></i></a>
 			<a href="javascript:;" onclick="cargarContenido('page-content','views/commercial/businessKanban.php')" type="button" class="btn btn-warning btn-img-bs"><i class='bx bx-category'></i></a>
-			<?php if ($_SESSION['rol'] == 2) {  ?>
+			<?php if ($_SESSION['rol'] == 2) {
+			?>
 				<button type="button" class="btn btn-primary" id="btnCreateBusiness" data-bs-toggle="modal" data-bs-target="#modalCreateBusiness">Crear Nuevo Proyecto</button>
-			<?php } ?>
+			<?php }
+			?>
 		</div>
 	</div>
 </div>
