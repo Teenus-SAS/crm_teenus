@@ -11,7 +11,7 @@ $(document).ready(function() {
                     toastr.error(data.message)
                     return false
                 } else if (data.success == true)
-                    location.href = 'app'
+                    location.href = 'dashboard'
                 else {
                     toastr.error('Ocurrio un error durante la conexión, Intente nuevamente')
                     return false
