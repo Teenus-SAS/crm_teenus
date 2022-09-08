@@ -1,4 +1,5 @@
 env.php
+.htaccess
 api/logs/
 api/environment.env
 api/*.env
