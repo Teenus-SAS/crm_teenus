@@ -73,7 +73,7 @@
                                     <option selected disabled value="0">Seleccionar...</option>
                                 </select>
                             </div>
-                            <div class="col-md-12 mt-1">
+                            <div class="col-md-4 mt-2">
                                 <label for="selectProducts" class="form-label">Producto</label>
                                 <select class="form-select" id="selectProducts" name="product" required>
                                     <option selected disabled value="0">Seleccionar...</option>
@@ -84,29 +84,10 @@
                                 <input class="form-control text-center" type="number" name="quantity" id="quantity">
                             </div>
                             <div class="col-md-3 mt-1">
-                                <label for="prices" class="form-label">Precio Unitario</label>
+                                <label for="prices" class="form-label">Precio</label>
                                 <input class="form-control text-center" type="text" name="price" id="price">
                             </div>
-                            <div class="col-md-2 mt-1">
-                                <label for="prices" class="form-label">Descuento</label>
-                                <select name="discount" id="discount" class="form-select">
-                                    <option value="0">0%</option>
-                                    <option value="1">1%</option>
-                                    <option value="2">2%</option>
-                                    <option value="3">3%</option>
-                                    <option value="4">4%</option>
-                                    <option value="5">5%</option>
-                                    <option value="6">6%</option>
-                                    <option value="7">7%</option>
-                                    <option value="8">8%</option>
-                                    <option value="9">9%</option>
-                                    <option value="10">10%</option>
-                                </select>
-                            </div>
-                            <div class="col-md-3 mt-1">
-                                <label for="prices" class="form-label">Precio Total</label>
-                                <input class="form-control text-center" type="text" name="totalPrice" id="totalPrice" readonly>
-                            </div>
+                            
                             <div class="col-md-3 mt-1">
                                 <img src="" width="30%" id="imgProduct">
                             </div>
