@@ -1,5 +1,5 @@
 <?php
-include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBudgets.php';
+include_once dirname(dirname(dirname(__DIR__))) .'/modals/modalBudgets.php';
 ?>
 
 <!doctype html>
