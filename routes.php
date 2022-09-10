@@ -10,10 +10,10 @@ get('/dashboard', 'app/index.php');
 get('/companies', '/app/views/commercial/companies.php');
 get('/contacts', '/app/views/commercial/contacts.php');
 get('/projects', '/app/views/commercial/contacts.php');
-get('/budget', '/app/views/commercial/contacts.php');
-get('/schedule', '/app/views/commercial/contacts.php');
-get('/quote', '/app/views/commercial/contacts.php');
-get('/billing', '/app/views/commercial/contacts.php');
+get('/budget', '/app/views/commercial/budget.php');
+get('/schedule', '/app/views/commercial/schedule.php');
+get('/quotes', '/app/views/commercial/quotes.php');
+get('/billing', '/app/views/commercial/billing.php');
 
 
 

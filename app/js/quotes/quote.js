@@ -157,7 +157,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: "POST",
-            url: "../../../api/addQuotes",
+            url: "/api/addQuotes",
             data: {
                 id_quote: id_quote,
                 company: company,
@@ -194,7 +194,7 @@ $(document).ready(function() {
         e.preventDefault()
         let id = $(this).prop('id')
 
-        $.get(`../../../api/updateQuotes/${id}`,
+        $.get(`/api/updateQuotes/${id}`,
             function(data, textStatus, jqXHR) {
 
                 $('#modalCreateQuote').modal('show')
@@ -233,7 +233,7 @@ $(document).ready(function() {
         let id = $(this).prop('id')
         sessionStorage.setItem('id_quote', id)
 
-        $.get(`../../../api/order_quote/${id}`,
+        $.get(`/api/order_quote/${id}`,
             function(data, textStatus, jqXHR) {
                 if (data) {
                     toastr.info('Pedido creado con anterioridad')
@@ -269,7 +269,7 @@ $(document).ready(function() {
             return false
         }
 
-        $.post(`../../../api/addOrder`, data,
+        $.post(`/api/addOrder`, data,
             function(data, textStatus, jqXHR) {
                 if (data.success) {
                     toastr.success(data.message)
