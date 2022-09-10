@@ -4,8 +4,8 @@
 <html lang="es">
 
 <head>
-	<?php include_once('../partials/scripts_header.php'); ?>
-	<title>CRM - teenus</title>
+	<?php include_once dirname(dirname(__DIR__)) .  '/partials/scripts_header.php'; ?>
+	<title>CRM-teenus</title>
 </head>
 
 <body>
@@ -13,11 +13,11 @@
 	<div class="wrapper">
 		<!--start header -->
 		<header>
-			<?php include_once('../partials/header.php'); ?>
+			<?php include_once dirname(dirname(__DIR__)) . '/partials/header.php'; ?>
 		</header>
 
 		<!--navigation-->
-		<?php include_once('../partials/nav.php'); ?>
+		<?php include_once dirname(dirname(__DIR__)) . '/partials/nav.php'; ?>
 
 		<!--page wrapper -->
 		<div class="page-wrapper">
@@ -191,14 +191,14 @@
 		<a href="javaScript:;" class="back-to-top noImprimir"><i class='bx bxs-up-arrow-alt'></i></a>
 
 		<!-- footer -->
-		<?php include_once('../partials/footer.php'); ?>
+		<?php include_once dirname(dirname(__DIR__)) . '/partials/footer.php'; ?>
 	</div>
 
 	<!--switcher-->
-	<?php include_once('../partials/darkmode.php') ?>
+	<?php include_once dirname(dirname(__DIR__)) . '/partials/darkmode.php' ?>
 
 	<!-- scripts -->
-	<?php include_once('../partials/scripts_js.php') ?>
+	<?php include_once dirname(dirname(__DIR__)) . '/partials/scripts_js.php' ?>
 	<script src="/app/js/global/loadContent.js"></script>
 	<script src="/app/js/indicators/indicators.js"></script>
 

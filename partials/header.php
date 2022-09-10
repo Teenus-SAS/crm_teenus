@@ -1,9 +1,9 @@
-<?php include_once '../modals/modalModifyProfileUser.php'; ?>
+<?php include_once dirname(__DIR__) . '/modals/modalModifyProfileUser.php'; ?>
 <div class="topbar d-flex align-items-center">
 	<nav class="navbar navbar-expand">
 		<div class="topbar-logo-header">
 			<div class="">
-				<img src="/app/assets/images/logo/logo.png" class="logo-icon" style="width: 55%;" alt="logo icon">
+				<img src="/app/assets/images/logo/logo-teenus.png" class="logo-icon" style="width: 35%;" alt="logo icon">
 			</div>
 		</div>
 		<div class="mobile-toggle-menu"><i class='bx bx-menu'></i></div>

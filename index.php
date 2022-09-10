@@ -6,22 +6,22 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
-	<link rel="icon" href="../../../app/assets/images/icons/icon.jpg" type="image/png" />
+	<link rel="icon" href="/app/assets/images/icons/icon.jpg" type="image/png" />
 	<!--plugins-->
-	<link href="app/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-	<link href="app/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-	<link href="app/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+	<link href="/app/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+	<link href="/app/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+	<link href="/app/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
 	<!-- loader-->
-	<link href="app/assets/css/pace.min.css" rel="stylesheet" />
-	<script src="app/assets/js/pace.min.js"></script>
+	<link href="/app/assets/css/pace.min.css" rel="stylesheet" />
+	<script src="/app/assets/js/pace.min.js"></script>
 	<!-- Bootstrap CSS -->
-	<link href="app/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/app/assets/css/bootstrap.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-	<link href="app/assets/css/app.css" rel="stylesheet">
-	<link href="app/assets/css/icons.css" rel="stylesheet">
+	<link href="/app/assets/css/app.css" rel="stylesheet">
+	<link href="/app/assets/css/icons.css" rel="stylesheet">
 	<!-- Notify -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet">
-	<title>CRM - teenus</title>
+	<title>CRM-teenus</title>
 </head>
 
 <body class="bg-login">
@@ -37,7 +37,7 @@
 							<div class="card-body">
 								<div class="border p-4 rounded">
 									<div class="text-center">
-										<img src="/app/assets/images/logo/logo.png" width='230' alt="">
+										<img src="/app/assets/images/logo/logo-teenus.png" width='130' alt="">
 										<h2 class="mb-3 mt-3">Bienvenido</h2>
 									</div>
 									<hr />
