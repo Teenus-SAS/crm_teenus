@@ -30,7 +30,7 @@
 								</div>
 							</a>
 							<div class="header-notifications-list">
-								<a class="dropdown-item" href="javascript:;" onclick="cargarContenido('page-content', 'views/admin/paymentmethods.php')">
+								<a class="dropdown-item" href="/paymentMethods">
 									<div class="d-flex align-items-center">
 										<div class="notify bg-light-primary text-primary"><i class="bx bx-money"></i>
 										</div>

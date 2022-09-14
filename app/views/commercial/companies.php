@@ -33,15 +33,16 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalReassignSeller.p
 					<?php if ($_SESSION['rol'] == 2) {  ?>
 						<div class="breadcrumb-title pe-3">Gestión Comercial</div>
 					<?php } ?>
+
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
-								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
-								</li>
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
 								<li class="breadcrumb-item active" aria-current="page">Empresas</li>
 							</ol>
 						</nav>
 					</div>
+					
 					<?php if ($_SESSION['rol'] == 2) { ?>
 						<div class="ms-auto">
 							<div class="btn-group">

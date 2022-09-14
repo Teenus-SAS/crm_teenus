@@ -5,15 +5,19 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
 // Login
 get('/', '/index.php');
 
+//Header
+get('/paymentMethods', '/app/views/admin/paymentmethods.php');
+
 //Nav
+get('/budget', '/app/views/commercial/budget.php');
 get('/dashboard', 'app/index.php');
-get('/companies', '/app/views/commercial/companies.php');
 get('/contacts', '/app/views/commercial/contacts.php');
-get('/projects', '/app/views/commercial/contacts.php');
+get('/companies', '/app/views/commercial/companies.php');
+get('/projects', '/app/views/commercial/business.php');
 get('/budget', '/app/views/commercial/budget.php');
 get('/schedule', '/app/views/commercial/schedule.php');
 get('/quotes', '/app/views/commercial/quotes.php');
-get('/billing', '/app/views/commercial/billing.php');
+get('/billing', '/app/views/commercial/billings.php');
 
 
 

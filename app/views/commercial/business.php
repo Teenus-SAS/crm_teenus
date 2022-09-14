@@ -3,8 +3,10 @@
 
 <head>
 	<?php
-	include_once dirname(dirname(dirname(__DIR__))) .'/modals/modalBusiness.php';?>
-	<?php include_once dirname(dirname(dirname(__DIR__))) .  '/partials/scripts_header.php';?>
+	include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
+	include_once dirname(dirname(dirname(__DIR__))) .  '/partials/scripts_header.php';
+	?>
+
 	<title>CRM-teenus</title>
 </head>
 
@@ -22,72 +24,68 @@
 		<!--page wrapper -->
 		<div class="page-wrapper">
 			<div class="page-content">
-
 				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
 					<?php if ($_SESSION['rol'] == 1) {  ?>
-						<div class="breadcrumb-title pe-3">Direción Comercial</div>
+						<div class="breadcrumb-title pe-3">Dirección Comercial</div>
 					<?php } ?>
 
 					<?php if ($_SESSION['rol'] == 2) {  ?>
 						<div class="breadcrumb-title pe-3">Gestión Comercial</div>
 					<?php } ?>
+
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
-								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-money"></i></a>
-								</li>
-								<li class="breadcrumb-item active" aria-current="page">Presupuestos de Ventas</li>
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
+								<li class="breadcrumb-item active" aria-current="page">Proyectos</li>
 							</ol>
 						</nav>
+					</div>
+
+
+					<div class="ms-auto">
+						<div class="btn-group">
+							<a href="javascript:;" onclick="cargarContenido('page-content','views/commercial/business.php')" type="button" class="btn btn-warning btn-img-bs"><i class='bx bx-list-check'></i></a>
+							<a href="javascript:;" onclick="cargarContenido('page-content','views/commercial/businessKanban.php')" type="button" class="btn btn-warning btn-img-bs"><i class='bx bx-category'></i></a>
+							<?php if ($_SESSION['rol'] == 2) { ?>
+								<button type="button" class="btn btn-primary" id="btnCreateBusiness" data-bs-toggle="modal" data-bs-target="#modalCreateBusiness">Crear Nuevo Proyecto</button>
+							<?php }
+							?>
+						</div>
+					</div>
+				</div>
+
+				<hr />
+				<div class="card">
+					<div class="card-body">
+						<div class="table-responsive">
+							<table id="tableBusiness" class="table table-striped table-bordered" style="width:100%">
+
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
 
-		<?php if ($_SESSION['rol'] == 1) {  ?>
-			<div class="breadcrumb-title pe-3">Direción Comercial</div>
-		<?php } ?>
+		<!--overlay-->
+		<div class="overlay toggle-icon"></div>
 
-		<?php if ($_SESSION['rol'] == 2) {  ?>
-			<div class="breadcrumb-title pe-3">Gestión Comercial</div>
-		<?php } ?>
+		<!--Back To Top Button-->
+		<a href="javaScript:;" class="back-to-top noImprimir"><i class='bx bxs-up-arrow-alt'></i></a>
 
-		<div class="ps-3">
-			<nav aria-label="breadcrumb">
-				<ol class="breadcrumb mb-0 p-0">
-					<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
-					</li>
-					<li class="breadcrumb-item active" aria-current="page">Proyectos</li>
-				</ol>
-			</nav>
-		</div>
+		<!-- footer -->
+		<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/footer.php'; ?>
 
-
-		<div class="ms-auto">
-			<div class="btn-group">
-				<a href="javascript:;" onclick="cargarContenido('page-content','views/commercial/business.php')" type="button" class="btn btn-warning btn-img-bs"><i class='bx bx-list-check'></i></a>
-				<a href="javascript:;" onclick="cargarContenido('page-content','views/commercial/businessKanban.php')" type="button" class="btn btn-warning btn-img-bs"><i class='bx bx-category'></i></a>
-				<?php if ($_SESSION['rol'] == 2) {
-				?>
-					<button type="button" class="btn btn-primary" id="btnCreateBusiness" data-bs-toggle="modal" data-bs-target="#modalCreateBusiness">Crear Nuevo Proyecto</button>
-				<?php }
-				?>
-			</div>
-		</div>
 	</div>
 
-	<hr />
-	<div class="card">
-		<div class="card-body">
-			<div class="table-responsive">
-				<table id="tableBusiness" class="table table-striped table-bordered" style="width:100%">
+	<!--switcher-->
+	<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/darkmode.php' ?>
 
-				</table>
-			</div>
-		</div>
-	</div>
+	<!-- scripts -->
+	<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/scripts_js.php' ?>
+
+
 
 	<?php
 	$rol = $_SESSION['rol'];
@@ -99,6 +97,10 @@
 	<?php if ($rol == 2) { ?>
 		<script src="../app/js/business/business.js"></script>
 	<?php } ?>
+
+	<script>
+		tipo = "<?= $_SESSION['rol'] ?>"
+	</script>
 
 	<script src="../app/js/global/companies.js"></script>
 	<script src="../app/js/global/number.js"></script>

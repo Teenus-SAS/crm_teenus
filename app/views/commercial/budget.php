@@ -36,8 +36,7 @@ include_once dirname(dirname(dirname(__DIR__))) .'/modals/modalBudgets.php';
 					<div class="ps-3">
 						<nav aria-label="breadcrumb">
 							<ol class="breadcrumb mb-0 p-0">
-								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-money"></i></a>
-								</li>
+								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-money"></i></a></li>
 								<li class="breadcrumb-item active" aria-current="page">Presupuestos de Ventas</li>
 							</ol>
 						</nav>

@@ -33,9 +33,9 @@
                         <div class="menu-title">Contactos</div>
                     </a>
                     <ul id="menuContactLu">
-                        <li> <a href="/contacts" id="navContacts"><i class="bx bx-group"></i>Contactos</a></li>
                         <!-- <li> <a href="javascript:;" id="navContacts" onclick="cargarContenido('page-content','views/commercial/contacts.php')"><i class="bx bx-group"></i>Contactos</a></li> -->
                         <!-- <li> <a href="javascript:;" id="navCompanies" onclick="cargarContenido('page-content','views/commercial/companies.php')"><i class="bx bx-buildings"></i>Empresas</a></li> -->
+                        <li> <a href="/contacts" id="navContacts"><i class="bx bx-group"></i>Contactos</a></li>
                         <li> <a href="/companies" id="navCompanies"><i class="bx bx-buildings"></i>Empresas</a></li>
                     </ul>
                 </li>
@@ -48,7 +48,8 @@
                 </li>
 
                 <li>
-                    <a href="javascript:;" id="navSchedule" onclick="cargarContenido('page-content','views/commercial/schedule.php')">
+                    <!-- <a href="javascript:;" id="navSchedule" onclick="cargarContenido('page-content','views/commercial/schedule.php')"> -->
+                    <a href="/schedule" id="navSchedule">
                         <div class="parent-icon"><i class="bx bx-task"></i></div>
                         <div class="menu-title">Agenda</div>
                     </a>
@@ -62,7 +63,7 @@
                 </li>
 
                 <li>
-                    <a href="javascript:;" id="navPedidos" onclick="cargarContenido('page-content','views/commercial/orders.php')">
+                    <a href="/billings" id="navBilling">
                         <div class="parent-icon"><i class="bx bx-box"></i></div>
                         <div class="menu-title">Facturación</div>
                     </a>
