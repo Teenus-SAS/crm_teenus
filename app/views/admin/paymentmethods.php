@@ -1,4 +1,6 @@
-<?php include_once('../../../modals/modalPaymentMethods.php') ?>
+<?php 
+include_once dirname(dirname(dirname(__DIR__))) .'/modals/modalPaymentMethods.php'; 
+?>
 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
 	<div class="breadcrumb-title pe-3">Administrador</div>
 	<div class="ps-3">

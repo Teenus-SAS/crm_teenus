@@ -85,8 +85,8 @@
 	<!-- scripts -->
 	<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/scripts_js.php' ?>
 
-
-
+	
+	
 	<?php
 	$rol = $_SESSION['rol'];
 	if ($rol == 1) { ?>
