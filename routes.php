@@ -7,6 +7,16 @@ get('/', '/index.php');
 
 //Header
 get('/paymentMethods', '/app/views/admin/paymentmethods.php');
+get('/contactForms1','/app/views/admin/contactforms.php');
+get('/salesPhases1', '/app/views/admin/salesphases.php');
+get('/salesChannels1', '/app/views/admin/saleschannels.php');
+get('/categories', '/app/views/admin/categoriesclients.php');
+get('/newseller', '/app/views/admin/users.php');
+
+
+
+
+
 
 //Nav
 get('/budget', '/app/views/commercial/budget.php');

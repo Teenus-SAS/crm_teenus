@@ -1,6 +1,35 @@
+<!doctype html>
+<html lang="es">
+
+<head>
 <?php 
-include_once dirname(dirname(dirname(__DIR__))) .'/modals/modalPaymentMethods.php'; 
+	include_once dirname(dirname(dirname(__DIR__))) .'/modals/modalPaymentMethods.php';
+	include_once dirname(dirname(dirname(__DIR__))) .  '/partials/scripts_header.php';
 ?>
+</head>
+
+<body>
+	<!--wrapper-->
+	<div class="wrapper">
+		<!--start header -->
+		<header>
+		<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/header.php'; ?>
+		</header>
+		<!--end header -->
+		<!--navigation-->
+		<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/nav.php'; ?>
+		<!--end navigation-->
+		<!--start page wrapper -->
+		<!--end page wrapper -->
+		<!--start overlay-->
+		<div class="overlay toggle-icon"></div>
+		<!--end overlay-->
+		<!--Start Back To Top Button--> <a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
+		<!--End Back To Top Button-->
+		<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/footer.php'; ?>
+	</div>
+	<!--end wrapper-->
+	
 <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
 	<div class="breadcrumb-title pe-3">Administrador</div>
 	<div class="ps-3">
@@ -53,3 +82,6 @@ include_once dirname(dirname(dirname(__DIR__))) .'/modals/modalPaymentMethods.ph
 </div>
 
 <script src="../app/js/config/paymentmethods.js"></script>
+
+</body>
+</html>

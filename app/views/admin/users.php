@@ -1,23 +1,20 @@
-<?php
-//require_once('../../sesiones/sesion_admin.php');
-include_once('../../../modals/modalNewSeller.php');
-?>
-
 <!doctype html>
 <html lang="es">
 
 <head>
-	<?php include_once('../../../partials/admin_scripts.php'); ?>
+	
+	<?php 
+	include_once dirname(dirname(dirname(__DIR__))) .'/modals/modalNewSeller.php';
+	include_once dirname(dirname(dirname(__DIR__))) .'/partials/scripts_header.php';
+	?>
 </head>
 
 <body>
 	<!--wrapper-->
 	<div class="wrapper">
-		<!--sidebar wrapper -->
-		<?php include_once('../../../partials/admin_sidebar.php'); ?>
 		
 		<!--start header -->
-		<?php include_once('../../../partials/admin_header.php'); ?>
+		<?php include_once dirname(dirname(dirname(__DIR__))) .'/partials/header.php' ?>
 		
 		<!--start page wrapper -->
 		<div class="page-wrapper">
@@ -59,17 +56,18 @@ include_once('../../../modals/modalNewSeller.php');
 		<!--Start Back To Top Button-->
 		<a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
 
-		<?php include_once('../../../partials/footer.php'); ?>
+		<?php include_once dirname(dirname(dirname(__DIR__))) .'/partials/footer.php'; ?>
 
 	</div>
 	<!--start switcher-->
-	<?php include_once('../../../partials/darkmode.php'); ?>
+	<?php include_once dirname(dirname(dirname(__DIR__))) .'/partials/darkmode.php'; ?>
 
 	<!-- Bootstrap JS -->
-	<?php include_once('../../../partials/admin_scripts_js.php'); ?>
+	<?php include_once dirname(dirname(dirname(__DIR__))) .'/partials/scripts_js.php'; ?>
 	
 	<script src="js/global/validation.js"></script>
 	<script src="../../../js/users/users.js"></script>
+	
 </body>
 
 </html>

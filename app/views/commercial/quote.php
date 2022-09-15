@@ -2,7 +2,7 @@
 <html lang="es">
 
 <head>
-	<?php include_once dirname(dirname(dirname(__DIR__))) .  '/partials/scripts_header.php'; ?>
+	<?php include_once dirname(dirname(dirname(__DIR__))) .'/partials/scripts_header.php'; ?>
 	<title>CRM-teenus</title>
 </head>
 
@@ -11,7 +11,7 @@
 	<div class="wrapper">
 		<!--start header -->
 		<header>
-			<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/header.php'; ?>
+			<?php include_once dirname(dirname(dirname(__DIR__))) .'/partials/header.php'; ?>
 		</header>
 
 		<!--navigation-->
@@ -201,6 +201,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
 	<script src="/app/js/quotes/seeQuote.js"></script>
 	<script src="/app/js/global/print.js"></script>
+
+	
+	<script>
+		tipo = "<?= $_SESSION['rol'] ?>"
+	</script>
 
 </body>
 
