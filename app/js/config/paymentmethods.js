@@ -1,5 +1,4 @@
 /* Cargue tabla de usuarios */
-
 $('#paymentMethods').toggle();
 
 $('#btnPaymentMethod').click(function(e) {

@@ -64,9 +64,9 @@
 
 	<!-- Bootstrap JS -->
 	<?php include_once dirname(dirname(dirname(__DIR__))) .'/partials/scripts_js.php'; ?>
-	
+
 	<script src="js/global/validation.js"></script>
-	<script src="../../../js/users/users.js"></script>
+	<script src="../app/js/users/users.js"></script>
 	
 </body>
 

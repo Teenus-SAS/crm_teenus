@@ -77,8 +77,10 @@
 		</div>
 	</div>
 </div>
+
 <?php include_once dirname(dirname(dirname(__DIR__))) .'/partials/scripts_js.php'; ?>
 
 <script src="../app/js/config/contactforms.js"></script>
+
 </body>
 </html>
