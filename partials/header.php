@@ -39,7 +39,7 @@
 										</div>
 									</div>
 								</a>
-								<a class="dropdown-item" href="javascript:;" onclick="cargarContenido('page-content', 'views/admin/contactforms.php')">
+								<a class="dropdown-item" href="contactForms1">
 									<div class="d-flex align-items-center">
 										<div class="notify bg-light-danger text-danger"><i class="bx bx-phone"></i>
 										</div>
@@ -49,7 +49,7 @@
 									</div>
 								</a>
 
-								<a class="dropdown-item" href="javascript:;" onclick="cargarContenido('page-content', 'views/admin/salesphases.php')">
+								<a class="dropdown-item" href="salesPhases1">
 									<div class="d-flex align-items-center">
 										<div class="notify bg-light-success text-success"><i class="bx bx-stats"></i>
 										</div>
@@ -59,7 +59,7 @@
 									</div>
 								</a>
 
-								<a class="dropdown-item" href="javascript:;" onclick="cargarContenido('page-content', 'views/admin/saleschannels.php')">
+								<a class="dropdown-item" href="salesChannels1">
 									<div class="d-flex align-items-center">
 										<div class="notify bg-light-warning text-warning"><i class="bx bx-transfer"></i>
 										</div>
@@ -69,7 +69,7 @@
 										</div>
 									</div>
 								</a>
-								<a class="dropdown-item" href="javascript:;" onclick="cargarContenido('page-content', 'views/admin/categoriesclients.php')">
+								<a class="dropdown-item" href="/categories">
 									<div class="d-flex align-items-center">
 										<div class="notify bg-light-info text-info"><i class="lni lni-users"></i>
 										</div>
@@ -89,7 +89,7 @@
 										</div>
 									</div>
 								</a> -->
-								<a class="dropdown-item" href="javascript:;" onclick="cargarContenido('page-content', 'views/commercial/sellers.php')">
+								<a class="dropdown-item" href="newseller">
 									<div class="d-flex align-items-center">
 										<div class="notify bg-light-success text-success"><i class="bx bx-network-chart"></i>
 										</div>

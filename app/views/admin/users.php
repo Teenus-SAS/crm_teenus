@@ -67,7 +67,7 @@
 
 	<script src="js/global/validation.js"></script>
 	<script src="../app/js/users/users.js"></script>
+
 	
 </body>
-
 </html>
