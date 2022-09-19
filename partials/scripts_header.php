@@ -15,7 +15,7 @@
 <!-- Bootstrap CSS -->
 <link href="/app/assetscom/css/bootstrap.min.css" rel="stylesheet">
 <link href="/app/assetscom/css/app.css" rel="stylesheet">
-<link href="/app/assetscom/css/icons.css" rel="stylesheet">
+<!-- <link href="/app/assetscom/css/icons.css" rel="stylesheet"> -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
 <!-- Notification -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
