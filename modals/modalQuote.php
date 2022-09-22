@@ -66,59 +66,38 @@
                         </div>
 
                         <div class="addProd row">
-                        <!-- <div class="col-md-4 mt-2">
-                                <label for="selectReference" class="form-label">Referencia</label>
-                                <select class="form-select" id="selectReference" name="reference" required>
-                                    <option selected disabled value="0">Seleccionar...</option>
-                                </select>
-                            </div>-->
                             <div class="col-md-3 mt-1">
                                 <label for="selectProducts" class="form-label">Producto</label>
-                                    <input class="form-control text-center" type="text" name="product" id="products">
-                                
+                                <input class="form-control text-center" type="text" name="product" id="products">
+
                             </div>
-                            <!--<div class="col-md-2 mt-1">
-                                <label for="quantity" class="form-label">Cantidad</label>
-                                <input class="form-control text-center" type="number" name="quantity" id="quantity">
-                            </div>-->
+
                             <div class="col-md-3 mt-1">
                                 <label for="prices" class="form-label">Precio</label>
                                 <input class="form-control text-center" type="text" name="price" id="price">
                             </div>
-                            
-                            <!--<div class="col-md-3 mt-1">
-                                <img src="" width="30%" id="imgProduct">
-                            </div>-->
+
+
                         </div>
-                            <!--
-                            <div class="col-md-12 mt-1">
-                                <label for="selectContact" class="form-label">Descripción</label>
-                                <textarea class="form-control" name="descriptionProduct" id="descriptionProduct" cols="30" rows="3"></textarea>
-                            </div>-->
-                            <div class="mb-3">
-                                <button class="btn btn-primary mt-3" id="btnAddProduct">Adicionar producto</button>
-                            </div>
-                            <hr/>
-                        
+                        <div class="mb-3">
+                            <button class="btn btn-primary mt-3" id="btnAddProduct">Adicionar producto</button>
+                        </div>
+                        <hr />
+
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table id="tableProductsQuote" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
-                                                <!--<th class="text-center">Referencia</th>-->
                                                 <th class="text-center">Producto</th>
-                                                <!--<th class="text-center">Descripción</th>-->
-                                                <th class="text-center">Valor Total</th>
-                                                <!--<th class="text-center">Cantidad</th>-->
-                                                <!--<th class="text-center">Valor Unitario</th>-->
-                                                <!--<th class="text-center">Descuento</th>-->
-                                                <!--<th class="text-center">Acciones</th>-->
+                                                <th class="text-center">Precio</th>
+                                                <th class="text-center">Acciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                         </tbody>
-                                    </table>    
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -127,10 +106,8 @@
                         </div>
                     </form>
                 </div>
-                
+
             </div>
         </div>
     </div>
 </div>
-
-
