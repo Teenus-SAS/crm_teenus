@@ -18,6 +18,7 @@ $(document).ready(function() {
         $(`#selectContact`).empty()
         $(`#selectBusiness`).empty()
 
+
         $('#id_quote').val('');
         $('td', tableProductsQuote).remove();
         $('#btnSaveQuote').html('Crear Cotización')

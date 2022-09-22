@@ -16,6 +16,9 @@
 	<link href="../../assets/css/app.css" rel="stylesheet">
 	<link href="../../assets/css/icons.css" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet">
+	<?php
+	include_once dirname(dirname(dirname(__DIR__))) .'/app/views/login/forgot-password.php';
+	?>
 	<title>CRM - teenus</title>
 </head>
 

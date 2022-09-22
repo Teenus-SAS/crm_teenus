@@ -21,7 +21,6 @@
                             <select class="form-select" id="selectCompanies" name="company" required>
                                 <option selected disabled value="0">Seleccionar...</option>
                             </select>
-
                         </div>
                         <div class="col-md-4">
                             <label for="selectContact" class="form-label">Contacto</label>
@@ -67,29 +66,29 @@
                         </div>
 
                         <div class="addProd row">
-                            <div class="col-md-4 mt-2">
+                        <!-- <div class="col-md-4 mt-2">
                                 <label for="selectReference" class="form-label">Referencia</label>
                                 <select class="form-select" id="selectReference" name="reference" required>
                                     <option selected disabled value="0">Seleccionar...</option>
                                 </select>
-                            </div>
+                            </div>-->
                             <div class="col-md-3 mt-1">
                                 <label for="selectProducts" class="form-label">Producto</label>
                                     <input class="form-control text-center" type="text" name="product" id="products">
-                                </select>
+                                
                             </div>
-                            <div class="col-md-2 mt-1">
+                            <!--<div class="col-md-2 mt-1">
                                 <label for="quantity" class="form-label">Cantidad</label>
                                 <input class="form-control text-center" type="number" name="quantity" id="quantity">
-                            </div>
+                            </div>-->
                             <div class="col-md-3 mt-1">
                                 <label for="prices" class="form-label">Precio</label>
                                 <input class="form-control text-center" type="text" name="price" id="price">
                             </div>
                             
-                            <div class="col-md-3 mt-1">
+                            <!--<div class="col-md-3 mt-1">
                                 <img src="" width="30%" id="imgProduct">
-                            </div>
+                            </div>-->
                         </div>
                             <!--
                             <div class="col-md-12 mt-1">
@@ -99,9 +98,8 @@
                             <div class="mb-3">
                                 <button class="btn btn-primary mt-3" id="btnAddProduct">Adicionar producto</button>
                             </div>
-                            <hr />
-                        </div>
-
+                            <hr/>
+                        
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -112,31 +110,27 @@
                                                 <th class="text-center">Producto</th>
                                                 <!--<th class="text-center">Descripción</th>-->
                                                 <th class="text-center">Valor Total</th>
-                                                <th class="text-center">Cantidad</th>
+                                                <!--<th class="text-center">Cantidad</th>-->
                                                 <!--<th class="text-center">Valor Unitario</th>-->
                                                 <!--<th class="text-center">Descuento</th>-->
                                                 <!--<th class="text-center">Acciones</th>-->
                                             </tr>
                                         </thead>
                                         <tbody>
-
                                         </tbody>
-                                    </table>
+                                    </table>    
                                 </div>
                             </div>
                         </div>
-            </div>
                         <div class="col-12 mt-3" style="display: flex;justify-content:end">
                             <button class="btn btn-primary" type="submit" id="btnSaveQuote">Crear Cotización</button>
                         </div>
                     </form>
-            </div>
-        </div>
-    </div>
-</div>
                 </div>
+                
             </div>
         </div>
     </div>
 </div>
-</div>
+
+
