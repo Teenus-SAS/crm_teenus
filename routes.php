@@ -5,6 +5,8 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
 // Login
 get('/', '/index.php');
 
+
+
 //Header
 get('/paymentMethods', '/app/views/admin/paymentmethods.php');
 get('/contactForms','/app/views/admin/contactforms.php');

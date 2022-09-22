@@ -87,6 +87,7 @@ include_once dirname(dirname(dirname(__DIR__))) .  '/modals/modalOrder.php';
 	<script src="/app/js/quotes/tblQuotes.js"></script>
 	<script src="/app/js/global/companies.js"></script>
 	<script src="/app/js/quotes/products.js"></script>
+	<script src="/app/js/quotes/seeQuote.js"></script>
 	<script src="/app/js/quotes/quote.js"></script>
 	<script src="/app/js/global/business.js"></script>
 	<script src="/app/js/global/contact.js"></script>
