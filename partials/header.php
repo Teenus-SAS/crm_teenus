@@ -1,4 +1,5 @@
 <?php include_once dirname(__DIR__) . '/modals/modalModifyProfileUser.php'; ?>
+
 <div class="topbar d-flex align-items-center">
 	<nav class="navbar navbar-expand">
 		<div class="topbar-logo-header">
