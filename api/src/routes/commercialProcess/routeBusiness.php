@@ -10,7 +10,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 /* Consulta todos */
 
 $app->get('/business', function (Request $request, Response $response, $args) use ($businessDao) {
-    $business = $businessDao->findAll();
+    session_start();
+    $rol = $_SESSION['rol'];
+    $business = $businessDao->findAll($rol);
     $response->getBody()->write(json_encode($business, JSON_NUMERIC_CHECK));
     return $response->withHeader('Content-Type', 'application/json');
 });
@@ -24,7 +26,9 @@ $app->get('/businessCompany/{id_company}', function (Request $request, Response 
 /* Consulta por asesor comercial */
 
 $app->get('/businesscommercial', function (Request $request, Response $response, $args) use ($businessDao) {
-    $business = $businessDao->findAll();
+    session_start();
+    $rol = $_SESSION['rol'];
+    $business = $businessDao->findAll($rol);
     $response->getBody()->write(json_encode($business, JSON_NUMERIC_CHECK));
     return $response->withHeader('Content-Type', 'application/json');
 });

@@ -16,10 +16,8 @@ class BusinessDao
     $this->logger->pushHandler(new RotatingFileHandler(Constants::LOGS_PATH . 'querys.log', 20, Logger::DEBUG));
   }
 
-  public function findAll()
+  public function findAll($rol)
   {
-    session_start();
-    $rol = $_SESSION['rol'];
     $connection = Connection::getInstance()->getConnection();
 
     if ($rol == 2) {
