@@ -19,8 +19,8 @@ class BusinessDao
   public function findAll()
   {
     session_start();
-    $connection = Connection::getInstance()->getConnection();
     $rol = $_SESSION['rol'];
+    $connection = Connection::getInstance()->getConnection();
 
     if ($rol == 2) {
       $id_user = $_SESSION['idUser'];

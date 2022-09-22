@@ -7,7 +7,7 @@
 	include_once dirname(dirname(dirname(__DIR__))) .  '/partials/scripts_header.php';
 	?>
 
-	<title>CRM-teenus</title>
+	<title>CRM-TEENUS</title>
 </head>
 
 <body>
