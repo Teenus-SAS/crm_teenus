@@ -19,7 +19,11 @@ get('/dashboard', 'app/views/templateCommercial.php');
 get('/budget', '/app/views/commercial/budget.php');
 get('/contacts', '/app/views/commercial/contacts.php');
 get('/companies', '/app/views/commercial/companies.php');
+
 get('/projects', '/app/views/commercial/business.php');
+get('/projects-list', '/app/views/commercial/business.php');
+get('/projects-kanban', '/app/views/commercial/businessKanban.php');
+
 get('/budget', '/app/views/commercial/budget.php');
 get('/schedule', '/app/views/commercial/schedule.php');
 get('/quotes', '/app/views/commercial/quotes.php');

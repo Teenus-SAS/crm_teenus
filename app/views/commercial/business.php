@@ -45,8 +45,8 @@
 
 					<div class="ms-auto">
 						<div class="btn-group">
-							<a href="javascript:;" onclick="cargarContenido('page-content','views/commercial/business.php')" type="button" class="btn btn-warning btn-img-bs"><i class='bx bx-list-check'></i></a>
-							<a href="javascript:;" onclick="cargarContenido('page-content','views/commercial/businessKanban.php')" type="button" class="btn btn-warning btn-img-bs"><i class='bx bx-category'></i></a>
+							<a href="projects-kanban" type="button" class="btn btn-warning btn-img-bs"><i class='bx bx-category'></i></a>
+
 							<?php if ($_SESSION['rol'] == 2) { ?>
 								<button type="button" class="btn btn-primary" id="btnCreateBusiness" data-bs-toggle="modal" data-bs-target="#modalCreateBusiness">Crear Nuevo Proyecto</button>
 							<?php }
@@ -85,8 +85,8 @@
 	<!-- scripts -->
 	<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/scripts_js.php' ?>
 
-	
-	
+
+
 	<?php
 	$rol = $_SESSION['rol'];
 	if ($rol == 1) { ?>
