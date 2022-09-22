@@ -26,7 +26,7 @@ get('/quotes', '/app/views/commercial/quotes.php');
 get('/billing', '/app/views/commercial/billings.php');
 
 //Users
-get('/forget-pass', '/app/views/login/forgot-password.php');
+get('/forgot-pass', '/app/views/login/forgot-password.php');
 
 // Dynamic GET. Example with 1 variable
 // The $id will be available in user.php
