@@ -6,18 +6,17 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
 get('/', '/index.php');
 
 
-
 //Header
 get('/paymentMethods', '/app/views/admin/paymentmethods.php');
-get('/contactForms','/app/views/admin/contactforms.php');
+get('/contactForms', '/app/views/admin/contactforms.php');
 get('/salesPhases', '/app/views/admin/salesphases.php');
 get('/salesChannels', '/app/views/admin/saleschannels.php');
 get('/categories', '/app/views/admin/categoriesclients.php');
 get('/sellers', '/app/views/admin/users.php');
 
 //Nav
+get('/dashboard', 'app/views/templateCommercial.php');
 get('/budget', '/app/views/commercial/budget.php');
-get('/dashboard', 'app/index.php');
 get('/contacts', '/app/views/commercial/contacts.php');
 get('/companies', '/app/views/commercial/companies.php');
 get('/projects', '/app/views/commercial/business.php');
