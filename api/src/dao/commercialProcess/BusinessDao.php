@@ -33,7 +33,7 @@ class BusinessDao
                                   WHERE c.created_by = :id_user
                                   ORDER BY `b`.`id_business` DESC");
       $stmt->execute(['id_user' => $id_user]);
-    } else
+    } else {
       $stmt = $connection->prepare("SELECT b.id_business, b.name_business, c.company_name as company, CONCAT(ct.firstname,' ',ct.lastname) as contact, b.estimated_sale, sp.id_phase, sp.sales_phase, sp.percent, b.observation, b.term, b.date_register, CONCAT(u.firstname, ' ',u.lastname) AS seller
                                     FROM business b 
                                     INNER JOIN companies c ON b.id_company = c.id_company 
@@ -41,7 +41,8 @@ class BusinessDao
                                     INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
                                     INNER JOIN users u ON u.id_user = c.created_by
                                     ORDER BY `b`.`id_business` DESC");
-    $stmt->execute();
+      $stmt->execute();
+    }
     $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
     $business = $stmt->fetchAll($connection::FETCH_ASSOC);
     $this->logger->notice("get business", array('business' => $business));
@@ -126,6 +127,4 @@ class BusinessDao
       //return 1;
     }
   }
-
-   
 }
