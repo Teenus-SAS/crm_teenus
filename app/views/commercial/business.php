@@ -24,7 +24,8 @@
 		<!--page wrapper -->
 		<div class="page-wrapper">
 			<div class="page-content">
-				<div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
+				<!-- <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3"> -->
+				<div class="page-breadcrumb d-sm-flex align-items-center mb-3">
 					<?php if ($_SESSION['rol'] == 1) {  ?>
 						<div class="breadcrumb-title pe-3">Dirección Comercial</div>
 					<?php } ?>
