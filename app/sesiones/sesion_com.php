@@ -2,11 +2,13 @@
 @session_start();
 
 if (empty($_SESSION['active'])) {
+  echo 1;
   header("location: /index.php");
 }
 
 if ($_SESSION['rol'] > 2) {
   session_destroy();
+  echo 2;
   header("location: /index.php");
 }
 
@@ -16,6 +18,7 @@ if (isset($_SESSION["timeout"])) {
 
   if ($sessionTTL > $inactividad) {
     session_destroy();
+    echo 3;
     header("location: /index.php");
   }
 }
