@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
-	<link rel="icon" href="/app/assets/images/icons/icon.jpg" type="image/png" />
+	<link rel="icon" href="/app/assets/images/icons/icono_teenus.png" type="image/png" />
 	<!--plugins-->
 	<link href="/app/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
 	<link href="/app/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
@@ -21,7 +21,7 @@
 	<link href="/app/assets/css/icons.css" rel="stylesheet">
 	<!-- Notify -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet">
-	<title>CRM-teenus</title>
+	<title>CRM-TEENUS</title>
 </head>
 
 <body class="bg-login">
