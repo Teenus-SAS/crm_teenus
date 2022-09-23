@@ -15,7 +15,7 @@ get('/categories', '/app/views/admin/categoriesclients.php');
 get('/sellers', '/app/views/admin/users.php');
 
 //Nav
-get('/dashboard', 'app/views/templateCommercial.php');
+get('/dashboard', 'app/views/commercial/dashboard.php');
 get('/budget', '/app/views/commercial/budget.php');
 get('/contacts', '/app/views/commercial/contacts.php');
 get('/companies', '/app/views/commercial/companies.php');

@@ -6,7 +6,7 @@ use crmteenus\Constants\Constants;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Logger;
 
-class OrdersDao
+class OrdersKeyDao
 {
   private $logger;
 

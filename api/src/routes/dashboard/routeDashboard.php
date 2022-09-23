@@ -1,23 +1,23 @@
 <?php
 
-use crmteenus\dao\BusinessDao;
+use crmteenus\dao\BusinessKeyDao;
 use crmteenus\dao\CustomersDao;
-use crmteenus\dao\OrdersDao;
+use crmteenus\dao\OrdersKeyDao;
 
-$businessDao = new BusinessDao();
+$businesskeyDao = new BusinessKeyDao();
 $customersDao = new CustomersDao();
-$ordersDao = new OrdersDao();
+$orderskeyDao = new OrdersKeyDao();
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 /* Configuracion de indicadores */
 
-$app->get('/indicators/{id}', function (Request $request, Response $response, $args) use ($businessDao, $customersDao, $ordersDao) {
+$app->get('/indicators/{id}', function (Request $request, Response $response, $args) use ($businesskeyDao, $customersDao, $orderskeyDao) {
     $customers = $customersDao->findNewCustomers($args['id']);
-    $business = $businessDao->findNewBusiness($args['id']);
-    $priceBusiness = $businessDao->findTotalPriceBusiness($args['id']);
-    $priceOrders = $ordersDao->findTotalPriceOrders($args['id']);
+    $business = $businesskeyDao->findNewBusiness($args['id']);
+    $priceBusiness = $businesskeyDao->findTotalPriceBusiness($args['id']);
+    $priceOrders = $orderskeyDao->findTotalPriceOrders($args['id']);
 
     $indicators = [];
 
@@ -30,8 +30,8 @@ $app->get('/indicators/{id}', function (Request $request, Response $response, $a
     return $response->withHeader('Content-Type', 'application/json');
 });
 
-$app->get('/budgetsvsOrders/{id}', function (Request $request, Response $response, $args) use ($ordersDao) {
-    $businessBudgetsvsOrders = $ordersDao->findBudgetsvsOrders($args['id']);
+$app->get('/budgetsvsOrders/{id}', function (Request $request, Response $response, $args) use ($orderskeyDao) {
+    $businessBudgetsvsOrders = $orderskeyDao->findBudgetsvsOrders($args['id']);
 
     $response->getBody()->write(json_encode($businessBudgetsvsOrders, JSON_NUMERIC_CHECK));
     return $response->withHeader('Content-Type', 'application/json');
@@ -44,22 +44,22 @@ $app->get('/quantityCustomers/{id}', function (Request $request, Response $respo
     return $response->withHeader('Content-Type', 'application/json');
 });
 
-$app->get('/quantityBusiness/{id}', function (Request $request, Response $response, $args) use ($businessDao) {
-    $businessquantitybusiness = $businessDao->findQuantityBusiness($args['id']);
+$app->get('/quantityBusiness/{id}', function (Request $request, Response $response, $args) use ($businesskeyDao) {
+    $businessquantitybusiness = $businesskeyDao->findQuantityBusiness($args['id']);
 
     $response->getBody()->write(json_encode($businessquantitybusiness, JSON_NUMERIC_CHECK));
     return $response->withHeader('Content-Type', 'application/json');
 });
 
-$app->get('/valuedBusiness/{id}', function (Request $request, Response $response, $args) use ($businessDao) {
-    $valuedBusiness = $businessDao->findValuedBusiness($args['id']);
+$app->get('/valuedBusiness/{id}', function (Request $request, Response $response, $args) use ($businesskeyDao) {
+    $valuedBusiness = $businesskeyDao->findValuedBusiness($args['id']);
 
     $response->getBody()->write(json_encode($valuedBusiness, JSON_NUMERIC_CHECK));
     return $response->withHeader('Content-Type', 'application/json');
 });
 
-$app->get('/valuedOrders/{id}', function (Request $request, Response $response, $args) use ($ordersDao) {
-    $valuedOrders = $ordersDao->findValuedOrders($args['id']);
+$app->get('/valuedOrders/{id}', function (Request $request, Response $response, $args) use ($orderskeyDao) {
+    $valuedOrders = $orderskeyDao->findValuedOrders($args['id']);
 
     $response->getBody()->write(json_encode($valuedOrders, JSON_NUMERIC_CHECK));
     return $response->withHeader('Content-Type', 'application/json');
