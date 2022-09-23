@@ -1,10 +1,15 @@
-<!doctype html>
-<html lang="es">
-<head>
-	<?php 
-	include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalTasks.php';
-	include_once dirname(dirname(dirname(__DIR__))) .  '/partials/scripts_header.php';
+<?php
+require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
+include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalTasks.php';
 ?>
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<?php
+	include_once dirname(dirname(dirname(__DIR__))) .  '/partials/scripts_header.php';
+	?>
 </head>
 
 <body>
@@ -12,7 +17,7 @@
 	<div class="wrapper">
 		<!--start header -->
 		<header>
-		<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/header.php'; ?>
+			<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/header.php'; ?>
 		</header>
 
 		<!--navigation-->
@@ -89,7 +94,7 @@
 									<div class="card-body">
 										<div class="table-responsive">
 											<table id="tableSchedule" class="table table-striped table-bordered" style="width:100%">
-												
+
 											</table>
 										</div>
 									</div>
@@ -102,7 +107,7 @@
 									<div class="card-body">
 										<div class="table-responsive">
 											<table id="tableAlertTask" class="table table-striped table-bordered" style="width:100%">
-												
+
 											</table>
 										</div>
 									</div>
@@ -114,7 +119,7 @@
 									<div class="card-body">
 										<div class="table-responsive">
 											<table id="tableDelayTask" class="table table-striped table-bordered" style="width:100%">
-												
+
 											</table>
 										</div>
 									</div>
@@ -126,7 +131,7 @@
 									<div class="card-body">
 										<div class="table-responsive">
 											<table id="tableCompletedTask" class="table table-striped table-bordered" style="width:100%">
-												
+
 											</table>
 										</div>
 									</div>
@@ -146,7 +151,7 @@
 		<a href="javaScript:;" class="back-to-top"><i class='bx bxs-up-arrow-alt'></i></a>
 
 		<!--Start footer-->
-		<?php include_once dirname(dirname(dirname(__DIR__))) .'/partials/footer.php'; ?>
+		<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/footer.php'; ?>
 	</div>
 	<!--end wrapper-->
 
@@ -161,19 +166,20 @@
 
 	<?php if ($_SESSION['rol'] == 2) {  ?>
 	<?php } ?>
-</div>
+	</div>
 
 
-<script src="../app/js/schedule/tblsSchedule.js"></script>
-<script src="../app/js/schedule/schedule.js"></script>
-<script src="../app/js/global/companies.js"></script>
-<script src="../app/js/global/sellers.js"></script>
-<script src="../app/js/global/contact.js"></script>
-<script src="../app/js/global/dateValidation.js"></script>
+	<script src="../app/js/schedule/tblsSchedule.js"></script>
+	<script src="../app/js/schedule/schedule.js"></script>
+	<script src="../app/js/global/companies.js"></script>
+	<script src="../app/js/global/sellers.js"></script>
+	<script src="../app/js/global/contact.js"></script>
+	<script src="../app/js/global/dateValidation.js"></script>
 
-<script>
+	<script>
 		tipo = "<?= $_SESSION['rol'] ?>"
-</script>
+	</script>
 
 </body>
+
 </html>

@@ -1,12 +1,13 @@
-<!doctype html>
+<?php
+require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
+include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalContact.php';
+?>
+
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
-	<?php 
-	include_once dirname(dirname(dirname(__DIR__))) .'/modals/modalContact.php';
-	include_once dirname(dirname(dirname(__DIR__))) .  '/partials/scripts_header.php';
-	?>
-	<title>CRM-teenus</title>
+	<?php include_once dirname(dirname(dirname(__DIR__))) .  '/partials/scripts_header.php'; ?>
 </head>
 
 <body>
@@ -14,7 +15,7 @@
 	<div class="wrapper">
 		<!--start header -->
 		<header>
-		<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/header.php'; ?>
+			<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/header.php'; ?>
 		</header>
 		<!--end header -->
 		<!--navigation-->
@@ -68,7 +69,7 @@
 	<!--start switcher-->
 	<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/darkmode.php'; ?>
 	<!--end switcher-->
-	<?php include_once dirname(dirname(dirname(__DIR__))) .'/partials/scripts_js.php' ?>
+	<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/scripts_js.php' ?>
 
 
 	<script src="/app/js/contacts/tblContacts.js"></script>
@@ -79,4 +80,5 @@
 	</script>
 
 </body>
+
 </html>

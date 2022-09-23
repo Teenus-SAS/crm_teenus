@@ -1,4 +1,5 @@
 <?php
+require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBudgets.php';
 ?>
 
@@ -6,11 +7,7 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBudgets.php';
 <html lang="es">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php include_once dirname(dirname(dirname(__DIR__))) .  '/partials/scripts_header.php'; ?>
-	<title>CRM-teenus</title>
 </head>
 
 <body>

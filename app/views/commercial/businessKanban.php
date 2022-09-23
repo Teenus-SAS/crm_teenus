@@ -1,12 +1,13 @@
 <?php
+require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 ?>
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
 	<?php include_once dirname(dirname(dirname(__DIR__))) .  '/partials/scripts_header.php'; ?>
-	<title>CRM-teenus</title>
 </head>
 
 <body>
