@@ -83,7 +83,7 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 							<div class="card-body">
 								<div class="d-flex align-items-center">
 									<div>
-										<p class="mb-0 text-secondary">Valorizado Pedidos</p>
+										<p class="mb-0 text-secondary">Facturación</p>
 										<h4 class="my-1 text-success valuedOrders"></h4>
 									</div>
 									<div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class='bx bxs-group'></i>
@@ -96,12 +96,12 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 				<!--end row-->
 
 				<div class="row">
-					<div class="col-12 col-lg-12">
+					<div class="col-9 col-lg-9">
 						<div class="card radius-10">
 							<div class="card-body">
 								<div class="d-flex align-items-center">
 									<div>
-										<h6 class="mb-0">Presupuesto vs Pedidos</h6>
+										<h6 class="mb-0">Presupuesto vs Facturación</h6>
 									</div>
 								</div>
 								<div class="d-flex align-items-center ms-auto font-13 gap-2 my-3">
@@ -110,6 +110,25 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 								</div>
 								<div class="chart-container-1">
 									<canvas id="budgetsvsorders"></canvas>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="col-3 col-lg-3">
+						<div class="card radius-10">
+							<div class="card-body">
+								<div class="d-flex align-items-center">
+									<div>
+										<h6 class="mb-0">Meta Facturación</h6>
+									</div>
+								</div>
+								<div class="d-flex align-items-center ms-auto font-13 gap-2 my-3">
+									<span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1 colorBudgets"></i>Meta</span>
+									<span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1 colorOrders"></i>Facturación</span>
+								</div>
+								<div class="chart-container-1">
+									<canvas id="goalBilling"></canvas>
 								</div>
 							</div>
 

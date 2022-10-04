@@ -54,13 +54,13 @@
                         <div class="menu-title">Agenda</div>
                     </a>
                 </li>
-                <li>
-                    <!-- <a href="javascript:;" id="navQuotes" onclick="cargarContenido('page-content','views/commercial/quotes.php')"> -->
+                <!-- <li>
+                    <a href="javascript:;" id="navQuotes" onclick="cargarContenido('page-content','views/commercial/quotes.php')">
                     <a href="/quotes" id="navQuotes">
                         <div class="parent-icon"><i class="bx bx-transfer"></i></div>
                         <div class="menu-title">Cotizaciones</div>
                     </a>
-                </li>
+                </li> -->
 
                 <li>
                     <a href="/billings" id="navBilling">
