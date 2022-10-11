@@ -72,7 +72,7 @@
             </ul>
         </nav>
     <?php } ?>
-    <?php if ($_SESSION['rol'] == 3) { ?>
+    <?php if (!empty($_SESSION['rol']) == 3) { ?>
         <nav class="topbar-nav">
             <ul class="metismenu" id="menu">
                 <li>
