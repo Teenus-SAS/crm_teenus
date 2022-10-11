@@ -1,6 +1,6 @@
 $.ajax({
     type: "GET",
-    url: "../../../api/paymentMethods",
+    url: "/api/paymentMethods",
     success: function(response) {
 
         let $selectPayment = $('#selectPaymentMethods');

@@ -4,7 +4,7 @@ $(document).ready(function() {
     tableRemissions = $('#tableRemissions').dataTable({
         pageLength: 50,
         ajax: {
-            url: '../../../api/remissions',
+            url: '/api/remissions',
             dataSrc: '',
         },
         language: {

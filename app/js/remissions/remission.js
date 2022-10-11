@@ -25,7 +25,7 @@ $(document).on('click', '.generateRemission', function(e) {
 
     /* Cargar referencia y producto */
 
-    $.get(`../../../api/loadProductsRemission/${id}`,
+    $.get(`/api/loadProductsRemission/${id}`,
         function(data, textStatus, jqXHR) {
 
             productsRemission = JSON.stringify(data)

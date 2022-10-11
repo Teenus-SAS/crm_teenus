@@ -3,7 +3,7 @@ $(document).ready(function() {
     tableBusiness = $('#tableBusiness').dataTable({
         pageLength: 50,
         ajax: {
-            url: '../../../api/business',
+            url: '/api/business',
             dataSrc: '',
         },
         language: {

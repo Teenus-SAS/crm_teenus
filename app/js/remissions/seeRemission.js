@@ -4,7 +4,7 @@ $(document).ready(function() {
     let id_remission = sessionStorage.getItem('id_remission')
 
     info = 0;
-    $.get(`../../../api/remission/${id_order}/${id_remission}`,
+    $.get(`/api/remission/${id_order}/${id_remission}`,
         function(data, textStatus, jqXHR) {
             info = data;
 
@@ -53,7 +53,7 @@ $(document).ready(function() {
             $('.phone_delivery').html(`<b>Teléfono:</b> ${data[2].phone}`);
         });
 
-    $.get("../../../api/conditionsQuotes",
+    $.get("/api/conditionsQuotes",
         function(data, textStatus, jqXHR) {
             $('.payment_conditions').html(`Condición de Pago: ${data.payment_condition}`);
             $('.validity').html(`Validez de la Oferta: ${data.validity}`);

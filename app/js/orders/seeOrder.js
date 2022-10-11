@@ -2,7 +2,7 @@ $(document).ready(function() {
     id_order = sessionStorage.getItem('id_order')
     subtotal = 0
 
-    $.get(`../../../api/order/${id_order}/0`,
+    $.get(`/api/order/${id_order}/0`,
         function(data, textStatus, jqXHR) {
 
             $('.to').html(`Contacto: ${data[0].contact}`);
@@ -71,7 +71,7 @@ $(document).ready(function() {
         });
 
 
-    $.get("../../../api/conditionsQuotes",
+    $.get("/api/conditionsQuotes",
         function(data, textStatus, jqXHR) {
             $('.payment_conditions').html(`Condición de Pago: ${data.payment_condition}`);
             $('.validity').html(`Validez de la Oferta: ${data.validity}`);

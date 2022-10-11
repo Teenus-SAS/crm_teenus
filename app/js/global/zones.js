@@ -1,7 +1,7 @@
 /* load zonas */
 
 $.ajax({
-    url: '../../../api/zones',
+    url: '/api/zones',
     success: function(r) {
         sessionStorage.setItem('zones', JSON.stringify(r))
 

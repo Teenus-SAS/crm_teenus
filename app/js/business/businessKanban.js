@@ -11,7 +11,7 @@ $(document).ready(function() {
         valorEtapa7 = 0
 
     $.ajax({
-        url: '../../../api/salesPhases',
+        url: '/api/salesPhases',
         success: function(r) {
             for (let i = 0; i < r.length; i++) {
                 $(`#board_business`).append(`
@@ -32,7 +32,7 @@ $(document).ready(function() {
     const business = () => {
 
         $.ajax({
-            url: '../../../api/business',
+            url: '/api/business',
             success: function(respBusiness) {
                 loadPhases(respBusiness)
             },
@@ -64,7 +64,7 @@ $(document).ready(function() {
         else {
             $.ajax({
                 type: "GET",
-                url: `../../../api/business/${seller}`,
+                url: `/api/business/${seller}`,
                 success: function(respBusiness) {
                     loadPhases(respBusiness)
                 },

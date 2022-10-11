@@ -2,7 +2,7 @@
 
 async function contacts(company, contact) {
     try {
-        let res = await fetch('../../../api/contacts')
+        let res = await fetch('/api/contacts')
         r = await res.json()
 
         $select = $(`#selectContact`)

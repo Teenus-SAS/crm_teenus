@@ -44,12 +44,6 @@ class UserDao
     $stmt->execute(['email' => $dataUser]);
     $user = $stmt->fetch($connection::FETCH_ASSOC);
 
-    if (!$user) {
-      $stmt = $connection->prepare("SELECT * FROM users WHERE email = :email");
-      $stmt->execute(['email' => $dataUser]);
-      $user = $stmt->fetch($connection::FETCH_ASSOC);
-    }
-
     $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
     $this->logger->notice("usuarios Obtenidos", array('usuarios' => $user));
     return $user;

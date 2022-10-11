@@ -3,7 +3,7 @@
 tableZones = $('#tableZones').dataTable({
     pageLength: 10,
     ajax: {
-        url: '../../../api/zones',
+        url: '/api/zones',
         dataSrc: '',
     },
     language: {
@@ -48,7 +48,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '../../../api/addZones',
+            url: '/api/addZones',
             data: { zone: data },
 
             success: function(response, jqXHR, statusCode) {
@@ -92,7 +92,7 @@ $(document).ready(function() {
             `¿Realmente desea <b style="color:red">Eliminar</b> la Zona <b style="color:red">${data.zone}</b>?, esta acción es permanente`,
             function() {
                 $.ajax({
-                    url: `../api/deleteZones/${id}`,
+                    url: `/api/deleteZones/${id}`,
                     success: function(response) {
                         updateTable()
                         if (response.success == true)

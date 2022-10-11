@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $.ajax({
-        url: "../../../api/contactForms",
+        url: "/api/contactForms",
 
         success: function(r) {
             sessionStorage.setItem('contactForms', JSON.stringify(r))
@@ -50,7 +50,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '../../../api/addSchedule',
+            url: '/api/addSchedule',
             data: data,
             success: function(response, jqXHR, statusCode) {
 
@@ -72,7 +72,7 @@ $(document).ready(function() {
         let id = $(this).prop('id')
         $.ajax({
             type: "POST",
-            url: "../../../api/deleteSchedule",
+            url: "/api/deleteSchedule",
             data: { idTask: id },
             success: function(response) {
                 updateTable()
@@ -126,7 +126,7 @@ $(document).ready(function() {
         let id = $(this).prop('id')
         $.ajax({
             type: "POST",
-            url: "../../../api/activateSchedule",
+            url: "/api/activateSchedule",
             data: { idTask: id },
             success: function(response) {
                 updateTable()

@@ -6,7 +6,7 @@ $(document).ready(function() {
         sessionStorage.setItem('id_order', id_order)
         sessionStorage.setItem('id_remission', id_remission)
 
-        $.get(`../../../api/order/${id_order}/${id_remission}`,
+        $.get(`/api/order/${id_order}/${id_remission}`,
             function(data, textStatus, jqXHR) {
 
                 $('#modalDataOrder').modal('show')
@@ -43,7 +43,7 @@ $(document).ready(function() {
             return false
         }
 
-        $.post(`../../../api/modifyDataDeliveryOrder`, data,
+        $.post(`/api/modifyDataDeliveryOrder`, data,
             function(data, textStatus, jqXHR) {
                 if (data.success) {
                     toastr.success(data.message)

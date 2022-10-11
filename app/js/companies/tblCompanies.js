@@ -1,85 +1,84 @@
-$(document).ready(function () {
-  /* Cargue tabla de Empresas */
-  tableCompanies = $('#tableCompanies').dataTable({
-    pageLength: 50,
+$(document).ready(function() {
+    /* Cargue tabla de Empresas */
+    tableCompanies = $('#tableCompanies').dataTable({
+        pageLength: 50,
 
-    ajax: {
-      url: '../../../api/companies',
-      dataSrc: '',
-    },
-    language: {
-      url: '//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json',
-    },
-    columns: [
-      {
-        title: 'No.',
-        data: null,
-        render: function (data, type, full, meta) {
-          return meta.row + 1;
+        ajax: {
+            url: '/api/companies',
+            dataSrc: '',
         },
-      },
-      {
-        title: 'Nit',
-        data: 'nit',
-        className: 'uniqueClassName',
-      },
-      {
-        title: 'Razon Social',
-        data: 'company_name',
-        className: 'uniqueClassName',
-      },
-      {
-        title: 'Dirección',
-        data: 'address',
-        className: 'uniqueClassName',
-      },
-      {
-        title: 'Teléfono',
-        data: 'phone',
-        className: 'uniqueClassName',
-      },
-      {
-        title: 'Ciudad',
-        data: 'city',
-        className: 'uniqueClassName',
-      },
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json',
+        },
+        columns: [{
+                title: 'No.',
+                data: null,
+                render: function(data, type, full, meta) {
+                    return meta.row + 1;
+                },
+            },
+            {
+                title: 'Nit',
+                data: 'nit',
+                className: 'uniqueClassName',
+            },
+            {
+                title: 'Razon Social',
+                data: 'company_name',
+                className: 'uniqueClassName',
+            },
+            {
+                title: 'Dirección',
+                data: 'address',
+                className: 'uniqueClassName',
+            },
+            {
+                title: 'Teléfono',
+                data: 'phone',
+                className: 'uniqueClassName',
+            },
+            {
+                title: 'Ciudad',
+                data: 'city',
+                className: 'uniqueClassName',
+            },
 
-      {
-        title: 'Categoria',
-        data: 'category',
-        className: 'uniqueClassName',
-      },
-      {
-        title: 'Subcategoria',
-        data: 'subcategory',
-        className: 'uniqueClassName',
-      },
-      {
-        title: 'Asesor Comercial',
-        data: 'seller',
-        visible: tipo !== '2',
-        className: 'uniqueClassName',
-      },
-      {
-        title: 'Acciones',
-        data: 'id_company',
-        className: 'uniqueClassName',
-        visible: tipo !== '1',
-        render: function (data) {
-          return `
+            {
+                title: 'Categoria',
+                data: 'category',
+                className: 'uniqueClassName',
+            },
+            {
+                title: 'Subcategoria',
+                data: 'subcategory',
+                className: 'uniqueClassName',
+            },
+            {
+                title: 'Asesor Comercial',
+                data: 'seller',
+                visible: tipo !== '2',
+                className: 'uniqueClassName',
+            },
+            {
+                title: 'Acciones',
+                data: 'id_company',
+                className: 'uniqueClassName',
+                visible: tipo !== '1',
+                render: function(data) {
+                    return `
                 <a href="javascript:;" <i id="${data}"" class="bx bx-edit-alt editCompany" data-toggle='tooltip' title='Actualizar Datos Empresa' style="font-size: 35px;"></i></a>`;
-        },
-      },
-      {
-        title: 'Acciones',
-        data: 'id_company',
-        className: 'uniqueClassName',
-        visible: tipo !== '2',
-        render: function (data) {
-          return `
+                },
+            },
+            {
+                title: 'Acciones',
+                data: 'id_company',
+                className: 'uniqueClassName',
+                visible: tipo !== '2',
+                render: function(data) {
+                    return `
                 <a href="javascript:;" <i id="${data}"" class="bx bx-transfer reassignCompany" data-toggle='tooltip' title='Reasignar Empresa a Nuevo Comercial' style="font-size: 35px;"></i></a>`;
-        },
-      },
-    ],
-  });
+                },
+            },
+        ],
+    });
 });

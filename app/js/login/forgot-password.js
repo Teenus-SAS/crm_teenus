@@ -4,7 +4,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '../../../api/forgotPassword',
+            url: '/api/forgotPassword',
             data: { data: email },
             success: function(data, textStatus, xhr) {
                 if (data.success == true) {

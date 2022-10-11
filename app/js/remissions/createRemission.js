@@ -24,7 +24,7 @@ $(document).on('click', '.createRemission', function(e) {
 
     /* Cargar datos de remision */
 
-    $.get(`../../../api/order/${id_order}/0`, function(data, textStatus, jqXHR) {
+    $.get(`/api/order/${id_order}/0`, function(data, textStatus, jqXHR) {
         loadReferences(data)
     });
 
@@ -175,7 +175,7 @@ $('#btnCreateRemission').click(function(e) {
 
     id_order = sessionStorage.id_order
 
-    $.post(`../../../api/addRemission`, { id_order: id_order, products: products },
+    $.post(`/api/addRemission`, { id_order: id_order, products: products },
         function(data, textStatus, jqXHR) {
             if (data.success) {
                 toastr.success(data.message)

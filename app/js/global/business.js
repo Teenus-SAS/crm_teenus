@@ -7,7 +7,7 @@
         id_company = $('#selectCompanies').val()
 
         $.ajax({
-            url: `../../../api/businessCompany/${id_company}`,
+            url: `/api/businessCompany/${id_company}`,
             success: function(r) {
 
                 let $select = $(`#selectBusiness`)
@@ -31,7 +31,7 @@
 async function business(company, business) {
 
     try {
-        let res = await fetch('../../../api/business')
+        let res = await fetch('/api/business')
         r = await res.json()
 
         $select = $(`#selectBusiness`)

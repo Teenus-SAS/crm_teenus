@@ -3,7 +3,7 @@
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "../api/rols",
+        url: "/api/rols",
 
         success: function(r) {
             sessionStorage.setItem('rols', JSON.stringify(r))

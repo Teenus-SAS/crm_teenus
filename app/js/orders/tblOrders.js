@@ -5,7 +5,7 @@ $(document).ready(function() {
         pageLength: 50,
         destroy: true,
         ajax: {
-            url: '../../../api/orders',
+            url: '/api/orders',
             dataSrc: '',
         },
         language: {

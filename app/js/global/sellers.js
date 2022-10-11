@@ -2,7 +2,7 @@
 $(document).ready(function() {
 
     $.ajax({
-        url: '../../../api/users',
+        url: '/api/users',
         success: function(r) {
             sessionStorage.setItem('sellers', JSON.stringify(r))
 

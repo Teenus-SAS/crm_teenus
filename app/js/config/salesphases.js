@@ -11,7 +11,7 @@ $('#btnSalesPhase').click(function(e) {
 tableSalesPhases = $('#tableSalesPhases').dataTable({
     pageLength: 25,
     ajax: {
-        url: '../../../api/salesPhases',
+        url: '/api/salesPhases',
         dataSrc: '',
     },
     language: {
@@ -66,7 +66,7 @@ $(document).ready(function() {
 
         $.ajax({
             method: 'POST',
-            url: `../api/addSalePhase`,
+            url: `/api/addSalePhase`,
             data: data,
             success: function(response, jqXHR, statusCode) {
                 $('#salesPhases').hide(500);
@@ -115,7 +115,7 @@ $(document).ready(function() {
             `¿Realmente desea <b style="color:red">eliminar</b> la fase de venta: <b style="color:red">${data.sales_phase}</b>?, esta acción es permanente`,
             function() {
                 $.ajax({
-                    url: `../api/deleteSalePhase/${id}`,
+                    url: `/api/deleteSalePhase/${id}`,
                     success: function(response) {
                         updateTable()
                         if (response.success == true)

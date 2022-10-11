@@ -4,7 +4,7 @@ tableUsers = $('#tableUsers').dataTable({
     pageLength: 10,
 
     ajax: {
-        url: '../../../api/users',
+        url: '/api/users',
         dataSrc: '',
     },
     language: {
@@ -117,7 +117,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '../api/addUser',
+            url: '/api/addUser',
             data: data,
             success: function(response, jqXHR, statusCode) {
                 if (response.success == true) {
@@ -182,7 +182,7 @@ $(document).ready(function() {
                 function() {
                     $.ajax({
                         type: 'POST',
-                        url: '../api/deleteUser',
+                        url: '/api/deleteUser',
                         data: { idUser: id },
                         success: function(r) {
                             $('#modalCreateUser').modal('hide')
@@ -207,7 +207,7 @@ $(document).ready(function() {
         let id = $(this).prop('id')
 
         $.ajax({
-            url: `../../../api/inactivateActivateUser/${id} `,
+            url: `/api/inactivateActivateUser/${id} `,
             success: function(response) {
                 updateTable()
                 if (response.success == true)

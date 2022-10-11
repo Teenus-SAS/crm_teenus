@@ -12,7 +12,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '../../../api/changePassword',
+            url: '/api/changePassword',
             data: data,
             success: function(data, textStatus, xhr) {
                 if (data.success == true) {

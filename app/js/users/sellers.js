@@ -7,7 +7,7 @@ $(document).ready(function() {
         pageLength: 10,
 
         ajax: {
-            url: '../../../api/users',
+            url: '/api/users',
             dataSrc: '',
         },
         language: {
@@ -84,7 +84,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '../api/addUser',
+            url: '/api/addUser',
             data: data,
 
             success: function(data, textStatus, xhr) {
@@ -131,7 +131,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'GET',
-            url: `../../../api/inactivateActivateUser/${id}`,
+            url: `/api/inactivateActivateUser/${id}`,
             data: { idUser: id },
             success: function(r) {
 
@@ -164,7 +164,7 @@ $(document).ready(function() {
         alertify.confirm('Empresas', '¿Está seguro de reasignar las empresas?, esta acción no se puede reversar',
             function() {
                 $.ajax({
-                    url: `../../../api/reassignCompanies/${id_seller}/${id_seller_old}`,
+                    url: `/api/reassignCompanies/${id_seller}/${id_seller_old}`,
                     success: function(r) {
                         if (r.success)
                             toastr.success(r.message)
