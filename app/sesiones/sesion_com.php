@@ -1,15 +1,15 @@
 <?php
-/* @session_start();
+@session_start();
 
 if (empty($_SESSION['active'])) {
   var_dump(1);
-  header("location: /");
+  echo "<script> window.location='/index.php'; </script>";
 }
 
 if ($_SESSION['rol'] > 2) {
   session_destroy();
   var_dump(2);
-  header("location: /");
+  echo "<script> window.location='/index.php'; </script>";
 }
 
 if (isset($_SESSION["timeout"])) {
@@ -19,9 +19,9 @@ if (isset($_SESSION["timeout"])) {
   if ($sessionTTL > $inactividad) {
     session_destroy();
     var_dump(3);
-    header("location: /");
+    echo "<script> window.location='/index.php'; </script>";
   }
-} */
+}
 
 /* @session_start();
 if (empty($_SESSION['active']) || time() - $_SESSION['time'] > 5600) {
