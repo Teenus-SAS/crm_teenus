@@ -13,16 +13,16 @@ indicatorsGenerales = (id) => {
             else $('.newBusiness').html('0');
 
             if (response[2].valuedBusiness != null)
-                $('.valuedBusiness').html(
+                $('.valuedBusinessMonth').html(
                     `$${response[2].valuedBusiness.toLocaleString().replace(/,/g, ' ')}`
                 );
-            else $('.valuedBusiness').html(`$0`);
+            else $('.valuedBusinessMonth').html(`$0`);
 
             if (response[3].valuedOrders != null)
-                $('.valuedOrders').html(
+                $('.valuedOrdersMonth').html(
                     `$${response[3].valuedOrders.toLocaleString().replace(/,/g, ' ')}`
                 );
-            else $('.valuedOrders').html(`$0`);
+            else $('.valuedOrdersMonth').html(`$0`);
         },
     });
 };

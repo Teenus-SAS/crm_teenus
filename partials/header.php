@@ -19,7 +19,7 @@
 				<li class="nav-item dropdown dropdown-large">
 
 				</li>
-				<?php if ($_SESSION['rol'] == 1) {  ?>
+				<?php if (!empty($_SESSION['rol']) == 1) {  ?>
 					<li class="nav-item dropdown dropdown-large">
 						<a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							<i class='lni lni-cog' style="color: seagreen;"></i>
