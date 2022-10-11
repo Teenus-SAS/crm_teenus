@@ -25,7 +25,7 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 			<div class="page-content">
 				<?php
 				//session_start();
-				$rol = $_SESSION['rol'];
+				$rol = !empty($_SESSION['rol']);
 				if ($rol == 1) {
 				?>
 					<div class="mb-3">

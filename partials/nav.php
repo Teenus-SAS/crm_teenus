@@ -9,7 +9,7 @@
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-to-left'></i>
         </div>
     </div>
-    <?php if ($_SESSION['rol'] != 3) { ?>
+    <?php if (!empty($_SESSION['rol']) != 3) { ?>
         <nav class="topbar-nav">
             <ul class="metismenu" id="menu">
                 <li>
