@@ -21,7 +21,7 @@ class UserDao
     session_start();
     $connection = Connection::getInstance()->getConnection();
     $rol = $_SESSION['rol'];
-    
+
     if ($rol == 2 || $rol == 3)
       exit();
 
@@ -37,16 +37,16 @@ class UserDao
     return $users;
   }
 
-  public function findByEmail($Datauser)
+  public function findByEmail($dataUser)
   {
     $connection = Connection::getInstance()->getConnection();
-    $stmt = $connection->prepare("SELECT * FROM users u WHERE email = :email");
-    $stmt->execute(['email' => $Datauser]);
+    $stmt = $connection->prepare("SELECT * FROM users WHERE email = :email");
+    $stmt->execute(['email' => $dataUser]);
     $user = $stmt->fetch($connection::FETCH_ASSOC);
 
-    if ($user == false) {
-      $stmt = $connection->prepare("SELECT * FROM users u WHERE email = :email");
-      $stmt->execute(['email' => $Datauser]);
+    if (!$user) {
+      $stmt = $connection->prepare("SELECT * FROM users WHERE email = :email");
+      $stmt->execute(['email' => $dataUser]);
       $user = $stmt->fetch($connection::FETCH_ASSOC);
     }
 
