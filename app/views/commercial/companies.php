@@ -94,15 +94,15 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalReassignSeller.p
 	<script>
 		tipo = "<?= $_SESSION['rol'] ?>"
 
-		$(document).ready(function() {
-			$(`#navContacts, #navCompanies, #navZonesAssigned`).click(function(e) {
-				e.preventDefault();
-				$('#menuContactLi').removeClass('mm-active');
-				$('#menuContactLu').removeClass('mm-show');
-				$(".menuContacts").attr("aria-expanded", false);
+		// $(document).ready(function() {
+		// 	$(`#navContacts, #navCompanies, #navZonesAssigned`).click(function(e) {
+		// 		e.preventDefault();
+		// 		$('#menuContactLi').removeClass('mm-active');
+		// 		$('#menuContactLu').removeClass('mm-show');
+		// 		$(".menuContacts").attr("aria-expanded", false);
 
-			});
-		});
+		// 	});
+		// });
 	</script>
 
 </body>

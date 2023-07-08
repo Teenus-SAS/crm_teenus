@@ -11,7 +11,8 @@
 <link href="/app/assetscom/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
 <link href="/app/assetscom/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
 <link href="/app/assetscom/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-<link href="/app/assetscom/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+<!-- <link href="/app/assetscom/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" /> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
 <!-- loader-->
 <link href="/app/assetscom/css/pace.min.css" rel="stylesheet" />

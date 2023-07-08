@@ -27,6 +27,7 @@ get('/projects-kanban', '/app/views/commercial/businessKanban.php');
 get('/budget', '/app/views/commercial/budget.php');
 get('/schedule', '/app/views/commercial/schedule.php');
 //get('/quotes', '/app/views/commercial/quotes.php');
+get('/ordes', '/app/views/commercial/orders.php');
 get('/billings', '/app/views/commercial/billings.php');
 
 //Users
