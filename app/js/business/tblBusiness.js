@@ -1,6 +1,6 @@
 $(document).ready(function() {
     /* Cargue tabla de Proyectos */
-    tableBusiness = $('#tableBusiness').dataTable({
+    tableBusiness = $('#tableBusiness').DataTable({
         pageLength: 50,
         ajax: {
             url: '/api/business',

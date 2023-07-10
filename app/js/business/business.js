@@ -1,15 +1,25 @@
 $(document).ready(function() {
-
-
     $('#btnCreateBusiness').click(function(e) {
         e.preventDefault();
         $("#formNewBusiness")[0].reset();
         $select = $(`#selectContact`)
         $select.empty()
-        $('#btnSaveBusiness').html('Crear Proyecto')
-
+        $('#btnSaveBusiness').html('Crear Proyecto');
     });
 
+    $('#btnClosedBusiness').click(function(e) {
+        e.preventDefault();
+
+        tableBusiness.column(6).search('Ganado').draw();
+    });
+
+    loadDateBusiness = ()=>{
+        let date = new Date().toISOString().split('T')[0];
+
+        $('#dateBusiness').val(date);
+    }
+
+    // $(document).on('change','#dateBusiness')
 
     $('#btnSaveBusiness').click(function(e) {
             e.preventDefault()
@@ -39,7 +49,8 @@ $(document).ready(function() {
         e.preventDefault()
 
         let row = $(this).parent().parent()[0]
-        let data = tableBusiness.fnGetData(row)
+        let data = tableBusiness.row(row).data()
+        // let data = tableBusiness.fnGetData(row)
 
         $('#modalCreateBusiness').modal('show')
         $('#id_business').val(data.id_business)
@@ -161,4 +172,6 @@ $(document).ready(function() {
         $('#tableBusiness').DataTable().clear()
         $('#tableBusiness').DataTable().ajax.reload()
     }
+
+    loadDateBusiness();
 })

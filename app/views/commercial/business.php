@@ -58,6 +58,15 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 
 				<hr />
 				<div class="card">
+					<div class="row justify-content-end mt-2">
+						<div class="col-sm-2">
+							<label for="dateBusiness" class="form-label">Fecha</label>
+							<input class="form-control" id="dateBusiness" type="date">
+						</div>
+						<div class="col-sm-1" style="margin-right:20px; margin-top:30px">
+							<button type="button" class="btn btn-primary" id="btnClosedBusiness">Cerrados</button>
+						</div>
+					</div>
 					<div class="card-body">
 						<div class="table-responsive">
 							<table id="tableBusiness" class="table table-striped table-bordered" style="width:100%">

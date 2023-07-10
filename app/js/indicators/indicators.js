@@ -18,11 +18,14 @@ indicatorsGenerales = (id) => {
                 );
             else $('.valuedBusinessMonth').html(`$0`);
 
-            if (response[3].valuedOrders != null)
-                $('.valuedOrdersMonth').html(
-                    `$${response[3].valuedOrders.toLocaleString().replace(/,/g, ' ')}`
-                );
-            else $('.valuedOrdersMonth').html(`$0`);
+            if (response[3].valuedOrders != null) {
+                $('.valuedOrdersMonth').html(`$${response[3].valuedOrders.toLocaleString().replace(/,/g, ' ')}`);
+                $('.valuedOrdersAnnual').html(`$${(response[3].valuedOrders * 12).toLocaleString().replace(/,/g, ' ')}`);
+            }
+            else { 
+                $('.valuedOrdersMonth').html(`$0`);
+                $('.valuedOrdersAnnual').html(`$0`);
+            }
         },
     });
 };
@@ -623,7 +626,7 @@ hexadecimal = () => {
 
 budgetGeneral(1);
 indicatorsGenerales(1);
-goalBilling(1);
+// goalBilling(1);
 newCustomers(1);
 winLoseProjects(1);
 valuedProjects(1);
@@ -635,7 +638,7 @@ $('#selectSeller').change(function(e) {
 
     budgetGeneral(id);
     indicatorsGenerales(id);
-    goalBilling(id);
+    // goalBilling(id);
     newCustomers(id);
     winLoseProjects(id);
     valuedProjects(id);
