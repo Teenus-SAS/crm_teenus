@@ -5,21 +5,7 @@ $(document).ready(function() {
         $select = $(`#selectContact`)
         $select.empty()
         $('#btnSaveBusiness').html('Crear Proyecto');
-    });
-
-    $('#btnClosedBusiness').click(function(e) {
-        e.preventDefault();
-
-        tableBusiness.column(6).search('Ganado').draw();
-    });
-
-    loadDateBusiness = ()=>{
-        let date = new Date().toISOString().split('T')[0];
-
-        $('#dateBusiness').val(date);
-    }
-
-    // $(document).on('change','#dateBusiness')
+    }); 
 
     $('#btnSaveBusiness').click(function(e) {
             e.preventDefault()
@@ -170,8 +156,6 @@ $(document).ready(function() {
 
     function updateTable() {
         $('#tableBusiness').DataTable().clear()
-        $('#tableBusiness').DataTable().ajax.reload()
+        $('#tableBusiness').DataTable().ajax.reload();
     }
-
-    loadDateBusiness();
 })

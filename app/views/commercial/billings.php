@@ -46,7 +46,7 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 				<div class="card">
 					<div class="card-body">
 						<div class="table-responsive">
-							<table id="tableBilling" class="table table-striped table-bordered" style="width:100%">
+							<table id="tableBillings" class="table table-striped table-bordered" style="width:100%">
 
 							</table>
 						</div>
@@ -71,7 +71,7 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 	<!-- scripts -->
 	<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/scripts_js.php' ?>
 
-	<script src="/app/js/companies/tblBillings.js"></script>
+	<script src="/app/js/billings/tblBillings.js"></script>
 
 	<script>
 		tipo = "<?= $_SESSION['rol'] ?>"

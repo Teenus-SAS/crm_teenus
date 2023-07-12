@@ -23,7 +23,7 @@ class OrdersKeyDao
 
     if ($rol == 1) {
       if ($id == '1') {
-        $stmt = $connection->prepare("SELECT q.id_quote, SUM((qp.price * qp.quantity) * (1 - (qp.discount/100))) AS valuedOrders
+        $stmt = $connection->prepare("SELECT IFNULL(q.id_quote, 0) AS id_quote, IFNULL(SUM((qp.price * qp.quantity) * (1 - (qp.discount/100))), 0) AS valuedOrders
                                     FROM quotes q 
                                     INNER JOIN orders o ON o.id_quote = q.id_quote
                                     INNER JOIN contacts c ON c.id_contact = q.id_contact 
@@ -37,7 +37,7 @@ class OrdersKeyDao
         $stmt->execute();
       } else {
         $id_user = $id;
-        $stmt = $connection->prepare("SELECT q.id_quote, SUM((qp.price * qp.quantity) * (1 - (qp.discount/100))) AS valuedOrders
+        $stmt = $connection->prepare("SELECT IFNULL(q.id_quote, 0) AS id_quote, IFNULL(SUM((qp.price * qp.quantity) * (1 - (qp.discount/100))), 0) AS valuedOrders
                                       FROM quotes q 
                                       INNER JOIN orders o ON o.id_quote = q.id_quote
                                       INNER JOIN contacts c ON c.id_contact = q.id_contact 
@@ -52,7 +52,7 @@ class OrdersKeyDao
       }
     } else if ($rol == 2) {
       $id_user = $_SESSION['idUser'];
-      $stmt = $connection->prepare("SELECT q.id_quote, SUM((qp.price * qp.quantity) * (1 - (qp.discount/100))) AS valuedOrders
+      $stmt = $connection->prepare("SELECT IFNULL(q.id_quote, 0) AS id_quote, IFNULL(SUM((qp.price * qp.quantity) * (1 - (qp.discount/100))), 0) AS valuedOrders
                                     FROM quotes q 
                                     INNER JOIN orders o ON o.id_quote = q.id_quote
                                     INNER JOIN contacts c ON c.id_contact = q.id_contact 
@@ -81,15 +81,15 @@ class OrdersKeyDao
 
     if ($rol == 1) {
       if ($id == '1') {
-        $stmt = $connection->prepare("SELECT SUM(jan) as enero, SUM(feb) as febrero, SUM(mar) as marzo, SUM(apr) as abril, SUM(may) as mayo, 
-                                    SUM(june) as junio, SUM(july) as julio, SUM(aug) as agosto, SUM(sept) as septiembre, SUM(oct) as octubre, 
-                                    SUM(nov) as noviembre, SUM(decem) as diciembre 
+        $stmt = $connection->prepare("SELECT IFNULL(SUM(jan), 0) as enero, IFNULL(SUM(feb), 0) as febrero, IFNULL(SUM(mar), 0) as marzo, IFNULL(SUM(apr), 0) as abril, IFNULL(SUM(may), 0) as mayo, 
+                                             IFNULL(SUM(june), 0) as junio, IFNULL(SUM(july), 0) as julio, IFNULL(SUM(aug), 0) as agosto, IFNULL(SUM(sept), 0) as septiembre, IFNULL(SUM(oct), 0) as octubre, 
+                                             IFNULL(SUM(nov), 0) as noviembre, IFNULL(SUM(decem), 0) as diciembre
                                     FROM budgets WHERE year = :presentyear;");
         $stmt->execute(['presentyear' => $year]);
 
         $totalbudgets = $stmt->fetchAll($connection::FETCH_ASSOC);
 
-        $stmt = $connection->prepare("SELECT MonthName(o.date_register) AS month, SUM((qp.price * qp.quantity) * (1 - (qp.discount/100))) AS won 
+        $stmt = $connection->prepare("SELECT MonthName(o.date_register) AS month, IFNULL(SUM((qp.price * qp.quantity) * (1 - (qp.discount/100))), 0) AS won 
                                     FROM orders o
                                     INNER JOIN quotes q ON q.id_quote = o.id_quote INNER JOIN quotes_products qp ON qp.id_quote = o.id_quote 
                                     WHERE year(o.date_register) = year(curdate())
@@ -98,14 +98,14 @@ class OrdersKeyDao
         $totalpriceorders = $stmt->fetchAll($connection::FETCH_ASSOC);
       } else {
         $id_user = $id;
-        $stmt = $connection->prepare("SELECT SUM(jan) as enero, SUM(feb) as febrero, SUM(mar) as marzo, SUM(apr) as abril, SUM(may) as mayo, 
-                                    SUM(june) as junio, SUM(july) as julio, SUM(aug) as agosto, SUM(sept) as septiembre, SUM(oct) as octubre, 
-                                    SUM(nov) as noviembre, SUM(decem) as diciembre 
+        $stmt = $connection->prepare("SELECT IFNULL(SUM(jan), 0) as enero, IFNULL(SUM(feb), 0) as febrero, IFNULL(SUM(mar), 0) as marzo, IFNULL(SUM(apr), 0) as abril, IFNULL(SUM(may), 0) as mayo, 
+                                             IFNULL(SUM(june), 0) as junio, IFNULL(SUM(july), 0) as julio, IFNULL(SUM(aug), 0) as agosto, IFNULL(SUM(sept), 0) as septiembre, IFNULL(SUM(oct), 0) as octubre, 
+                                             IFNULL(SUM(nov), 0) as noviembre, IFNULL(SUM(decem), 0) as diciembre
                                     FROM budgets WHERE year = :presentyear AND id_user = :id_user;");
         $stmt->execute(['id_user' => $id_user, 'presentyear' => $year]);
         $totalbudgets = $stmt->fetchAll($connection::FETCH_ASSOC);
 
-        $stmt = $connection->prepare("SELECT MonthName(o.date_register) AS month, SUM((qp.price * qp.quantity) * (1 - (qp.discount/100))) AS won 
+        $stmt = $connection->prepare("SELECT MonthName(o.date_register) AS month, IFNULL(SUM((qp.price * qp.quantity) * (1 - (qp.discount/100))), 0) AS won 
                                     FROM orders o
                                     INNER JOIN quotes q ON q.id_quote = o.id_quote INNER JOIN quotes_products qp ON qp.id_quote = o.id_quote 
                                     INNER JOIN companies c ON q.id_company = c.id_company
@@ -116,14 +116,14 @@ class OrdersKeyDao
       }
     } else if ($rol == 2) {
       $id_user = $_SESSION['idUser'];
-      $stmt = $connection->prepare("SELECT SUM(jan) as enero, SUM(feb) as febrero, SUM(mar) as marzo, SUM(apr) as abril, SUM(may) as mayo, 
-                                    SUM(june) as junio, SUM(july) as julio, SUM(aug) as agosto, SUM(sept) as septiembre, SUM(oct) as octubre, 
-                                    SUM(nov) as noviembre, SUM(decem) as diciembre 
+      $stmt = $connection->prepare("SELECT IFNULL(SUM(jan), 0) as enero, IFNULL(SUM(feb), 0) as febrero, IFNULL(SUM(mar), 0) as marzo, IFNULL(SUM(apr), 0) as abril, IFNULL(SUM(may), 0) as mayo, 
+                                           IFNULL(SUM(june), 0) as junio, IFNULL(SUM(july), 0) as julio, IFNULL(SUM(aug), 0) as agosto, IFNULL(SUM(sept), 0) as septiembre, IFNULL(SUM(oct), 0) as octubre, 
+                                           IFNULL(SUM(nov), 0) as noviembre, IFNULL(SUM(decem), 0) as diciembre
                                     FROM budgets WHERE year = :presentyear AND id_user = :id_user;");
       $stmt->execute(['id_user' => $id_user, 'presentyear' => $year]);
       $totalbudgets = $stmt->fetchAll($connection::FETCH_ASSOC);
 
-      $stmt = $connection->prepare("SELECT MonthName(o.date_register) AS month, SUM((qp.price * qp.quantity) * (1 - (qp.discount/100))) AS won 
+      $stmt = $connection->prepare("SELECT MonthName(o.date_register) AS month, IFNULL(SUM((qp.price * qp.quantity) * (1 - (qp.discount/100))), 0) AS won 
                                     FROM orders o
                                     INNER JOIN quotes q ON q.id_quote = o.id_quote INNER JOIN quotes_products qp ON qp.id_quote = o.id_quote 
                                     INNER JOIN companies c ON q.id_company = c.id_company
@@ -147,7 +147,7 @@ class OrdersKeyDao
 
     if ($rol == 1) {
       if ($id == '1') {
-        $stmt = $connection->prepare("SELECT MonthName(o.date_register) AS month, SUM(qp.price) AS won 
+        $stmt = $connection->prepare("SELECT MonthName(o.date_register) AS month, IFNULL(SUM(qp.price), 0) AS won 
                                     FROM orders o
                                     INNER JOIN quotes q ON q.id_quote = o.id_quote
                                     INNER JOIN quotes_products qp ON qp.id_quote = o.id_quote 
@@ -156,7 +156,7 @@ class OrdersKeyDao
         $stmt->execute();
       } else {
         $id_user = $id;
-        $stmt = $connection->prepare("SELECT MonthName(o.date_register) AS month, SUM(qp.price) AS won 
+        $stmt = $connection->prepare("SELECT MonthName(o.date_register) AS month, IFNULL(SUM(qp.price), 0) AS won 
         FROM orders o
         INNER JOIN quotes q ON q.id_quote = o.id_quote
         INNER JOIN quotes_products qp ON qp.id_quote = o.id_quote 
@@ -167,7 +167,7 @@ class OrdersKeyDao
       }
     } else if ($rol == 2) {
       $id_user = $_SESSION['idUser'];
-      $stmt = $connection->prepare("SELECT MonthName(o.date_register) AS month, SUM(qp.price) AS won 
+      $stmt = $connection->prepare("SELECT MonthName(o.date_register) AS month, IFNULL(SUM(qp.price), 0) AS won 
                                     FROM orders o
                                     INNER JOIN quotes q ON q.id_quote = o.id_quote
                                     INNER JOIN quotes_products qp ON qp.id_quote = o.id_quote 

@@ -110,7 +110,8 @@ budgetGeneral = (id) => {
                         'Diciembre',
                     ],
 
-                    datasets: [{
+                    datasets: [
+                        {
                             label: 'Presupuesto Ventas',
                             data: budget,
                             borderColor: gradientStroke1,
@@ -123,7 +124,7 @@ budgetGeneral = (id) => {
                             type: 'line',
                         },
                         {
-                            label: 'Pedidos',
+                            label: 'Facturacion',
                             data: orders,
                             borderColor: gradientStroke2,
                             backgroundColor: gradientStroke2,

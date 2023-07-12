@@ -79,14 +79,13 @@
 	</div>
 	<!--end wrapper-->
 	<!-- Bootstrap JS -->
-	<script src="app/assets/js/bootstrap.bundle.min.js"></script>
+	<!-- <script src="app/assets/js/bootstrap.bundle.min.js"></script> -->
 	<!--plugins-->
-	<script src="app/assets/js/jquery.min.js"></script>
-	<script src="app/assets/plugins/simplebar/js/simplebar.min.js"></script>
-	<script src="app/assets/plugins/metismenu/js/metisMenu.min.js"></script>
-	<script src="app/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-	<script src="app/js/login/autentication.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+	<script src="/app/assets/plugins/simplebar/js/simplebar.min.js"></script>
+	<script src="/app/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+	<script src="/app/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
 	<!--Password show & hide js -->
 	<script>
 		$(document).ready(function() {
@@ -104,8 +103,13 @@
 			});
 		});
 	</script>
-	<!--app JS-->
-	<script src="app/assets/js/app.js"></script>
+
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<!-- <script src="/app/assets/libs/jquery-validation/js/jquery.validate.min.js"></script>
+	<script src="/admin/assets/libs/jquery-validation/js/additional-methods.min.js"></script> -->
+	<script src="/app/js/login/autentication.js"></script>
+	<!-- ================== BEGIN PAGE JS ================== -->
+	<script src="/app/assets/js/app.js"></script>
 </body>
 
 </html>

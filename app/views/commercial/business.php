@@ -109,7 +109,34 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 	<?php } ?>
 
 	<script>
-		tipo = "<?= $_SESSION['rol'] ?>"
+		tipo = "<?= $_SESSION['rol'] ?>";
+		$(document).ready(function() {
+			$('#btnClosedBusiness').click(function(e) {
+				e.preventDefault();
+
+				tableBusiness.column(1).search('').draw();
+				tableBusiness.column(6).search('Ganado').draw();
+			});
+
+			loadDateBusiness = () => {
+				let date = new Date().toISOString().split('T')[0];
+
+				$('#dateBusiness').val(date);
+				setTimeout(() => {
+					$('#dateBusiness').change();
+				}, 1000);
+			}
+
+			$(document).on('change', '#dateBusiness', function(e) {
+				e.preventDefault();
+
+				tableBusiness.column(6).search('').draw();
+				tableBusiness.column(1).search(this.value).draw();
+			});
+
+			loadDateBusiness();
+
+		})
 	</script>
 
 	<script src="../app/js/global/companies.js"></script>
