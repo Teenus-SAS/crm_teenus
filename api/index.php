@@ -14,6 +14,7 @@ $app->setBasePath('/api');
 /* Proceso Comercial */
 
 require_once('../api/src/routes/commercialProcess/routeBusiness.php');
+require_once('../api/src/routes/commercialProcess/routeBillings.php');
 require_once('../api/src/routes/commercialProcess/routeOrders.php');
 require_once('../api/src/routes/commercialProcess/routeQuotes.php');
 require_once('../api/src/routes/commercialProcess/routeSchedules.php');
