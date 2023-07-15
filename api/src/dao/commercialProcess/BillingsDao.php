@@ -47,4 +47,19 @@ class BillingsDao
         $this->logger->notice("get billings", array('billings' => $billings));
         return $billings;
     }
+
+    public function insertNumBill($dataBusinnes)
+    {
+        $connection = Connection::getInstance()->getConnection();
+
+        try {
+            $stmt = $connection->prepare("UPDATE business SET num_bill = :num_bill WHERE id_business = :id_business");
+            $stmt->execute([
+                'num_bill' => $dataBusinnes['numBill'],
+                'id_business' => $dataBusinnes['idBusinnes']
+            ]);
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+    }
 }

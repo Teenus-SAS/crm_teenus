@@ -17,6 +17,14 @@ $app->get('/business', function (Request $request, Response $response, $args) us
     return $response->withHeader('Content-Type', 'application/json');
 });
 
+$app->get('/business/{min_date}/{max_date}', function (Request $request, Response $response, $args) use ($businessDao) {
+    session_start();
+    $rol = $_SESSION['rol'];
+    $business = $businessDao->findAllFilter($rol, $args['min_date'], $args['max_date']);
+    $response->getBody()->write(json_encode($business, JSON_NUMERIC_CHECK));
+    return $response->withHeader('Content-Type', 'application/json');
+});
+
 $app->get('/businessCompany/{id_company}', function (Request $request, Response $response, $args) use ($businessDao) {
     $business = $businessDao->findAllbyCompany($args['id_company']);
     $response->getBody()->write(json_encode($business, JSON_NUMERIC_CHECK));

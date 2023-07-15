@@ -40,6 +40,11 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 							</ol>
 						</nav>
 					</div>
+					<div class="ms-auto">
+						<div class="btn-group">
+							<button type="button" class="btn btn-primary" id="btnAddBilling">Adicionar Facturas</button>
+						</div>
+					</div>
 				</div>
 
 				<hr />

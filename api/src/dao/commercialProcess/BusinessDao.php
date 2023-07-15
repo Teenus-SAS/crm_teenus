@@ -48,6 +48,47 @@ class BusinessDao
     return $business;
   }
 
+  public function findAllFilter($rol, $min_date, $max_date)
+  {
+    $connection = Connection::getInstance()->getConnection();
+
+    if ($rol == 2) {
+      $id_user = $_SESSION['idUser'];
+      $stmt = $connection->prepare("SELECT b.id_business, b.name_business, c.company_name as company, CONCAT(ct.firstname,' ',ct.lastname) as contact, b.estimated_sale, sp.id_phase, sp.sales_phase, sp.percent, b.observation, b.term, b.date_register, CONCAT(u.firstname, ' ',u.lastname) AS seller 
+                                  FROM business b 
+                                  INNER JOIN companies c ON b.id_company = c.id_company 
+                                  INNER JOIN contacts ct ON ct.id_contact = b.id_contact 
+                                  INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase 
+                                  INNER JOIN users u ON u.id_user = c.created_by
+                                  WHERE c.created_by = :id_user AND sp.sales_phase != 'Facturacion'
+                                  AND (b.date_register BETWEEN :min_date AND :max_date)
+                                  ORDER BY `b`.`id_business` DESC");
+      $stmt->execute([
+        'id_user' => $id_user,
+        'min_date' => $min_date,
+        'max_date' => $max_date
+      ]);
+    } else {
+      $stmt = $connection->prepare("SELECT b.id_business, b.name_business, c.company_name as company, CONCAT(ct.firstname,' ',ct.lastname) as contact, b.estimated_sale, sp.id_phase, sp.sales_phase, sp.percent, b.observation, b.term, b.date_register, CONCAT(u.firstname, ' ',u.lastname) AS seller
+                                    FROM business b 
+                                    INNER JOIN companies c ON b.id_company = c.id_company 
+                                    INNER JOIN contacts ct ON ct.id_contact = b.id_contact 
+                                    INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
+                                    INNER JOIN users u ON u.id_user = c.created_by
+                                    WHERE sp.sales_phase != 'Facturacion'
+                                    AND (b.date_register BETWEEN :min_date AND :max_date)
+                                    ORDER BY `b`.`id_business` DESC");
+      $stmt->execute([
+        'min_date' => $min_date,
+        'max_date' => $max_date
+      ]);
+    }
+    $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
+    $business = $stmt->fetchAll($connection::FETCH_ASSOC);
+    $this->logger->notice("get business", array('business' => $business));
+    return $business;
+  }
+
   public function findAllbySeller($id_seller)
   {
     $connection = Connection::getInstance()->getConnection();

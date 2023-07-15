@@ -75,16 +75,15 @@ $(document).ready(function() {
                 visible: tipo !== '2',
                 className: 'uniqueClassName',
             },
-            // {
-            //     title: 'Acciones',
-            //     data: 'id_business',
-            //     visible: tipo !== '1',
-            //     className: 'uniqueClassName',
-            //     render: function(data) {
-            //         return `<a href="javascript:;" <i id="${data}"" class="bx bx-edit-alt updateBusiness" data-toggle='tooltip' title='Actualizar Proyectos' style="font-size: 35px;"></i></a>
-            //                 <a href="javascript:;" <i id="${data}"" class="bx bx-check-double winBusiness" data-toggle='tooltip' title='Proyecto Ganado' style="font-size: 35px;color:green"></i></a>`;
-            //     },
-            // },
+            {
+                title: 'N° Factura',
+                data: 'id_business',
+                // visible: tipo !== '1',
+                className: 'uniqueClassName',
+                render: function(data, type, row) {
+                    return `<input class="form-control" id="numBill-${row + 1}" type="number">`;
+                },
+            },
         ],
         
     })

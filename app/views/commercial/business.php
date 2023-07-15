@@ -60,8 +60,12 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 				<div class="card">
 					<div class="row justify-content-end mt-2">
 						<div class="col-sm-2">
-							<label for="dateBusiness" class="form-label">Fecha</label>
-							<input class="form-control" id="dateBusiness" type="date">
+							<label for="minDate" class="form-label">Fecha Inicial</label>
+							<input class="form-control dateBusiness" id="minDate" type="date">
+						</div>
+						<div class="col-sm-2">
+							<label for="maxDate" class="form-label">Fecha Final</label>
+							<input class="form-control dateBusiness" id="maxDate" type="date">
 						</div>
 						<div class="col-sm-1" style="margin-right:20px; margin-top:30px">
 							<button type="button" class="btn btn-primary" id="btnClosedBusiness">Cerrados</button>
@@ -121,17 +125,33 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 			loadDateBusiness = () => {
 				let date = new Date().toISOString().split('T')[0];
 
-				$('#dateBusiness').val(date);
-				setTimeout(() => {
-					$('#dateBusiness').change();
-				}, 1000);
+				$('#maxDate').val(date);
+
+				let maxDate = document.getElementById('maxDate');
+				let minDate = document.getElementById('minDate');
+
+				maxDate.setAttribute("max", date);
+				minDate.setAttribute("max", date);
 			}
 
-			$(document).on('change', '#dateBusiness', function(e) {
+			$(document).on('change', '.dateBusiness', async function(e) {
 				e.preventDefault();
 
-				tableBusiness.column(6).search('').draw();
-				tableBusiness.column(1).search(this.value).draw();
+				let dateBusiness = document.getElementsByClassName('dateBusiness');
+				let status = true;
+
+				for (let i = 0; i < dateBusiness.length; i++) {
+					if (dateBusiness[i].value == '') {
+						status = false;
+						break;
+					}
+				}
+
+				if (status == false) {
+					toastr.error('Ingrese Fecha Inicial y Fecha Final');
+				} else {
+					loadTblBusiness(dateBusiness[0].value, dateBusiness[1].value);
+				}
 			});
 
 			loadDateBusiness();
