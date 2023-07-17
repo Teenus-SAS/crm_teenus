@@ -100,7 +100,7 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 								<div class="d-flex align-items-center">
 									<div>
 										<p class="mb-0 text-secondary">Facturación Mensual</p>
-										<h4 class="my-1 text-success valuedOrdersMonth"></h4>
+										<h4 class="my-1 text-success valuedBillsMonth"></h4>
 									</div>
 									<div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class='bx bxs-group'></i>
 									</div>
@@ -108,7 +108,7 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 							</div>
 						</div>
 					</div>
-					<div class="col">
+					<!-- <div class="col">
 						<div class="card radius-10 border-start border-0 border-3 border-warning">
 							<div class="card-body">
 								<div class="d-flex align-items-center">
@@ -121,7 +121,7 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 				<!--end row-->
 
@@ -228,11 +228,11 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 							<div class="card-body">
 								<div class="d-flex align-items-center">
 									<div>
-										<h6 class="mb-0">Valorizado Pedidos</h6>
+										<h6 class="mb-0">Valorizado Facturacion</h6>
 									</div>
 								</div>
 								<div class="d-flex align-items-center ms-auto font-13 gap-2 my-3">
-									<span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1 valuedOrdersInd"></i>Pedidos</span>
+									<span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1 valuedOrdersInd"></i>Facturacion</span>
 									<!-- <span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1" style="color: #ffc107"></i>Perdidos</span> -->
 								</div>
 								<div class="chart-container-1">

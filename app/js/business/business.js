@@ -33,6 +33,8 @@ $(document).ready(function() {
 
     $(document).on('click', '.updateBusiness', function(e) {
         e.preventDefault()
+		$('.generalInputs').prop('disabled', false);
+		$('#inputNumBill').empty();
 
         let row = $(this).parent().parent()[0]
         let data = tableBusiness.row(row).data()
@@ -87,7 +89,7 @@ $(document).ready(function() {
     })
 
 
-    /* load phases */
+    /* load phases 
 
     $.ajax({
         url: '/api/salesPhases',
@@ -105,7 +107,8 @@ $(document).ready(function() {
                 )
             }
         },
-    })
+    }) */
+    salesPhase();
 
 
 
@@ -127,7 +130,7 @@ $(document).ready(function() {
         }
     })
 
-    /* cargar contacto de acuerdo con seleccion */
+    /* cargar contacto de acuerdo con seleccion 
 
     async function contacts(company, contact) {
         try {
@@ -149,7 +152,7 @@ $(document).ready(function() {
         } catch (error) {
 
         }
-    }
+    } */
 
 
     /* update table */

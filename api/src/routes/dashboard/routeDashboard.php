@@ -1,5 +1,6 @@
 <?php
 
+use crmteenus\dao\BillingsKeyDao;
 use crmteenus\dao\BusinessKeyDao;
 use crmteenus\dao\CustomersDao;
 use crmteenus\dao\OrdersKeyDao;
@@ -7,31 +8,34 @@ use crmteenus\dao\OrdersKeyDao;
 $businesskeyDao = new BusinessKeyDao();
 $customersDao = new CustomersDao();
 $orderskeyDao = new OrdersKeyDao();
+$billingsKeyDao = new BillingsKeyDao();
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 /* Configuracion de indicadores */
 
-$app->get('/indicators/{id}', function (Request $request, Response $response, $args) use ($businesskeyDao, $customersDao, $orderskeyDao) {
+$app->get('/indicators/{id}', function (Request $request, Response $response, $args) use ($businesskeyDao, $customersDao, $billingsKeyDao) {
     $customers = $customersDao->findNewCustomers($args['id']);
     $business = $businesskeyDao->findNewBusiness($args['id']);
     $priceBusiness = $businesskeyDao->findTotalPriceBusiness($args['id']);
-    $priceOrders = $orderskeyDao->findTotalPriceOrders($args['id']);
+    $priceBillings = $billingsKeyDao->findTotalPriceBillings($args['id']);
+    // $priceOrders = $orderskeyDao->findTotalPriceOrders($args['id']);
 
     $indicators = [];
 
     array_push($indicators, $customers[0]);
     array_push($indicators, $business[0]);
     array_push($indicators, $priceBusiness[0]);
-    array_push($indicators, $priceOrders[0]);
+    array_push($indicators, $priceBillings[0]);
+    // array_push($indicators, $priceOrders[0]);
 
     $response->getBody()->write(json_encode($indicators, JSON_NUMERIC_CHECK));
     return $response->withHeader('Content-Type', 'application/json');
 });
 
 $app->get('/budgetsvsOrders/{id}', function (Request $request, Response $response, $args) use ($orderskeyDao) {
-    $businessBudgetsvsOrders = $orderskeyDao->findBudgetsvsOrders($args['id']);
+    $businessBudgetsvsOrders = $orderskeyDao->findBudgetsvsBill($args['id']);
 
     $response->getBody()->write(json_encode($businessBudgetsvsOrders, JSON_NUMERIC_CHECK));
     return $response->withHeader('Content-Type', 'application/json');
@@ -59,7 +63,7 @@ $app->get('/valuedBusiness/{id}', function (Request $request, Response $response
 });
 
 $app->get('/valuedOrders/{id}', function (Request $request, Response $response, $args) use ($orderskeyDao) {
-    $valuedOrders = $orderskeyDao->findValuedOrders($args['id']);
+    $valuedOrders = $orderskeyDao->findValuedBill($args['id']);
 
     $response->getBody()->write(json_encode($valuedOrders, JSON_NUMERIC_CHECK));
     return $response->withHeader('Content-Type', 'application/json');

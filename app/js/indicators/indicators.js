@@ -17,15 +17,23 @@ indicatorsGenerales = (id) => {
                     `$${response[2].valuedBusiness.toLocaleString().replace(/,/g, ' ')}`
                 );
             else $('.valuedBusinessMonth').html(`$0`);
+            
+            if (response[3].valuedBillings != null)
+                $('.valuedBillsMonth').html(
+                    `$${response[3].valuedBillings.toLocaleString().replace(/,/g, ' ')}`
+                );
+            else $('.valuedBillsMonth').html(`$0`);
 
-            if (response[3].valuedOrders != null) {
+
+
+           /* if (response[3].valuedOrders != null) {
                 $('.valuedOrdersMonth').html(`$${response[3].valuedOrders.toLocaleString().replace(/,/g, ' ')}`);
                 $('.valuedOrdersAnnual').html(`$${(response[3].valuedOrders * 12).toLocaleString().replace(/,/g, ' ')}`);
             }
             else { 
                 $('.valuedOrdersMonth').html(`$0`);
                 $('.valuedOrdersAnnual').html(`$0`);
-            }
+            } */
         },
     });
 };

@@ -1,5 +1,6 @@
 <?php
 require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
+include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 ?>
 
 <!DOCTYPE html>
@@ -32,19 +33,7 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 						<div class="breadcrumb-title pe-3">Gestión Comercial</div>
 					<?php } ?>
 
-					<div class="ps-3">
-						<nav aria-label="breadcrumb">
-							<ol class="breadcrumb mb-0 p-0">
-								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a></li>
-								<li class="breadcrumb-item active" aria-current="page">Facturación</li>
-							</ol>
-						</nav>
-					</div>
-					<div class="ms-auto">
-						<div class="btn-group">
-							<button type="button" class="btn btn-primary" id="btnAddBilling">Adicionar Facturas</button>
-						</div>
-					</div>
+
 				</div>
 
 				<hr />
@@ -77,19 +66,23 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 	<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/scripts_js.php' ?>
 
 	<script src="/app/js/billings/tblBillings.js"></script>
+	<script src="/app/js/billings/billings.js"></script>
+	<script src="/app/js/global/companies.js"></script>
+	<script src="/app/js/global/contact.js"></script>
+	<script src="/app/js/global/salesPhase.js"></script>
 
 	<script>
-		tipo = "<?= $_SESSION['rol'] ?>"
+		tipo = "<?= $_SESSION['rol'] ?>";
 
-		$(document).ready(function() {
-			$(`#navContacts, #navCompanies, #navZonesAssigned`).click(function(e) {
-				e.preventDefault();
-				$('#menuContactLi').removeClass('mm-active');
-				$('#menuContactLu').removeClass('mm-show');
-				$(".menuContacts").attr("aria-expanded", false);
+		// $(document).ready(function() {
+		// 	$(`#navContacts, #navCompanies, #navZonesAssigned`).click(function(e) {
+		// 		e.preventDefault();
+		// 		$('#menuContactLi').removeClass('mm-active');
+		// 		$('#menuContactLu').removeClass('mm-show');
+		// 		$(".menuContacts").attr("aria-expanded", false);
 
-			});
-		});
+		// 	});
+		// });
 	</script>
 
 </body>

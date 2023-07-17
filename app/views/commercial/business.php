@@ -56,21 +56,26 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 					</div>
 				</div>
 
-				<hr />
 				<div class="card">
-					<div class="row justify-content-end mt-2">
-						<div class="col-sm-2">
-							<label for="minDate" class="form-label">Fecha Inicial</label>
-							<input class="form-control dateBusiness" id="minDate" type="date">
-						</div>
-						<div class="col-sm-2">
-							<label for="maxDate" class="form-label">Fecha Final</label>
-							<input class="form-control dateBusiness" id="maxDate" type="date">
-						</div>
-						<div class="col-sm-1" style="margin-right:20px; margin-top:30px">
-							<button type="button" class="btn btn-primary" id="btnClosedBusiness">Cerrados</button>
+					<div class="card-body">
+						<div class="row justify-content-end">
+							<div class="col-sm-2">
+								<label for="minDate" class="form-label">Fecha Inicial</label>
+								<input class="form-control dateBusiness" id="minDate" type="date">
+							</div>
+							<div class="col-sm-2">
+								<label for="maxDate" class="form-label">Fecha Final</label>
+								<input class="form-control dateBusiness" id="maxDate" type="date">
+							</div>
+							<div class="col-sm-1" style="margin-right:20px; margin-top:30px">
+								<button type="button" class="btn btn-primary" id="btnClosedBusiness">Cerrados</button>
+							</div>
 						</div>
 					</div>
+				</div>
+
+				<hr />
+				<div class="card">
 					<div class="card-body">
 						<div class="table-responsive">
 							<table id="tableBusiness" class="table table-striped table-bordered" style="width:100%">
@@ -114,6 +119,7 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 
 	<script>
 		tipo = "<?= $_SESSION['rol'] ?>";
+
 		$(document).ready(function() {
 			$('#btnClosedBusiness').click(function(e) {
 				e.preventDefault();
@@ -156,10 +162,22 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 
 			loadDateBusiness();
 
+			$('#btnCreateBusiness').click(function(e) {
+				e.preventDefault();
+				$('.generalInputs').prop('disabled', false);
+				let inputsBills = document.getElementsByClassName('inputsBill');
+
+				for (let i = 0; i < inputsBills.length; i++) {
+					inputsBills[i].remove();
+				}
+			});
+
 		})
 	</script>
 
 	<script src="../app/js/global/companies.js"></script>
+	<script src="../app/js/global/contact.js"></script>
+	<script src="../app/js/global/salesPhase.js"></script>
 	<script src="../app/js/global/number.js"></script>
 	<script src="../app/js/business/tblBusiness.js"></script>
 

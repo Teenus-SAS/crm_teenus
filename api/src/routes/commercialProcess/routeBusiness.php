@@ -1,8 +1,10 @@
 <?php
 
+use crmteenus\dao\BillingsDao;
 use crmteenus\dao\BusinessDao;
 
 $businessDao = new BusinessDao();
+$billingsDao = new BillingsDao();
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -50,10 +52,17 @@ $app->get('/business/{id}', function (Request $request, Response $response, $arg
 });
 
 /* Insertar y actualizar Forma de Contacto */
-$app->post('/addBusiness', function (Request $request, Response $response, $args) use ($businessDao) {
+$app->post('/addBusiness', function (Request $request, Response $response, $args) use ($businessDao, $billingsDao) {
     $databusiness = $request->getParsedBody();
 
-    if (empty($databusiness['name_business']) || empty($databusiness['company']) || empty($databusiness['contact']) || empty($databusiness['saleEstimated']) || empty($databusiness['selectSalesPhase']) || empty($databusiness['term']))
+    if (isset($databusiness['billing'])) {
+        $billing = $billingsDao->insertNumBill($databusiness);
+
+        if ($billing == null)
+            $resp = array('success' => true, 'message' => 'Proyecto actualizado correctamente');
+        else
+            $resp = array('error' => true, 'message' => 'Error al modificar el proyecto, intente nuevamente');
+    } else if (empty($databusiness['name_business']) || empty($databusiness['company']) || empty($databusiness['contact']) || empty($databusiness['saleEstimated']) || empty($databusiness['selectSalesPhase']) || empty($databusiness['term']))
         $resp = array('error' => true, 'message' => 'Datos incompletos, intente nuevamente');
     else {
         $business = $businessDao->saveBusiness($databusiness);

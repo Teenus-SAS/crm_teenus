@@ -1,7 +1,7 @@
 $(document).ready(function() {
     /* Cargue tabla de proyectos para facturación */
 
-    tableBillings = $('#tableBillings').dataTable({
+    tableBillings = $('#tableBillings').DataTable({
         pageLength: 50,
         ajax: {
             url: '/api/billings',
@@ -47,28 +47,7 @@ $(document).ready(function() {
                 data: 'estimated_sale',
                 className: 'uniqueClassName',
                 render: $.fn.dataTable.render.number('.', ',', 0, '$ '),
-            },
-            {
-                title: 'Etapa',
-                data: 'sales_phase',
-                className: 'uniqueClassName',
-            },
-            {
-                title: '%',
-                data: 'percent',
-                className: 'uniqueClassName',
-                render: (data, type, row) => {
-                    return `${(data * 100).toFixed(0).replace('.', ',')}%`;
-                },
-            },
-
-            {
-                title: 'Plazo',
-                data: 'term',
-                render: (data, type, row) => {
-                    return data == 1 ? 'Corto' : data == 2 ? 'Mediano' : 'Largo';
-                },
-            },
+            }, 
             {
                 title: 'Asesor Comercial',
                 data: 'seller',
@@ -76,12 +55,11 @@ $(document).ready(function() {
                 className: 'uniqueClassName',
             },
             {
-                title: 'N° Factura',
+                title: 'Acciones',
                 data: 'id_business',
-                // visible: tipo !== '1',
                 className: 'uniqueClassName',
-                render: function(data, type, row) {
-                    return `<input class="form-control" id="numBill-${row + 1}" type="number">`;
+                render: function (data) {
+                    return `<a href="javascript:;" <i id="${data}"" class="bx bx-edit-alt updateBusiness" data-toggle='tooltip' title='Actualizar Proyecto' style="font-size: 35px;"></i></a>`    
                 },
             },
         ],
