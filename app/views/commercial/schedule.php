@@ -163,6 +163,7 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalTasks.php';
 	<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/scripts_js.php' ?>
 	<script src="/app/js/schedule/schedule.js"></script>
 	<script src="/app/js/global/companies.js"></script>
+	<script src="/app/js/global/contactForms.js"></script>
 
 	<?php if ($_SESSION['rol'] == 2) {  ?>
 	<?php } ?>
@@ -170,7 +171,6 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalTasks.php';
 
 
 	<script src="../app/js/schedule/tblsSchedule.js"></script>
-	<script src="../app/js/schedule/schedule.js"></script>
 	<script src="../app/js/global/companies.js"></script>
 	<script src="../app/js/global/sellers.js"></script>
 	<script src="../app/js/global/contact.js"></script>

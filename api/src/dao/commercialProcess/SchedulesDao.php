@@ -30,7 +30,7 @@ class SchedulesDao
                                   INNER JOIN contacts c ON c.id_contact = t.id_contact 
                                   INNER JOIN companies cp ON cp.id_company = c.id_company 
                                   INNER JOIN users u ON u.id_user = cp.created_by 
-                                  WHERE t.status > 0 AND cp.created_by = :id_user 
+                                  WHERE t.status > 0 AND cp.created_by = :id_user GROUP BY t.id_schedule
                                   ORDER BY `t`.`due_date` ASC");
       $stmt->execute(['id_user' => $id_user]);
     } else if ($rol == 1) {
@@ -40,7 +40,7 @@ class SchedulesDao
                                   INNER JOIN contacts c ON c.id_contact = t.id_contact 
                                   INNER JOIN companies cp ON cp.id_company = c.id_company 
                                   INNER JOIN users u ON u.id_user = cp.created_by WHERE t.status > 0 
-                                  ORDER BY `t`.`due_date` ASC");
+                                  GROUP BY t.id_schedule ORDER BY `t`.`due_date` ASC");
       $stmt->execute();
     }
     $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
@@ -63,7 +63,7 @@ class SchedulesDao
                                   INNER JOIN contacts c ON c.id_contact = t.id_contact 
                                   INNER JOIN companies cp ON cp.id_company = c.id_company
                                   INNER JOIN users u ON u.id_user = cp.created_by
-                                  WHERE t.status = 0 AND cp.created_by = :id_user
+                                  WHERE t.status = 0 AND cp.created_by = :id_user GROUP BY t.id_schedule
                                   ORDER BY `t`.`due_date` ASC");
       $stmt->execute(['id_user' => $id_user]);
     } else if ($rol == 1) {
@@ -73,7 +73,7 @@ class SchedulesDao
                                     INNER JOIN contacts c ON c.id_contact = t.id_contact 
                                     INNER JOIN companies cp ON cp.id_company = c.id_company
                                     INNER JOIN users u ON u.id_user = cp.created_by
-                                    WHERE t.status = 0
+                                    WHERE t.status = 0 GROUP BY t.id_schedule
                                     ORDER BY `t`.`due_date` ASC");
       $stmt->execute();
     }
@@ -98,7 +98,7 @@ class SchedulesDao
                                   INNER JOIN companies cp ON cp.id_company = c.id_company
                                   INNER JOIN users u ON u.id_user = cp.created_by
                                   WHERE t.status = 1 AND due_date = CURDATE() AND cp.created_by = :id_user
-                                  ORDER BY `t`.`due_date` ASC");
+                                  GROUP BY t.id_schedule ORDER BY `t`.`due_date` ASC");
       $stmt->execute(['id_user' => $id_user]);
     } else if ($rol == 1) {
       $stmt = $connection->prepare("SELECT t.id_schedule, CONCAT(u.firstname,' ', u.lastname) AS asesor, cf.contact_form, t.description, CONCAT(c.firstname, ' ', c.lastname ) as contact, cp.company_name, t.due_date, t.status 
@@ -108,7 +108,7 @@ class SchedulesDao
                                   INNER JOIN companies cp ON cp.id_company = c.id_company
                                   INNER JOIN users u ON u.id_user = cp.created_by
                                   WHERE t.status = 1 AND due_date = CURDATE()
-                                  ORDER BY `t`.`due_date` ASC");
+                                  GROUP BY t.id_schedule ORDER BY `t`.`due_date` ASC");
       $stmt->execute();
     }
     $tasks = $stmt->fetchAll($connection::FETCH_ASSOC);
@@ -133,7 +133,7 @@ class SchedulesDao
                                   INNER JOIN companies cp ON cp.id_company = c.id_company 
                                   INNER JOIN users u ON u.id_user = cp.created_by 
                                   WHERE t.status = 1 AND due_date < CURDATE() AND cp.created_by = :id_user
-                                  ORDER BY `t`.`due_date` ASC");
+                                  GROUP BY t.id_schedule ORDER BY `t`.`due_date` ASC");
       $stmt->execute(['id_user' => $id_user]);
     } else if ($rol == 1) {
       $stmt = $connection->prepare("SELECT t.id_schedule, CONCAT(u.firstname,' ',u.lastname) AS asesor, cf.contact_form, t.description, CONCAT(c.firstname, ' ', c.lastname ) as contact, cp.company_name, t.due_date, t.status 
@@ -143,7 +143,7 @@ class SchedulesDao
                                   INNER JOIN companies cp ON cp.id_company = c.id_company 
                                   INNER JOIN users u ON u.id_user = cp.created_by
                                   WHERE t.status = 1 AND due_date < CURDATE()
-                                  ORDER BY `t`.`due_date` ASC");
+                                  GROUP BY t.id_schedule ORDER BY `t`.`due_date` ASC");
       $stmt->execute();
     }
 

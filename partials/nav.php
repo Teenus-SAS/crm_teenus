@@ -12,12 +12,6 @@
     <?php if ($_SESSION['rol'] != 3) { ?>
         <nav class="topbar-nav">
             <ul class="metismenu" id="menu">
-                <!-- <li>
-                    <a href="/budget" id="navBudget">
-                        <div class="parent-icon"><i class="bx bx-notepad"></i></div>
-                        <div class="menu-title">Presupuesto</div>
-                    </a>
-                </li> -->
                 <li>
                     <a href="/dashboard">
                         <div class="parent-icon"><i class='bx bx-line-chart bx-burst-hover'></i></div>
@@ -41,7 +35,14 @@
                         <div class="menu-title">Proyectos</div>
                     </a>
                 </li>
-
+                <?php if ($_SESSION['rol'] == 1) { ?>
+                    <li>
+                        <a href="/budget" id="navBudget">
+                            <div class="parent-icon"><i class="bx bx-notepad"></i></div>
+                            <div class="menu-title">Presupuesto</div>
+                        </a>
+                    </li>
+                <?php } ?>
                 <li>
                     <a href="/schedule" id="navSchedule">
                         <div class="parent-icon"><i class="bx bx-task"></i></div>

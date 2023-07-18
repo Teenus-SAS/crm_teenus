@@ -105,12 +105,12 @@ $(document).ready(function() {
 
         userName = $('#userName').val();
         userLastnames = $('#userLastnames').val();
-        position = $('#position').val();
-        rol = $('#rol').val();
+        position = $('#userPosition').val();
+        // rol = $('#rol').val();
         userEmail = $('#userEmail').val();
         password = $('#password').val();
 
-        if (userName == "" || userLastnames == "" || position == "" || rol == "" || userEmail == "") {
+        if (userName == "" || userLastnames == "" || position == "" || userEmail == "") {
             toastr.error('Ingrese todos los datos')
             return false
         }

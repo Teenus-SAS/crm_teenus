@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('../../sesiones/sesion_com.php');
 include_once('../../../modals/modalTasks.php') ?>
 <!doctype html>
@@ -91,7 +91,7 @@ include_once('../../../modals/modalTasks.php') ?>
 									<div class="card-body">
 										<div class="table-responsive">
 											<table id="tableSchedule" class="table table-striped table-bordered" style="width:100%">
-												
+
 											</table>
 										</div>
 									</div>
@@ -104,7 +104,7 @@ include_once('../../../modals/modalTasks.php') ?>
 									<div class="card-body">
 										<div class="table-responsive">
 											<table id="tableAlertTask" class="table table-striped table-bordered" style="width:100%">
-												
+
 											</table>
 										</div>
 									</div>
@@ -116,7 +116,7 @@ include_once('../../../modals/modalTasks.php') ?>
 									<div class="card-body">
 										<div class="table-responsive">
 											<table id="tableDelayTask" class="table table-striped table-bordered" style="width:100%">
-												
+
 											</table>
 										</div>
 									</div>
@@ -128,7 +128,7 @@ include_once('../../../modals/modalTasks.php') ?>
 									<div class="card-body">
 										<div class="table-responsive">
 											<table id="tableCompletedTask" class="table table-striped table-bordered" style="width:100%">
-												
+
 											</table>
 										</div>
 									</div>
@@ -160,6 +160,8 @@ include_once('../../../modals/modalTasks.php') ?>
 	<?php include_once('../../../partials/commercial_scripts_js.php') ?>
 	<script src="../../js/schedule/schedule.js"></script>
 	<script src="../../js/global/companies.js"></script>
+	<script src="/app/js/global/contactForms.js"></script>
+
 
 </body>
 
