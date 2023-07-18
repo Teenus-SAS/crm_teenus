@@ -40,8 +40,8 @@ indicatorsGenerales = (id) => {
 
 /* Presupuesto */
 
-budgetGeneral = (id) => {
-    $.ajax({
+budgetGeneral = async (id) => {
+   await $.ajax({
         type: 'GET',
         url: `/api/budgetsvsOrders/${id}`,
         success: function(resp) {
@@ -59,6 +59,21 @@ budgetGeneral = (id) => {
 
             budget = [];
             orders = [];
+            let sum_budget =
+                resp[0].enero+
+                resp[0].febrero+
+                resp[0].marzo +
+                resp[0].abril +
+                resp[0].mayo +
+                resp[0].junio +
+                resp[0].julio +
+                resp[0].agosto +
+                resp[0].septiembre +
+                resp[0].octubre +
+                resp[0].noviembre +
+                resp[0].diciembre;
+            sessionStorage.setItem('sum_budget', sum_budget);
+            let sum_bill = 0;
 
             budget.push(resp[0].enero);
             budget.push(resp[0].febrero);
@@ -74,6 +89,7 @@ budgetGeneral = (id) => {
             budget.push(resp[0].diciembre);
 
             for (let i = 1; i < resp.length; i++) {
+                sum_bill += resp[i].won;
                 if (resp[i].month == 'January') orders.push(resp[i].won);
                 else orders.push(0);
                 if (resp[i].month == 'February') orders.push(resp[i].won);
@@ -99,6 +115,7 @@ budgetGeneral = (id) => {
                 if (resp[i].month == 'December') orders.push(resp[i].won);
                 else orders.push(0);
             }
+            sessionStorage.setItem('sum_bill', sum_bill);
 
             let BudgetvsOrders = new Chart(ctx, {
                 type: 'bar',
@@ -192,30 +209,27 @@ budgetGeneral = (id) => {
 
 //Meta Facturacion
 
-goalBilling = (id) => {
-        let ctx = document.getElementById('quantityCustomers').getContext('2d');
+goalBilling = () => { 
+        let ctx = document.getElementById('goalBilling').getContext('2d');
 
         let gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
 
         color = hexadecimal();
         $('.newCustomersMonth').css('color', color);
-        gradientStroke1.addColorStop(0, color);
+    gradientStroke1.addColorStop(0, color);
+    
+    let sum_budget = sessionStorage.getItem('sum_budget');
+    let sum_bill = sessionStorage.getItem('sum_bill');
 
-        month = [];
-        quantity = [];
-        //debugger
-        for (let i = 0; i < resp.length; i++) {
-            month.push(resp[i].MonthName);
-            quantity.push(resp[i].Quantity);
-        }
-        //debugger
+    let sum = [];
+    sum.push(sum_budget, sum_bill);
+        
         var quantityCustomers = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: month,
+                labels: ['Presupuesto', 'Facturacion'],
                 datasets: [{
-                    label: 'Clientes',
-                    data: quantity,
+                    data: sum,
                     borderColor: gradientStroke1,
                     backgroundColor: gradientStroke1,
                     hoverBackgroundColor: gradientStroke1,
@@ -569,7 +583,7 @@ valuedOrders = (id) => {
                 data: {
                     labels: month,
                     datasets: [{
-                        label: 'Pedidos',
+                        label: 'Facturacion',
                         data: valuedorders,
                         borderColor: gradientStroke1,
                         backgroundColor: gradientStroke1,
@@ -633,21 +647,25 @@ hexadecimal = () => {
     return color;
 };
 
-budgetGeneral(1);
-indicatorsGenerales(1);
-// goalBilling(1);
-newCustomers(1);
-winLoseProjects(1);
-valuedProjects(1);
-valuedOrders(1);
+fetchdata = async () => { 
+    await budgetGeneral(1);
+    indicatorsGenerales(1);
+    goalBilling(1);
+    newCustomers(1);
+    winLoseProjects(1);
+    valuedProjects(1);
+    valuedOrders(1);
+}
+fetchdata();
 
-$('#selectSeller').change(function(e) {
+
+$('#selectSeller').change(async function(e) {
     e.preventDefault();
     id = $('#selectSeller').val();
 
-    budgetGeneral(id);
+    await budgetGeneral(id);
     indicatorsGenerales(id);
-    // goalBilling(id);
+    goalBilling(id);
     newCustomers(id);
     winLoseProjects(id);
     valuedProjects(id);

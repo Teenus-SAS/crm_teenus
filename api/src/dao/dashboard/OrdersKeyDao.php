@@ -89,10 +89,10 @@ class OrdersKeyDao
 
         $totalbudgets = $stmt->fetchAll($connection::FETCH_ASSOC);
 
-        $stmt = $connection->prepare("SELECT MonthName(b.date_bill) AS month, IFNULL(SUM(b.estimated_sale), 0) AS won 
+        $stmt = $connection->prepare("SELECT MonthName(b.date_register) AS month, IFNULL(SUM(b.estimated_sale), 0) AS won 
                                     FROM business b
-                                    WHERE year(b.date_bill) = year(curdate())
-                                    GROUP BY MonthName(b.date_bill) ORDER BY `month` DESC;");
+                                    WHERE year(b.date_register) = year(curdate()) AND b.num_bill > 0
+                                    GROUP BY MonthName(b.date_register) ORDER BY `month` DESC;");
         $stmt->execute();
         $totalpriceorders = $stmt->fetchAll($connection::FETCH_ASSOC);
       } else {
@@ -104,11 +104,11 @@ class OrdersKeyDao
         $stmt->execute(['id_user' => $id_user, 'presentyear' => $year]);
         $totalbudgets = $stmt->fetchAll($connection::FETCH_ASSOC);
 
-        $stmt = $connection->prepare("SELECT MonthName(b.date_bill) AS month, IFNULL(SUM(b.estimated_sale), 0) AS won 
+        $stmt = $connection->prepare("SELECT MonthName(b.date_register) AS month, IFNULL(SUM(b.estimated_sale), 0) AS won 
                                     FROM business b
                                     INNER JOIN companies c ON c.id_company = b.id_company
-                                    WHERE year(b.date_bill) = year(curdate()) AND c.created_by = :id_user
-                                    GROUP BY MonthName(b.date_bill) ORDER BY `month` DESC");
+                                    WHERE year(b.date_register) = year(curdate()) AND b.num_bill > 0 AND c.created_by = :id_user
+                                    GROUP BY MonthName(b.date_register) ORDER BY `month` DESC");
         $stmt->execute(['id_user' => $id_user]);
         $totalpriceorders = $stmt->fetchAll($connection::FETCH_ASSOC);
       }
@@ -121,11 +121,11 @@ class OrdersKeyDao
       $stmt->execute(['id_user' => $id_user, 'presentyear' => $year]);
       $totalbudgets = $stmt->fetchAll($connection::FETCH_ASSOC);
 
-      $stmt = $connection->prepare("SELECT MonthName(b.date_bill) AS month, IFNULL(SUM(b.estimated_sale), 0) AS won 
+      $stmt = $connection->prepare("SELECT MonthName(b.date_register) AS month, IFNULL(SUM(b.estimated_sale), 0) AS won 
                                     FROM business b
                                     INNER JOIN companies c ON c.id_company = b.id_company
-                                    WHERE year(b.date_bill) = year(curdate()) AND c.created_by = :id_user
-                                    GROUP BY MonthName(b.date_bill) ORDER BY `month` DESC");
+                                    WHERE year(b.date_register) = year(curdate()) AND b.num_bill > 0 AND c.created_by = :id_user
+                                    GROUP BY MonthName(b.date_register) ORDER BY `month` DESC");
       $stmt->execute(['id_user' => $id_user]);
       $totalpriceorders = $stmt->fetchAll($connection::FETCH_ASSOC);
     }
@@ -144,27 +144,27 @@ class OrdersKeyDao
 
     if ($rol == 1) {
       if ($id == '1') {
-        $stmt = $connection->prepare("SELECT MonthName(b.date_bill) AS month, IFNULL(SUM(b.estimated_sale), 0) AS won 
+        $stmt = $connection->prepare("SELECT MonthName(b.date_register) AS month, IFNULL(SUM(b.estimated_sale), 0) AS won 
                                     FROM business b
-                                    WHERE year(b.date_bill) = year(curdate())
-                                    GROUP BY MonthName(b.date_bill) ORDER BY `month` DESC");
+                                    WHERE year(b.date_register) = year(curdate()) AND b.num_bill > 0
+                                    GROUP BY MonthName(b.date_register) ORDER BY `month` DESC");
         $stmt->execute();
       } else {
         $id_user = $id;
-        $stmt = $connection->prepare("SELECT MonthName(b.date_bill) AS month, IFNULL(SUM(b.estimated_sale), 0) AS won 
+        $stmt = $connection->prepare("SELECT MonthName(b.date_register) AS month, IFNULL(SUM(b.estimated_sale), 0) AS won 
                                     FROM business b
                                     INNER JOIN companies c ON c.id_company = b.id_company
-                                    WHERE year(b.date_bill) = year(curdate()) AND c.created_by = :id_user
-                                    GROUP BY MonthName(b.date_bill) ORDER BY `month` DESC");
+                                    WHERE year(b.date_register) = year(curdate()) AND b.num_bill > 0 AND c.created_by = :id_user
+                                    GROUP BY MonthName(b.date_register) ORDER BY `month` DESC");
         $stmt->execute(['id_user' => $id_user]);
       }
     } else if ($rol == 2) {
       $id_user = $_SESSION['idUser'];
-      $stmt = $connection->prepare("SELECT MonthName(b.date_bill) AS month, IFNULL(SUM(b.estimated_sale), 0) AS won 
+      $stmt = $connection->prepare("SELECT MonthName(b.date_register) AS month, IFNULL(SUM(b.estimated_sale), 0) AS won 
                                     FROM business b
                                     INNER JOIN companies c ON c.id_company = b.id_company
-                                    WHERE year(b.date_bill) = year(curdate()) AND c.created_by = :id_user
-                                    GROUP BY MonthName(b.date_bill) ORDER BY `month` DESC");
+                                    WHERE year(b.date_register) = year(curdate()) AND b.num_bill > 0 AND c.created_by = :id_user
+                                    GROUP BY MonthName(b.date_register) ORDER BY `month` DESC");
       $stmt->execute(['id_user' => $id_user]);
     }
 

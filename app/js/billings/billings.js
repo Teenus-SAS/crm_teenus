@@ -27,10 +27,14 @@ $(document).ready(function () {
     $(document).on('click', '.updateBusiness', function (e) {
         e.preventDefault()
 
+        let inputsBills = document.getElementsByClassName('inputsBill');
+
+        for (let i = 0; i < inputsBills.length; i++) {
+            inputsBills[i].remove();
+        }
+        
         let row = $(this).parent().parent()[0]
         let data = tableBillings.row(row).data();
-        // let data = tableBusiness.fnGetData(row)
-
 
         $('#id_business').val(data.id_business)
         $('#name_business').val(data.name_business)
@@ -49,11 +53,6 @@ $(document).ready(function () {
 
         let inputTerm = document.getElementById('inputTerm');
 
-        // Agregar una nueva clase
-        // inputTerm.classList.add("col-md-2");
-
-        // Si necesitas quitar una clase
-        // inputTerm.classList.remove("col-md-4");
         inputTerm.className = "col-md-2";
 
         inputTerm.insertAdjacentHTML('afterend',
