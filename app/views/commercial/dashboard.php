@@ -154,8 +154,8 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 									</div>
 								</div>
 								<div class="d-flex align-items-center ms-auto font-13 gap-2 my-3">
-									<span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1 colorBudgets"></i>Meta</span>
-									<span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1 colorOrders"></i>Facturación</span>
+									<span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1 colorGoal"></i>Meta</span>
+									<span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1 colorBill"></i>Facturación</span>
 								</div>
 								<div class="chart-container-1">
 									<canvas id="goalBilling"></canvas>

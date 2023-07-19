@@ -29,9 +29,10 @@ $(document).ready(function () {
 
         let inputsBills = document.getElementsByClassName('inputsBill');
 
-        for (let i = 0; i < inputsBills.length; i++) {
-            inputsBills[i].remove();
+        while (inputsBills.length > 0) { 
+            inputsBills[0].remove();   
         }
+        
         
         let row = $(this).parent().parent()[0]
         let data = tableBillings.row(row).data();

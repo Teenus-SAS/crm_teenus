@@ -88,32 +88,33 @@ budgetGeneral = async (id) => {
             budget.push(resp[0].noviembre);
             budget.push(resp[0].diciembre);
 
+            orders.push(0);
+            orders.push(0);
+            orders.push(0);
+            orders.push(0);
+            orders.push(0);
+            orders.push(0);
+            orders.push(0);
+            orders.push(0);
+            orders.push(0);
+            orders.push(0);
+            orders.push(0);
+            orders.push(0);
+
             for (let i = 1; i < resp.length; i++) {
                 sum_bill += resp[i].won;
-                if (resp[i].month == 'January') orders.push(resp[i].won);
-                else orders.push(0);
-                if (resp[i].month == 'February') orders.push(resp[i].won);
-                else orders.push(0);
-                if (resp[i].month == 'March') orders.push(resp[i].won);
-                else orders.push(0);
-                if (resp[i].month == 'April') orders.push(resp[i].won);
-                else orders.push(0);
-                if (resp[i].month == 'May') orders.push(resp[i].won);
-                else orders.push(0);
-                if (resp[i].month == 'June') orders.push(resp[i].won);
-                else orders.push(0);
-                if (resp[i].month == 'July') orders.push(resp[i].won);
-                else orders.push(0);
-                if (resp[i].month == 'Aguost') orders.push(resp[i].won);
-                else orders.push(0);
-                if (resp[i].month == 'September') orders.push(resp[i].won);
-                else orders.push(0);
-                if (resp[i].month == 'October') orders.push(resp[i].won);
-                else orders.push(0);
-                if (resp[i].month == 'November') orders.push(resp[i].won);
-                else orders.push(0);
-                if (resp[i].month == 'December') orders.push(resp[i].won);
-                else orders.push(0);
+                if (resp[i].month == 'January') orders[0] = resp[i].won;
+                else if (resp[i].month == 'February') orders[1] = resp[i].won;
+                else if (resp[i].month == 'March') orders[2] = resp[i].won;
+                else if (resp[i].month == 'April') orders[3] = resp[i].won;
+                else if (resp[i].month == 'May') orders[4] = resp[i].won;
+                else if (resp[i].month == 'June') orders[5] = resp[i].won;
+                else if (resp[i].month == 'July') orders[6] = resp[i].won;
+                else if (resp[i].month == 'Aguost') orders[7] = resp[i].won;
+                else if (resp[i].month == 'September') orders[8] = resp[i].won;
+                else if (resp[i].month == 'October') orders[9] = resp[i].won;
+                else if (resp[i].month == 'November') orders[10] = resp[i].won;
+                else if (resp[i].month == 'December') orders[11] = resp[i].won;
             }
             sessionStorage.setItem('sum_bill', sum_bill);
 
@@ -210,33 +211,43 @@ budgetGeneral = async (id) => {
 //Meta Facturacion
 
 goalBilling = () => { 
-        let ctx = document.getElementById('goalBilling').getContext('2d');
+    let ctx = document.getElementById('goalBilling').getContext('2d');
 
-        let gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
+    let gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
 
-        color = hexadecimal();
-        $('.newCustomersMonth').css('color', color);
+    let colors = [];
+
+    color = hexadecimal();
+    $('.colorGoal').css('color', color);
     gradientStroke1.addColorStop(0, color);
-    
-    let sum_budget = sessionStorage.getItem('sum_budget');
-    let sum_bill = sessionStorage.getItem('sum_bill');
 
+    let gradientStroke2 = ctx.createLinearGradient(0, 0, 0, 300);
+
+    color = hexadecimal();
+    $('.colorBill').css('color', color);
+    gradientStroke2.addColorStop(0, color);
+
+    colors.push(gradientStroke1, gradientStroke2);
+    
     let sum = [];
-    sum.push(sum_budget, sum_bill);
+    sum.push(sessionStorage.getItem('sum_budget'));
+    sum.push(sessionStorage.getItem('sum_bill')); 
         
         var quantityCustomers = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Presupuesto', 'Facturacion'],
-                datasets: [{
-                    data: sum,
-                    borderColor: gradientStroke1,
-                    backgroundColor: gradientStroke1,
-                    hoverBackgroundColor: gradientStroke1,
-                    pointRadius: 0,
-                    fill: false,
-                    borderWidth: 0,
-                }, ],
+                labels: ['Meta', 'Facturacion'],
+                datasets: [
+                    {
+                        data: sum,
+                        borderColor: colors,
+                        backgroundColor: colors,
+                        hoverBackgroundColor: colors,
+                        pointRadius: 0,
+                        fill: false,
+                        borderWidth: 0,
+                    },
+                ],
             },
 
             options: {

@@ -167,9 +167,10 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 				$('.generalInputs').prop('disabled', false);
 				let inputsBills = document.getElementsByClassName('inputsBill');
 
-				for (let i = 0; i < inputsBills.length; i++) {
-					inputsBills[i].remove();
+				while (inputsBills.length > 0) {
+					inputsBills[0].remove();
 				}
+
 			});
 
 		})
