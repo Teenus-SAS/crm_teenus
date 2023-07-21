@@ -28,7 +28,7 @@ class BusinessDao
                                   INNER JOIN contacts ct ON ct.id_contact = b.id_contact 
                                   INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase 
                                   INNER JOIN users u ON u.id_user = c.created_by
-                                  WHERE c.created_by = :id_user AND sp.sales_phase != 'Facturacion'
+                                  WHERE c.created_by = :id_user -- AND sp.sales_phase != 'Facturacion'
                                   ORDER BY `b`.`id_business` DESC");
       $stmt->execute(['id_user' => $id_user]);
     } else {
@@ -38,7 +38,7 @@ class BusinessDao
                                     INNER JOIN contacts ct ON ct.id_contact = b.id_contact 
                                     INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
                                     INNER JOIN users u ON u.id_user = c.created_by
-                                    WHERE sp.sales_phase != 'Facturacion'
+                                   -- WHERE sp.sales_phase != 'Facturacion'
                                     ORDER BY `b`.`id_business` DESC");
       $stmt->execute();
     }
@@ -60,7 +60,7 @@ class BusinessDao
                                   INNER JOIN contacts ct ON ct.id_contact = b.id_contact 
                                   INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase 
                                   INNER JOIN users u ON u.id_user = c.created_by
-                                  WHERE c.created_by = :id_user AND sp.sales_phase != 'Facturacion'
+                                  WHERE c.created_by = :id_user -- AND sp.sales_phase != 'Facturacion'
                                   AND (b.date_register BETWEEN :min_date AND :max_date)
                                   ORDER BY `b`.`id_business` DESC");
       $stmt->execute([
@@ -75,7 +75,7 @@ class BusinessDao
                                     INNER JOIN contacts ct ON ct.id_contact = b.id_contact 
                                     INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
                                     INNER JOIN users u ON u.id_user = c.created_by
-                                    WHERE sp.sales_phase != 'Facturacion'
+                                   -- WHERE sp.sales_phase != 'Facturacion'
                                     AND (b.date_register BETWEEN :min_date AND :max_date)
                                     ORDER BY `b`.`id_business` DESC");
       $stmt->execute([

@@ -19,7 +19,7 @@ class SalesPhasesDao
   public function findAll()
   {
     $connection = Connection::getInstance()->getConnection();
-    $stmt = $connection->prepare("SELECT * FROM sales_phases WHERE sales_phase != 'Facturacion'");
+    $stmt = $connection->prepare("SELECT * FROM sales_phases -- WHERE sales_phase != 'Facturacion'");
     $stmt->execute();
     $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
     $salesPhases = $stmt->fetchAll($connection::FETCH_ASSOC);

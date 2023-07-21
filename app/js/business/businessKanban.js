@@ -15,9 +15,9 @@ $(document).ready(function() {
         success: function(r) {
             for (let i = 0; i < r.length; i++) {
                 $(`#board_business`).append(`
-                    <div class="" style="text-align:center">
+                    <div class="col-4 mb-3" style="text-align:center">
                     <label class="mb-2 etapa${i + 1}" style="color:#8DAC18">Total Etapa:</label>
-                      <div class="card bg-light mb-3" style="width:250px">
+                      <div class="card bg-light mb-3">
                         <div class="card-header">${r[i].sales_phase}</div>
                         <div class="card-body" id="etapa${r[i].id_phase}"></div>
                       </div>
@@ -86,6 +86,7 @@ $(document).ready(function() {
                 $(`#etapa1`).append(`<div class="card" style="margin-bottom:10px">
                           <div class="card-body">
                             <b style="color:#8DAC18">${respBusiness[i].name_business}</b><br>
+                            <b style="color:#8DAC18">${respBusiness[i].company}</b><br>
                             Valor: $ ${valor}<br>
                           </div>
                         </div>`)
@@ -98,6 +99,7 @@ $(document).ready(function() {
                 $(`#etapa2`).append(`<div class="card" style="margin-bottom:10px">
                             <div class="card-body">
                               <b style="color:#8DAC18">${respBusiness[i].name_business}</b><br>
+                              <b style="color:#8DAC18">${respBusiness[i].company}</b><br>
                               Valor: $ ${valor}<br>
                             </div>
                           </div>`)
@@ -110,6 +112,7 @@ $(document).ready(function() {
                 $(`#etapa3`).append(`<div class="card" style="margin-bottom:10px">
                             <div class="card-body">
                               <b style="color:#8DAC18">${respBusiness[i].name_business}</b><br>
+                              <b style="color:#8DAC18">${respBusiness[i].company}</b><br>
                               Valor: $ ${valor}<br>
                             </div>
                           </div>`)
@@ -122,6 +125,7 @@ $(document).ready(function() {
                 $(`#etapa4`).append(`<div class="card" style="margin-bottom:10px">
                           <div class="card-body">
                             <b style="color:#8DAC18">${respBusiness[i].name_business}</b><br>
+                            <b style="color:#8DAC18">${respBusiness[i].company}</b><br>
                             Valor: $ ${valor}<br>
                           </div>
                         </div>`)
@@ -134,6 +138,7 @@ $(document).ready(function() {
                 $(`#etapa5`).append(`<div class="card" style="margin-bottom:10px">
                             <div class="card-body">
                               <b style="color:#8DAC18">${respBusiness[i].name_business}</b><br>
+                              <b style="color:#8DAC18">${respBusiness[i].company}</b><br>
                               Valor: $ ${valor}<br>
                             </div>
                           </div>`)
@@ -146,6 +151,7 @@ $(document).ready(function() {
                 $(`#etapa6`).append(`<div class="card" style="margin-bottom:10px">
                             <div class="card-body">
                               <b style="color:#8DAC18">${respBusiness[i].name_business}</b><br>
+                              <b style="color:#8DAC18">${respBusiness[i].company}</b><br>
                               Valor: $ ${valor}<br>
                             </div>
                           </div>`)
@@ -158,6 +164,7 @@ $(document).ready(function() {
                 $(`#etapa7`).append(`<div class="card" style="margin-bottom:10px">
                             <div class="card-body">
                               <b style="color:#8DAC18">${respBusiness[i].name_business}</b><br>
+                              <b style="color:#8DAC18">${respBusiness[i].company}</b><br>
                               Valor: $ ${valor}<br>
                             </div>
                           </div>`)

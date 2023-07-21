@@ -88,7 +88,7 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 
 				<?php } ?>
 
-				<div id="board_business" class="mt-3" style="display: flex;grid-gap:1em"></div>
+				<div id="board_business" class="row py-3"></div>
 
 
 				<!--overlay-->
@@ -113,6 +113,8 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 
 	<script src="/app/js/business/business.js"></script>
 	<script src="/app/js/business/businessKanban.js"></script>
+	<script src="../app/js/global/salesPhase.js"></script>
+
 	<script src="/app/js/global/sellers.js"></script>
 	<script src="/app/js/global/companies.js"></script>
 </body>
