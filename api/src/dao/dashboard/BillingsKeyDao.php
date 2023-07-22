@@ -64,7 +64,7 @@ class BillingsKeyDao
                 $stmt = $connection->prepare("SELECT SUM(estimated_sale) AS valuedBillings FROM business b
                                     INNER JOIN companies cp ON b.id_company = cp.id_company 
                                     INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
-                                    WHERE sp.sales_phase LIKE 'Factura%' AND date_register 
+                                    WHERE sp.sales_phase LIKE 'Factura%' AND date_bill 
                                     BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) 
                                     AND NOW();");
                 $stmt->execute();
@@ -73,7 +73,7 @@ class BillingsKeyDao
                 $stmt = $connection->prepare("SELECT  SUM(estimated_sale) AS valuedBillings FROM business b
                                     INNER JOIN companies cp ON b.id_company = cp.id_company 
                                     INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
-                                    WHERE created_by = :id_user AND sp.sales_phase LIKE 'Factura%' AND date_register 
+                                    WHERE created_by = :id_user AND sp.sales_phase LIKE 'Factura%' AND date_bill 
                                     BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) 
                                     AND NOW();");
                 $stmt->execute(['id_user' => $id_user]);
@@ -83,7 +83,7 @@ class BillingsKeyDao
             $stmt = $connection->prepare("SELECT  SUM(estimated_sale) AS valuedBillings FROM business b
                                     INNER JOIN companies cp ON b.id_company = cp.id_company 
                                     INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
-                                    WHERE created_by = :id_user AND sp.sales_phase LIKE 'Factura%' AND date_register 
+                                    WHERE created_by = :id_user AND sp.sales_phase LIKE 'Factura%' AND date_bill 
                                     BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) 
                                     AND NOW();");
             $stmt->execute(['id_user' => $id_user]);
@@ -173,36 +173,36 @@ class BillingsKeyDao
 
         if ($rol == 1) {
             if ($id == '1') {
-                $stmt = $connection->prepare("SELECT MonthName(date_register) AS month, SUM(estimated_sale) AS won 
+                $stmt = $connection->prepare("SELECT MonthName(date_bill) AS month, SUM(estimated_sale) AS won 
                                     FROM business 
-                                    WHERE year(date_register) = year(curdate()) AND sp.sales_phase LIKE 'Factura%' AND id_phase = 6
-                                    GROUP BY MonthName(date_register);");
+                                    WHERE year(date_bill) = year(curdate()) AND sp.sales_phase LIKE 'Factura%' AND id_phase = 6
+                                    GROUP BY MonthName(date_bill);");
                 $stmt->execute();
                 $totalwonvaluedBillings = $stmt->fetchAll($connection::FETCH_ASSOC);
 
-                $stmt = $connection->prepare("SELECT MonthName(date_register) AS month, SUM(estimated_sale) AS fail 
+                $stmt = $connection->prepare("SELECT MonthName(date_bill) AS month, SUM(estimated_sale) AS fail 
                                     FROM business 
-                                    WHERE year(date_register) = year(curdate()) AND sp.sales_phase LIKE 'Factura%' AND id_phase = 7
-                                    GROUP BY MonthName(date_register);");
+                                    WHERE year(date_bill) = year(curdate()) AND sp.sales_phase LIKE 'Factura%' AND id_phase = 7
+                                    GROUP BY MonthName(date_bill);");
                 $stmt->execute();
                 $totalfailvaluedBillings = $stmt->fetchAll($connection::FETCH_ASSOC);
 
                 $valuedBillings = array_merge($totalwonvaluedBillings, $totalfailvaluedBillings);
             } else {
                 $id_user = $id;
-                $stmt = $connection->prepare("SELECT MonthName(b.date_register) AS month, SUM(b.estimated_sale) AS won 
+                $stmt = $connection->prepare("SELECT MonthName(b.date_bill) AS month, SUM(b.estimated_sale) AS won 
                                       FROM business b
                                       INNER JOIN companies c ON b.id_company = c.id_company
-                                      WHERE year(b.date_register) = year(curdate()) AND sp.sales_phase LIKE 'Factura%' AND b.id_phase = 6 AND c.created_by = :id_user
-                                      GROUP BY MonthName(b.date_register)");
+                                      WHERE year(b.date_bill) = year(curdate()) AND sp.sales_phase LIKE 'Factura%' AND b.id_phase = 6 AND c.created_by = :id_user
+                                      GROUP BY MonthName(b.date_bill)");
                 $stmt->execute(['id_user' => $id_user]);
                 $totalwonvaluedBillings = $stmt->fetchAll($connection::FETCH_ASSOC);
 
-                $stmt = $connection->prepare("SELECT MonthName(b.date_register) AS month, SUM(b.estimated_sale) AS fail 
+                $stmt = $connection->prepare("SELECT MonthName(b.date_bill) AS month, SUM(b.estimated_sale) AS fail 
                                       FROM business b
                                       INNER JOIN companies c ON b.id_company = c.id_company
-                                      WHERE year(b.date_register) = year(curdate()) AND sp.sales_phase LIKE 'Factura%' AND b.id_phase = 7 AND c.created_by = :id_user
-                                      GROUP BY MonthName(b.date_register)");
+                                      WHERE year(b.date_bill) = year(curdate()) AND sp.sales_phase LIKE 'Factura%' AND b.id_phase = 7 AND c.created_by = :id_user
+                                      GROUP BY MonthName(b.date_bill)");
                 $stmt->execute(['id_user' => $id_user]);
                 $totalfailvaluedBillings = $stmt->fetchAll($connection::FETCH_ASSOC);
 
@@ -210,19 +210,19 @@ class BillingsKeyDao
             }
         } else if ($rol == 2) {
             $id_user = $_SESSION['idUser'];
-            $stmt = $connection->prepare("SELECT MonthName(b.date_register) AS month, SUM(b.estimated_sale) AS won 
+            $stmt = $connection->prepare("SELECT MonthName(b.date_bill) AS month, SUM(b.estimated_sale) AS won 
                                     FROM business b
                                     INNER JOIN companies c ON b.id_company = c.id_company
-                                    WHERE year(b.date_register) = year(curdate()) AND sp.sales_phase LIKE 'Factura%' AND b.id_phase = 6 AND c.created_by = :id_user
-                                    GROUP BY MonthName(b.date_register)");
+                                    WHERE year(b.date_bill) = year(curdate()) AND sp.sales_phase LIKE 'Factura%' AND b.id_phase = 6 AND c.created_by = :id_user
+                                    GROUP BY MonthName(b.date_bill)");
             $stmt->execute(['id_user' => $id_user]);
             $totalwonvaluedBillings = $stmt->fetchAll($connection::FETCH_ASSOC);
 
-            $stmt = $connection->prepare("SELECT MonthName(b.date_register) AS month, SUM(b.estimated_sale) AS fail 
+            $stmt = $connection->prepare("SELECT MonthName(b.date_bill) AS month, SUM(b.estimated_sale) AS fail 
                                     FROM business b
                                     INNER JOIN companies c ON b.id_company = c.id_company
-                                    WHERE year(b.date_register) = year(curdate()) AND sp.sales_phase LIKE 'Factura%' AND b.id_phase = 7 AND c.created_by = :id_user
-                                    GROUP BY MonthName(b.date_register)");
+                                    WHERE year(b.date_bill) = year(curdate()) AND sp.sales_phase LIKE 'Factura%' AND b.id_phase = 7 AND c.created_by = :id_user
+                                    GROUP BY MonthName(b.date_bill)");
             $stmt->execute(['id_user' => $id_user]);
             $totalfailvaluedBillings = $stmt->fetchAll($connection::FETCH_ASSOC);
 
