@@ -279,6 +279,9 @@ goalBilling = () => {
                 scales: {
                     yAxes: [{
                         ticks: {
+                            callback: function(label, index, labels) {
+                                return `${label / 1000000} M`;
+                            },
                             min: 0,
                         },
                     }, ],
