@@ -88,7 +88,7 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 
 				<?php } ?>
 
-				<div id="board_business" class="row py-3"></div>
+				<div id="board_business" class="row py-3" style="flex-wrap:nowrap"></div>
 
 
 				<!--overlay-->
