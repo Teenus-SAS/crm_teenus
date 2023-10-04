@@ -23,17 +23,6 @@ indicatorsGenerales = (id) => {
                     `$${response[3].valuedBillings.toLocaleString().replace(/,/g, ' ')}`
                 );
             else $('.valuedBillsMonth').html(`$0`);
-
-
-
-           /* if (response[3].valuedOrders != null) {
-                $('.valuedOrdersMonth').html(`$${response[3].valuedOrders.toLocaleString().replace(/,/g, ' ')}`);
-                $('.valuedOrdersAnnual').html(`$${(response[3].valuedOrders * 12).toLocaleString().replace(/,/g, ' ')}`);
-            }
-            else { 
-                $('.valuedOrdersMonth').html(`$0`);
-                $('.valuedOrdersAnnual').html(`$0`);
-            } */
         },
     });
 };
@@ -110,7 +99,7 @@ budgetGeneral = async (id) => {
                 else if (resp[i].month == 'May') orders[4] = resp[i].won;
                 else if (resp[i].month == 'June') orders[5] = resp[i].won;
                 else if (resp[i].month == 'July') orders[6] = resp[i].won;
-                else if (resp[i].month == 'Aguost') orders[7] = resp[i].won;
+                else if (resp[i].month == 'August') orders[7] = resp[i].won;
                 else if (resp[i].month == 'September') orders[8] = resp[i].won;
                 else if (resp[i].month == 'October') orders[9] = resp[i].won;
                 else if (resp[i].month == 'November') orders[10] = resp[i].won;
