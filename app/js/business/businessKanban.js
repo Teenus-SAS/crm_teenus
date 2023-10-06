@@ -8,7 +8,7 @@ $(document).ready(function() {
         success: function(r) {
             for (let i = 0; i < r.length; i++) {
                 $(`#board_business`).append(`
-                    <div class="col-4 mb-3" style="text-align:center">
+                    <div class="col-4 col-lg-4 mb-3" style="text-align:center">
                     <label class="mb-2 etapa${r[i].id_phase}" style="color:#8DAC18">Total Etapa:</label>
                       <div class="card bg-light mb-3">
                         <div class="card-header">${r[i].sales_phase}</div>
