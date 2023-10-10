@@ -48,6 +48,13 @@ $app->get('/quantityCustomers/{id}', function (Request $request, Response $respo
     return $response->withHeader('Content-Type', 'application/json');
 });
 
+$app->get('/newBusiness/{id}', function (Request $request, Response $response, $args) use ($businesskeyDao) {
+    $businessquantity = $businesskeyDao->findQuantityNewBusiness($args['id']);
+
+    $response->getBody()->write(json_encode($businessquantity, JSON_NUMERIC_CHECK));
+    return $response->withHeader('Content-Type', 'application/json');
+});
+
 $app->get('/quantityBusiness/{id}', function (Request $request, Response $response, $args) use ($businesskeyDao) {
     $businessquantitybusiness = $businesskeyDao->findQuantityBusiness($args['id']);
 

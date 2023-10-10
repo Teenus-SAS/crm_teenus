@@ -201,6 +201,24 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 
 								</div>
 							</div>
+							<div class="col-12 col-lg-6">
+								<div class="card radius-10">
+									<div class="card-body">
+										<div class="d-flex align-items-center">
+											<div>
+												<h6 class="mb-0">Proyectos</h6>
+											</div>
+										</div>
+										<div class="d-flex align-items-center ms-auto font-13 gap-2 my-3">
+											<span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1 newBusiness2"></i>Nuevos Proyectos</span>
+										</div>
+										<div class="chart-container-1">
+											<canvas id="newBusiness"></canvas>
+										</div>
+									</div>
+
+								</div>
+							</div>
 
 							<div class="col-12 col-lg-6">
 								<div class="card radius-10">

@@ -92,6 +92,42 @@ class BusinessKeyDao
     return $totalpricebusiness;
   }
 
+  public function findQuantityNewBusiness($id)
+  {
+    session_start();
+    $connection = Connection::getInstance()->getConnection();
+    $rol = $_SESSION['rol'];
+
+    if ($rol == 1) {
+      if ($id == '1') {
+        $stmt = $connection->prepare("SELECT Month(created_at) AS Month, MonthName(created_at) AS MonthName, COUNT(*) AS Quantity
+                                    FROM companies
+                                    WHERE year(created_at) = year(curdate())
+                                    GROUP BY MonthName(created_at) ORDER BY `Month` ASC");
+        $stmt->execute();
+      } else {
+        $id_user = $id;
+        $stmt = $connection->prepare("SELECT Month(created_at) AS Month, MonthName(created_at) AS MonthName, COUNT(*) AS Quantity
+                                    FROM companies
+                                    WHERE year(created_at) = year(curdate()) AND companies.created_by = :id_user
+                                    GROUP BY MonthName(created_at) ORDER BY `Month` ASC;");
+        $stmt->execute(['id_user' => $id_user]);
+      }
+    } else if ($rol == 2) {
+      $id_user = $_SESSION['idUser'];
+      $stmt = $connection->prepare("SELECT Month(created_at) AS Month, MonthName(created_at) AS MonthName, COUNT(*) AS Quantity
+                                    FROM companies
+                                    WHERE year(created_at) = year(curdate()) AND companies.created_by = :id_user
+                                    GROUP BY MonthName(created_at) ORDER BY `Month` ASC;");
+      $stmt->execute(['id_user' => $id_user]);
+    }
+
+    $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
+    $totalpriceorders = $stmt->fetchAll($connection::FETCH_ASSOC);
+    $this->logger->notice("zonas Obtenidas", array('zonas' => $totalpriceorders));
+    return $totalpriceorders;
+  }
+
   public function findQuantityBusiness($id)
   {
     session_start();

@@ -362,6 +362,86 @@ goalBilling = () => {
             },
         });
     };
+
+    /* Proyectos nuevos */
+    newBusiness = (id) => {
+        $.ajax({
+            type: 'GET',
+            url: `/api/newBusiness/${id}`,
+            success: function(resp) {
+                let ctx = document.getElementById('newBusiness').getContext('2d');
+
+                let gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
+
+                color = hexadecimal();
+                $('.newBusiness2').css('color', color);
+                gradientStroke1.addColorStop(0, color);
+
+                month = [];
+                quantity = [];
+                //debugger
+                for (let i = 0; i < resp.length; i++) {
+                    month.push(resp[i].MonthName);
+                    quantity.push(resp[i].Quantity);
+                }
+                //debugger
+                var newBusiness = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: month,
+                        datasets: [{
+                            label: 'Proyectos',
+                            data: quantity,
+                            borderColor: gradientStroke1,
+                            backgroundColor: gradientStroke1,
+                            hoverBackgroundColor: gradientStroke1,
+                            pointRadius: 0,
+                            fill: false,
+                            borderWidth: 0,
+                        }, ],
+                    },
+
+                    options: {
+                        maintainAspectRatio: false,
+                        legend: {
+                            position: 'bottom',
+                            display: false,
+                            labels: {
+                                boxWidth: 8,
+                            },
+                        },
+                        tooltips: {
+                            displayColors: false,
+                            callbacks: {
+                                label: function(tooltipItem, data) {
+                                    return (
+                                        '' +
+                                        Number(tooltipItem.yLabel)
+                                        .toFixed(0)
+                                        .replace(/./g, function(c, i, a) {
+                                            return i > 0 && c !== '.' && (a.length - i) % 3 === 0 ?
+                                                ',' + c :
+                                                c;
+                                        })
+                                    );
+                                },
+                            },
+                        },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    min: 0,
+                                },
+                            }, ],
+                            xAxes: [{
+                                barPercentage: 0.5,
+                            }, ],
+                        },
+                    },
+                });
+            },
+        });
+    };
 /* Proyectos Ganados y Perdidos */
 winLoseProjects = (id) => {
     $.ajax({
