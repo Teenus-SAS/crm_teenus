@@ -100,25 +100,27 @@ class BusinessKeyDao
 
     if ($rol == 1) {
       if ($id == '1') {
-        $stmt = $connection->prepare("SELECT Month(created_at) AS Month, MonthName(created_at) AS MonthName, COUNT(*) AS Quantity
-                                    FROM companies
-                                    WHERE year(created_at) = year(curdate())
-                                    GROUP BY MonthName(created_at) ORDER BY `Month` ASC");
+        $stmt = $connection->prepare("SELECT Month(date_change_phase) AS Month, MonthName(date_change_phase) AS MonthName, COUNT(*) AS Quantity 
+                                    FROM business 
+                                    WHERE year(date_change_phase) = year(curdate())
+                                    GROUP BY MonthName(date_change_phase) ORDER BY `Month` ASC");
         $stmt->execute();
       } else {
         $id_user = $id;
-        $stmt = $connection->prepare("SELECT Month(created_at) AS Month, MonthName(created_at) AS MonthName, COUNT(*) AS Quantity
-                                    FROM companies
-                                    WHERE year(created_at) = year(curdate()) AND companies.created_by = :id_user
-                                    GROUP BY MonthName(created_at) ORDER BY `Month` ASC;");
+        $stmt = $connection->prepare("SELECT Month(date_change_phase) AS Month, MonthName(date_change_phase) AS MonthName, COUNT(*) AS Quantity
+                                    FROM business
+                                    INNER JOIN companies on companies.id_company = business.id_company
+                                    WHERE year(date_change_phase) = year(curdate()) AND companies.created_by = :id_user
+                                    GROUP BY MonthName(date_change_phase) ORDER BY `Month` ASC");
         $stmt->execute(['id_user' => $id_user]);
       }
     } else if ($rol == 2) {
       $id_user = $_SESSION['idUser'];
-      $stmt = $connection->prepare("SELECT Month(created_at) AS Month, MonthName(created_at) AS MonthName, COUNT(*) AS Quantity
-                                    FROM companies
-                                    WHERE year(created_at) = year(curdate()) AND companies.created_by = :id_user
-                                    GROUP BY MonthName(created_at) ORDER BY `Month` ASC;");
+      $stmt = $connection->prepare("SELECT Month(date_change_phase) AS Month, MonthName(date_change_phase) AS MonthName, COUNT(*) AS Quantity
+                                    FROM business
+                                    INNER JOIN companies on companies.id_company = business.id_company
+                                    WHERE year(date_change_phase) = year(curdate()) AND companies.created_by = :id_user
+                                    GROUP BY MonthName(date_change_phase) ORDER BY `Month` ASC");
       $stmt->execute(['id_user' => $id_user]);
     }
 
@@ -175,7 +177,7 @@ class BusinessKeyDao
       $id_user = $_SESSION['idUser'];
       $stmt = $connection->prepare("SELECT MonthName(date_change_phase) AS month, COUNT(*) AS won 
                                     FROM business
-                                    INNER JOIN companies on companies.id_company = business.id_company 
+                                    INNER JOIN companies on companies.id_company = business.id_company
                                     WHERE year(date_change_phase) = year(curdate()) AND business.id_phase = 6 AND companies.created_by = :id_user
                                     GROUP BY MonthName(date_change_phase);");
       $stmt->execute(['id_user' => $id_user]);

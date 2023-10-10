@@ -23,6 +23,11 @@ indicatorsGenerales = (id) => {
                     `$${response[3].valuedBillings.toLocaleString().replace(/,/g, ' ')}`
                 );
             else $('.valuedBillsMonth').html(`$0`);
+            if (response[4].sale != null)
+                $('.valuedSales').html(
+                    `$${response[4].sale.toLocaleString().replace(/,/g, ' ')}`
+                );
+            else $('.valuedSales').html(`$0`);
         },
     });
 };
@@ -735,6 +740,7 @@ fetchdata = async () => {
     indicatorsGenerales(1);
     goalBilling(1);
     newCustomers(1);
+    newBusiness(1);
     winLoseProjects(1);
     valuedProjects(1);
     valuedOrders(1);
@@ -750,6 +756,7 @@ $('#selectSeller').change(async function(e) {
     indicatorsGenerales(id);
     goalBilling(id);
     newCustomers(id);
+    newBusiness(id);
     winLoseProjects(id);
     valuedProjects(id);
     valuedOrders(id);

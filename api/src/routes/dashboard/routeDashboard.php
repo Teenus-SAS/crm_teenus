@@ -4,22 +4,25 @@ use crmteenus\dao\BillingsKeyDao;
 use crmteenus\dao\BusinessKeyDao;
 use crmteenus\dao\CustomersDao;
 use crmteenus\dao\OrdersKeyDao;
+use crmteenus\dao\SalesDao;
 
 $businesskeyDao = new BusinessKeyDao();
 $customersDao = new CustomersDao();
 $orderskeyDao = new OrdersKeyDao();
 $billingsKeyDao = new BillingsKeyDao();
+$salesDao = new SalesDao();
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 /* Configuracion de indicadores */
 
-$app->get('/indicators/{id}', function (Request $request, Response $response, $args) use ($businesskeyDao, $customersDao, $billingsKeyDao) {
+$app->get('/indicators/{id}', function (Request $request, Response $response, $args) use ($businesskeyDao, $customersDao, $billingsKeyDao, $salesDao) {
     $customers = $customersDao->findNewCustomers($args['id']);
     $business = $businesskeyDao->findNewBusiness($args['id']);
     $priceBusiness = $businesskeyDao->findTotalPriceBusiness($args['id']);
     $priceBillings = $billingsKeyDao->findTotalPriceBillings($args['id']);
+    $sales = $salesDao->findActualValuedSales();
     // $priceOrders = $orderskeyDao->findTotalPriceOrders($args['id']);
 
     $indicators = [];
@@ -28,6 +31,7 @@ $app->get('/indicators/{id}', function (Request $request, Response $response, $a
     array_push($indicators, $business[0]);
     array_push($indicators, $priceBusiness[0]);
     array_push($indicators, $priceBillings[0]);
+    array_push($indicators, $sales[0]);
     // array_push($indicators, $priceOrders[0]);
 
     $response->getBody()->write(json_encode($indicators, JSON_NUMERIC_CHECK));
