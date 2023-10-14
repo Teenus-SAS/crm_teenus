@@ -9,9 +9,9 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 	<?php include_once dirname(dirname(dirname(__DIR__))) .  '/partials/scripts_header.php'; ?>
 </head>
 
-<body class="horizontal-navbar">
+<body>
 	<!-- Begin Page -->
-	<div class="page-wrapper">
+	<div class="wrapper">
 		<!--start header -->
 		<header>
 			<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/header.php'; ?>

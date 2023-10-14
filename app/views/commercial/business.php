@@ -42,11 +42,10 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 							</ol>
 						</nav>
 					</div>
-
-
 					<div class="ms-auto">
 						<div class="btn-group">
 							<a href="projects-kanban" type="button" class="btn btn-warning btn-img-bs"><i class='bx bx-category'></i></a>
+							<a href="javascript:;" id="btnSearchDate" type="button" class="btn btn-warning btn-img-bs"><i class='bi bi-search'></i></a>
 
 							<?php if ($_SESSION['rol'] == 2) { ?>
 								<button type="button" class="btn btn-primary" id="btnCreateBusiness" data-bs-toggle="modal" data-bs-target="#modalCreateBusiness">Crear Nuevo Proyecto</button>
@@ -56,7 +55,7 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 					</div>
 				</div>
 
-				<div class="card">
+				<div class="card cardSearchDate">
 					<div class="card-body">
 						<div class="row justify-content-end">
 							<div class="col-sm-2">
@@ -121,6 +120,14 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 		tipo = "<?= $_SESSION['rol'] ?>";
 
 		$(document).ready(function() {
+			$('.cardSearchDate').hide();
+
+			$('#btnSearchDate').click(function(e) {
+				e.preventDefault();
+
+				$('.cardSearchDate').toggle(800);
+			});
+
 			$('#btnClosedBusiness').click(function(e) {
 				e.preventDefault();
 
