@@ -78,10 +78,16 @@ $app->post('/addBusiness', function (Request $request, Response $response, $args
     return $response->withStatus(200)->withHeader('Content-Type', 'application/json');
 });
 
-/* Delete Business */
-/* $app->post('/deleteBusiness', function (Request $request, Response $response, $args) use ($businessDao) {
-    $dataCompanie = $request->getParsedBody();
-    $companies = $businessDao->deleteSalesPhases($dataCompanie);
-    $response->getBody()->write(json_encode($companies, JSON_NUMERIC_CHECK));
+$app->get('/changePhaseBusiness/{id_business}', function (Request $request, Response $response, $args) use ($businessDao) {
+    $business = $businessDao->changePhaseBusiness($args['id_business'], 5);
+
+    if ($business == null)
+        $resp = array('success' => true, 'message' => 'Proyecto pagado correctamente');
+    else if (isset($business['info']))
+        $resp = array('success' => true, 'message' => $business['message']);
+    else
+        $resp = array('error' => true, 'message' => 'Error al guardar la información, intente nuevamente');
+
+    $response->getBody()->write(json_encode($resp, JSON_NUMERIC_CHECK));
     return $response->withHeader('Content-Type', 'application/json');
-}); */
+});

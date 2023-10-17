@@ -6,8 +6,7 @@ $(document).ready(function () {
     $.ajax({
         url: '/api/salesPhases',
         success: function (r) {
-            for (let i = 0; i < r.length; i++) {
-                if (r[i].sales_phase != 'CANCELADO' && r[i].sales_phase != 'CERRADO') {
+            for (let i = 0; i < r.length; i++) { 
                     $(`#board_business`).append(`
                     <div class="col-4 col-lg-4 mb-3" style="text-align:center">
                     <label class="mb-2 etapa${r[i].id_phase}" style="color:#8DAC18">Total Etapa:</label>
@@ -16,8 +15,7 @@ $(document).ready(function () {
                         <div class="card-body" id="etapa${r[i].id_phase}"></div>
                       </div>
                   </div>`)
-                    phases[`${r[i].id_phase}`] = 0;
-                }
+                    phases[`${r[i].id_phase}`] = 0; 
             }
             business()
         },

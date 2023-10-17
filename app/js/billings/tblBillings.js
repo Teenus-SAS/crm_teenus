@@ -59,7 +59,9 @@ $(document).ready(function() {
                 data: 'id_business',
                 className: 'uniqueClassName',
                 render: function (data) {
-                    return `<a href="javascript:;" <i id="${data}"" class="bx bx-edit-alt updateBusiness" data-toggle='tooltip' title='Actualizar Proyecto' style="font-size: 35px;"></i></a>`    
+                    return `<a href="javascript:;" <i id="${data}" class="bx bx-check-circle payBilling" data-toggle='tooltip' title='Pagado' style="font-size: 30px; color: green;"></i></a>
+                    <a href="javascript:;" <i id="${data}"" class="bx bx-edit-alt updateBusiness" data-toggle='tooltip' title='Actualizar Proyecto' style="font-size: 35px;"></i></a>
+                    `    
                 },
             },
         ],

@@ -73,6 +73,41 @@ $(document).ready(function () {
         $('#btnSaveBusiness').html('Actualizar Proyecto')
     });
 
+    $(document).on('click', '.payBilling', function () {
+        let row = $(this).parent().parent()[0]
+        let data = tableBillings.row(row).data();
+
+        bootbox.confirm({
+            title: 'Pagar',
+            message:
+                'Está seguro de pagar este proyecto? Esta acción no se puede reversar.',
+            buttons: {
+                confirm: {
+                    label: 'Si',
+                    className: 'btn-success',
+                },
+                cancel: {
+                    label: 'No',
+                    className: 'btn-danger',
+                },
+            },
+            callback: function (result) {
+                if (result == true) {
+                    $.get(
+                        `/api/changePhaseBusiness/${data.id_business}`,
+                        function (data, textStatus, jqXHR) {
+                            if (data.success == true) {
+                                updateTable();
+                                toastr.success(data.message)
+                            } else if (data.error == true)
+                                toastr.error(data.message)
+                        }
+                    );
+                }
+            },
+        });
+    });
+
     function updateTable() {
         $('#tableBillings').DataTable().clear()
         $('#tableBillings').DataTable().ajax.reload();
