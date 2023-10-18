@@ -21,7 +21,7 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 		<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/nav.php'; ?>
 
 		<!-- Begin main content -->
-		<div class="main-content">
+		<div class="page-wrapper">
 			<!-- content -->
 			<div class="page-content">
 				<!-- page header 
