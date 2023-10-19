@@ -92,7 +92,8 @@ class OrdersKeyDao
         $stmt = $connection->prepare("SELECT MonthName(b.date_bill) AS month, IFNULL(SUM(b.estimated_sale), 0) AS won 
                                     FROM business b
                                     INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
-                                    WHERE sp.sales_phase LIKE 'Factura%' AND year(b.date_bill) = year(curdate()) AND b.num_bill > 0
+                                    WHERE -- sp.sales_phase LIKE 'Factura%' AND 
+                                    year(b.date_bill) = year(curdate()) AND b.num_bill > 0
                                     GROUP BY MonthName(b.date_bill) ORDER BY `month` DESC;");
         $stmt->execute();
         $totalpriceorders = $stmt->fetchAll($connection::FETCH_ASSOC);
@@ -109,7 +110,8 @@ class OrdersKeyDao
                                     FROM business b
                                     INNER JOIN companies c ON c.id_company = b.id_company
                                     INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase 
-                                    WHERE sp.sales_phase LIKE 'Factura%' AND year(b.date_bill) = year(curdate()) AND b.num_bill > 0 AND c.created_by = :id_user
+                                    WHERE -- sp.sales_phase LIKE 'Factura%' AND 
+                                    year(b.date_bill) = year(curdate()) AND b.num_bill > 0 AND c.created_by = :id_user
                                     GROUP BY MonthName(b.date_bill) ORDER BY `month` DESC");
         $stmt->execute(['id_user' => $id_user]);
         $totalpriceorders = $stmt->fetchAll($connection::FETCH_ASSOC);
@@ -127,7 +129,8 @@ class OrdersKeyDao
                                     FROM business b
                                     INNER JOIN companies c ON c.id_company = b.id_company
                                     INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
-                                    WHERE sp.sales_phase LIKE 'Factura%' AND year(b.date_bill) = year(curdate()) AND b.num_bill > 0 AND c.created_by = :id_user
+                                    WHERE -- sp.sales_phase LIKE 'Factura%' AND 
+                                    year(b.date_bill) = year(curdate()) AND b.num_bill > 0 AND c.created_by = :id_user
                                     GROUP BY MonthName(b.date_bill) ORDER BY `month` DESC");
       $stmt->execute(['id_user' => $id_user]);
       $totalpriceorders = $stmt->fetchAll($connection::FETCH_ASSOC);
