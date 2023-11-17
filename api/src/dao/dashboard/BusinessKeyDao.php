@@ -61,31 +61,36 @@ class BusinessKeyDao
 
     if ($rol == 1) {
       if ($id == '1') {
-        $stmt = $connection->prepare("SELECT SUM(estimated_sale) AS valuedBusiness FROM business b
+        // $stmt = $connection->prepare("SELECT SUM(estimated_sale) AS valuedBusiness FROM business b
+        //                             INNER JOIN companies cp ON b.id_company = cp.id_company 
+        //                             WHERE -- b.id_phase < 7 AND 
+        //                             date_change_phase 
+        //                             BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) 
+        //                             AND NOW();");
+        $stmt = $connection->prepare("SELECT IF(sp.sales_phase = 'Cancelado' || sp.sales_phase = 'Cerrado', IF((b.date_change_phase BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) AND NOW()),
+                                             IFNULL(SUM(b.estimated_sale), 0), 0), IFNULL(SUM(b.estimated_sale), 0)) AS valuedBusiness
+                                    FROM business b
                                     INNER JOIN companies cp ON b.id_company = cp.id_company 
-                                    WHERE -- b.id_phase < 7 AND 
-                                    date_change_phase 
-                                    BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) 
-                                    AND NOW();");
+                                    INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase");
         $stmt->execute();
       } else {
         $id_user = $id;
-        $stmt = $connection->prepare("SELECT  SUM(estimated_sale) AS valuedBusiness FROM business b
+        $stmt = $connection->prepare("SELECT IF(sp.sales_phase = 'Cancelado' || sp.sales_phase = 'Cerrado', IF((b.date_change_phase BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) AND NOW()),
+                                             IFNULL(SUM(b.estimated_sale), 0), 0), IFNULL(SUM(b.estimated_sale), 0)) AS valuedBusiness
+                                    FROM business b
                                     INNER JOIN companies cp ON b.id_company = cp.id_company 
-                                    WHERE created_by = :id_user -- AND b.id_phase < 7 
-                                    AND date_change_phase 
-                                    BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) 
-                                    AND NOW();");
+                                    INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
+                                    WHERE created_by = :id_user");
         $stmt->execute(['id_user' => $id_user]);
       }
     } else if ($rol == 2) {
       $id_user = $_SESSION['idUser'];
-      $stmt = $connection->prepare("SELECT  SUM(estimated_sale) AS valuedBusiness FROM business b
+      $stmt = $connection->prepare("SELECT IF(sp.sales_phase = 'Cancelado' || sp.sales_phase = 'Cerrado', IF((b.date_change_phase BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) AND NOW()),
+                                             IFNULL(SUM(b.estimated_sale), 0), 0), IFNULL(SUM(b.estimated_sale), 0)) AS valuedBusiness
+                                    FROM business b
                                     INNER JOIN companies cp ON b.id_company = cp.id_company 
-                                    WHERE created_by = :id_user -- AND b.id_phase < 7 
-                                    AND date_change_phase 
-                                    BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) 
-                                    AND NOW();");
+                                    INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
+                                    WHERE created_by = :id_user");
       $stmt->execute(['id_user' => $id_user]);
     }
 
@@ -210,7 +215,6 @@ class BusinessKeyDao
     }
 
     $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
-    //$totalpriceorders = $stmt->fetchAll($connection::FETCH_ASSOC);
     $this->logger->notice("total Business Obtenidas", array('business' => $totalbusiness));
     return $totalbusiness;
   }
@@ -289,7 +293,6 @@ class BusinessKeyDao
     }
 
     $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
-    //$totalpriceorders = $stmt->fetchAll($connection::FETCH_ASSOC);
     $this->logger->notice("valued business ", array('valued business' => $valuedbusiness));
     return $valuedbusiness;
   }

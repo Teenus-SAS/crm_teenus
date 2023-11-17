@@ -4,6 +4,7 @@ $('#btnSalesPhase').click(function(e) {
     e.preventDefault();
     $('#btnSalesPhase').val('');
     $('#salesPhases').toggle(500);
+    $('#btnCreateSalePhase').html('Crear Fase de Venta');
 });
 
 /* Cargue tabla Fases de Venta */
@@ -54,21 +55,24 @@ tableSalesPhases = $('#tableSalesPhases').dataTable({
 /* Creacion Nueva Fase de Venta */
 
 $(document).ready(function() {
-    $('#btnCreateSalePhase').click(function(e) {
+    $('#btnCreateSalePhase').click(function (e) {
         e.preventDefault()
 
-        let data = $('#frmSalesPhases').serialize();
+        let salePhase = $('#salePhase').val();
+        let oportunity = $('#oportunity').val();
 
-        if (data == undefined || data == '') {
+        if (!salePhase || salePhase == '' || !oportunity || oportunity == '') {
             toastr.error('Ingrese la nueva Fase de Venta')
             return false;
         }
+
+        let data = $('#frmSalesPhases').serialize();
 
         $.ajax({
             method: 'POST',
             url: `/api/addSalePhase`,
             data: data,
-            success: function(response, jqXHR, statusCode) {
+            success: function (response, jqXHR, statusCode) {
                 $('#salesPhases').hide(500);
                 $('#id_salePhase').val('')
                 $('#salePhase').val('')
@@ -81,7 +85,7 @@ $(document).ready(function() {
                     toastr.error(response.message)
             },
         })
-    })
+    });
 
     /* Actualizacion Fase de Venta */
 

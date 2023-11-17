@@ -19,7 +19,7 @@ class SalesPhasesDao
   public function findAll()
   {
     $connection = Connection::getInstance()->getConnection();
-    $stmt = $connection->prepare("SELECT * FROM sales_phases WHERE (sales_phase != 'Cancelado' AND sales_phase != 'Cerrado')");
+    $stmt = $connection->prepare("SELECT * FROM sales_phases");
     $stmt->execute();
     $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
     $salesPhases = $stmt->fetchAll($connection::FETCH_ASSOC);

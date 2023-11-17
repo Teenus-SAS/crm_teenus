@@ -38,7 +38,9 @@ budgetGeneral = async (id) => {
    await $.ajax({
         type: 'GET',
         url: `/api/budgetsvsOrders/${id}`,
-        success: function(resp) {
+       success: function (resp) {
+           sessionStorage.setItem('total_pagado', resp[resp.length - 1].won);
+            
             let ctx = document.getElementById('budgetsvsorders').getContext('2d');
 
             let gradientStroke1 = ctx.createLinearGradient(0, 0, 0, 300);
@@ -225,12 +227,13 @@ goalBilling = () => {
     
     let sum = [];
     sum.push(sessionStorage.getItem('sum_budget'));
-    sum.push(sessionStorage.getItem('sum_bill')); 
+    sum.push(sessionStorage.getItem('sum_bill'));
+    sum.push(sessionStorage.getItem('total_pagado'));
         
         var quantityCustomers = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Meta', 'Facturacion'],
+                labels: ['Meta', 'Facturacion','Pagados'],
                 datasets: [
                     {
                         data: sum,

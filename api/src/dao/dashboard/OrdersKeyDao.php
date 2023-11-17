@@ -92,11 +92,17 @@ class OrdersKeyDao
         $stmt = $connection->prepare("SELECT MonthName(b.date_bill) AS month, IFNULL(SUM(b.estimated_sale), 0) AS won 
                                     FROM business b
                                     INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
-                                    WHERE -- sp.sales_phase LIKE 'Factura%' AND 
-                                    year(b.date_bill) = year(curdate()) AND b.num_bill > 0
+                                    WHERE year(b.date_bill) = year(curdate()) AND b.num_bill > 0
                                     GROUP BY MonthName(b.date_bill) ORDER BY `month` DESC;");
         $stmt->execute();
         $totalpriceorders = $stmt->fetchAll($connection::FETCH_ASSOC);
+
+        $stmt = $connection->prepare("SELECT IFNULL(SUM(b.estimated_sale), 0) AS won 
+                                    FROM business b
+                                    INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
+                                    WHERE sp.sales_phase = 'Cerrado' AND b.num_bill > 0");
+        $stmt->execute();
+        $totalPriceBillings = $stmt->fetchAll($connection::FETCH_ASSOC);
       } else {
         $id_user = $id;
         $stmt = $connection->prepare("SELECT IFNULL(SUM(jan), 0) as enero, IFNULL(SUM(feb), 0) as febrero, IFNULL(SUM(mar), 0) as marzo, IFNULL(SUM(apr), 0) as abril, IFNULL(SUM(may), 0) as mayo, 
@@ -110,11 +116,18 @@ class OrdersKeyDao
                                     FROM business b
                                     INNER JOIN companies c ON c.id_company = b.id_company
                                     INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase 
-                                    WHERE -- sp.sales_phase LIKE 'Factura%' AND 
-                                    year(b.date_bill) = year(curdate()) AND b.num_bill > 0 AND c.created_by = :id_user
+                                    WHERE year(b.date_bill) = year(curdate()) AND b.num_bill > 0 AND c.created_by = :id_user
                                     GROUP BY MonthName(b.date_bill) ORDER BY `month` DESC");
         $stmt->execute(['id_user' => $id_user]);
         $totalpriceorders = $stmt->fetchAll($connection::FETCH_ASSOC);
+
+        $stmt = $connection->prepare("SELECT IFNULL(SUM(b.estimated_sale), 0) AS won 
+                                    FROM business b
+                                    INNER JOIN companies c ON c.id_company = b.id_company
+                                    INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
+                                    WHERE sp.sales_phase = 'Cerrado' AND b.num_bill > 0 AND c.created_by = :id_user");
+        $stmt->execute(['id_user' => $id_user]);
+        $totalPriceBillings = $stmt->fetchAll($connection::FETCH_ASSOC);
       }
     } else if ($rol == 2) {
       $id_user = $_SESSION['idUser'];
@@ -129,14 +142,21 @@ class OrdersKeyDao
                                     FROM business b
                                     INNER JOIN companies c ON c.id_company = b.id_company
                                     INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
-                                    WHERE -- sp.sales_phase LIKE 'Factura%' AND 
-                                    year(b.date_bill) = year(curdate()) AND b.num_bill > 0 AND c.created_by = :id_user
+                                    WHERE year(b.date_bill) = year(curdate()) AND b.num_bill > 0 AND c.created_by = :id_user
                                     GROUP BY MonthName(b.date_bill) ORDER BY `month` DESC");
       $stmt->execute(['id_user' => $id_user]);
       $totalpriceorders = $stmt->fetchAll($connection::FETCH_ASSOC);
+
+      $stmt = $connection->prepare("SELECT IFNULL(SUM(b.estimated_sale), 0) AS won 
+                                    FROM business b
+                                    INNER JOIN companies c ON c.id_company = b.id_company
+                                    INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
+                                    WHERE sp.sales_phase = 'Cerrado' AND b.num_bill > 0 AND c.created_by = :id_user");
+      $stmt->execute(['id_user' => $id_user]);
+      $totalPriceBillings = $stmt->fetchAll($connection::FETCH_ASSOC);
     }
 
-    $totalbudgetsorders = array_merge($totalbudgets, $totalpriceorders);
+    $totalbudgetsorders = array_merge($totalbudgets, $totalpriceorders, $totalPriceBillings);
     $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
     $this->logger->notice("budgetsOrders Obtenidas", array('budgetsOrders' => $totalbudgetsorders));
     return $totalbudgetsorders;
