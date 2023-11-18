@@ -133,7 +133,8 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 										<div class="d-flex align-items-center">
 											<div>
 												<p class="mb-0 text-secondary">Cumplimiento Ventas</p>
-												<h4 class="my-1 text-success valuedSales"></h4>
+												<h6 class="my-1 text-success totalSales"></h6>
+												<h6 class="my-1 text-success actualSales"></h6>
 											</div>
 											<div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class='bx bxs-group'></i>
 											</div>

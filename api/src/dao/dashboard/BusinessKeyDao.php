@@ -221,7 +221,8 @@ class BusinessKeyDao
 
   public function findValuedBusiness($id)
   {
-    session_start();
+    if (!isset($_SESSION))
+      session_start();
     $connection = Connection::getInstance()->getConnection();
     $rol = $_SESSION['rol'];
     $stmt = $connection->prepare("SET lc_time_names = 'es_ES'");

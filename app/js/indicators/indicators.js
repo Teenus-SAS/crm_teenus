@@ -23,11 +23,23 @@ indicatorsGenerales = (id) => {
                     `$${response[3].valuedBillings.toLocaleString().replace(/,/g, ' ')}`
                 );
             else $('.valuedBillsMonth').html(`$0`);
-            if (response[4].sale != null)
-                $('.valuedSales').html(
-                    `$${response[4].sale.toLocaleString().replace(/,/g, ' ')}`
-                );
-            else $('.valuedSales').html(`$0`);
+
+
+            setTimeout(() => {
+                let sum_budget = sessionStorage.getItem('sum_budget');
+                let sum_bill = sessionStorage.getItem('sum_bill');
+                let actual_budget = sessionStorage.getItem('actual_budget');
+
+                !response[3].valuedBillings ? valuedBillings = 0 : valuedBillings = response[3].valuedBillings;
+
+                let totalSales = (sum_bill / sum_budget) * 100
+                !isFinite(totalSales) ? totalSales = 0 : totalSales;
+                let actualSales = (actual_budget / valuedBillings) * 100;
+                !isFinite(actualSales) ? actualSales = 0 : actualSales;
+
+                $('.totalSales').html(`${totalSales} % (Total)`);
+                $('.actualSales').html(`${actualSales} % (Mensual)`);
+            }, 1000); 
         },
     });
 };
@@ -40,6 +52,7 @@ budgetGeneral = async (id) => {
         url: `/api/budgetsvsOrders/${id}`,
        success: function (resp) {
            sessionStorage.setItem('total_pagado', resp[resp.length - 1].won);
+           resp.pop();
             
             let ctx = document.getElementById('budgetsvsorders').getContext('2d');
 
@@ -54,7 +67,17 @@ budgetGeneral = async (id) => {
             gradientStroke2.addColorStop(0, color);
 
             budget = [];
-            orders = [];
+           orders = [];
+           var fechaActual = new Date();
+ 
+var numeroMes = fechaActual.getMonth();
+ 
+var nombresMeses = [
+  "enero", "febrero", "marzo", "abril", "mayo", "junio",
+  "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+];
+ 
+var nombreMes = nombresMeses[numeroMes];
             let sum_budget =
                 resp[0].enero+
                 resp[0].febrero+
@@ -69,6 +92,7 @@ budgetGeneral = async (id) => {
                 resp[0].noviembre +
                 resp[0].diciembre;
             sessionStorage.setItem('sum_budget', sum_budget);
+            sessionStorage.setItem('actual_budget', resp[0][nombreMes]);
             let sum_bill = 0;
 
             budget.push(resp[0].enero);

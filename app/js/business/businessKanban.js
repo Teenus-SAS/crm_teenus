@@ -6,6 +6,8 @@ $(document).ready(function () {
     $.ajax({
         url: '/api/salesPhases',
         success: function (r) {
+            r = r.filter((item) => item.percent !== 0);
+            
             for (let i = 0; i < r.length; i++) { 
                     $(`#board_business`).append(`
                     <div class="col-4 col-lg-4 mb-3" style="text-align:center">
