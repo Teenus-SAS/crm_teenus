@@ -37,11 +37,12 @@ class UserDao
     return $users;
   }
 
-  public function findByEmail($dataUser)
+  public function findByEmail($userEmail)
   {
     $connection = Connection::getInstance()->getConnection();
-    $stmt = $connection->prepare("SELECT * FROM users WHERE email = :email");
-    $stmt->execute(['email' => $dataUser]);
+    $sql = "SELECT * FROM users WHERE email = :email";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute(['email' => $userEmail]);
     $user = $stmt->fetch($connection::FETCH_ASSOC);
 
     $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));

@@ -60,14 +60,14 @@ $(document).ready(function() {
                     data: 'sales_phase',
                     className: 'uniqueClassName',
                 },
-                {
+                /* {
                     title: '%',
                     data: 'percent',
                     className: 'uniqueClassName',
                     render: (data, type, row) => {
                         return `${(data * 100).toFixed(0).replace('.', ',')}%`;
                     },
-                },
+                }, */
 
                 {
                     title: 'Plazo',
