@@ -2,7 +2,7 @@ $(document).ready(function() {
     id = sessionStorage.getItem('id_quote')
     subtotal = 0
 
-    $.get(`../../../api/updateQuotes/${id}`,
+    $.get(`/api/updateQuotes/${id}`,
         function(data, textStatus, jqXHR) {
 
             $('.to').html(`Contacto: ${data[0].contact}`);

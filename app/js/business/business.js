@@ -1,15 +1,11 @@
 $(document).ready(function() {
-
-
     $('#btnCreateBusiness').click(function(e) {
         e.preventDefault();
         $("#formNewBusiness")[0].reset();
         $select = $(`#selectContact`)
         $select.empty()
-        $('#btnSaveBusiness').html('Crear Proyecto')
-
-    });
-
+        $('#btnSaveBusiness').html('Crear Proyecto');
+    }); 
 
     $('#btnSaveBusiness').click(function(e) {
             e.preventDefault()
@@ -18,7 +14,7 @@ $(document).ready(function() {
 
             $.ajax({
                 type: 'POST',
-                url: '../../../api/addBusiness',
+                url: '/api/addBusiness',
                 data: data,
                 success: function(response, jqXHR, statusCode) {
 
@@ -37,9 +33,12 @@ $(document).ready(function() {
 
     $(document).on('click', '.updateBusiness', function(e) {
         e.preventDefault()
+		$('.generalInputs').prop('disabled', false);
+		$('#inputNumBill').empty();
 
         let row = $(this).parent().parent()[0]
-        let data = tableBusiness.fnGetData(row)
+        let data = tableBusiness.row(row).data()
+        // let data = tableBusiness.fnGetData(row)
 
         $('#modalCreateBusiness').modal('show')
         $('#id_business').val(data.id_business)
@@ -74,7 +73,7 @@ $(document).ready(function() {
             function() {
                 $.ajax({
                     type: 'POST',
-                    url: '../api/deleteUser',
+                    url: '/api/deleteUser',
                     data: { idUser: id },
                     success: function(r) {
                         if (r == null) toastr.success('Usuario no puede eliminarse', 'error')
@@ -90,10 +89,10 @@ $(document).ready(function() {
     })
 
 
-    /* load phases */
+    /* load phases 
 
     $.ajax({
-        url: '../../../api/salesPhases',
+        url: '/api/salesPhases',
         success: function(r) {
             sessionStorage.setItem('salesPhases', JSON.stringify(r))
 
@@ -108,7 +107,8 @@ $(document).ready(function() {
                 )
             }
         },
-    })
+    }) */
+    salesPhase();
 
 
 
@@ -130,11 +130,11 @@ $(document).ready(function() {
         }
     })
 
-    /* cargar contacto de acuerdo con seleccion */
+    /* cargar contacto de acuerdo con seleccion 
 
     async function contacts(company, contact) {
         try {
-            let res = await fetch('../../../api/contacts')
+            let res = await fetch('/api/contacts')
             r = await res.json()
 
             $select = $(`#selectContact`)
@@ -152,13 +152,13 @@ $(document).ready(function() {
         } catch (error) {
 
         }
-    }
+    } */
 
 
     /* update table */
 
     function updateTable() {
         $('#tableBusiness').DataTable().clear()
-        $('#tableBusiness').DataTable().ajax.reload()
+        $('#tableBusiness').DataTable().ajax.reload();
     }
 })

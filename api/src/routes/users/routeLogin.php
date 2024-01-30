@@ -11,12 +11,12 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 
 /* Autenticación */
 
-$app->post('/user', function (Request $request, Response $response, $args) use ($userDao, $loginDao) {
+$app->post('/autentication', function (Request $request, Response $response, $args) use ($userDao, $loginDao) {
     $parsedBody = $request->getParsedBody();
 
-    $user = $parsedBody["inputEmailAddress"];
+    $userEmail = $parsedBody["inputEmailAddress"];
     $password = $parsedBody["inputChoosePassword"];
-    $user = $userDao->findByEmail($user);
+    $user = $userDao->findByEmail($userEmail);
 
     $resp = array();
 

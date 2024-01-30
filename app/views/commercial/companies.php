@@ -1,4 +1,5 @@
 <?php
+require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalCompanies.php';
 include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalReassignSeller.php';
 ?>
@@ -8,7 +9,6 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalReassignSeller.p
 
 <head>
 	<?php include_once dirname(dirname(dirname(__DIR__))) .  '/partials/scripts_header.php'; ?>
-	<title>CRM-teenus</title>
 </head>
 
 <body>
@@ -42,7 +42,7 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalReassignSeller.p
 							</ol>
 						</nav>
 					</div>
-					
+
 					<?php if ($_SESSION['rol'] == 2) { ?>
 						<div class="ms-auto">
 							<div class="btn-group">
@@ -94,15 +94,15 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalReassignSeller.p
 	<script>
 		tipo = "<?= $_SESSION['rol'] ?>"
 
-		$(document).ready(function() {
-			$(`#navContacts, #navCompanies, #navZonesAssigned`).click(function(e) {
-				e.preventDefault();
-				$('#menuContactLi').removeClass('mm-active');
-				$('#menuContactLu').removeClass('mm-show');
-				$(".menuContacts").attr("aria-expanded", false);
+		// $(document).ready(function() {
+		// 	$(`#navContacts, #navCompanies, #navZonesAssigned`).click(function(e) {
+		// 		e.preventDefault();
+		// 		$('#menuContactLi').removeClass('mm-active');
+		// 		$('#menuContactLu').removeClass('mm-show');
+		// 		$(".menuContacts").attr("aria-expanded", false);
 
-			});
-		});
+		// 	});
+		// });
 	</script>
 
 </body>

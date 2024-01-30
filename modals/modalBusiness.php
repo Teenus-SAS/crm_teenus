@@ -14,18 +14,18 @@
                         </div>
                         <div class="col-md-12">
                             <label for="name_business" class="form-label">Proyecto</label>
-                            <input type="text" class="form-control" id="name_business" name="name_business" required>
+                            <input type="text" class="form-control generalInputs" id="name_business" name="name_business" required>
                         </div>
                         <div class="col-md-5">
                             <label for="selectCompanies" class="form-label">Nombre Empresa</label>
-                            <select class="form-select" id="selectCompanies" name="company" required>
+                            <select class="form-select generalInputs" id="selectCompanies" name="company" required>
                                 <option selected disabled value="0">Seleccionar...</option>
                             </select>
 
                         </div>
                         <div class="col-md-5">
                             <label for="selectContact" class="form-label">Contacto</label>
-                            <select class="form-select" id="selectContact" name="contact" required>
+                            <select class="form-select generalInputs" id="selectContact" name="contact" required>
                                 <option selected disabled value="0">Seleccionar...</option>
                             </select>
                         </div>
@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-md-4">
                             <label for="selectSalesPhase" class="form-label">Etapa</label>
-                            <select class="form-select" id="selectSalesPhase" name="selectSalesPhase" required>
+                            <select class="form-select generalInputs" id="selectSalesPhase" name="selectSalesPhase" required>
                                 <option selected disabled value="0">Seleccionar...</option>
                             </select>
                         </div>
@@ -45,9 +45,9 @@
                             <input type="text" class="form-control" id="percentSalesPhase" name="" disabled>
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-4" id="inputTerm">
                             <label for="selectTerm" class="form-label">Plazo</label>
-                            <select class="form-select" id="selectTerm" name="term" required>
+                            <select class="form-select generalInputs" id="selectTerm" name="term" required>
                                 <option selected disabled value="0">Seleccionar...</option>
                                 <option value="1">Corto</option>
                                 <option value="2">Mediano</option>
@@ -58,7 +58,7 @@
                             <hr>
                             <div class="col-md-6">
                                 <label for="selectSeller" class="form-label">Asesor Comercial</label>
-                                <select class="form-select selectSeller" id="selectSeller" name="seller" required>
+                                <select class="form-select selectSeller generalInputs" id="selectSeller" name="seller" required>
                                     <option selected disabled value="0">Seleccionar...</option>
                                 </select>
                             </div>
@@ -66,7 +66,7 @@
                         <?php } ?>
                         <div class="col-md-12">
                             <label for="businessObservations" class="form-label">Observaciones</label>
-                            <textarea class="form-control" id="businessObservations" name="businessObservations"></textarea>
+                            <textarea class="form-control generalInputs" id="businessObservations" name="businessObservations"></textarea>
                         </div>
 
                         <div class="col-12 mt-3" style="display: flex;justify-content:end">

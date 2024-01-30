@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
-	<link rel="icon" href="/app/assets/images/icons/icon.jpg" type="image/png" />
+	<link rel="icon" href="/app/assets/images/icons/icono_teenus.png" type="image/png" />
 	<!--plugins-->
 	<link href="/app/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
 	<link href="/app/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
@@ -21,7 +21,7 @@
 	<link href="/app/assets/css/icons.css" rel="stylesheet">
 	<!-- Notify -->
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet">
-	<title>CRM-teenus</title>
+	<title>CRM-TEENUS</title>
 </head>
 
 <body class="bg-login">
@@ -59,7 +59,7 @@
 													<label class="form-check-label" for="flexSwitchCheckChecked">Recordarme</label>
 												</div>
 											</div>
-											<div class="col-md-6 text-end"> <a href="/app/views/login/forgot-password.php">¿Olvido el password?</a>
+											<div class="col-md-6 text-end"> <a href="forgot-pass">¿Olvido el password?</a>
 											</div>
 											<div class="col-12">
 												<div class="d-grid">
@@ -67,7 +67,7 @@
 												</div>
 											</div>
 										</form>
-									</div>                                                  
+									</div>
 								</div>
 							</div>
 						</div>
@@ -79,14 +79,13 @@
 	</div>
 	<!--end wrapper-->
 	<!-- Bootstrap JS -->
-	<script src="app/assets/js/bootstrap.bundle.min.js"></script>
+	<!-- <script src="app/assets/js/bootstrap.bundle.min.js"></script> -->
 	<!--plugins-->
-	<script src="app/assets/js/jquery.min.js"></script>
-	<script src="app/assets/plugins/simplebar/js/simplebar.min.js"></script>
-	<script src="app/assets/plugins/metismenu/js/metisMenu.min.js"></script>
-	<script src="app/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-	<script src="app/js/login/autentication.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+	<script src="/app/assets/plugins/simplebar/js/simplebar.min.js"></script>
+	<script src="/app/assets/plugins/metismenu/js/metisMenu.min.js"></script>
+	<script src="/app/assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
 	<!--Password show & hide js -->
 	<script>
 		$(document).ready(function() {
@@ -104,8 +103,15 @@
 			});
 		});
 	</script>
-	<!--app JS-->
-	<script src="app/assets/js/app.js"></script>
+
+	<!-- ================== BEGIN PAGE LEVEL JS ================== -->
+	<!-- <script src="/app/assets/libs/jquery-validation/js/jquery.validate.min.js"></script>
+	<script src="/admin/assets/libs/jquery-validation/js/additional-methods.min.js"></script> -->
+	<script src="/app/js/login/autentication.js"></script>
+	<!-- ================== BEGIN PAGE JS ================== -->
+	<script src="/app/assets/js/app.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+
 </body>
 
 </html>

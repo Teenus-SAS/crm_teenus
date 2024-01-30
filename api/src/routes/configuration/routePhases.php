@@ -19,21 +19,16 @@ $app->get('/salesPhases', function (Request $request, Response $response, $args)
 $app->post('/addSalePhase', function (Request $request, Response $response, $args) use ($salesphasesDao) {
     $datasalesphases = $request->getParsedBody();
 
-    if (!empty($datasalesphases['salePhase']) && !empty($datasalesphases['oportunity'])) {
+    $salesphases = $salesphasesDao->saveSalesPhases($datasalesphases);
 
-        $salesphases = $salesphasesDao->saveSalesPhases($datasalesphases);
+    if ($salesphases == 2)
+        $resp = array('success' => true, 'message' => 'Fase de Venta actualizada correctamente');
 
-        if ($salesphases == 2)
-            $resp = array('success' => true, 'message' => 'Fase de Venta actualizada correctamente');
+    if ($salesphases == 1)
+        $resp = array('success' => true, 'message' => 'Fase de Venta creada correctamente');
 
-        if ($salesphases == 1)
-            $resp = array('success' => true, 'message' => 'Fase de Venta creada correctamente');
-
-        if ($salesphases == 3)
-            $resp = array('error' => true, 'message' => 'Fase de Venta ya existe');
-    }else{
-        $resp = array('error' => true, 'message' => 'Complete todos los datos');
-    }
+    if ($salesphases == 3)
+        $resp = array('error' => true, 'message' => 'Fase de Venta ya existe');
 
     $response->getBody()->write(json_encode($resp));
     return $response->withHeader('Content-Type', 'application/json');

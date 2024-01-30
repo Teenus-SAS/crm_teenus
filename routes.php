@@ -6,28 +6,31 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
 get('/', '/index.php');
 
 
-
 //Header
 get('/paymentMethods', '/app/views/admin/paymentmethods.php');
-get('/contactForms','/app/views/admin/contactforms.php');
+get('/contactForms', '/app/views/admin/contactforms.php');
 get('/salesPhases', '/app/views/admin/salesphases.php');
 get('/salesChannels', '/app/views/admin/saleschannels.php');
 get('/categories', '/app/views/admin/categoriesclients.php');
 get('/sellers', '/app/views/admin/users.php');
 
 //Nav
+get('/dashboard', 'app/views/commercial/dashboard.php');
 get('/budget', '/app/views/commercial/budget.php');
-get('/dashboard', 'app/index.php');
 get('/contacts', '/app/views/commercial/contacts.php');
 get('/companies', '/app/views/commercial/companies.php');
+
 get('/projects', '/app/views/commercial/business.php');
-get('/budget', '/app/views/commercial/budget.php');
+get('/projects-list', '/app/views/commercial/business.php');
+get('/projects-kanban', '/app/views/commercial/businessKanban.php');
+
 get('/schedule', '/app/views/commercial/schedule.php');
-get('/quotes', '/app/views/commercial/quotes.php');
-get('/billing', '/app/views/commercial/billings.php');
-get('/invoice', '/app/views/commercial/invoice.php');
+//get('/quotes', '/app/views/commercial/quotes.php');
+get('/ordes', '/app/views/commercial/orders.php');
+get('/billings', '/app/views/commercial/billings.php');
 
-
+//Users
+get('/forgot-pass', '/app/views/login/forgot-password.php');
 
 // Dynamic GET. Example with 1 variable
 // The $id will be available in user.php

@@ -1,8 +1,8 @@
 /* cargar contacto de acuerdo con seleccion */
 
-async function contacts(company, contact) {
+ contacts = async(company, contact) =>{
     try {
-        let res = await fetch('../../../api/contacts')
+        let res = await fetch('/api/contacts')
         r = await res.json()
 
         $select = $(`#selectContact`)
@@ -15,7 +15,7 @@ async function contacts(company, contact) {
             }
         }
 
-        $(`#selectContact option:contains(${data.contact})`).prop('selected', true);
+        $(`#selectContact option:contains(${contact})`).prop('selected', true);
 
     } catch (error) {
         console.log(error)

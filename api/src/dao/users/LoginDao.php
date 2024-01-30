@@ -31,7 +31,7 @@ class LoginDao
       $_SESSION['access'] = $user['access_delete_order'];
       $_SESSION["timeout"] = time();
 
-      $resp = array('success' => true, 'message' => $user['rol']);
+      $resp = array('success' => true, 'message' => $_SESSION['rol']);
     } else
       $resp = array('error' => true, 'message' => 'Usuario y/o password incorrectos, valide nuevamente');
 

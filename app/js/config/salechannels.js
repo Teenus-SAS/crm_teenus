@@ -12,7 +12,7 @@ $('#btnSaleChannel').click(function(e) {
 tableSalesChannels = $('#tableSalesChannels').dataTable({
     pageLength: 10,
     ajax: {
-        url: '../../../api/salesChannels',
+        url: '/api/salesChannels',
         dataSrc: '',
     },
     language: {
@@ -57,7 +57,7 @@ $(document).ready(function() {
 
         $.ajax({
             method: 'POST',
-            url: `../api/addSaleChannel`,
+            url: `/api/addSaleChannel`,
             data: data,
             success: function(response, jqXHR, statusCode) {
                 $('#salesChannels').hide(500)
@@ -101,7 +101,7 @@ $(document).ready(function() {
             `¿Realmente desea <b style="color:red">eliminar</b> el canal de ventas: <b style="color:red">${data.sales_channels}</b>?, esta acción es permanente`,
             function() {
                 $.ajax({
-                    url: `../api/deleteSaleChannel/${id}`,
+                    url: `/api/deleteSaleChannel/${id}`,
                     success: function(response) {
                         updateTable()
                         if (response.success == true)

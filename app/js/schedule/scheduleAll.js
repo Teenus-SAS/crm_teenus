@@ -3,7 +3,7 @@ $(document).ready(function() {
     let tableScheduleAll = $('#tableScheduleAll').dataTable({
         pageLength: 10,
         ajax: {
-            url: '../../../api/schedules',
+            url: '/api/schedules',
             dataSrc: '',
         },
         language: {
@@ -73,7 +73,7 @@ $(document).ready(function() {
     tableCompletedTaskAll = $('#tableCompletedTaskAll').dataTable({
         pageLength: 10,
         ajax: {
-            url: '../../../api/completedSchedules',
+            url: '/api/completedSchedules',
             dataSrc: '',
         },
         language: {
@@ -133,7 +133,7 @@ $(document).ready(function() {
     tableAlertTaskAll = $('#tableAlertTaskAll').dataTable({
         pageLength: 10,
         ajax: {
-            url: '../../../api/todaySchedules',
+            url: '/api/todaySchedules',
             dataSrc: '',
         },
         language: {
@@ -195,7 +195,7 @@ $(document).ready(function() {
     tableDelayTaskAll = $('#tableDelayTaskAll').dataTable({
         pageLength: 10,
         ajax: {
-            url: '../../../api/delaySchedules',
+            url: '/api/delaySchedules',
             dataSrc: '',
         },
         language: {

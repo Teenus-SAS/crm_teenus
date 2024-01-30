@@ -1,4 +1,5 @@
 <?php include_once dirname(__DIR__) . '/modals/modalModifyProfileUser.php'; ?>
+
 <div class="topbar d-flex align-items-center">
 	<nav class="navbar navbar-expand">
 		<div class="topbar-logo-header">
@@ -39,7 +40,7 @@
 										</div>
 									</div>
 								</a>
-								<a class="dropdown-item" href="contactForms1">
+								<a class="dropdown-item" href="/contactForms">
 									<div class="d-flex align-items-center">
 										<div class="notify bg-light-danger text-danger"><i class="bx bx-phone"></i>
 										</div>
@@ -49,7 +50,7 @@
 									</div>
 								</a>
 
-								<a class="dropdown-item" href="salesPhases1">
+								<a class="dropdown-item" href="/salesPhases">
 									<div class="d-flex align-items-center">
 										<div class="notify bg-light-success text-success"><i class="bx bx-stats"></i>
 										</div>
@@ -59,7 +60,7 @@
 									</div>
 								</a>
 
-								<a class="dropdown-item" href="salesChannels1">
+								<a class="dropdown-item" href="/salesChannels">
 									<div class="d-flex align-items-center">
 										<div class="notify bg-light-warning text-warning"><i class="bx bx-transfer"></i>
 										</div>
@@ -89,7 +90,7 @@
 										</div>
 									</div>
 								</a> -->
-								<a class="dropdown-item" href="newseller">
+								<a class="dropdown-item" href="/sellers">
 									<div class="d-flex align-items-center">
 										<div class="notify bg-light-success text-success"><i class="bx bx-network-chart"></i>
 										</div>

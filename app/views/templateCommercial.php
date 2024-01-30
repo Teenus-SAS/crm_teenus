@@ -88,12 +88,12 @@
 							<div class="card-body">
 								<div class="d-flex align-items-center">
 									<div>
-										<h6 class="mb-0">Presupuesto vs Pedidos</h6>
+										<h6 class="mb-0">Presupuesto vs Facturacion</h6>
 									</div>
 								</div>
 								<div class="d-flex align-items-center ms-auto font-13 gap-2 my-3">
 									<span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1 colorBudgets"></i>Presupuesto</span>
-									<span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1 colorOrders"></i>Pedidos</span>
+									<span class="border px-1 rounded cursor-pointer"><i class="bx bxs-circle me-1 colorOrders"></i>Facturacion</span>
 								</div>
 								<div class="chart-container-1">
 									<canvas id="budgetsvsorders"></canvas>

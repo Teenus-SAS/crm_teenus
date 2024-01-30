@@ -7,7 +7,7 @@ $(document).ready(function() {
 
             $.ajax({
                 type: 'POST',
-                url: '../../../api/addBusiness',
+                url: '/api/addBusiness',
                 data: data,
                 success: function(response, jqXHR, statusCode) {
 
@@ -62,7 +62,7 @@ $(document).ready(function() {
             function() {
                 $.ajax({
                     type: 'POST',
-                    url: '../api/deleteUser',
+                    url: '/api/deleteUser',
                     data: { idUser: id },
                     success: function(r) {
                         if (r == null) toastr.success('Usuario no puede eliminarse', 'error')
@@ -84,7 +84,7 @@ $(document).ready(function() {
     /* load phases */
 
     $.ajax({
-        url: '../../../api/salesPhases',
+        url: '/api/salesPhases',
         success: function(r) {
             sessionStorage.setItem('salesPhases', JSON.stringify(r))
 
@@ -124,7 +124,7 @@ $(document).ready(function() {
     /* load sellers */
 
     $.ajax({
-        url: '../../../api/users',
+        url: '/api/users',
         success: function(r) {
             sessionStorage.setItem('sellers', JSON.stringify(r))
 

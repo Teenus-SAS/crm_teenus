@@ -6,18 +6,19 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
-	<link rel="icon" href="../../../app/assets/images/icons/icon.jpg" type="image/png" />
+	<link rel="icon" href="/app/assets/images/icons/icon.jpg" type="image/png" />
 	<!-- loader-->
-	<link href="../../assets/css/pace.min.css" rel="stylesheet" />
-	<script src="../../assets/js/pace.min.js"></script>
+	<link href="/app/assets/css/pace.min.css" rel="stylesheet" />
+	<script src="/app/assets/js/pace.min.js"></script>
 	<!-- Bootstrap CSS -->
-	<link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/app/assets/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/app/assets/css/app.css" rel="stylesheet">
+	<link href="/app/assets/css/icons.css" rel="stylesheet">
+
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-	<link href="../../assets/css/app.css" rel="stylesheet">
-	<link href="../../assets/css/icons.css" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet">
 	<?php
-	include_once dirname(dirname(dirname(__DIR__))) .'/app/views/login/forgot-password.php';
+	include_once dirname(dirname(dirname(__DIR__))) . '/app/views/login/forgot-password.php';
 	?>
 	<title>CRM - teenus</title>
 </head>
@@ -30,7 +31,7 @@
 			<div class="col-sm-3">
 
 				<div class="text-center">
-					<img src="../../assets/images/logo/logo-teenus.jpg" width="220" alt="" />
+					<img src="/app/assets/images/logo/logo-teenus.jpg" width="220" alt="" />
 				</div>
 				<h4 class="mt-5 font-weight-bold text-center">¿Olvido su password?</h4>
 				<p class="text-muted text-center">Ingrese su email para enviar el password</p>
@@ -49,16 +50,16 @@
 			<div class="col-sm-6" style="margin-left:50px;">
 
 				<div>
-					<img src="../../assets/images/login-images/bg-forgot-password3.png" width="100%" alt="">
+					<img src="/app/assets/images/login-images/bg-forgot-password3.png" width="100%" alt="">
 				</div>
 
 			</div>
 		</div>
 	</div>
 	<!-- end wrapper -->
-	<script src="../../../app/assetscom/js/jquery.min.js"></script>
+	<script src="/app/assetscom/js/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
-	<script src="../../js/login/forgot-password.js"></script>
+	<script src="/app/js/login/forgot-password.js"></script>
 </body>
 
 </html>

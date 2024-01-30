@@ -14,7 +14,7 @@ tableContactForm = $('#tableContactForm').dataTable({
     pageLength: 10,
 
     ajax: {
-        url: '../../../api/contactForms',
+        url: '/api/contactForms',
         dataSrc: '',
     },
     language: {
@@ -60,7 +60,7 @@ $(document).ready(function() {
 
         $.ajax({
             method: 'POST',
-            url: `../api/addContactForms`,
+            url: `/api/addContactForms`,
             data: data,
             success: function(response, jqXHR, statusCode) {
                 $('#contactForms').hide(500)
@@ -104,7 +104,7 @@ $(document).ready(function() {
             function() {
                 $.ajax({
                     type: 'POST',
-                    url: `../api/deleteContactForm/${id}`,
+                    url: `/api/deleteContactForm/${id}`,
                     success: function(response) {
                         updateTable()
                         if (response.success == true)

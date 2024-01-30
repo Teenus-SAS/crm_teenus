@@ -1,6 +1,6 @@
 $(document).on('click', '.profile', function(e) {
     $('#modalModifyProfileUser').modal('show');
-    $.get("../../../api/user",
+    $.get("/api/user",
         function(data, textStatus, jqXHR) {
 
             $('#names').val(data[0].firstname);
@@ -22,7 +22,7 @@ $('#btnUpdateUser').click(function(e) {
 
     $.ajax({
         type: "POST",
-        url: "../../../api/updateUser",
+        url: "/api/updateUser",
         data: data,
         contentType: false,
         processData: false,

@@ -8,7 +8,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: 'POST',
-            url: '../../../api/addCompany',
+            url: '/api/addCompany',
             data: data,
             success: function(response, jqXHR, statusCode) {
                 $('#modalCreateCompany').modal('hide')
@@ -62,7 +62,7 @@ $(document).ready(function() {
             function() {
                 $.ajax({
                     type: 'POST',
-                    url: '../api/deleteUser',
+                    url: '/api/deleteUser',
                     data: { idUser: id },
                     success: function(r) {
                         if (r == null) toastr.success('Usuario no puede eliminarse', 'error')
@@ -89,7 +89,7 @@ $(document).ready(function() {
     })
 
     $.ajax({
-        url: '../../../api/zones',
+        url: '/api/zones',
         success: function(r) {
             sessionStorage.setItem('zones', JSON.stringify(r))
 

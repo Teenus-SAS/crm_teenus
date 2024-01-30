@@ -57,6 +57,8 @@ class CustomersDao
     session_start();
     $connection = Connection::getInstance()->getConnection();
     $rol = $_SESSION['rol'];
+    $stmt = $connection->prepare("SET lc_time_names = 'es_ES'");
+    $stmt->execute();
 
     if ($rol == 1) {
       if ($id == '1') {

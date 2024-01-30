@@ -12,7 +12,7 @@ tablePaymentMethods = $('#tablePaymentMethods').dataTable({
     pageLength: 10,
 
     ajax: {
-        url: '../../../api/paymentMethods',
+        url: '/api/paymentMethods',
         dataSrc: '',
     },
     language: {
@@ -58,7 +58,7 @@ $(document).ready(function() {
 
         $.ajax({
             method: 'POST',
-            url: `../api/addPaymentMethod`,
+            url: `/api/addPaymentMethod`,
             data: data,
             success: function(response, jqXHR, statusCode) {
                 $('#paymentMethods').hide(500)
@@ -101,7 +101,7 @@ $(document).ready(function() {
             `¿Realmente desea <b style="color:red">Eliminar</b> el Método de Pago: <b style="color:red">${data.method}</b>?, esta acción es permanente`,
             function() {
                 $.ajax({
-                    url: `../api/deletePaymentMethod/${data.id_method}`,
+                    url: `/api/deletePaymentMethod/${data.id_method}`,
                     success: function(response) {
                         updateTable()
                         if (response.success == true)
