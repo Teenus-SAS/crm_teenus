@@ -61,11 +61,11 @@
                         <hr style="margin-bottom:0px">
                         <h5 style="margin-bottom: 0px;"><b>Productos</b></h5>
                         <!-- <hr style="margin-bottom:0px"> -->
-                        <div>
+                        <!--<div>
                             <button class="btn btn-primary" id="btnAddNewProduct">Seleccionar Productos</button>
-                        </div>
+                        </div>-->
 
-                        <div class="addProd row">
+                        
                             <div class="col-md-3 mt-1">
                                 <label for="selectProducts" class="form-label">Producto</label>
                                 <input class="form-control text-center" type="text" name="product" id="products">
@@ -78,7 +78,7 @@
                             </div>
 
 
-                        </div>
+                        
                         <div class="mb-3">
                             <button class="btn btn-primary mt-3" id="btnAddProduct">Adicionar producto</button>
                         </div>

@@ -25,6 +25,8 @@ get('/budget', '/app/views/commercial/budget.php');
 get('/schedule', '/app/views/commercial/schedule.php');
 get('/quotes', '/app/views/commercial/quotes.php');
 get('/billing', '/app/views/commercial/billings.php');
+get('/invoice', '/app/views/commercial/invoice.php');
+
 
 
 // Dynamic GET. Example with 1 variable

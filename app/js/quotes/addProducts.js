@@ -1,6 +1,6 @@
 $(document).ready(function() {
     /* Cargar cada producto seleccionado a la tabla */
-
+    
     const addProducts = () => {
 
         $("#tableProductsQuote > tbody").empty();

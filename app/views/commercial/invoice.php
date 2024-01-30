@@ -1,6 +1,5 @@
 <?php
-include_once dirname(dirname(dirname(__DIR__))) .  '/modals/modalQuote.php';
-include_once dirname(dirname(dirname(__DIR__))) .  '/modals/modalOrder.php';
+
 ?>
 
 <!doctype html>
@@ -40,7 +39,7 @@ include_once dirname(dirname(dirname(__DIR__))) .  '/modals/modalOrder.php';
 							<ol class="breadcrumb mb-0 p-0">
 								<li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
 								</li>
-								<li class="breadcrumb-item active" aria-current="page">Cotizaciones</li>
+								<li class="breadcrumb-item active" aria-current="page">Facturaciones</li>
 							</ol>
 						</nav>
 					</div>
@@ -48,7 +47,7 @@ include_once dirname(dirname(dirname(__DIR__))) .  '/modals/modalOrder.php';
 					<?php if ($_SESSION['rol'] == 2) {  ?>
 						<div class="ms-auto">
 							<div class="btn-group">
-								<button type="button" class="btn btn-primary" id="btnNewQuote" data-bs-toggle="modal" data-bs-target="#modalCreateQuote">Crear Nueva Cotización</button>
+								<button type="button" class="btn btn-primary" id="btnNewQuote" data-bs-toggle="modal" data-bs-target="#modalCreateQuote">Crear Nueva Factura</button>
 							</div>
 						</div>
 					<?php } ?>
@@ -95,8 +94,6 @@ include_once dirname(dirname(dirname(__DIR__))) .  '/modals/modalOrder.php';
 	<script src="/app/js/global/dateValidation.js"></script>
 	<script src="/app/js/global/number.js"></script>
 	<script src="/app/js/global/paymentMethods.js"></script>
-	<script src="/app/js/global/print.js"></script>
-
 
 	<script>
 		tipo = "<?= $_SESSION['rol'] ?>"

@@ -4,7 +4,7 @@ $(document).ready(function() {
     tableQuotes = $('#tableQuotes').dataTable({
         pageLength: 50,
         ajax: {
-            url: '/api/quotes',
+            url: '../../../api/quotes',
             dataSrc: '',
         },
         language: {
