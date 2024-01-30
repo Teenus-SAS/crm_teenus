@@ -37,9 +37,9 @@ indicatorsGenerales = (id) => {
                 let actualSales = (actual_budget / valuedBillings) * 100;
                 !isFinite(actualSales) ? actualSales = 0 : actualSales;
 
-                $('.totalSales').html(`${totalSales} % (Total)`);
-                $('.actualSales').html(`${actualSales} % (Mensual)`);
-            }, 1000); 
+                $('.totalSales').html(`${totalSales.toLocaleString('es-CO', { minimumFractionDigits: 2 })} % (Total)`);
+                $('.actualSales').html(`${actualSales.toLocaleString('es-CO', { minimumFractionDigits: 2 })} % (Mensual)`);
+            }, 1000);
         },
     });
 };
