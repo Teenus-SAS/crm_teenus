@@ -129,7 +129,7 @@ $(document).ready(function () {
             last = group;
           }
           value = $(rows).eq(i).children()[5].textContent;
-          value = parseInt(value);
+          value = parseFloat(value.replace(/[^0-9.-]+/g, ""));
           total += +value;
           if (i == filas.length - 1) {
             $(rows)
