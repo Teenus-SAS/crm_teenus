@@ -119,22 +119,22 @@ $(document).ready(function () {
 
               last = group;
             }
+
+            var estimatedSale = 0;
+            var cellData = api.cell(i, 5).data();
+
+            if (typeof cellData === "string") {
+              estimatedSale = parseFloat(cellData.replace(/[^\d.-]/g, ""));
+            }
+
+            if (!isNaN(estimatedSale)) {
+              subtotal += estimatedSale;
+            }
           });
       },
       // Función para el pie de la tabla
       footerCallback: function (row, data, start, end, display) {
         var api = this.api();
-
-        var estimatedSale = 0;
-        var cellData = api.cell(index, 5).data();
-
-        if (typeof cellData === "string") {
-          estimatedSale = parseFloat(cellData.replace(/[^\d.-]/g, ""));
-        }
-
-        if (!isNaN(estimatedSale)) {
-          subtotal += estimatedSale;
-        }
 
         // Sumar los valores de la columna 'Venta Estimada'
         var total = api
