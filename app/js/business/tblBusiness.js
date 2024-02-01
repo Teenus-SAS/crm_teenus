@@ -98,16 +98,16 @@ $(document).ready(function () {
           },
         },
       ],
-      //order: [[5, "asc"]], // Ordenar por la columna de 'Etapa'
+      order: [[5, "asc"]], // Ordenar por la columna de 'Etapa'
       rowGroup: {
         dataSrc: "sales_phase", // Columna por la que se agruparán los registros
         className: 'group-header',
-        /* startRender: null, // Opciones adicionales para personalizar el inicio del grupo
+        startRender: null, // Opciones adicionales para personalizar el inicio del grupo
         endRender: function (rows, group) {
           return $("<tr/>").append(
             '<td colspan="6"><b>Etapa: ' + group + "</b></td>"
           );
-        }, */
+        },
       },
     });
   };

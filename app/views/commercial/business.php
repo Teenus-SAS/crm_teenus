@@ -184,12 +184,12 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 		})
 	</script>
 
+	<script src="//cdn.datatables.net/rowgroup/1.4.1/js/dataTables.rowGroup.min.js"></script>
 	<script src="../app/js/global/companies.js"></script>
 	<script src="../app/js/global/contact.js"></script>
 	<script src="../app/js/global/salesPhase.js"></script>
 	<script src="../app/js/global/number.js"></script>
 	<script src="../app/js/business/tblBusiness.js"></script>
-	<script src="//cdn.datatables.net/rowgroup/1.4.1/js/dataTables.rowGroup.min.js"></script>
 
 </body>
 
