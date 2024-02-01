@@ -6,6 +6,7 @@ $(document).ready(function () {
 
     tableBusiness = $("#tableBusiness").DataTable({
       destroy: true,
+      order: [[groupColumn, "asc"]],
       pageLength: 50,
       ajax: {
         url: url,
@@ -98,16 +99,25 @@ $(document).ready(function () {
           },
         },
       ],
-      order: [[5, "asc"]], // Ordenar por la columna de 'Etapa'
-      rowGroup: {
-        dataSrc: "sales_phase", // Columna por la que se agruparán los registros
-        className: 'group-header',
-        startRender: null, // Opciones adicionales para personalizar el inicio del grupo
-        endRender: function (rows, group) {
-          return $("<tr/>").append(
-            '<td colspan="6"><b>Etapa: ' + group + "</b></td>"
-          );
-        },
+      drawCallback: function (settings) {
+        var api = this.api();
+        var rows = api.rows({ page: "current" }).nodes();
+        var last = null;
+
+        api
+          .column(groupColumn, { page: "current" })
+          .data()
+          .each(function (group, i) {
+            if (last !== group) {
+              $(rows)
+                .eq(i)
+                .before(
+                  '<tr class="group"><td colspan="5">' + group + "</td></tr>"
+                );
+
+              last = group;
+            }
+          });
       },
     });
   };
