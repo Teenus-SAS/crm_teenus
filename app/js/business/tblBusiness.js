@@ -1,5 +1,7 @@
 $(document).ready(function () {
   /* Cargue tabla de Proyectos */
+  var groupColumn = 7;
+
   loadTblBusiness = (min_date, max_date) => {
     if (min_date == null && max_date == null) url = "/api/business";
     else url = `/api/business/${min_date}/${max_date}`;
