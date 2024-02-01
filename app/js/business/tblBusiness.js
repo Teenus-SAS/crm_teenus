@@ -55,11 +55,11 @@ $(document).ready(function () {
           className: "uniqueClassName",
           render: $.fn.dataTable.render.number(".", ",", 0, "$ "),
         },
-        /* {
+        {
           title: "Etapa",
           data: "sales_phase",
           className: "uniqueClassName",
-        }, */
+        },
         /* {
                     title: '%',
                     data: 'percent',
