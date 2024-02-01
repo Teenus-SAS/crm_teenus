@@ -135,7 +135,10 @@ $(document).ready(function () {
             $(rows)
               .eq(i)
               .after(
-                `<tr class="total "><td colspan=5>Total:</td><td>${total.toLocaleString('es-ES')}</td></tr>`
+                `<tr class="total "><td colspan=5>Total:</td><td>${
+                  (total.toLocaleString("de-DE"),
+                  { style: "currency", currency: "USD" })
+                }</td></tr>`
               );
           }
         });
