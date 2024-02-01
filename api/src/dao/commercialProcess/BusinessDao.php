@@ -30,7 +30,7 @@ class BusinessDao
               INNER JOIN users u ON u.id_user = c.created_by
               WHERE c.created_by = :id_user 
               -- WHERE c.created_by = :id_user AND b.date_register BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) 
-                AND NOW() AND (sp.sales_phase != 'Cancelado' AND sp.sales_phase != 'Cerrado' AND sp.sales_phase != 'Finalizado' AND sp.sales_phase != 'Cierre De Venta')
+                AND NOW() AND (sp.sales_phase != 'Cancelado' AND sp.sales_phase != 'Cerrado' AND sp.sales_phase != 'Finalizado' AND sp.sales_phase != 'Cierre De Venta' AND sp.sales_phase != 'Facturacion')
               ORDER BY `b`.`id_business` DESC";
       $stmt = $connection->prepare($sql);
       $stmt->execute(['id_user' => $id_user]);
