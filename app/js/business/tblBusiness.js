@@ -107,20 +107,23 @@ $(document).ready(function () {
         var last = null;
         var subtotal = 0;
         
-        api.column(groupColumn, { page: "current" }).data().each(function (group, i) {
+        api.column(groupColumn, { page: "current" }).data().each(function (group, index) {
             if (last !== group) {
                 if (last !== null) {
-                    $(rows).eq(i - 1).after('<tr class="subtotal"><td colspan="5">Subtotal: ' + subtotal.toFixed(2) + '</td></tr>');
+                    $(rows).eq(index - 1).after('<tr class="subtotal"><td colspan="5">Subtotal: ' + subtotal.toFixed(2) + '</td></tr>');
                     subtotal = 0; 
                 }
-                $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + "</td></tr>");
+                $(rows).eq(index).before('<tr class="group"><td colspan="5">' + group + "</td></tr>");
                 last = group;
             }
-            var estimatedSale = parseFloat(api.cell(i, 5).data().replace(/[^\d.-]/g, ""));
+            var estimatedSale = parseFloat(api.cell(index, 5).data().replace(/[^\d.-]/g, ""));
                 if (!isNaN(estimatedSale)) {
                     subtotal += estimatedSale;
                 }
           });
+          if (last !== null) {
+            $(rows).eq(-1).after('<tr class="subtotal"><td colspan="5">Subtotal: ' + subtotal.toFixed(2) + '</td></tr>');
+        }
       },
     });
   };
