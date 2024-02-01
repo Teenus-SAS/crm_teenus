@@ -107,6 +107,7 @@ $(document).ready(function () {
         var rows = api.rows({ page: "current" }).nodes();
         var last = null;
         var total = 0;
+        var value = 0;
         var filas = api.column(groupColumn, { page: "current" }).data();
 
         filas.each(function (group, i) {
@@ -127,7 +128,8 @@ $(document).ready(function () {
 
             last = group;
           }
-          total += +parseFloat($(rows).eq(i).children()[5].textContent);
+          value = parseFloat($(rows).eq(i).children()[5].textContent);
+          total += +value;
           if (i == filas.length - 1) {
             $(rows)
               .eq(i)
