@@ -105,25 +105,21 @@ $(document).ready(function () {
         var api = this.api();
         var rows = api.rows({ page: "current" }).nodes();
         var last = null;
-        var subtotal = 0;
-        
-        api.column(groupColumn, { page: "current" }).data().each(function (group, index) {
+
+        api
+          .column(groupColumn, { page: "current" })
+          .data()
+          .each(function (group, i) {
             if (last !== group) {
-                if (last !== null) {
-                    $(rows).eq(index - 1).after('<tr class="subtotal"><td colspan="5">Subtotal: ' + subtotal.toFixed(2) + '</td></tr>');
-                    subtotal = 0; 
-                }
-                $(rows).eq(index).before('<tr class="group"><td colspan="5">' + group + "</td></tr>");
-                last = group;
+              $(rows)
+                .eq(i)
+                .before(
+                  '<tr class="group"><td colspan="5">' + group + "</td></tr>"
+                );
+
+              last = group;
             }
-            var estimatedSale = parseFloat(api.cell(index, 5).data().replace(/[^\d.-]/g, ""));
-                if (!isNaN(estimatedSale)) {
-                    subtotal += estimatedSale;
-                }
           });
-          if (last !== null) {
-            $(rows).eq(-1).after('<tr class="subtotal"><td colspan="5">Subtotal: ' + subtotal.toFixed(2) + '</td></tr>');
-        }
       },
     });
   };
