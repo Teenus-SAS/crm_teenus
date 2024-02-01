@@ -113,7 +113,7 @@ $(document).ready(function () {
             if ( last !== group ) {
               if(last!=null){
                 $(rows).eq( i - 1).after(
-                    `<tr class="total"><td colspan=2>Total:</td><td colspan="10">${ total }</td></tr>`
+                    `<tr class="total"><td colspan=5>Total:</td><td>${ total }</td></tr>`
                 );
                 total=0;
               }
@@ -126,7 +126,7 @@ $(document).ready(function () {
             total+=+$(rows).eq( i ).children()[6].textContent;
             if(i==filas.length-1){
                 $(rows).eq( i ).after(
-                    `<tr class="total"><td colspan=2>Total:</td><td colspan="10">${ total }</td></tr>`
+                    `<tr class="total"><td colspan=5>Total:</td><td>${ total }</td></tr>`
                 );
             }
         });
