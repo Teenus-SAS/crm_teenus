@@ -109,30 +109,35 @@ $(document).ready(function () {
         var total = 0;
         var filas = api.column(groupColumn, { page: "current" }).data();
 
-        filas.each( function ( group, i ) {
-                
-            if ( last !== group ) {
-              if(last!=null){
-                $(rows).eq( i - 1).after(
-                    `<tr class="total"><td colspan=5>Total:</td><td>${ total }</td></tr>`
+        filas.each(function (group, i) {
+          if (last !== group) {
+            if (last != null) {
+              $(rows)
+                .eq(i - 1)
+                .after(
+                  `<tr class="total"><td colspan=5>Total:</td><td>${total}</td></tr>`
                 );
-                total=0;
-              }
-              $(rows).eq( i ).before(
-                '<tr class="group"><td colspan="12">'+group+'</td></tr>'
+              total = 0;
+            }
+            $(rows)
+              .eq(i)
+              .before(
+                '<tr class="group"><td colspan="12">' + group + "</td></tr>"
               );
 
-              last = group;
-            }
-            total+=+$(rows).eq( i ).children()[5].textContent;
-            if(i==filas.length-1){
-                $(rows).eq( i ).after(
-                    `<tr class="total "><td colspan=5>Total:</td><td>${ total }</td></tr>`
-                );
-            }
+            last = group;
+          }
+          total += parseFloat(+$(rows).eq(i).children()[5].textContent);
+          if (i == filas.length - 1) {
+            $(rows)
+              .eq(i)
+              .after(
+                `<tr class="total "><td colspan=5>Total:</td><td>${total}</td></tr>`
+              );
+          }
         });
 
-       /*  api
+        /*  api
           .column(groupColumn, { page: "current" })
           .data()
           .each(function (group, i) {
