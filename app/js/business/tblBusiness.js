@@ -127,7 +127,7 @@ $(document).ready(function () {
 
             last = group;
           }
-          total += parseFloat(+$(rows).eq(i).children()[5].textContent);
+          total += +parseFloat($(rows).eq(i).children()[5].textContent);
           if (i == filas.length - 1) {
             $(rows)
               .eq(i)
