@@ -128,7 +128,8 @@ $(document).ready(function () {
 
             last = group;
           }
-          value = parseFloat($(rows).eq(i).children()[5].textContent);
+          value = $(rows).eq(i).children()[5].textContent;
+          value = parseInt(value);
           total += +value;
           if (i == filas.length - 1) {
             $(rows)
