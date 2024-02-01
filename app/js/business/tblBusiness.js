@@ -123,10 +123,10 @@ $(document).ready(function () {
 
               last = group;
             }
-            total+=+$(rows).eq( i ).children()[4].textContent;
+            total+=+$(rows).eq( i ).children()[5].textContent;
             if(i==filas.length-1){
                 $(rows).eq( i ).after(
-                    `<tr class="total"><td colspan=5>Total:</td><td>${ total }</td></tr>`
+                    `<tr class="total text-center"><td colspan=5>Total:</td><td>${ total }</td></tr>`
                 );
             }
         });
