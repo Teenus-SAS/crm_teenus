@@ -8,6 +8,7 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 
 <head>
 	<?php include_once dirname(dirname(dirname(__DIR__))) .  '/partials/scripts_header.php'; ?>
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/rowgroup/1.4.1/css/rowGroup.bootstrap.min.css" />
 </head>
 
 <body>
@@ -188,6 +189,7 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalBusiness.php';
 	<script src="../app/js/global/salesPhase.js"></script>
 	<script src="../app/js/global/number.js"></script>
 	<script src="../app/js/business/tblBusiness.js"></script>
+	<script src="//cdn.datatables.net/rowgroup/1.4.1/js/dataTables.rowGroup.min.js"></script>
 
 </body>
 
