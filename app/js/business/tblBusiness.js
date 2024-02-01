@@ -106,19 +106,19 @@ $(document).ready(function () {
         var rows = api.rows({ page: "current" }).nodes();
         var last = null;
 
-        api
-          .column(groupColumn, { page: "current" })
-          .data()
-          .each(function (group, i) {
+        api.column(groupColumn, { page: "current" }).data().each(function (group, i) {
             if (last !== group) {
-              $(rows)
-                .eq(i)
-                .before(
-                  '<tr class="group"><td colspan="5">' + group + "</td></tr>"
-                );
-
-              last = group;
+                if (last !== null) {
+                    $(rows).eq(i - 1).after('<tr class="subtotal"><td colspan="5">Subtotal: ' + subtotal.toFixed(2) + '</td></tr>');
+                    last = group;
+                    subtotal = 0; 
+                }
+                $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + "</td></tr>");
             }
+            var estimatedSale = parseFloat(api.cell(i, 5).data().replace(/[^\d.-]/g, ""));
+                if (!isNaN(estimatedSale)) {
+                    subtotal += estimatedSale;
+                }
           });
       },
     });
