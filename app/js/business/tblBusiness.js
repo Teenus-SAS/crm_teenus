@@ -1,6 +1,7 @@
 $(document).ready(function () {
   /* Cargue tabla de Proyectos */
   var groupColumn = 6;
+  var groupColumnSum = 5;
 
   loadTblBusiness = (min_date, max_date) => {
     if (min_date == null && max_date == null) url = "/api/business";
@@ -106,7 +107,7 @@ $(document).ready(function () {
         var rows = api.rows({ page: "current" }).nodes();
         var last = null;
         var total = 0;
-        var filas = api.column(groupColumn, { page: "current" }).data();
+        var filas = api.column(groupColumnSum, { page: "current" }).data();
 
         filas.each( function ( group, i ) {
                 
@@ -126,7 +127,7 @@ $(document).ready(function () {
             total+=+$(rows).eq( i ).children()[5].textContent;
             if(i==filas.length-1){
                 $(rows).eq( i ).after(
-                    `<tr class="total text-center"><td colspan=5>Total:</td><td>${ total }</td></tr>`
+                    `<tr class="total text-right"><td colspan=5>Total:</td><td>${ total }</td></tr>`
                 );
             }
         });
