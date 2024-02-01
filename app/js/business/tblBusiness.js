@@ -121,6 +121,22 @@ $(document).ready(function () {
             }
           });
       },
+      // Función para el pie de la tabla
+      footerCallback: function (row, data, start, end, display) {
+        var api = this.api();
+
+        // Sumar los valores de la columna 'Venta Estimada'
+        var total = api
+          .column(5, { page: "current" })
+          .data()
+          .reduce(function (a, b) {
+            var num = parseFloat(b.replace(/[^\d.-]/g, ""));
+            return (isNaN(num) ? 0 : num) + a;
+          }, 0);
+
+        // Colocar el total en el pie de la tabla
+        $(api.column(5).footer()).html("Total: " + total.toFixed(2));
+      },
     });
   };
 
