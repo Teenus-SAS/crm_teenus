@@ -107,7 +107,7 @@ $(document).ready(function () {
         var rows = api.rows({ page: "current" }).nodes();
         var last = null;
         var total = 0;
-        var filas = api.column(groupColumnSum, { page: "current" }).data();
+        var filas = api.column(groupColumn, { page: "current" }).data();
 
         filas.each( function ( group, i ) {
                 
