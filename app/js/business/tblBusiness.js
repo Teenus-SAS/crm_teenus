@@ -105,8 +105,33 @@ $(document).ready(function () {
         var api = this.api();
         var rows = api.rows({ page: "current" }).nodes();
         var last = null;
+        var total = 0;
+        var filas = api.column(groupColumn, { page: "current" }).data();
 
-        api
+        filas.each( function ( group, i ) {
+                
+            if ( last !== group ) {
+              if(last!=null){
+                $(rows).eq( i - 1).after(
+                    `<tr class="total"><td colspan=2>Total:</td><td colspan="10">${ total }</td></tr>`
+                );
+                total=0;
+              }
+              $(rows).eq( i ).before(
+                '<tr class="group"><td colspan="12">'+group+'</td></tr>'
+              );
+
+              last = group;
+            }
+            total+=+$(rows).eq( i ).children()[2].textContent;
+            if(i==filas.length-1){
+                $(rows).eq( i ).after(
+                    `<tr class="total"><td colspan=2>Total:</td><td colspan="10">${ total }</td></tr>`
+                );
+            }
+        });
+
+       /*  api
           .column(groupColumn, { page: "current" })
           .data()
           .each(function (group, i) {
@@ -119,34 +144,7 @@ $(document).ready(function () {
 
               last = group;
             }
-
-            var estimatedSale = 0;
-            var cellData = api.cell(i, 5).data();
-
-            if (typeof cellData === "string") {
-              estimatedSale = parseFloat(cellData.replace(/[^\d.-]/g, ""));
-            }
-
-            if (!isNaN(estimatedSale)) {
-              subtotal += estimatedSale;
-            }
-          });
-      },
-      // Función para el pie de la tabla
-      footerCallback: function (row, data, start, end, display) {
-        var api = this.api();
-
-        // Sumar los valores de la columna 'Venta Estimada'
-        var total = api
-          .column(5, { page: "current" })
-          .data()
-          .reduce(function (a, b) {
-            var num = parseFloat(b.replace(/[^\d.-]/g, ""));
-            return (isNaN(num) ? 0 : num) + a;
-          }, 0);
-
-        // Colocar el total en el pie de la tabla
-        $(api.column(5).footer()).html("Total: " + total.toFixed(2));
+          }); */
       },
     });
   };
