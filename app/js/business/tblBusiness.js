@@ -125,6 +125,17 @@ $(document).ready(function () {
       footerCallback: function (row, data, start, end, display) {
         var api = this.api();
 
+        var estimatedSale = 0;
+        var cellData = api.cell(index, 5).data();
+
+        if (typeof cellData === "string") {
+          estimatedSale = parseFloat(cellData.replace(/[^\d.-]/g, ""));
+        }
+
+        if (!isNaN(estimatedSale)) {
+          subtotal += estimatedSale;
+        }
+
         // Sumar los valores de la columna 'Venta Estimada'
         var total = api
           .column(5, { page: "current" })
