@@ -116,7 +116,10 @@ $(document).ready(function () {
               $(rows)
                 .eq(i - 1)
                 .after(
-                  `<tr class="total"><td colspan=5>Total:</td><td>${total}</td></tr>`
+                  `<tr class="total"><td colspan=5>Total:</td><td>${
+                    (total.toLocaleString("de-DE"),
+                    { style: "currency", currency: "USD" })
+                  }</td></tr>`
                 );
               total = 0;
             }
