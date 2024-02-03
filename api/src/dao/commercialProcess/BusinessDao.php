@@ -22,15 +22,17 @@ class BusinessDao
 
     if ($rol == 2) {
       $id_user = $_SESSION['idUser'];
-      $stmt = $connection->prepare("SELECT b.id_business, b.name_business, c.company_name as company, CONCAT(ct.firstname,' ',ct.lastname) as contact, b.estimated_sale, sp.id_phase, sp.sales_phase, sp.percent, b.observation, b.term, b.date_register, CONCAT(u.firstname, ' ',u.lastname) AS seller 
-                                  FROM business b 
-                                  INNER JOIN companies c ON b.id_company = c.id_company 
-                                  INNER JOIN contacts ct ON ct.id_contact = b.id_contact 
-                                  INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase 
-                                  INNER JOIN users u ON u.id_user = c.created_by
-                                  WHERE c.created_by = :id_user AND b.date_register BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) 
-                                    AND NOW() AND (sp.sales_phase != 'Cancelado' AND sp.sales_phase != 'Cerrado')
-                                  ORDER BY `b`.`id_business` DESC");
+      $sql = "SELECT b.id_business, b.name_business, c.company_name as company, CONCAT(ct.firstname,' ',ct.lastname) as contact, b.estimated_sale, sp.id_phase, sp.sales_phase, sp.percent, b.observation, b.term, b.date_register, CONCAT(u.firstname, ' ',u.lastname) AS seller 
+              FROM business b 
+              INNER JOIN companies c ON b.id_company = c.id_company 
+              INNER JOIN contacts ct ON ct.id_contact = b.id_contact 
+              INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase 
+              INNER JOIN users u ON u.id_user = c.created_by
+              WHERE c.created_by = :id_user 
+              -- WHERE c.created_by = :id_user AND b.date_register BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) 
+                AND NOW() AND (sp.sales_phase != 'Cancelado' AND sp.sales_phase != 'Cerrado' AND sp.sales_phase != 'Finalizado' AND sp.sales_phase != 'Cierre De Venta' AND sp.sales_phase != 'Facturacion')
+              ORDER BY `b`.`id_business` DESC";
+      $stmt = $connection->prepare($sql);
       $stmt->execute(['id_user' => $id_user]);
     } else {
       $stmt = $connection->prepare("SELECT b.id_business, b.name_business, c.company_name as company, CONCAT(ct.firstname,' ',ct.lastname) as contact, b.estimated_sale, sp.id_phase, sp.sales_phase, sp.percent, b.observation, b.term, b.date_register, CONCAT(u.firstname, ' ',u.lastname) AS seller
