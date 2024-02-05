@@ -54,6 +54,11 @@ $(document).ready(function() {
                 className: 'uniqueClassName',
             },
             {
+                title: 'Ventas',
+                data: 'ventas',
+                className: 'uniqueClassName',
+            },
+            {
                 title: 'Asesor Comercial',
                 data: 'seller',
                 visible: tipo !== '2',
