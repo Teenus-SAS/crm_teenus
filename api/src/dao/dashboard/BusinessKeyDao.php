@@ -67,7 +67,7 @@ class BusinessKeyDao
         //                             date_change_phase 
         //                             BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) 
         //                             AND NOW();");
-        $stmt = $connection->prepare("SELECT IF(sp.sales_phase = 'Cancelado' || sp.sales_phase = 'Cerrado', IF((b.date_change_phase BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) AND NOW()),
+        $stmt = $connection->prepare("SELECT IF(sp.sales_phase = 'Cancelado' || sp.sales_phase = 'Cerrado' || sp.sales_phase = 'Finalizado' || sp.sales_phase = 'Cierre de Venta' || sp.sales_phase = 'Facturacion', IF((b.date_change_phase BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) AND NOW()),
                                              IFNULL(SUM(b.estimated_sale), 0), 0), IFNULL(SUM(b.estimated_sale), 0)) AS valuedBusiness
                                     FROM business b
                                     INNER JOIN companies cp ON b.id_company = cp.id_company 
@@ -75,7 +75,7 @@ class BusinessKeyDao
         $stmt->execute();
       } else {
         $id_user = $id;
-        $stmt = $connection->prepare("SELECT IF(sp.sales_phase = 'Cancelado' || sp.sales_phase = 'Cerrado', IF((b.date_change_phase BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) AND NOW()),
+        $stmt = $connection->prepare("SELECT IF(sp.sales_phase = 'Cancelado' || sp.sales_phase = 'Cerrado' || sp.sales_phase = 'Finalizado' || sp.sales_phase = 'Cierre de Venta' || sp.sales_phase = 'Facturacion', IF((b.date_change_phase BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) AND NOW()),
                                              IFNULL(SUM(b.estimated_sale), 0), 0), IFNULL(SUM(b.estimated_sale), 0)) AS valuedBusiness
                                     FROM business b
                                     INNER JOIN companies cp ON b.id_company = cp.id_company 
@@ -85,7 +85,7 @@ class BusinessKeyDao
       }
     } else if ($rol == 2) {
       $id_user = $_SESSION['idUser'];
-      $stmt = $connection->prepare("SELECT IF(sp.sales_phase = 'Cancelado' || sp.sales_phase = 'Cerrado', IF((b.date_change_phase BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) AND NOW()),
+      $stmt = $connection->prepare("SELECT IF(sp.sales_phase = 'Cancelado' || sp.sales_phase = 'Cerrado' || sp.sales_phase = 'Finalizado' || sp.sales_phase = 'Cierre de Venta' || sp.sales_phase = 'Facturacion', IF((b.date_change_phase BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) AND NOW()),
                                              IFNULL(SUM(b.estimated_sale), 0), 0), IFNULL(SUM(b.estimated_sale), 0)) AS valuedBusiness
                                     FROM business b
                                     INNER JOIN companies cp ON b.id_company = cp.id_company 
