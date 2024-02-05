@@ -55,7 +55,7 @@ $(document).ready(function() {
             },
             {
                 title: 'Ventas',
-                data: 'ventas',
+                data: 'sales',
                 className: 'uniqueClassName',
             },
             {
