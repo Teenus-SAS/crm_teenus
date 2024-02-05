@@ -23,7 +23,7 @@ class CompaniesDao
     $connection = Connection::getInstance()->getConnection();
 
     if ($rol == 1) {
-      $stmt = $connection->prepare("SELECT c.id_company, c.nit, c.company_name, c.address, c.phone, c.city, CONCAT(u.firstname, ' ', u.lastname) as seller, cg.category, s.subcategory
+      $stmt = $connection->prepare("SELECT c.id_company, c.nit, c.company_name, c.address, c.phone, c.city, CONCAT(u.firstname, ' ', u.lastname) as seller, c.sales, cg.category, s.subcategory
                                   FROM companies c INNER JOIN users u ON u.id_user = c.created_by 
                                   INNER JOIN subcategories s ON s.id_subcategory = c.id_subcategory 
                                   INNER JOIN categories cg ON cg.id_category = s.id_category 
@@ -36,7 +36,7 @@ class CompaniesDao
     } else  if ($rol == 2) {
 
       $id_user = $_SESSION['idUser'];
-      $stmt = $connection->prepare("SELECT c.id_company, c.nit, c.company_name, c.address, c.phone, c.city, CONCAT(u.firstname, ' ', u.lastname) as seller, cg.category, s.subcategory
+      $stmt = $connection->prepare("SELECT c.id_company, c.nit, c.company_name, c.address, c.phone, c.city, CONCAT(u.firstname, ' ', u.lastname) as seller, c.sales, cg.category, s.subcategory
                                       FROM companies c LEFT JOIN users u ON u.id_user = c.created_by 
                                       LEFT JOIN subcategories s ON s.id_subcategory = c.id_subcategory 
                                       LEFT JOIN categories cg ON cg.id_category = s.id_category 
