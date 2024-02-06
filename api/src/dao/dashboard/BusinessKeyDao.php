@@ -61,12 +61,7 @@ class BusinessKeyDao
 
     if ($rol == 1) {
       if ($id == '1') {
-        // $stmt = $connection->prepare("SELECT SUM(estimated_sale) AS valuedBusiness FROM business b
-        //                             INNER JOIN companies cp ON b.id_company = cp.id_company 
-        //                             WHERE -- b.id_phase < 7 AND 
-        //                             date_change_phase 
-        //                             BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) 
-        //                             AND NOW();");
+               
         $stmt = $connection->prepare("SELECT IF(sp.sales_phase = 'Cancelado' || sp.sales_phase = 'Cerrado' || sp.sales_phase = 'Finalizado' || sp.sales_phase = 'Cierre de Venta' || sp.sales_phase = 'Facturacion', IF((b.date_change_phase BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) AND NOW()),
                                              IFNULL(SUM(b.estimated_sale), 0), 0), IFNULL(SUM(b.estimated_sale), 0)) AS valuedBusiness
                                     FROM business b
@@ -75,22 +70,36 @@ class BusinessKeyDao
         $stmt->execute();
       } else {
         $id_user = $id;
-        $stmt = $connection->prepare("SELECT IF(sp.sales_phase = 'Cancelado' || sp.sales_phase = 'Cerrado' || sp.sales_phase = 'Finalizado' || sp.sales_phase = 'Cierre de Venta' || sp.sales_phase = 'Facturacion', IF((b.date_change_phase BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) AND NOW()),
-                                             IFNULL(SUM(b.estimated_sale), 0), 0), IFNULL(SUM(b.estimated_sale), 0)) AS valuedBusiness
-                                    FROM business b
-                                    INNER JOIN companies cp ON b.id_company = cp.id_company 
-                                    INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
-                                    WHERE created_by = :id_user");
+        $sql = "SELECT SUM(b.estimated_sale) 
+        FROM business b 
+        INNER JOIN companies c ON b.id_company = c.id_company 
+        INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase 
+        INNER JOIN users u ON u.id_user = c.created_by 
+        WHERE c.created_by = :id_user 
+          AND (sp.sales_phase != 'Cancelado' 
+          AND sp.sales_phase != 'Cerrado' 
+          AND sp.sales_phase != 'Pospuesto' 
+          AND sp.sales_phase != 'Finalizado' 
+          AND sp.sales_phase != 'Cierre De Venta' 
+          AND sp.sales_phase != 'Facturacion') ";
+        $stmt = $connection->prepare($sql);
         $stmt->execute(['id_user' => $id_user]);
       }
     } else if ($rol == 2) {
       $id_user = $_SESSION['idUser'];
-      $stmt = $connection->prepare("SELECT IF(sp.sales_phase = 'Cancelado' || sp.sales_phase = 'Cerrado' || sp.sales_phase = 'Finalizado' || sp.sales_phase = 'Cierre de Venta' || sp.sales_phase = 'Facturacion', IF((b.date_change_phase BETWEEN ((CURRENT_DATE - INTERVAL DAYOFMONTH(CURRENT_DATE)-1 DAY)) AND NOW()),
-                                             IFNULL(SUM(b.estimated_sale), 0), 0), IFNULL(SUM(b.estimated_sale), 0)) AS valuedBusiness
-                                    FROM business b
-                                    INNER JOIN companies cp ON b.id_company = cp.id_company 
-                                    INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase
-                                    WHERE created_by = :id_user");
+      $sql = "SELECT SUM(b.estimated_sale) 
+        FROM business b 
+        INNER JOIN companies c ON b.id_company = c.id_company 
+        INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase 
+        INNER JOIN users u ON u.id_user = c.created_by 
+        WHERE c.created_by = :id_user 
+          AND (sp.sales_phase != 'Cancelado' 
+          AND sp.sales_phase != 'Cerrado' 
+          AND sp.sales_phase != 'Pospuesto' 
+          AND sp.sales_phase != 'Finalizado' 
+          AND sp.sales_phase != 'Cierre De Venta' 
+          AND sp.sales_phase != 'Facturacion') ";
+        $stmt = $connection->prepare($sql);
       $stmt->execute(['id_user' => $id_user]);
     }
 
