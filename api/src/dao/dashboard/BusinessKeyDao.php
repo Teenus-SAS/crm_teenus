@@ -70,7 +70,7 @@ class BusinessKeyDao
         $stmt->execute();
       } else {
         $id_user = $id;
-        $sql = "SELECT SUM(b.estimated_sale) 
+        $sql = "SELECT SUM(b.estimated_sale) AS valuedBusiness
         FROM business b 
         INNER JOIN companies c ON b.id_company = c.id_company 
         INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase 
@@ -87,7 +87,7 @@ class BusinessKeyDao
       }
     } else if ($rol == 2) {
       $id_user = $_SESSION['idUser'];
-      $sql = "SELECT SUM(b.estimated_sale) 
+      $sql = "SELECT SUM(b.estimated_sale) AS valuedBusiness
         FROM business b 
         INNER JOIN companies c ON b.id_company = c.id_company 
         INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase 
