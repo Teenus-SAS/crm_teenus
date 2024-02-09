@@ -61,7 +61,7 @@ include_once dirname(dirname(dirname(__DIR__))) . '/partials/scripts_header.php'
 					<div class="card-body">
 						<form class="gridx4" id="frmSubcategory">
 							<label for="subcategory" class="mb-2">Subcategorias</label>
-							<select class="form-select" name="selectCategory" id="selectCategory"></select>
+							<select class="form-select selectCategory" name="selectCategory" id="selectCategory"></select>
 							<input type="text" class="form-control" id="subcategory" name="subcategory">
 							<button class="btn btn-primary" id="btnCreatesubcategory">Crear Subcategorias</button>
 						</form>
