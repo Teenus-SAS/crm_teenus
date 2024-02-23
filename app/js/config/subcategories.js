@@ -23,7 +23,7 @@ $(document).ready(function () {
 
     //let data = $('#frmSubcategory').serialize()
 
-    category = $(".selectCategory").val();
+    category = $("#selectcategory").val();
     subcategory = $("#subcategory").val();
 
     data = { category, subcategory };
