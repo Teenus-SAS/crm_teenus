@@ -7,10 +7,10 @@ $(document).ready(function () {
       sessionStorage.setItem("categories", JSON.stringify(r));
 
       // Crear un objeto para almacenar las categorías únicas
-      var uniqueCategories = {};
+      //var uniqueCategories = {};
 
       // Filtrar y almacenar las categorías únicas en el objeto
-     /*  r.forEach(function (item) {
+      /*  r.forEach(function (item) {
         uniqueCategories[item.id_category] = item.category;
       }); */
 
