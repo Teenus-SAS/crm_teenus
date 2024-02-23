@@ -10,9 +10,16 @@ $(document).ready(function () {
       var uniqueCategories = {};
 
       // Filtrar y almacenar las categorías únicas en el objeto
-      r.forEach(function (item) {
+     /*  r.forEach(function (item) {
         uniqueCategories[item.id_category] = item.category;
-      });
+      }); */
+
+      const uniqueCategories = r.reduce((acc, curr) => {
+        if (!acc.includes(curr.category)) {
+          acc.push(curr.category);
+        }
+        return acc;
+      }, []);
 
       // Limpiar el select
       var $select = $("#selectCategory").empty();
