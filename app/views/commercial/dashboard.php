@@ -146,7 +146,7 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 						<!--end row-->
 
 						<div class="row">
-							<div class="col-12 col-lg-9">
+							<div class="col-12 col-lg-9 mb-3">
 								<div class="card radius-10">
 									<div class="card-body">
 										<div class="d-flex align-items-center">
@@ -202,7 +202,7 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 
 								</div>
 							</div>
-							<div class="col-12 col-lg-6">
+							<div class="col-12 col-lg-6 mb-3">
 								<div class="card radius-10">
 									<div class="card-body">
 										<div class="d-flex align-items-center">
@@ -241,7 +241,7 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 								</div>
 							</div>
 
-							<div class="col-12 col-lg-6">
+							<div class="col-12 col-lg-6 mb-3">
 								<div class="card radius-10">
 									<div class="card-body">
 										<div class="d-flex align-items-center">
