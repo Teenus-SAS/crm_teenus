@@ -3,23 +3,35 @@
 $(document).ready(function () {
   $.ajax({
     url: "/api/categories",
-    success: function (r) {
-      sessionStorage.setItem("categories", JSON.stringify(r));
+    success: function (dataCategories) {
+      sessionStorage.setItem("categories", JSON.stringify(dataCategories));
 
       // Crear un objeto para almacenar las categorías únicas
-      //var uniqueCategories = {};
+      let uniqueCategories = {};
 
       // Filtrar y almacenar las categorías únicas en el objeto
-      /*  r.forEach(function (item) {
-        uniqueCategories[item.id_category] = item.category;
-      }); */
-
-      const uniqueCategories = r.reduce((acc, curr) => {
-        if (!acc.includes(curr.category)) {
-          acc.push(curr.category);
+      dataCategories.forEach((obj) => {
+        const { id_category, category } = obj;
+        if (!uniqueCategories[id_category]) {
+          uniqueCategories[id_category] = category;
         }
-        return acc;
-      }, []);
+      });
+
+      const uniqueCategoryObjects = Object.entries(uniqueCategories).map(
+        ([id_category, category]) => ({ id_category, category })
+      );
+
+      uniqueCategoryObjects.sort((a, b) => {
+        const categoryA = a.category.toUpperCase();
+        const categoryB = b.category.toUpperCase();
+        if (categoryA < categoryB) {
+          return -1;
+        }
+        if (categoryA > categoryB) {
+          return 1;
+        }
+        return 0;
+      });
 
       // Limpiar el select
       var $select = $("#selectCategory").empty();
@@ -28,28 +40,11 @@ $(document).ready(function () {
       $select.append("<option disabled selected>Categorias</option>");
 
       // Iterar sobre las categorías únicas y agregarlas al select
-      for (var categoryId in uniqueCategories) {
+      for (let i = 0; i < uniqueCategoryObjects.length; i++) {
         $select.append(
-          `<option value="${categoryId}">${uniqueCategories[categoryId]}</option>`
+          `<option value="${uniqueCategoryObjects[i].id_category}">${uniqueCategoryObjects[i].category}</option>`
         );
       }
-
-      /* let $select = $(`#selectCategory`)
-            $select.empty()
-
-            $select.append(`<option option disabled selected > Categorias</option > `)
-
-            for (let i = 0; i < r.length; i++) {
-                if (i == 0) {
-                    $select.append(
-                        `<option option value = ${r[i].id_category}> ${r[i].category} </option > `,
-                    )
-                } else if (r[i].id_category != r[i - 1].id_category) {
-                    $select.append(
-                        `<option option value = ${r[i].id_category}> ${r[i].category} </option > `,
-                    )
-                }
-            } */
     },
   });
 });

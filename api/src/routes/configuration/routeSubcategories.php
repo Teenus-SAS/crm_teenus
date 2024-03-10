@@ -26,24 +26,20 @@ $app->get('/subcategoriesUnique', function (Request $request, Response $response
 $app->post('/addSubcategory', function (Request $request, Response $response, $args) use ($subcategoriesDao) {
     $dataSubcategory = $request->getParsedBody();
 
-    if (!empty($dataSubcategory['subcategory']) && !empty($dataSubcategory['selectCategory'])) {
+    if (!empty($dataSubcategory['subcategory']) && !empty($dataSubcategory['category'])) {
 
-        $category = $subcategoriesDao->saveSubcategory($dataSubcategory);
+        $resp = $subcategoriesDao->findSubcategoryByID($dataSubcategory);
 
-        if ($category == 2)
-            $resp = array('success' => true, 'message' => 'Subcategoria actualizada correctamente');
+        if (!$resp)
+            $resp = $subcategoriesDao->insertCategory($dataSubcategory);
 
-        if ($category == 1)
+        if ($resp)
             $resp = array('success' => true, 'message' => 'Subcategoria creada correctamente');
-
-        if ($category == 3)
-            $resp = array('error' => true, 'message' => 'Subcategoria ya existe');
+        else
+            $resp = array('error' => true, 'message' => 'Ocurrio un error. Intente Nuevamente');
     } else {
         $resp = array('error' => true, 'message' => 'Complete todos los datos');
     }
-
-    /* $response->getBody()->write(json_encode($resp));
-    return $response->withHeader('Content-Type', 'application/json'); */
 
     $response->getBody()->write(json_encode($resp, JSON_NUMERIC_CHECK));
     return $response->withHeader('Content-Type', 'application/json');

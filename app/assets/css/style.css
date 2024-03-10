@@ -26,7 +26,7 @@
 
 .gridx4 {
     display: grid;
-    grid-template-columns: 200px 1fr 1fr 1fr;
+    grid-template-columns: 100px 1fr 1fr 200px;
     grid-column-gap: 1em;
 }
 

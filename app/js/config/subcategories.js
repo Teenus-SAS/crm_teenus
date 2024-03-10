@@ -23,7 +23,7 @@ $(document).ready(function () {
 
     //let data = $('#frmSubcategory').serialize()
 
-    category = $("#selectcategory").val();
+    category = $(".selectCategory").val();
     subcategory = $("#subcategory").val();
 
     data = { category, subcategory };
@@ -51,8 +51,10 @@ $(document).ready(function () {
   $(document).on("click", ".updateSubcategory", function (e) {
     e.preventDefault();
     let id = $(this).prop("id");
-    let row = $(this).parent().parent()[0];
-    let data = tableCategoriesUnique.fnGetData(row);
+    //let row = $(this).parent().parent()[0];
+    //let data = tableCategoriesUnique.fnGetData(row);
+    let row = $(this).closest("tr"); // Obtener la fila más cercana al botón
+    let data = tableSubCategories.row(row).data(); // Obtener los datos de la fila
 
     $("#categories").show(500);
     $("#id_category").val(data.id_category);
@@ -87,4 +89,9 @@ $(document).ready(function () {
       }
     );
   });
+
+  const updateTable = () => {
+    $("#tableSubCategories").DataTable().clear();
+    $("#tableSubCategories").DataTable().ajax.reload();
+  };
 });

@@ -19,7 +19,8 @@ class CategoriesDao
   public function findAll()
   {
     $connection = Connection::getInstance()->getConnection();
-    $sql = "SELECT * FROM categories c 
+    $sql = "SELECT c.id_category, c.category, s.id_subcategory,s.subcategory 
+            FROM categories c 
             LEFT JOIN subcategories s ON c.id_category = s.id_category 
             ORDER BY c.category ASC;";
     $stmt = $connection->prepare($sql);

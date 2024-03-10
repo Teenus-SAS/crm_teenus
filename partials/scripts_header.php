@@ -14,15 +14,20 @@
 <link rel="stylesheet" type="text/css" href="/app/assetscom/plugins/simplebar/css/simplebar.css" />
 <link rel="stylesheet" type="text/css" href="/app/assetscom/plugins/perfect-scrollbar/css/perfect-scrollbar.css" />
 <link rel="stylesheet" type="text/css" href="/app/assetscom/plugins/metismenu/css/metisMenu.min.css" />
-<!-- <link href="/app/assetscom/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" /> -->
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+<!-- datatables -->
+<!-- <link rel="stylesheet" type="text/css" href="/app/assetscom/plugins/datatable/css/dataTables.bootstrap5.min.css"/> -->
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css"/> -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.2/css/dataTables.bootstrap5.css" />
 
 <!-- loader-->
 <link rel="stylesheet" type="text/css" href="/app/assetscom/css/pace.min.css" />
 <script src="/app/assetscom/js/pace.min.js"></script>
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" type="text/css" href="/app/assetscom/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="/app/assetscom/css/bootstrap.min.css"> -->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/app/assetscom/css/app.css">
 <link rel="stylesheet" type="text/css" href="/app/assetscom/css/icons.css">
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">

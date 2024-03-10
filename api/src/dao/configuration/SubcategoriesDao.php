@@ -49,41 +49,59 @@ class SubcategoriesDao
     return $budgets;
   }
 
-  public function saveSubcategory($dataCategory)
+  public function findSubcategoryByID($dataCategory)
   {
     $connection = Connection::getInstance()->getConnection();
+    $sql = "SELECT * FROM subcategories WHERE subcategory = :subcategory";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute(['subcategory' => $dataCategory['subcategory']]);
+    $rows = $stmt->rowCount();
+    return $rows;
+  }
 
-    if (!empty($dataCategory['id_subcategory'])) {
-      $stmt = $connection->prepare("UPDATE subcategories SET category = :category WHERE id_category = :id_category");
+  public function insertCategory($dataCategory)
+  {
+    try {
+      $connection = Connection::getInstance()->getConnection();
+      $sql = "INSERT INTO subcategories (subcategory, id_category) VALUES(:subcategory, :id_category)";
+      $stmt = $connection->prepare($sql);
       $stmt->execute([
-        'id_category' => $dataCategory['id_category'],
-        'category' => ucwords(strtolower(trim($dataCategory['category']))),
+        'subcategory' => ucfirst(strtolower(trim($dataCategory['subcategory']))),
+        'id_category' => $dataCategory['category'],
       ]);
+
       $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
+      return true;
+    } catch (\Throwable $th) {
+      return false;
+    }
+  }
+
+  public function updateSubcategory($dataCategory)
+  {
+    $connection = Connection::getInstance()->getConnection();
+    $sql = "UPDATE subcategories SET category = :category WHERE id_category = :id_category";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute([
+      'id_category' => $dataCategory['id_category'],
+      'category' => ucwords(strtolower(trim($dataCategory['category']))),
+    ]);
+    $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
+  }
+
+
+  public function saveSubcategory($dataCategory)
+  {
+    if (!empty($dataCategory['id_subcategory'])) {
+      $this->updateSubcategory($dataCategory);
       return 2;
     } else {
-      $stmt = $connection->prepare("SELECT * FROM subcategories WHERE id_subcategory = :id_subcategory");
-      $stmt->execute(['id_subcategory' => $dataCategory['id_subcategory']]);
-      $rows = $stmt->rowCount();
-
+      $rows = $this->findSubcategoryByID($dataCategory);
       if ($rows > 0) {
-        $id = $stmt->fetch($connection::FETCH_ASSOC);
-        $stmt = $connection->prepare("UPDATE subcategories SET category = :category  WHERE id_category = :id_category");
-        $stmt->execute([
-          'id_category ' => $id,
-          'category' => ucwords(strtolower(trim($dataCategory['category']))),
-        ]);
-        $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
+        $this->updateSubcategory($dataCategory);
         return 2;
       } else {
-
-        $stmt = $connection->prepare("INSERT INTO subcategories (subcategory, id_category) VALUES(:subcategory, :id_category)");
-        $stmt->execute([
-          'subcategory' => ucfirst(strtolower(trim($dataCategory['subcategory']))),
-          'id_category' => $dataCategory['selectCategory'],
-        ]);
-
-        $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
+        $this->insertCategory($dataCategory);
         return 1;
       }
     }
