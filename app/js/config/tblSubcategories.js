@@ -12,8 +12,8 @@ $(document).ready(function () {
       url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json",
     },
     columnDefs: [
-      { width: "10px", targets: [0, 3] },
-      { width: "200px", targets: [1, 2] },
+      { width: "5px", targets: [0, 3] },
+      { width: "2000px", targets: [1, 2] },
     ],
     columns: [
       {
@@ -41,7 +41,7 @@ $(document).ready(function () {
         render: function (data) {
           return `
                 <a href="javascript:;" id="${data}" <i class="bx bx-edit-alt updateSubcategory" data-toggle='tooltip' title='Editar Fase de Venta' style="font-size: 35px;"></i></a> 
-                <a href="javascript:;" id="${data}" <i class="bx bx-trash deleteUser" data-toggle='tooltip' title='Eliminar Fase de Venta' style="font-size: 35px;color:red"></i></a>`;
+                <a href="javascript:;" id="${data}" <i class="deleteUser" data-toggle='tooltip' title='Eliminar Fase de Venta' style="font-size: 35px;color:red"></i></a>`;
         },
       },
     ],

@@ -52,11 +52,11 @@ class SubcategoriesDao
   public function findSubcategoryByID($dataCategory)
   {
     $connection = Connection::getInstance()->getConnection();
-    $sql = "SELECT * FROM subcategories WHERE subcategory = :subcategory";
+    $sql = "SELECT id_subcategory FROM subcategories WHERE subcategory = :subcategory";
     $stmt = $connection->prepare($sql);
     $stmt->execute(['subcategory' => $dataCategory['subcategory']]);
-    $rows = $stmt->rowCount();
-    return $rows;
+    $IdSubcategory = $stmt->fetch($connection::FETCH_ASSOC);
+    return $IdSubcategory;
   }
 
   public function insertCategory($dataCategory)
@@ -77,33 +77,24 @@ class SubcategoriesDao
     }
   }
 
-  public function updateSubcategory($dataCategory)
+  public function updateSubcategory($dataCategory, $idSubcategory)
   {
-    $connection = Connection::getInstance()->getConnection();
-    $sql = "UPDATE subcategories SET category = :category WHERE id_category = :id_category";
-    $stmt = $connection->prepare($sql);
-    $stmt->execute([
-      'id_category' => $dataCategory['id_category'],
-      'category' => ucwords(strtolower(trim($dataCategory['category']))),
-    ]);
-    $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
-  }
+    try {
+      $connection = Connection::getInstance()->getConnection();
 
+      $sql = "UPDATE subcategories SET subcategory = :subcategory 
+              WHERE id_subcategory = :id_subcategory";
+      $stmt = $connection->prepare($sql);
 
-  public function saveSubcategory($dataCategory)
-  {
-    if (!empty($dataCategory['id_subcategory'])) {
-      $this->updateSubcategory($dataCategory);
-      return 2;
-    } else {
-      $rows = $this->findSubcategoryByID($dataCategory);
-      if ($rows > 0) {
-        $this->updateSubcategory($dataCategory);
-        return 2;
-      } else {
-        $this->insertCategory($dataCategory);
-        return 1;
-      }
+      $stmt->execute([
+        'subcategory' => ucwords(strtolower(trim($dataCategory['subcategory']))),
+        'id_subcategory' => $idSubcategory,
+      ]);
+
+      $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
+      return true;
+    } catch (\Throwable $th) {
+      return true;
     }
   }
 

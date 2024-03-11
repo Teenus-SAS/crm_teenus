@@ -50,14 +50,12 @@ $(document).ready(function () {
 
   $(document).on("click", ".updateSubcategory", function (e) {
     e.preventDefault();
-    let id = $(this).prop("id");
 
     let row = $(this).parent().parent()[0];
-    let data = tableCategoriesUnique.fnGetData(row);
-
-    $("#categories").show(500);
-    $("#id_category").val(data.id_category);
-    $("#category").val(data.category);
+    let data = tableSubCategories.fnGetData(row);
+   
+    $("#selectCategory").val(data.id_category);
+    $("#subcategory").val(data.subcategory);
 
     $("#btnCreateUser").html("Actualizar Usuario");
   });
@@ -68,7 +66,7 @@ $(document).ready(function () {
     e.preventDefault();
     let id = $(this).prop("id");
     let row = $(this).parent().parent()[0];
-    let data = tableCategoriesUnique.fnGetData(row);
+    let data = tableSubCategories.fnGetData(row);
 
     alertify.confirm(
       "teenus",

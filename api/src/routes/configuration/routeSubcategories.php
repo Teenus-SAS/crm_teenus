@@ -30,8 +30,11 @@ $app->post('/addSubcategory', function (Request $request, Response $response, $a
 
         $resp = $subcategoriesDao->findSubcategoryByID($dataSubcategory);
 
-        if (!$resp)
+        if (!$resp['id_subcategory'])
             $resp = $subcategoriesDao->insertCategory($dataSubcategory);
+        else
+            $resp = $subcategoriesDao->updateSubCategory($dataSubcategory, $resp['id_subcategory']);
+
 
         if ($resp)
             $resp = array('success' => true, 'message' => 'Subcategoria creada correctamente');
