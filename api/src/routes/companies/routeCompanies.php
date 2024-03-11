@@ -19,20 +19,28 @@ $app->get('/companies', function (Request $request, Response $response, $args) u
 $app->post('/addCompany', function (Request $request, Response $response, $args) use ($companieDao) {
     $dataCompany = $request->getParsedBody();
 
-     if (empty($dataCompany['nit']) || empty($dataCompany['company_name']) || empty($dataCompany['address']) || empty($dataCompany['city']) || empty($dataCompany['category']) || empty($dataCompany['subcategory']))
+    if (empty($dataCompany['nit']) || empty($dataCompany['company_name']) || empty($dataCompany['address']) || empty($dataCompany['city']) || empty($dataCompany['category']) || empty($dataCompany['subcategory']))
         $resp = array('error' => true, 'message' => 'Ingrese todos los datos');
-    else { 
-        $company = $companieDao->saveCompany($dataCompany);
-        if ($company == 1)
-            $resp = array('success' => true, 'message' => 'Empresa creada correctamente');
-        else if ($company == 2)
-            $resp = array('success' => true, 'message' => 'Empresa actualizada correctamente');
-        else if ($company == 3)
-            $resp = array('error' => true, 'message' => 'La empresa ya se encuentra creada. Intente nuevamente');
-        else
-            $resp = array('error' => true, 'message' => 'Ocurrio un error mientras guardaba. Intente nuevamente');
+    else {
+        if (empty($dataCompany['id_company'])) {
+            $result = $companieDao->findCompany($dataCompany);
+            if ($result > 0)
+                $resp = array('error' => true, 'message' => 'La empresa ya se encuentra creada');
+            else {
+                $result = $companieDao->insertCompany($dataCompany);
+                if ($result)
+                    $resp = array('success' => true, 'message' => 'Empresa creada correctamente');
+                else
+                    $resp = array('error' => true, 'message' => 'Ocurrio un error. Intente Nuevamente');
+            }
+        } else {
+            $result = $companieDao->updateCompany($dataCompany);
+            if ($result)
+                $resp = array('success' => true, 'message' => 'Empresa actualizada correctamente');
+            else
+                $resp = array('error' => true, 'message' => 'Ocurrio un error. Intente Nuevamente');
+        }
     }
-
     $response->getBody()->write(json_encode($resp));
     return $response->withHeader('Content-Type', 'application/json');
 });

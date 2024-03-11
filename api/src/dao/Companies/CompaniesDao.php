@@ -51,41 +51,57 @@ class CompaniesDao
     }
   }
 
-  public function saveCompany($dataCompany)
+  public function findCompany($dataCompany)
   {
     $connection = Connection::getInstance()->getConnection();
+    $sql = "SELECT * FROM companies WHERE company_name = :company_name";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute([
+      'company_name' => ucwords(strtolower(trim($dataCompany['company_name']))),
+    ]);
+    $rows = $stmt->rowCount();
+    return $rows;
+  }
 
-    if (empty($dataCompany['id_company'])) {
+  public function insertCompany($dataCompany)
+  {
+    try {
+      $connection = Connection::getInstance()->getConnection();
 
-      $stmt = $connection->prepare("SELECT * FROM companies WHERE company_name = :company_name");
+      session_start();
+      $id_user = $_SESSION['idUser'];
+
+      $dataCompany['subcategory'] == null ? $dataCompany['subcategory'] = 1 : $dataCompany['subcategory'];
+
+      $stmt = $connection->prepare("INSERT INTO companies (nit, company_name, address, phone, city, id_subcategory, created_by) 
+                                  VALUES(:nit, :company_name, :address, :phone, :city, :id_subcategory, :created_by)");
       $stmt->execute([
-        //'nit' => trim($dataCompany['nit']),
-        'company_name' => ucwords(strtolower(trim($dataCompany['company_name']))),
+        'nit' => trim($dataCompany['nit']),
+        'company_name' => strtoupper(trim($dataCompany['company_name'])),
+        'address' => trim($dataCompany['address']),
+        'phone' => trim($dataCompany['phone']),
+        'city' => ucwords(strtolower(trim($dataCompany['city']))),
+        'id_subcategory' => $dataCompany['subcategory'],
+        'created_by' => $id_user
       ]);
-      $rows = $stmt->rowCount();
+      return true;
+    } catch (\Throwable $th) {
+      return false;
+    }
+  }
 
-      if ($rows != 1) {
-        session_start();
-        $id_user = $_SESSION['idUser'];
-        $dataCompany['subcategory'] == null ? $dataCompany['subcategory'] = 1 : $dataCompany['subcategory'];
-        
-        $stmt = $connection->prepare("INSERT INTO companies (nit, company_name, address, phone, city, id_subcategory, created_by) 
-                                    VALUES(:nit, :company_name, :address, :phone, :city, :id_subcategory, :created_by)");
-        $stmt->execute([
-          'nit' => trim($dataCompany['nit']),
-          'company_name' => strtoupper(trim($dataCompany['company_name'])),
-          'address' => trim($dataCompany['address']),
-          'phone' => trim($dataCompany['phone']),
-          'city' => ucwords(strtolower(trim($dataCompany['city']))),
-          'id_subcategory' => $dataCompany['subcategory'],
-          'created_by' => $id_user
-        ]);
-        $r = 1;
-      } else
-        $r = 3;
-    } else {
-      $stmt = $connection->prepare("UPDATE companies SET nit = :nit, company_name = :company_name, address = :address, phone = :phone, city = :city, id_subcategory = :id_subcategory
-                                    WHERE id_company = :id_company");
+
+
+  public function updateCompany($dataCompany)
+  {
+
+    try {
+      $connection = Connection::getInstance()->getConnection();
+
+      $sql = "UPDATE companies SET nit = :nit, company_name = :company_name, address = :address, 
+                phone = :phone, city = :city, sales = :sales, id_subcategory = :id_subcategory
+              WHERE id_company = :id_company";
+      $stmt = $connection->prepare($sql);
       $stmt->execute([
         'id_company' => trim($dataCompany['id_company']),
         'nit' => trim($dataCompany['nit']),
@@ -93,13 +109,14 @@ class CompaniesDao
         'address' => trim($dataCompany['address']),
         'phone' => trim($dataCompany['phone']),
         'city' => ucwords(strtolower(trim($dataCompany['city']))),
+        'sales' => ucwords(trim($dataCompany['salesCompany'])),
         'id_subcategory' => trim($dataCompany['subcategory']),
       ]);
-      $r = 2;
+      $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
+      return true;
+    } catch (\Throwable $th) {
+      return false;
     }
-
-    $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
-    return $r;
   }
 
   public function deleteCompany($dataCompanie)

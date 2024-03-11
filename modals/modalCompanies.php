@@ -33,19 +33,32 @@
                             <input type="text" class="form-control" id="city" name="city" required>
                         </div>
                         <hr>
-                        <div class="col-md-5">
+                        <div class="col-md-12">
                             <label for="selectCategory" class="form-label">Categoria</label>
                             <select class="form-select" id="selectCategory" name="category" required>
                                 <option selected disabled value="0">Seleccionar...</option>
                             </select>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-12">
                             <label for="selectSubcategory" class="form-label">Subcategoria</label>
                             <select class="form-select" id="selectSubcategory" name="subcategory" required>
                                 <option selected disabled value="0">Seleccionar...</option>
                             </select>
                         </div>
-                        
+
+                        <div class="col-md-12">
+                            <label for="salesCompany" class="form-label">Ventas (miles de millones)</label>
+                            <select class="form-select" id="salesCompany" name="salesCompany" required>
+                                <option selected disabled value="0">Seleccionar...</option>
+                                <option value="Menor a 1.000">Menor a 1.000</option>
+                                <option value="Entre 1.000 y 2.000">Entre 1.000 y 2.000</option>
+                                <option value="Entre 2.000 y 5.000">Entre 2.000 y 5.000</option>
+                                <option value="Entre 5.000 y 10.000">Entre 5.000 y 10.000</option>
+                                <option value="Entre 10.000 y 20.000">Entre 10.000 y 20.000</option>
+                                <option value="Mayor a 20.000">Mayor a 20.000</option>
+                            </select>
+                        </div>
+
                         <div class="col-12 mt-3" style="display: flex;justify-content:end">
                             <!-- <button class="btn btn-primary" type="button" id="btnCreateUser">Crear Usuario</button> -->
                             <button class="btn btn-primary" type="submit" id="btnSaveCompany">Crear Empresa</button>
