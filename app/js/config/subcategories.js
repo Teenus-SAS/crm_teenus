@@ -51,10 +51,9 @@ $(document).ready(function () {
   $(document).on("click", ".updateSubcategory", function (e) {
     e.preventDefault();
     let id = $(this).prop("id");
-    //let row = $(this).parent().parent()[0];
-    //let data = tableCategoriesUnique.fnGetData(row);
-    let row = $(this).closest("tr"); // Obtener la fila más cercana al botón
-    let data = tableSubCategories.row(row).data(); // Obtener los datos de la fila
+
+    let row = $(this).parent().parent()[0];
+    let data = tableCategoriesUnique.fnGetData(row);
 
     $("#categories").show(500);
     $("#id_category").val(data.id_category);
