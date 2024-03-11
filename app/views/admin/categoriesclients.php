@@ -36,10 +36,10 @@ include_once dirname(dirname(dirname(__DIR__))) . '/partials/scripts_header.php'
 					<div class="ms-auto">
 						<div class="btn-group">
 							<div style="margin-right: 5px;">
-								<button type="button" class="btn btn-primary" id="btnNewCategory">Crear Categoria</button>
+								<button type="button" class="btn btn-success" id="btnNewCategory">Crear/Actualizar Categoria</button>
 							</div>
 							<div>
-								<button type="button" class="btn btn-warning" id="btnNewSubcategory">Crear Subcategoria</button>
+								<button type="button" class="btn btn-warning" id="btnNewSubcategory">Crear/Actualizar Subcategoria</button>
 							</div>
 						</div>
 					</div>
@@ -85,17 +85,6 @@ include_once dirname(dirname(dirname(__DIR__))) . '/partials/scripts_header.php'
 					<div class="card-body">
 						<div class="table-responsive">
 							<table id="tableSubCategories" class="table table-striped table-bordered" style="width:100%">
-								<thead>
-									<tr>
-										<th>id</th>
-										<th>SubCategoria</th>
-										<th>Categorias</th>
-										<th>Acciones</th>
-									</tr>
-								</thead>
-								<tbody>
-
-								</tbody>
 
 							</table>
 						</div>
@@ -107,17 +96,6 @@ include_once dirname(dirname(dirname(__DIR__))) . '/partials/scripts_header.php'
 					<div class="card-body">
 						<div class="table-responsive">
 							<table id="tableCategories" class="table table-striped table-bordered" style="width:100%">
-								<thead>
-									<tr>
-										<th>id</th>
-										<th>Categorias</th>
-										<th>SubCategoria</th>
-										<th>Acciones</th>
-									</tr>
-								</thead>
-								<tbody>
-
-								</tbody>
 
 							</table>
 						</div>

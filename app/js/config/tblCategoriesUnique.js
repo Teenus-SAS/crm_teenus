@@ -34,8 +34,8 @@ $(document).ready(function () {
         data: "id_category",
         render: function (data) {
           return `
-                <a href="javascript:;" id="${data}" <i class="bx bx-edit-alt updateSubcategory" data-toggle='tooltip' title='Editar Categoria' style="font-size: 35px;"></i></a> 
-                <a href="javascript:;" id="${data}" <i class="bx bx-trash deleteSubCategory" data-toggle='tooltip' title='Eliminar Categoria' style="font-size: 35px;color:red"></i></a>`;
+                <a href="javascript:;" id="${data}" <i class="bx bx-edit-alt updateCategory" data-toggle='tooltip' title='Editar Categoria' style="font-size: 35px;"></i></a> 
+                <a href="javascript:;" id="${data}" <i class="bx bx-trash deleteCategory" data-toggle='tooltip' title='Eliminar Categoria' style="font-size: 35px;color:red"></i></a>`;
         },
       },
     ],
