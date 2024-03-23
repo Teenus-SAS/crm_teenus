@@ -41,12 +41,12 @@ indicatorsGenerales = (id) => {
         $(".totalSales").html(
           `${totalSales.toLocaleString("es-CO", {
             minimumFractionDigits: 2,
-          })} % (Total)`
+          })} % (Año)`
         );
         $(".actualSales").html(
           `${actualSales.toLocaleString("es-CO", {
             minimumFractionDigits: 2,
-          })} % (Mensual)`
+          })} % (Mes)`
         );
       }, 1000);
     },

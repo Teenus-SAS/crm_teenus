@@ -118,7 +118,7 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 									<div class="card-body">
 										<div class="d-flex align-items-center">
 											<div>
-												<p class="mb-0 text-secondary">Facturación Mensual</p>
+												<p class="mb-0 text-secondary">Facturación (Mes)</p>
 												<h4 class="my-1 text-success valuedBillsMonth"></h4>
 											</div>
 											<div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i class='bx bxs-group'></i>
