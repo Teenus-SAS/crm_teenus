@@ -60,7 +60,7 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 									<div class="card-body">
 										<div class="d-flex align-items-center">
 											<div>
-												<p class="mb-0 text-secondary">Clientes Nuevos</p>
+												<p class="mb-0 text-secondary">Contactos Nuevos</p>
 												<h4 class="my-1 text-info newCustomers"></h4>
 											</div>
 											<div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white ms-auto"><i class='bx bx-user-plus'></i>
@@ -184,12 +184,29 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 
 								</div>
 							</div>
+
+							<div class="col-12 col-lg-12 mb-3">
+								<div class="card radius-10">
+									<div class="card-body">
+										<div class="d-flex align-items-center">
+											<div>
+												<h6 class="mb-0">Pipeline</h6>
+											</div>
+										</div>
+										<div class="chart-container-1">
+											<canvas id="phasesPipeline"></canvas>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
 							<div class="col-12 col-lg-6">
 								<div class="card radius-10">
 									<div class="card-body">
 										<div class="d-flex align-items-center">
 											<div>
-												<h6 class="mb-0">Clientes</h6>
+												<h6 class="mb-0">Contactos</h6>
 											</div>
 										</div>
 										<div class="d-flex align-items-center ms-auto font-13 gap-2 my-3">
@@ -612,6 +629,7 @@ require_once dirname(dirname(__DIR__)) . '/sesiones/sesion_com.php';
 	<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/scripts_js.php' ?>
 
 	<script src="/app/js/indicators/indicators.js"></script>
+	<script src="/app/js/indicators/phasesBudget.js"></script>
 	<script src="/app/js/global/sellers.js"></script>
 	<script src="/app/js/global/profile.js"></script>
 </body>

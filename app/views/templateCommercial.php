@@ -28,7 +28,7 @@
 							<div class="card-body">
 								<div class="d-flex align-items-center">
 									<div>
-										<p class="mb-0 text-secondary">Clientes Nuevos</p>
+										<p class="mb-0 text-secondary">Contactos Nuevos</p>
 										<h4 class="my-1 text-info newCustomers"></h4>
 									</div>
 									<div class="widgets-icons-2 rounded-circle bg-gradient-scooter text-white ms-auto"><i class='bx bx-user-plus'></i>

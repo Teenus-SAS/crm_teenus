@@ -5,12 +5,14 @@ use crmteenus\dao\BusinessKeyDao;
 use crmteenus\dao\CustomersDao;
 use crmteenus\dao\OrdersKeyDao;
 use crmteenus\dao\SalesDao;
+use crmteenus\dao\SalesPhasesDao;
 
 $businesskeyDao = new BusinessKeyDao();
 $customersDao = new CustomersDao();
 $orderskeyDao = new OrdersKeyDao();
 $billingsKeyDao = new BillingsKeyDao();
 $salesDao = new SalesDao();
+$salesphasesDao = new SalesPhasesDao();
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -75,5 +77,12 @@ $app->get('/valuedOrders/{id}', function (Request $request, Response $response, 
     $valuedOrders = $orderskeyDao->findValuedBill($args['id']);
 
     $response->getBody()->write(json_encode($valuedOrders, JSON_NUMERIC_CHECK));
+    return $response->withHeader('Content-Type', 'application/json');
+});
+
+$app->get('/phasesPipeline/{id}', function (Request $request, Response $response, $args) use ($salesphasesDao) {
+    $salesphases = $salesphasesDao->findAll();
+
+    $response->getBody()->write(json_encode($salesphases, JSON_NUMERIC_CHECK));
     return $response->withHeader('Content-Type', 'application/json');
 });
