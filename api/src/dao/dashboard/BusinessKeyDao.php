@@ -83,6 +83,7 @@ class BusinessKeyDao
           AND sp.sales_phase != 'Cierre De Venta' 
           AND sp.sales_phase != 'Calificación Lead' 
           AND sp.sales_phase != 'Generación Leads' 
+          AND sp.sales_phase != 'Cita/reunión' 
           AND sp.sales_phase != 'Interes' 
           AND sp.sales_phase != 'Facturacion') ";
         $stmt = $connection->prepare($sql);
@@ -103,6 +104,7 @@ class BusinessKeyDao
           AND sp.sales_phase != 'Cierre De Venta' 
           AND sp.sales_phase != 'Calificación Lead' 
           AND sp.sales_phase != 'Generación Leads' 
+          AND sp.sales_phase != 'Cita/reunión' 
           AND sp.sales_phase != 'Interes' 
           AND sp.sales_phase != 'Facturacion') ";
         $stmt = $connection->prepare($sql);
