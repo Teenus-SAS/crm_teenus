@@ -81,6 +81,9 @@ class BusinessKeyDao
           AND sp.sales_phase != 'Pospuesto' 
           AND sp.sales_phase != 'Finalizado' 
           AND sp.sales_phase != 'Cierre De Venta' 
+          AND sp.sales_phase != 'Calificación Lead' 
+          AND sp.sales_phase != 'Generación Leads' 
+          AND sp.sales_phase != 'Interes' 
           AND sp.sales_phase != 'Facturacion') ";
         $stmt = $connection->prepare($sql);
         $stmt->execute(['id_user' => $id_user]);
@@ -93,11 +96,14 @@ class BusinessKeyDao
         INNER JOIN sales_phases sp ON sp.id_phase = b.id_phase 
         INNER JOIN users u ON u.id_user = c.created_by 
         WHERE c.created_by = :id_user 
-          AND (sp.sales_phase != 'Cancelado' 
+        AND (sp.sales_phase != 'Cancelado' 
           AND sp.sales_phase != 'Cerrado' 
           AND sp.sales_phase != 'Pospuesto' 
           AND sp.sales_phase != 'Finalizado' 
           AND sp.sales_phase != 'Cierre De Venta' 
+          AND sp.sales_phase != 'Calificación Lead' 
+          AND sp.sales_phase != 'Generación Leads' 
+          AND sp.sales_phase != 'Interes' 
           AND sp.sales_phase != 'Facturacion') ";
         $stmt = $connection->prepare($sql);
       $stmt->execute(['id_user' => $id_user]);
