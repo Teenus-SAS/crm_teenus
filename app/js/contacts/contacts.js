@@ -1,5 +1,5 @@
-$(document).ready(function() {
-    $('#btnCreateContact').click(function(e) {
+$(document).ready(function () {
+    $('#btnCreateContact').click(function (e) {
         e.preventDefault();
         $('#id_contact').val('');
         $('#formNewContact')[0].reset();
@@ -9,7 +9,7 @@ $(document).ready(function() {
 
     /* Actualizacion Usuario */
 
-    $(document).on('click', '.editContact', function(e) {
+    $(document).on('click', '.editContact', function (e) {
         e.preventDefault();
         let id = $(this).prop('id');
         let row = $(this).parent().parent()[0];
@@ -34,7 +34,7 @@ $(document).ready(function() {
 
     /* Creacion Nuevo Usuario */
 
-    $('#btnSaveContact').click(function(e) {
+    $('#btnSaveContact').click(function (e) {
         e.preventDefault();
 
         sessionStorage.removeItem('companies_contacts');
@@ -44,7 +44,7 @@ $(document).ready(function() {
             type: 'POST',
             url: '/api/addContact',
             data: data,
-            success: function(resp, jqXHR, statusCode) {
+            success: function (resp, jqXHR, statusCode) {
                 if (resp.success == true) {
                     $('#modalCreateContact').modal('hide');
                     toastr.success(resp.message);
@@ -59,19 +59,19 @@ $(document).ready(function() {
 
     /* Eliminar Usuario */
 
-    $(document).on('click', '.eliminarContact', function(e) {
+    $(document).on('click', '.eliminarContact', function (e) {
         e.preventDefault();
         let id = $(this).prop('id');
 
         alertify.confirm(
             'teenus',
             `¿Realmente desea eliminar el contacto <b>${email}</b>?, esta acción no se puede reversar`,
-            function() {
+            function () {
                 $.ajax({
                     type: 'POST',
                     url: '/api/deleteUser',
                     data: { idUser: id },
-                    success: function(r) {
+                    success: function (r) {
                         if (r == null)
                             toastr.success('Usuario no puede eliminarse', 'error');
                         else toastr.success('Usuario eliminado');
@@ -79,7 +79,7 @@ $(document).ready(function() {
                     },
                 });
             },
-            function() {
+            function () {
                 alertify.error('Cancel');
             }
         );

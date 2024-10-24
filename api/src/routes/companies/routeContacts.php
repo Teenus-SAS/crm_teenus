@@ -39,6 +39,14 @@ $app->post('/addContact', function (Request $request, Response $response, $args)
 $app->post('/deleteContact', function (Request $request, Response $response, $args) use ($contactsDao) {
     $dataContact = $request->getParsedBody();
     $contact = $contactsDao->deleteContact($dataContact);
-    $response->getBody()->write(json_encode($contact, JSON_NUMERIC_CHECK));
+
+    if ($contact == null)
+        $resp = ['success' => true, 'message' => 'Contacto eliminado correctamente'];
+    else if (isset($contact['info']))
+        $resp = ['info' => true, 'message' => $contact['message']];
+    else
+        $resp = ['error' => true, 'message' => 'Error al eliminar contacto intente nuevamente'];
+
+    $response->getBody()->write(json_encode($resp, JSON_NUMERIC_CHECK));
     return $response->withHeader('Content-Type', 'application/json');
 });
