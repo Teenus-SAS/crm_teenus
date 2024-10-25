@@ -19,6 +19,7 @@ get('/dashboard', 'app/views/commercial/dashboard.php');
 get('/budget', '/app/views/commercial/budget.php');
 get('/contacts', '/app/views/commercial/contacts.php');
 get('/companies', '/app/views/commercial/companies.php');
+get('/support', '/app/views/support/emailSupport.php');
 
 get('/projects', '/app/views/commercial/business.php');
 get('/projects-list', '/app/views/commercial/business.php');

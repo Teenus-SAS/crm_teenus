@@ -42,7 +42,7 @@ class PasswordDao
 
         if ($rows > 0) {
 
-            $cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz!$%&/¡*+-:;<>";
+            $cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz!%&/¡*+-:;<>";
             $longitudCadena = strlen($cadena);
             $new_pass = "";
             $longitudPass = 10;

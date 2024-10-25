@@ -27,52 +27,53 @@ class SendEmailDao extends PHPMailer
         try {
             $mail = new PHPMailer(true);
 
-            //Server settings
+            // Configuración del servidor SMTP
             $mail->isSMTP();
-            //$mail->SMTPDebug     = 1;
-            $mail->Host          = $_ENV["smtpHost"];
-            $mail->SMTPAuth      = true;
-            $mail->Username     = $_ENV["smtpEmail"];
-            $mail->Password     = $_ENV["smtpPass"];
+            $mail->Host       = $_ENV["smtpHost"];
+            $mail->SMTPAuth   = true;
+            $mail->Username   = $_ENV["smtpEmail"];
+            $mail->Password   = $_ENV["smtpPass"];
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-            //$mail->SMTPSecure = "tls";
-            $mail->Port          = $_ENV["smtpPort"];
+            $mail->Port       = $_ENV["smtpPort"];
 
-            //Recipients
-            $mail->setFrom($email, $name, '');
-            $mail->FromName = $name;
-
-            // Destinatario
-            foreach ($dataEmail['to'] as $key => $value) {
+            // Configuración del remitente y destinatario
+            $mail->setFrom($email, $name);
+            foreach ($dataEmail['to'] as $value) {
                 $mail->addAddress($value);
             }
 
-            // if ($dataEmail['user'] != null)
-            //     $mail->addAddress($dataEmail['user']);
-
-            //Attachments
-            // if ($dataEmail['pdf'] != null) {
-            //     $fichero = file_get_contents($dataEmail['pdf']);
-            //     $mail->addStringAttachment($fichero, 'Cotización.pdf');
-            // }
-
-            // Content
-            $mail->IsHTML(true);
+            // Configuración del contenido
+            $mail->isHTML(true);
             $mail->CharSet = 'UTF-8';
             $mail->Subject = $dataEmail['subject'];
             $mail->Body    = $dataEmail['body'];
-
-            // Asunto del correo
-            if ($dataEmail['ccHeader'] != null)
+            if ($dataEmail['ccHeader'] != null) {
                 $mail->addCC($dataEmail['ccHeader']);
+            }
 
-            // Texto alternativo
-            //$mail->mailHeader = $dataEmail['header'];
-            $mail->send();
+            // Enviar correo y seguimiento del estado
+            if ($mail->send()) {
+                $status = [
+                    'status' => 'success',
+                    'message' => 'Correo enviado exitosamente.',
+                ];
+            } else {
+                $status = [
+                    'status' => 'error',
+                    'message' => 'El correo no pudo ser enviado. Error desconocido.',
+                ];
+            }
         } catch (\Exception $e) {
-            $message = $e->getMessage();
-            $error = array('info' => true, 'message' => $message);
-            return $error;
+            // Detalle de error en caso de excepción
+            $status = [
+                'status' => 'error',
+                'message' => 'Error al enviar correo: ' . $e->getMessage(),
+            ];
         }
+
+        // Registrar estado en base de datos o log para hacer seguimiento
+        // saveEmailLog($email, $status); // Implementa una función para guardar el registro
+
+        return $status;
     }
 }

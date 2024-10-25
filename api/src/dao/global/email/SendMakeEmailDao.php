@@ -27,7 +27,7 @@ class SendMakeEmailDao
                 Ingresa el siguiente código para completar el inicio de sesión:\r\n
                 <h4>$code</h4>";
 
-        $resp = array('to' => array($user['email']), 'pdf' => null, 'subject' => 'Código De Verificación', 'body' => $msg, 'ccHeader' => null);
+        $resp = array('to' => array($user['email']), 'subject' => 'Código De Verificación', 'body' => $msg, 'ccHeader' => null);
 
         return $resp;
     }
@@ -54,7 +54,7 @@ class SendMakeEmailDao
                 </body>
             </html>";
 
-        $resp = array('to' => array($email), 'pdf' => null, 'subject' => 'Nuevo Password', 'body' => $msg, 'ccHeader' => null);
+        $resp = array('to' => array($email), 'subject' => 'Nuevo Password', 'body' => $msg, 'ccHeader' => null);
         return $resp;
     }
 
@@ -78,7 +78,7 @@ class SendMakeEmailDao
                     </p>
                 </body>
             </html>";
-        $resp = array('to' => array($email), 'pdf' => null, 'subject' => 'Nuevo Password', 'body' => $msg, 'ccHeader' => null);
+        $resp = array('to' => array($email), 'subject' => 'Nuevo Password', 'body' => $msg, 'ccHeader' => null);
         return $resp;
     }
 
@@ -101,7 +101,7 @@ class SendMakeEmailDao
                     </p>
                 </body>
             </html>";
-        $resp = array('to' => array($email), 'pdf' => null, 'subject' => 'Actualización', 'body' => $msg, 'ccHeader' => null);
+        $resp = array('to' => array($email), 'subject' => 'Actualización', 'body' => $msg, 'ccHeader' => null);
         return $resp;
     }
 
@@ -116,7 +116,7 @@ class SendMakeEmailDao
         $subject = 'Soporte' . "\r\n";
         $subject .= $dataSupport['subject'];
 
-        $resp = array('to' => array($email), 'pdf' => null, 'subject' => $subject, 'body' => $msg, 'ccHeader' => $ccHeader);
+        $resp = array('to' => array($email), 'subject' => $subject, 'body' => $msg, 'ccHeader' => $ccHeader);
 
         return $resp;
     }

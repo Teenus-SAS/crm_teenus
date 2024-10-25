@@ -12,7 +12,7 @@ include_once('../modals/modalNewSeller.php');
 
 <body>
 	<!--wrapper-->
-	<div class="wrapper">admin/
+	<div class="wrapper">
 		<!--sidebar wrapper -->
 		<?php include_once('../partials/admin/admin_sidebar.php'); ?>
 

@@ -37,6 +37,17 @@ class UserDao
     return $users;
   }
 
+  public function findAllUsers()
+  {
+    $connection = Connection::getInstance()->getConnection();
+    $sql = "SELECT * FROM SELECT * FROM users";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute();
+    $user = $stmt->fetchAll($connection::FETCH_ASSOC);
+
+    return $user;
+  }
+
   public function findByEmail($userEmail)
   {
     $connection = Connection::getInstance()->getConnection();

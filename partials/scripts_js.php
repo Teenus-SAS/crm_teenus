@@ -37,6 +37,8 @@
 <!-- Numbers -->
 <script src="/app/assets/plugins/format-number/jquery.inputmask.js"></script>
 <script src="/app/assets/plugins/format-number/inputmask.binding.js"></script>
+<script src="/app/assets/plugins/ckeditor/js/ckeditor.min.js"></script>
+<script src="/app/assets/js/compose-mail.init.js"></script>
 <!--app JS-->
 <script src="/app/assetscom/js/app.js"></script>
 <script src="/app/js/global/logout.js"></script>
