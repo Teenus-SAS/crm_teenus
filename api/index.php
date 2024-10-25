@@ -23,6 +23,7 @@ require_once('../api/src/routes/commercialProcess/routeSchedules.php');
 
 require_once('../api/src/routes/companies/routeCompanies.php');
 require_once('../api/src/routes/companies/routeContacts.php');
+require_once('../api/src/routes/salesClients/routeSaleClient.php');
 
 /* Configuracion */
 
