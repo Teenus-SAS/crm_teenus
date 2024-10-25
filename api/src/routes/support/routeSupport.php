@@ -24,7 +24,7 @@ $app->post('/sendEmailSupport', function (Request $request, Response $response, 
     foreach ($contacts as $arr) {
         $dataEmail = $sendMakeEmailDao->sendEmailSupport($dataSupport, $arr['email']);
 
-        $support = $sendEmailDao->sendEmail($dataEmail, 'soporteTezlik@tezliksoftware.com.co', 'SoporteTezlik');
+        $support = $sendEmailDao->sendEmail($dataEmail, 'sergio.velandia@teenus.com.co', 'Sergio Velandia');
 
         if (!isset($support['status'])) break;
         // Esperar 60 segundos antes de pasar al siguiente usuario
