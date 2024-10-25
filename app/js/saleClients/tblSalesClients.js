@@ -43,7 +43,7 @@ $(document).ready(function () {
         },
         {
             title: 'Empresa',
-            data: 'company_name',
+            data: 'company',
             className: 'uniqueClassName',
         },
         {

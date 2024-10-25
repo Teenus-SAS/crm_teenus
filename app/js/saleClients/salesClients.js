@@ -38,7 +38,7 @@ $(document).ready(function () {
         $('#position').val(data.position);
         $('#email').val(data.email);
         $('#cellphone').val(data.cellphone);
-        $(`#selectCompanies option[value=${data.id_company}]`).prop('selected', true);
+        $('#company').val(data.company); 
         $('#sales').val(data.sales);
 
         $('html, body').animate(
@@ -53,20 +53,12 @@ $(document).ready(function () {
     const checkDataSaleClient = async (url, idSaleClient) => {
         let firstname = $('#firstname').val();
         let lastname = $('#lastname').val();
-        let position = $('#position').val();
         let email = $('#email').val();
-        let cellphone = $('#cellphone').val();
-        let selectCompanies = $('#selectCompanies').val();
-        let sales = $('#sales').val();
 
         if (
             firstname.trim() == '' || !firstname.trim() ||
             lastname.trim() == '' || !lastname.trim() ||
-            position.trim() == '' || !position.trim() ||
-            email.trim() == '' || !email.trim() ||
-            cellphone.trim() == '' || !cellphone.trim() ||
-            !selectCompanies ||
-            sales.trim() == '' || !sales.trim()
+            email.trim() == '' || !email.trim()
         ) {
             toastr.error('Ingrese todos los campos');
             return false;

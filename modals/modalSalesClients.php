@@ -40,9 +40,7 @@
                         </div>
                         <div class="col-md-5">
                             <label for="selectCompanies" class="form-label">Nombre Empresa</label>
-                            <select class="form-select generalInputs" id="selectCompanies" name="company" required>
-                                <option selected disabled value="0">Seleccionar...</option>
-                            </select>
+                            <input type="text" class="form-control" id="company" name="company">
                         </div>
                         <hr>
                         <div class="col-md-4">
