@@ -113,7 +113,7 @@ class SendMakeEmailDao
         // the message
         $msg = $dataSupport['message'];
 
-        $subject = 'Soporte' . "\r\n";
+        $subject = 'Soporte. ';
         $subject .= $dataSupport['subject'];
 
         $resp = array('to' => array($email), 'subject' => $subject, 'body' => $msg, 'ccHeader' => $ccHeader);

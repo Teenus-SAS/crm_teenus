@@ -51,7 +51,7 @@ $app->post('/sendSimEmailSupport', function (Request $request, Response $respons
 
     $dataEmail = $sendMakeEmailDao->sendEmailSupport($dataSupport, $dataSupport['email']);
 
-    $support = $sendEmailDao->sendEmail($dataEmail, 'soporteTezlik@tezliksoftware.com.co', 'SoporteTezlik');
+    $support = $sendEmailDao->sendEmail($dataEmail, 'sergio.velandia@teenus.com.co', 'Soporte');
 
     if ($support['status'] == 'success')
         $resp = array('success' => true, 'message' => $support['message']);
