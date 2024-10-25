@@ -18,6 +18,7 @@ require_once('../api/src/routes/commercialProcess/routeBillings.php');
 require_once('../api/src/routes/commercialProcess/routeOrders.php');
 require_once('../api/src/routes/commercialProcess/routeQuotes.php');
 require_once('../api/src/routes/commercialProcess/routeSchedules.php');
+require_once('../api/src/routes/support/routeSupport.php');
 
 /* Empresas */
 

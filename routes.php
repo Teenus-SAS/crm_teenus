@@ -11,6 +11,7 @@ get('/paymentMethods', '/app/views/admin/paymentmethods.php');
 get('/contactForms', '/app/views/admin/contactforms.php');
 get('/salesPhases', '/app/views/admin/salesphases.php');
 get('/salesChannels', '/app/views/admin/saleschannels.php');
+get('/saleClients', '/app/views/commercial/salesClients.php');
 get('/categories', '/app/views/admin/categoriesclients.php');
 get('/sellers', '/app/views/admin/users.php');
 

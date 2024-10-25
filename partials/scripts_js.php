@@ -40,5 +40,6 @@
 <script src="/app/assets/plugins/ckeditor/js/ckeditor.min.js"></script>
 <script src="/app/assets/js/compose-mail.init.js"></script>
 <!--app JS-->
+<script src="/app/js/global/searchData.js"></script>
 <script src="/app/assetscom/js/app.js"></script>
 <script src="/app/js/global/logout.js"></script>

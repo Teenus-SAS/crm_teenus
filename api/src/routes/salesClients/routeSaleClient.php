@@ -53,7 +53,7 @@ $app->post('/updateSaleClient', function (Request $request, Response $response, 
     $client = $generalSalesClientsDao->findSaleClient($dataClient);
 
     !is_array($client) ? $data['id_sale_client'] = 0 : $data = $client;
-    if ($data['id_sale_client'] == $client['idSaleClient'] || $data['id_sale_client'] == 0) {
+    if ($data['id_sale_client'] == $dataClient['idSaleClient'] || $data['id_sale_client'] == 0) {
         $resolution = $salesClientsDao->updateSaleClient($dataClient);
 
         if ($resolution == null)

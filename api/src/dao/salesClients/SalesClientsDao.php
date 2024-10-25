@@ -33,7 +33,7 @@ class SalesClientsDao
                                             IFNULL(cp.id_company, 0) AS id_company,
                                             IFNULL(cp.company_name, '') AS company_name
                                       FROM sales_clients sc
-                                        LEFT JOIN companies cp ON c.id_company = sc.id_company");
+                                        LEFT JOIN companies cp ON cp.id_company = sc.id_company");
         $stmt->execute();
         $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
         $client = $stmt->fetchAll($connection::FETCH_ASSOC);
@@ -71,7 +71,7 @@ class SalesClientsDao
                 'email' => trim($dataClient['email']),
                 'cellphone' => trim($dataClient['cellphone']),
                 'position' => trim($dataClient['position']),
-                'id_company' => $dataClient['idCompany'],
+                'id_company' => $dataClient['company'],
                 'sales' => trim($dataClient['sales']),
             ]);
         } catch (\Exception $e) {
@@ -94,7 +94,7 @@ class SalesClientsDao
                                             id_company = :id_company,
                                             sales = :sales
                                           WHERE
-                                            id_sale_client = id_sale_client");
+                                            id_sale_client = :id_sale_client");
             $stmt->execute([
                 'id_sale_client' => $dataClient['idSaleClient'],
                 'firstname' => trim($dataClient['firstname']),
@@ -102,7 +102,7 @@ class SalesClientsDao
                 'email' => trim($dataClient['email']),
                 'cellphone' => trim($dataClient['cellphone']),
                 'position' => trim($dataClient['position']),
-                'id_company' => $dataClient['idCompany'],
+                'id_company' => $dataClient['company'],
                 'sales' => trim($dataClient['sales']),
             ]);
         } catch (\Exception $e) {
@@ -115,11 +115,11 @@ class SalesClientsDao
         try {
             $connection = Connection::getInstance()->getConnection();
 
-            $stmt = $connection->prepare("SELECT * FROM sales_clients");
-            $stmt->execute();
+            $stmt = $connection->prepare("SELECT * FROM sales_clients WHERE id_sale_client = :id_sale_client");
+            $stmt->execute(['id_sale_client' => $id_sale_client]);
             $rows = $stmt->rowCount();
 
-            if ($rows > 1) {
+            if ($rows == 1) {
                 $stmt = $connection->prepare("DELETE FROM sales_clients WHERE id_sale_client = :id_sale_client");
                 $stmt->execute(['id_sale_client' => $id_sale_client]);
                 $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));

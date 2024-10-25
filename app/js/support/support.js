@@ -2,6 +2,8 @@ $(document).ready(function () {
   // Enviar email
   $('#btnSend').click(function (e) {
     e.preventDefault();
+    
+    $('.cardTo').hide(800);
     // cc = $('#ccHeader').val();
     let subject = $('#subject').val();
     let msg = getContent(1);
@@ -16,6 +18,31 @@ $(document).ready(function () {
 
     $.post(
       '../api/sendEmailSupport',
+      support,
+      function (data, textStatus, jqXHR) {
+        message(data);
+      }
+    );
+  });
+
+  $('#btnSimSend').click(function (e) {
+    e.preventDefault();
+
+    $('.cardTo').show(800);
+    let email = $('#to').val();
+    let subject = $('#subject').val();
+    let msg = getContent(1);
+
+    if (email == '' || !email || subject == '' || subject == null || msg == '' || !msg) {
+      toastr.error('Ingrese todos los campos');
+      return false;
+    }
+
+    let support = $('#formSendSupport').serialize();
+    support = support + '&email=' + email + '&message=' + msg;
+
+    $.post(
+      '../api/sendSimEmailSupport',
       support,
       function (data, textStatus, jqXHR) {
         message(data);

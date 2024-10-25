@@ -47,6 +47,14 @@ if (sizeof($_SESSION) == 0)
                                     </ol>
                                 </div>
                             </div>
+                            <div class="col-xl-6 form-inline justify-content-sm-end">
+                                <div class="col-xs-4 mr-2">
+                                    <button type="button" class="btn btn-primary" id="btnSimSend">Email Prueba</button>
+                                </div>
+                                <div class="col-xs-4 py-2 mr-2">
+                                    <button type="button" class="btn btn-secondary" id="btnSend">Enviar a Todos</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -58,32 +66,44 @@ if (sizeof($_SESSION) == 0)
                                 <div class="inbox-rightbar card">
                                     <div class="card-body">
                                         <form id="formSendSupport">
-                                            <div class="form-group mb-2">
-                                                <input type="email" class="form-control" placeholder="Para" value="soporte@teenus.com.co" readonly />
+                                            <!-- Para field -->
+                                            <div class="form-group cardTo">
+                                                <label for="to">Para</label>
+                                                <input type="email" class="form-control" id="to" placeholder="Para" />
                                             </div>
 
-                                            <div class="form-group mb-2">
+                                            <!-- CC field -->
+                                            <div class="form-group">
+                                                <label for="ccHeader">CC</label>
                                                 <input type="email" class="form-control" placeholder="CC" id="ccHeader" name="ccHeader" />
                                             </div>
 
+                                            <!-- Asunto field -->
                                             <div class="form-group">
+                                                <label for="subject">Asunto</label>
                                                 <input type="text" class="form-control" placeholder="Asunto" id="subject" name="subject" />
                                             </div>
 
-                                            <div class="form-group">
-                                                <div class="message" id="compose-editor" name="message">Hey</div>
+                                            <!-- Message field -->
+                                            <div class="form-group mb-2">
+                                                <label for="compose-editor">Mensaje</label>
+                                                <div class="form-control" contenteditable="true" id="compose-editor" name="message">Hey</div>
                                             </div>
 
-                                            <div class="form-group pt-2">
-                                                <div class="text-right">
-                                                    <button class="btn btn-primary chat-send-btn" data-effect="wave" id="btnSend">
-                                                        <span class="d-none d-sm-inline-block mr-2 align-middle">Enviar</span>
-                                                        <i class="bx bxs-send fs-sm align-middle"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
+                                            <!-- Buttons -->
+                                            <!-- <div class="form-group text-right">
+                                                <button type="button" class="btn btn-primary chat-send-btn" data-effect="wave" id="btnSend">
+                                                    <span class="d-none d-sm-inline-block mr-2 align-middle">Enviar</span>
+                                                    <i class="bx bxs-send fs-sm align-middle"></i>
+                                                </button>
+                                                <button type="button" class="btn btn-secondary chat-send-btn ml-2" data-effect="wave" id="btnSimSend">
+                                                    <span class="d-none d-sm-inline-block mr-2 align-middle">Prueba</span>
+                                                    <i class="bx bxs-send fs-sm align-middle"></i>
+                                                </button>
+                                            </div> -->
                                         </form>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

@@ -80,16 +80,15 @@
 										</div>
 									</div>
 								</a>
-								<!-- <a class="dropdown-item" href="javascript:;" onclick="cargarContenido('page-content', 'views/admin/zones.php')">
+								<a class="dropdown-item" href="/saleClients">
 									<div class="d-flex align-items-center">
 										<div class="notify bg-light-danger text-danger"><i class="lni lni-map"></i>
 										</div>
 										<div class="flex-grow-1">
-											<h6 class="configZones">Zonas</h6>
-
+											<h6 class="configSalesClients">Ventas Clientes</h6>
 										</div>
 									</div>
-								</a> -->
+								</a>
 								<a class="dropdown-item" href="/sellers">
 									<div class="d-flex align-items-center">
 										<div class="notify bg-light-success text-success"><i class="bx bx-network-chart"></i>

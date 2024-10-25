@@ -22,7 +22,7 @@ class SendEmailDao extends PHPMailer
 
     public function sendEmail($dataEmail, $email, $name)
     {
-        require_once dirname(dirname(dirname(dirname(dirname(dirname(__DIR__)))))) . '/env.php';
+        require_once dirname(dirname(dirname(dirname(dirname(__DIR__))))) . '/env.php';
 
         try {
             $mail = new PHPMailer(true);
