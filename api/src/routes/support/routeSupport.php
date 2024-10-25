@@ -28,7 +28,7 @@ $app->post('/sendEmailSupport', function (Request $request, Response $response, 
 
         if (!isset($support['status'])) break;
         // Esperar 60 segundos antes de pasar al siguiente usuario
-        sleep(60);
+        sleep(15);
     }
 
     if ($support['status'] == 'success')
