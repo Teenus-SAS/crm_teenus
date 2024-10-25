@@ -114,11 +114,11 @@ class SendMakeEmailDao
         // the message
         $msg = $dataSupport['message'];
 
-        $msg = "<html>
+        $msg = '<html>
                     <body>
-                        $msg
+                        ' . $msg . '
                     </body>
-                </html>";
+                </html>';
 
         $subject = $dataSupport['subject'];
 
