@@ -110,8 +110,15 @@ class SendMakeEmailDao
         if (isset($dataSupport['ccHeader']))
             $ccHeader = $dataSupport['ccHeader'];
         else $ccHeader = '';
+
         // the message
         $msg = $dataSupport['message'];
+
+        $msg = `<html>
+                    <body>
+                        $msg
+                    </body>
+                </html>`;
 
         $subject = $dataSupport['subject'];
 
