@@ -27,7 +27,7 @@ $app->post('/sendEmailSupport', function (Request $request, Response $response, 
         $support = $sendEmailDao->sendEmail($dataEmail, 'sergio.velandia@teenus.com.co', 'Sergio Velandia');
 
         if (!isset($support['status'])) break;
-        // Esperar 60 segundos antes de pasar al siguiente usuario
+        // Esperar 15 segundos antes de pasar al siguiente usuario
         sleep(15);
     }
 
