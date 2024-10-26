@@ -41,19 +41,15 @@ if (sizeof($_SESSION) == 0)
                         <div class="row align-items-center">
                             <div class="col-sm-5 col-xl-6">
                                 <div class="page-title">
-                                    <h3 class="mb-1 font-weight-bold text-dark">Soporte</h3>
+                                    <h3 class="mb-1 font-weight-bold text-dark">Email Marketing</h3>
                                     <ol class="breadcrumb mb-3 mb-md-0">
-                                        <li class="breadcrumb-item active">Escribanos, que estaremos muy atentos de atender sus requerimientos</li>
+                                        <li class="breadcrumb-item active"></li>
                                     </ol>
                                 </div>
                             </div>
-                            <div class="col-xl-6 form-inline justify-content-sm-end">
-                                <div class="col-xs-4 mr-2">
-                                    <button type="button" class="btn btn-primary" id="btnSimSend">Email Prueba</button>
-                                </div>
-                                <div class="col-xs-4 py-2 mr-2">
-                                    <button type="button" class="btn btn-secondary" id="btnSend">Enviar a Todos</button>
-                                </div>
+                            <div class="col-xl-6" style="justify-items: right;">
+                                <button type="button" class="btn btn-info" id="btnSimSend">Email de Prueba</button>
+                                <button type="button" class="btn btn-warning" id="btnSend" style="margin-left: 10px;margin: right 10px;">Enviar a Todos</button>
                             </div>
                         </div>
                     </div>
