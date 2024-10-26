@@ -53,14 +53,16 @@ $(function () {
 
 /* Obtener contenido */
 getContent = (op) => {
-  content = editor.getData();
-
-  // Limpia etiquetas innecesarias y conserva saltos de línea
+  let content = editor.getData();
+ 
   if (op == 1) {
+    // Limpieza del HTML para conservar saltos de línea en <br> y remover &nbsp;
     content = content
-      .replace(/<p>/g, '') // Remueve todas las etiquetas de apertura <p>
-      .replace(/<\/p>/g, '\n') // Reemplaza etiquetas de cierre </p> con salto de línea
-      .replace(/<br\s*\/?>/g, '\n'); // Reemplaza <br> con salto de línea
+      .replace(/<p>&nbsp;<\/p>/g, '')           // Eliminar párrafos vacíos
+      .replace(/<p>/g, '')                      // Remover etiquetas de apertura <p>
+      .replace(/<\/p>/g, '<br>')                // Reemplazar etiquetas de cierre </p> por <br> para salto de línea
+      .replace(/&nbsp;/g, ' ')                  // Reemplazar espacios en blanco (&nbsp;) por espacios normales
+      .trim();
   }
 
   // Remueve posibles espacios extra al inicio y al final
