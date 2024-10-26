@@ -38,8 +38,8 @@ if (sizeof($_SESSION) == 0)
                 <!-- Page header -->
                 <div class="page-title-box">
                     <div class="container-fluid">
-                        <div class="row align-items-center">
-                            <div class="col-sm-5 col-xl-6">
+                        <div class="row align-items-center mb-3">
+                            <div class="col-sm-5 col-xl-9">
                                 <div class="page-title">
                                     <h3 class="mb-1 font-weight-bold text-dark">Email Marketing</h3>
                                     <ol class="breadcrumb mb-3 mb-md-0">
@@ -47,7 +47,7 @@ if (sizeof($_SESSION) == 0)
                                     </ol>
                                 </div>
                             </div>
-                            <div class="col-xl-6" style="justify-items: right;">
+                            <div class="col-xl-3" style="justify-items: right;">
                                 <button type="button" class="btn btn-info" id="btnSimSend">Email de Prueba</button>
                                 <button type="button" class="btn btn-warning" id="btnSend" style="margin-left: 10px;margin: right 10px;">Enviar a Todos</button>
                             </div>
