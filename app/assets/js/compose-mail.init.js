@@ -8,7 +8,7 @@ $(document).ready(function () {
       ['fontfamily', 'fontsize'],
       ['strong', 'em', 'del'],
       ['link'],
-      ['insertImage', 'table'],
+      ['base64', 'table'],
       ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
       ['unorderedList', 'orderedList'],
       ['horizontalRule'],
