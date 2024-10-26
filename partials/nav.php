@@ -59,7 +59,7 @@
                 <li>
                     <a href="/support" id="navSupport">
                         <div class="parent-icon"><i class="bx bx-box"></i></div>
-                        <div class="menu-title">Soporte</div>
+                        <div class="menu-title">Email Marketing</div>
                     </a>
                 </li>
 
