@@ -83,7 +83,10 @@ if (sizeof($_SESSION) == 0)
                                             <!-- Message field -->
                                             <div class="form-group mb-2">
                                                 <label for="compose-editor">Mensaje</label>
-                                                <div class="form-control" contenteditable="true" id="compose-editor" name="message">Hey</div>
+                                                <div class="message">
+                                                    <div id="compose-editor" name="content"></div>
+                                                </div>
+                                                <!-- <div class="form-control" contenteditable="true" id="compose-editor" name="message">Hey</div> -->
                                             </div>
 
                                             <!-- Buttons -->
