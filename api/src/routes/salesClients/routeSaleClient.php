@@ -19,6 +19,59 @@ $app->get('/salesClients', function (Request $request, Response $response, $args
     return $response->withHeader('Content-Type', 'application/json');
 });
 
+// checkear data importe
+$app->post('/salesClientsDataValidation', function (Request $request, Response $response, $args) use (
+    $salesClientsDao,
+    $generalSalesClientsDao
+) {
+    $dataClient = $request->getParsedBody();
+
+    if (isset($dataClient)) {
+        $insert = 0;
+        $update = 0;
+
+        $clients = $dataClient['importClients'];
+
+        $dataImportClients = [];
+        $debugg = [];
+
+        for ($i = 0; $i < sizeof($clients); $i++) {
+            if (
+                empty($clients[$i]['firstname']) ||
+                empty($clients[$i]['lastname']) ||
+                empty($clients[$i]['email'])
+            ) {
+                $row = $i + 2;
+                array_push($debugg, array('error' => true, 'message' => "Campos vacios en la fila: {$row}"));
+            }
+
+            if (
+                trim($clients[$i]['firstname']) == '' ||
+                trim($clients[$i]['lastname']) == '' ||
+                trim($clients[$i]['email']) == ''
+            ) {
+                $row = $i + 2;
+                array_push($debugg, array('error' => true, 'message' => "Campos vacios en la fila: {$row}"));
+            }
+
+            if (sizeof($debugg) == 0) {
+                $findClient = $generalSalesClientsDao->findSaleClient($clients[$i]);
+                if (!$findClient) $insert = $insert + 1;
+                else $update = $update + 1;
+                $dataImportClients['insert'] = $insert;
+                $dataImportClients['update'] = $update;
+            }
+        }
+    } else
+        $dataImportClients = array('error' => true, 'message' => 'El archivo se encuentra vacio. Intente nuevamente');
+
+    $data['import'] = $dataImportClients;
+    $data['debugg'] = $debugg;
+
+    $response->getBody()->write(json_encode($data, JSON_NUMERIC_CHECK));
+    return $response->withHeader('Content-Type', 'application/json');
+});
+
 /* Insertar y actualizar usuario */
 $app->post('/addSaleClient', function (Request $request, Response $response, $args) use (
     $salesClientsDao,
@@ -26,19 +79,45 @@ $app->post('/addSaleClient', function (Request $request, Response $response, $ar
 ) {
     $dataClient = $request->getParsedBody();
 
-    $client = $generalSalesClientsDao->findSaleClient($dataClient);
+    $count = sizeof($dataClient);
 
-    if (!$client) {
-        $resolution = $salesClientsDao->addSaleClient($dataClient);
+    if ($count > 1) {
+        $client = $generalSalesClientsDao->findSaleClient($dataClient);
+
+        if (!$client) {
+            $resolution = $salesClientsDao->addSaleClient($dataClient);
+
+            if ($resolution == null)
+                $resp = ['success' => true, 'message' => 'Cliente creado correctamente'];
+            else if (isset($resolution['info']))
+                $resp = ['info' => true, 'message' => $resolution['message']];
+            else
+                $resp = ['error' => true, 'message' => 'Ocurrio un error al guardar la información. Intente nuevamente'];
+        } else
+            $resp = ['info' => true, 'message' => 'El email ya se encuentra registrado. Intente con uno nuevo'];
+    } else {
+        $clients = $dataClient['importClients'];
+
+        for ($i = 0; $i < sizeof($clients); $i++) {
+            $findClient = $generalSalesClientsDao->findSaleClient($clients[$i]);
+
+            if (!$findClient) {
+                $resolution = $salesClientsDao->addSaleClient($clients[$i]);
+            } else {
+                $clients[$i]['idSaleClient'] = $findClient['id_sale_client'];
+                $resolution = $salesClientsDao->updateSaleClient($clients[$i]);
+            }
+
+            if (isset($resolution['info'])) break;
+        }
 
         if ($resolution == null)
-            $resp = ['success' => true, 'message' => 'Cliente creado correctamente'];
+            $resp = ['success' => true, 'message' => 'Clientes importados correctamente'];
         else if (isset($resolution['info']))
             $resp = ['info' => true, 'message' => $resolution['message']];
         else
             $resp = ['error' => true, 'message' => 'Ocurrio un error al guardar la información. Intente nuevamente'];
-    } else
-        $resp = ['info' => true, 'message' => 'El email ya se encuentra registrado. Intente con uno nuevo'];
+    }
 
     $response->getBody()->write(json_encode($resp));
     return $response->withStatus(200)->withHeader('Content-Type', 'application/json');

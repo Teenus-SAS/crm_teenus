@@ -3,7 +3,7 @@ $(document).ready(function () {
     $('#btnNewSaleClients').click(function (e) {
         e.preventDefault();
 
-        // $('.cardImportProcess').hide(800);
+        $('.cardImportSaleClients').hide(800);
         $('#modalSalesClients').modal('show');
         $('#formAddSaleClient').trigger('reset');
         sessionStorage.removeItem('id_sale_client');
@@ -26,7 +26,7 @@ $(document).ready(function () {
     /* Actualizar procesos */
 
     $(document).on('click', '.editSaleClient', function (e) {
-        // $('.cardImportProcess').hide(800);
+        $('.cardImportSaleClients').hide(800);
         $('#modalSalesClients').modal('show');
 
         let row = $(this).parent().parent()[0];
@@ -112,11 +112,11 @@ $(document).ready(function () {
     message = (data) => {
         $('.cardLoading').remove();
         $('.cardBottons').show(400);
-        $('#fileProcess').val('');
+        $('#fileSaleClient').val('');
     
         if (data.success == true) {
-            // $('.cardImportProcess').hide(800);
-            // $('#formImportProcess').trigger('reset');
+            $('.cardImportSaleClients').hide(800);
+            $('#formImportSaleClients').trigger('reset');
             $('#modalSalesClients').modal('hide');
             $('#formAddSaleClient').trigger('reset');
             updateTable();
