@@ -3,6 +3,8 @@ $(document).ready(function () {
   $('#btnSend').click(function (e) {
     e.preventDefault();
     
+    $('.loading').show(800); 
+    document.body.style.overflow = 'hidden';
     $('.cardTo').hide(800);
     // cc = $('#ccHeader').val();
     let subject = $('#subject').val();
@@ -10,6 +12,8 @@ $(document).ready(function () {
 
     if (subject == '' || subject == null || content == '' || !content) {
       toastr.error('Ingrese todos los campos');
+      $('.loading').hide(800);
+      document.body.style.overflow = '';
       return false;
     }
 
@@ -21,6 +25,8 @@ $(document).ready(function () {
       support,
       function (data, textStatus, jqXHR) {
         message(data);
+        $('.loading').hide(800);
+        document.body.style.overflow = '';
       }
     );
   });

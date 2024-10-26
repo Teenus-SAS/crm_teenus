@@ -47,13 +47,16 @@
                             <label for="cellphone" class="form-label">Ventas</label>
                             <input type="text" class="form-control" id="sales" name="sales">
                         </div>
+                        <!-- <div class="col-md-4">
+                            <label for="cellphone" class="form-label">Grupo</label>
+                            <select name="idGroup" id="group"></select>
+                        </div> -->
 
                         <hr>
 
                         <div class="col-sm-12">
                             <button class="btn btn-primary" type="submit" id="btnAddSaleClient">Guardar</button>
                         </div>
-
                     </form>
                 </div>
             </div>
