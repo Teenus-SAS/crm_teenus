@@ -3,6 +3,15 @@ $(document).ready(function () {
   $('#btnSend').click(function (e) {
     e.preventDefault();
     
+    $('.cardSelectGroup').show(800); 
+
+    let group = $('#slctGroup').val();
+
+    if (!group || group == '') {
+      toastr.error('Seleccione un grupo');
+      return false;
+    }
+
     $('.loading').show(800); 
     document.body.style.overflow = 'hidden';
     $('.cardTo').hide(800);
@@ -18,7 +27,7 @@ $(document).ready(function () {
     }
 
     let support = $('#formSendSupport').serialize();
-    support = support + '&message=' + content;
+    support = support + '&idGroup=' + group + '&message=' + content;
 
     $.post(
       '../api/sendEmailSupport',
@@ -34,6 +43,8 @@ $(document).ready(function () {
   $('#btnSimSend').click(function (e) {
     e.preventDefault();
 
+    $('.cardSelectGroup').hide(800); 
+    
     $('.cardTo').show(800);
     let email = $('#to').val();
     let subject = $('#subject').val();

@@ -1,10 +1,12 @@
 <?php
 
 use crmteenus\dao\GeneralSalesClientsDao;
+use crmteenus\dao\GroupsDao;
 use crmteenus\dao\SalesClientsDao;
 
 $salesClientsDao = new SalesClientsDao();
 $generalSalesClientsDao = new GeneralSalesClientsDao();
+$groupsDao = new GroupsDao();
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -21,7 +23,7 @@ $app->get('/salesClients', function (Request $request, Response $response, $args
 
 // checkear data importe
 $app->post('/salesClientsDataValidation', function (Request $request, Response $response, $args) use (
-    $salesClientsDao,
+    $groupsDao,
     $generalSalesClientsDao
 ) {
     $dataClient = $request->getParsedBody();
@@ -54,6 +56,15 @@ $app->post('/salesClientsDataValidation', function (Request $request, Response $
                 array_push($debugg, array('error' => true, 'message' => "Campos vacios en la fila: {$row}"));
             }
 
+            if ($clients[$i]['group']) {
+                $group = $groupsDao->findGroup($clients[$i]);
+
+                if (!$group) {
+                    $row = $i + 2;
+                    array_push($debugg, array('error' => true, 'message' => "Grupo no existe fila: {$row}"));
+                }
+            }
+
             if (sizeof($debugg) == 0) {
                 $findClient = $generalSalesClientsDao->findSaleClient($clients[$i]);
                 if (!$findClient) $insert = $insert + 1;
@@ -75,7 +86,8 @@ $app->post('/salesClientsDataValidation', function (Request $request, Response $
 /* Insertar y actualizar usuario */
 $app->post('/addSaleClient', function (Request $request, Response $response, $args) use (
     $salesClientsDao,
-    $generalSalesClientsDao
+    $generalSalesClientsDao,
+    $groupsDao
 ) {
     $dataClient = $request->getParsedBody();
 
@@ -100,6 +112,13 @@ $app->post('/addSaleClient', function (Request $request, Response $response, $ar
 
         for ($i = 0; $i < sizeof($clients); $i++) {
             $findClient = $generalSalesClientsDao->findSaleClient($clients[$i]);
+
+            if ($clients[$i]['group']) {
+                $group = $groupsDao->findGroup($clients[$i]);
+
+                $clients[$i]['idGroup'] = $group['id_group'];
+            } else
+                $clients[$i]['idGroup'] = 0;
 
             if (!$findClient) {
                 $resolution = $salesClientsDao->addSaleClient($clients[$i]);

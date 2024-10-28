@@ -50,6 +50,10 @@ if (sizeof($_SESSION) == 0)
                             <div class="col-xl-3" style="justify-items: right;">
                                 <button type="button" class="btn btn-info" id="btnSimSend">Email de Prueba</button>
                                 <button type="button" class="btn btn-warning" id="btnSend" style="margin-left: 10px;margin: right 10px;">Enviar a Todos</button>
+                                <div class="col-6 cardSelectGroup" style="display: none;">
+                                    <label for="slctGroup" class="form-label">Grupo</label>
+                                    <select class="form-select" name="idGroup" id="slctGroup"></select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -123,6 +127,8 @@ if (sizeof($_SESSION) == 0)
     <?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/scripts_js.php' ?>
 
     <script src="/app/js/support/support.js"></script>
+    <script src="/app/js/group/configGroups.js"></script>
+
 </body>
 
 </html>

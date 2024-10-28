@@ -52,13 +52,18 @@ $(document).ready(function () {
             className: 'uniqueClassName',
         },
         {
+            title: 'Grupo',
+            data: 'name_group',
+            className: 'uniqueClassName',
+        },
+        {
             title: 'Acciones',
             data: 'id_sale_client', 
             className: 'uniqueClassName',
             render: function (data) {
                 return `
                     <a href="javascript:;" <i id="${data}" class="bx bx-edit-alt editSaleClient" data-toggle='tooltip' title='Editar Cliente' style="font-size: 35px;"></i></a>
-                    <a href="javascript:;" <i id="${data}" class="bx bx-trash" data-toggle='tooltip' title='Eliminar Cliente' style="font-size: 30px;color:red" onclick="deleteFunction()"></i></a>
+                    <a href="javascript:;" <i id="${data}" class="bx bx-trash" data-toggle='tooltip' title='Eliminar Cliente' style="font-size: 30px;color:red" onclick="deleteSCFunction()"></i></a>
                 `;
             },
         },

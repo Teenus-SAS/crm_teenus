@@ -25,6 +25,7 @@ require_once('../api/src/routes/support/routeSupport.php');
 require_once('../api/src/routes/companies/routeCompanies.php');
 require_once('../api/src/routes/companies/routeContacts.php');
 require_once('../api/src/routes/salesClients/routeSaleClient.php');
+require_once('../api/src/routes/group/routeGroup.php');
 
 /* Configuracion */
 

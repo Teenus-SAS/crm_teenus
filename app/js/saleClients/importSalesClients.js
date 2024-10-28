@@ -58,6 +58,7 @@ $(document).ready(function () {
                     !item.numero_celular ? item.numero_celular = '' : item.numero_celular;
                     !item.nombre_empresa ? item.nombre_empresa = '' : item.nombre_empresa;
                     !item.ventas ? item.ventas = '' : item.ventas;
+                    !item.grupo ? item.grupo = '' : item.grupo;
 
                     return {
                         firstname: item.nombres,
@@ -67,6 +68,7 @@ $(document).ready(function () {
                         cellphone: item.numero_celular,
                         company: item.nombre_empresa,
                         sales: item.ventas,
+                        group: item.grupo,
                     };
                 });
                 checkSaleClients(clientsToImport);

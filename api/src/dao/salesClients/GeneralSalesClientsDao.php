@@ -30,4 +30,17 @@ class GeneralSalesClientsDao
         $client = $stmt->fetch($connection::FETCH_ASSOC);
         return $client;
     }
+
+    public function findAllSalesClientsByGroup($id_group)
+    {
+        session_start();
+        $connection = Connection::getInstance()->getConnection();
+
+        $stmt = $connection->prepare("SELECT * FROM sales_clients
+                                      WHERE id_group = :id_group");
+        $stmt->execute(['id_group' => $id_group]);
+        $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
+        $client = $stmt->fetchAll($connection::FETCH_ASSOC);
+        return $client;
+    }
 }

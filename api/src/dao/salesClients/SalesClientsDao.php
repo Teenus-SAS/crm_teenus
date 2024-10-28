@@ -21,8 +21,19 @@ class SalesClientsDao
         session_start();
         $connection = Connection::getInstance()->getConnection();
 
-        $stmt = $connection->prepare("SELECT *
-                                      FROM sales_clients sc");
+        $stmt = $connection->prepare("SELECT 
+                                        sc.id_sale_client,
+                                        sc.id_group,
+                                        IFNULL(g.name_group, '') AS name_group,
+                                        sc.firstname,
+                                        sc.lastname,
+                                        sc.email,
+                                        sc.cellphone,
+                                        sc.position,
+                                        sc.company,
+                                        sc.sales
+                                      FROM sales_clients sc
+                                        LEFT JOIN groups g ON g.id_group = sc.id_group");
         $stmt->execute();
         $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
         $client = $stmt->fetchAll($connection::FETCH_ASSOC);
@@ -42,7 +53,8 @@ class SalesClientsDao
                                                 cellphone,
                                                 position,
                                                 company,
-                                                sales
+                                                sales,
+                                                id_group
                                             )
                                           VALUES
                                             (
@@ -52,7 +64,8 @@ class SalesClientsDao
                                                 :cellphone,
                                                 :position,
                                                 :company,
-                                                :sales
+                                                :sales,
+                                                :id_group
                                             )");
             $stmt->execute([
                 'firstname' => trim($dataClient['firstname']),
@@ -62,6 +75,7 @@ class SalesClientsDao
                 'position' => trim($dataClient['position']),
                 'company' => trim($dataClient['company']),
                 'sales' => trim($dataClient['sales']),
+                'id_group' => $dataClient['idGroup'],
             ]);
         } catch (\Exception $e) {
             return ['info' => true, 'message' => $e->getMessage()];
@@ -81,7 +95,8 @@ class SalesClientsDao
                                             cellphone = :cellphone,
                                             position = :position,
                                             company = :company,
-                                            sales = :sales
+                                            sales = :sales,
+                                            id_group = :id_group
                                           WHERE
                                             id_sale_client = :id_sale_client");
             $stmt->execute([
@@ -93,6 +108,7 @@ class SalesClientsDao
                 'position' => trim($dataClient['position']),
                 'company' => trim($dataClient['company']),
                 'sales' => trim($dataClient['sales']),
+                'id_group' => $dataClient['idGroup']
             ]);
         } catch (\Exception $e) {
             return ['info' => true, 'message' => $e->getMessage()];

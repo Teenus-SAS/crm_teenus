@@ -1,5 +1,6 @@
 <?php
 
+use crmteenus\dao\GeneralSalesClientsDao;
 use crmteenus\dao\SalesClientsDao;
 use crmteenus\dao\SendMakeEmailDao;
 use crmteenus\dao\SendEmailDao;
@@ -8,6 +9,7 @@ use crmteenus\dao\UserDao;
 $sendMakeEmailDao = new SendMakeEmailDao();
 $sendEmailDao = new SendEmailDao();
 $salesClientsDao = new SalesClientsDao();
+$generalSalesClientsDao = new GeneralSalesClientsDao();
 
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -15,11 +17,11 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 $app->post('/sendEmailSupport', function (Request $request, Response $response, $args) use (
     $sendMakeEmailDao,
     $sendEmailDao,
-    $salesClientsDao
+    $generalSalesClientsDao
 ) {
     $dataSupport = $request->getParsedBody();
 
-    $contacts = $salesClientsDao->findAllSalesClients();
+    $contacts = $generalSalesClientsDao->findSaleClient($dataSupport['idGroup']);
 
     foreach ($contacts as $arr) {
         $dataEmail = $sendMakeEmailDao->sendEmailSupport($dataSupport, $arr['email']);

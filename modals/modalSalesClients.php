@@ -47,10 +47,10 @@
                             <label for="cellphone" class="form-label">Ventas</label>
                             <input type="text" class="form-control" id="sales" name="sales">
                         </div>
-                        <!-- <div class="col-md-4">
-                            <label for="cellphone" class="form-label">Grupo</label>
-                            <select name="idGroup" id="group"></select>
-                        </div> -->
+                        <div class="col-md-4">
+                            <label for="slctGroup" class="form-label">Grupo</label>
+                            <select class="form-select" name="idGroup" id="slctGroup"></select>
+                        </div>
 
                         <hr>
 
