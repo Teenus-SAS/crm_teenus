@@ -6,11 +6,13 @@ $(document).ready(function () {
     $('.cardSelectGroup').show(800); 
 
     let group = $('#slctGroup').val();
+    
+    !group || group == '' ? group = 0 : group;
 
-    if (!group || group == '') {
-      toastr.error('Seleccione un grupo');
-      return false;
-    }
+    // if (!group || group == '') {
+    //   toastr.error('Seleccione un grupo');
+    //   return false;
+    // }
 
     $('.loading').show(800); 
     document.body.style.overflow = 'hidden';

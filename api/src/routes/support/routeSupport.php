@@ -17,11 +17,15 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 $app->post('/sendEmailSupport', function (Request $request, Response $response, $args) use (
     $sendMakeEmailDao,
     $sendEmailDao,
+    $salesClientsDao,
     $generalSalesClientsDao
 ) {
     $dataSupport = $request->getParsedBody();
 
-    $contacts = $generalSalesClientsDao->findSaleClient($dataSupport['idGroup']);
+    if ($dataSupport['idGroup'] == 0)
+        $contacts = $salesClientsDao->findAllSalesClients();
+    else
+        $contacts = $generalSalesClientsDao->findSaleClient($dataSupport['idGroup']);
 
     foreach ($contacts as $arr) {
         $dataEmail = $sendMakeEmailDao->sendEmailSupport($dataSupport, $arr['email']);
