@@ -22,10 +22,10 @@ $app->post('/sendEmailSupport', function (Request $request, Response $response, 
 ) {
     $dataSupport = $request->getParsedBody();
 
-    if ($dataSupport['idGroup'] == 0)
-        $contacts = $salesClientsDao->findAllSalesClients();
-    else
-        $contacts = $generalSalesClientsDao->findAllSalesClientsByGroup($dataSupport['idGroup']);
+    // if ($dataSupport['idGroup'] == 0)
+    //     $contacts = $salesClientsDao->findAllSalesClients();
+    // else
+    $contacts = $generalSalesClientsDao->findAllSalesClientsByGroup($dataSupport['idGroup']);
 
     foreach ($contacts as $arr) {
         $dataEmail = $sendMakeEmailDao->sendEmailSupport($dataSupport, $arr['email']);

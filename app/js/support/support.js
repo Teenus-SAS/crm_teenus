@@ -5,13 +5,16 @@ $(document).ready(function () {
     
     $('.cardSelectGroup').show(800); 
 
-    let group = $('#slctGroup').val();
-    
-    !group || group == '' ? group = 0 : group; 
+    let group = $('#slctGroup').val(); 
+
+    if (!group || group == '') {
+      toastr.error('Seleccione un grupo');
+      return false;
+    }
 
     $('.loading').show(800); 
     document.body.style.overflow = 'hidden';
-    $('.cardTo').hide(800); 
+    $('.cardTo').hide(800);
     let subject = $('#subject').val();
     let content = $("#compose-editor").html();
 
