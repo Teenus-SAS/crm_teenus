@@ -25,11 +25,11 @@ $(document).ready(function () {
       return false;
     }
 
-    // Reemplaza &nbsp; con un espacio en blanco
-    content = content.replace(/&nbsp;/g, '');
+    // // Reemplaza &nbsp; con un espacio en blanco
+    // content = content.replace(/&nbsp;/g, '');
 
-    // Opcional: Reemplaza cualquier espacio adicional por un solo espacio si es necesario
-    content = content.replace(/\s+/g, ' ');
+    // // Opcional: Reemplaza cualquier espacio adicional por un solo espacio si es necesario
+    // content = content.replace(/\s+/g, ' ');
 
     let support = $('#formSendSupport').serialize();
     support = support + '&idGroup=' + group + '&message=' + content;
@@ -60,11 +60,11 @@ $(document).ready(function () {
       return false;
     }
 
-    // Reemplaza &nbsp; con un espacio en blanco
-    content = content.replace(/&nbsp;/g, '');
+    // // Reemplaza &nbsp; con un espacio en blanco
+    // content = content.replace(/&nbsp;/g, '');
 
-    // Opcional: Reemplaza cualquier espacio adicional por un solo espacio si es necesario
-    content = content.replace(/\s+/g, ' ');
+    // // Opcional: Reemplaza cualquier espacio adicional por un solo espacio si es necesario
+    // content = content.replace(/\s+/g, ' ');
 
     let support = $('#formSendSupport').serialize();
     support = support + '&email=' + email + '&message=' + content;

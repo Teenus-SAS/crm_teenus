@@ -113,16 +113,19 @@ class SendMakeEmailDao
 
         // the message
         $msg = $dataSupport['message'];
+        $cleanMsg = str_replace('&nbsp;', ' ', $msg);
 
-        $msg = "<html>
+        $body = "<html>
                     <body>
-                        $msg
+                        <p>
+                            $cleanMsg
+                        </p>
                     </body>
                 </html>";
 
         $subject = $dataSupport['subject'];
 
-        $resp = array('to' => array($email), 'subject' => $subject, 'body' => $msg, 'ccHeader' => $ccHeader);
+        $resp = array('to' => array($email), 'subject' => $subject, 'body' => $body, 'ccHeader' => $ccHeader);
 
         return $resp;
     }
