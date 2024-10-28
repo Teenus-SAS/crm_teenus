@@ -25,7 +25,7 @@ $app->post('/sendEmailSupport', function (Request $request, Response $response, 
     if ($dataSupport['idGroup'] == 0)
         $contacts = $salesClientsDao->findAllSalesClients();
     else
-        $contacts = $generalSalesClientsDao->findSaleClient($dataSupport['idGroup']);
+        $contacts = $generalSalesClientsDao->findAllSalesClientsByGroup($dataSupport['idGroup']);
 
     foreach ($contacts as $arr) {
         $dataEmail = $sendMakeEmailDao->sendEmailSupport($dataSupport, $arr['email']);

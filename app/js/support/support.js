@@ -7,17 +7,11 @@ $(document).ready(function () {
 
     let group = $('#slctGroup').val();
     
-    !group || group == '' ? group = 0 : group;
-
-    // if (!group || group == '') {
-    //   toastr.error('Seleccione un grupo');
-    //   return false;
-    // }
+    !group || group == '' ? group = 0 : group; 
 
     $('.loading').show(800); 
     document.body.style.overflow = 'hidden';
-    $('.cardTo').hide(800);
-    // cc = $('#ccHeader').val();
+    $('.cardTo').hide(800); 
     let subject = $('#subject').val();
     let content = $("#compose-editor").html();
 
