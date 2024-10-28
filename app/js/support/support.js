@@ -3,16 +3,16 @@ $(document).ready(function () {
   $('#btnSend').click(function (e) {
     e.preventDefault();
     
-    $('.cardSelectGroup').show(800); 
+    $('.cardSelectGroup').show(800);
 
-    let group = $('#slctGroup').val(); 
+    let group = $('#slctGroup').val();
 
-    if (!group||group == '') {
+    if (!group || group == '') {
       toastr.error('Seleccione un grupo');
       return false;
-    } 
+    }
 
-    $('.loading').show(800); 
+    $('.loading').show(800);
     document.body.style.overflow = 'hidden';
     $('.cardTo').hide(800);
     let subject = $('#subject').val();
@@ -24,6 +24,12 @@ $(document).ready(function () {
       document.body.style.overflow = '';
       return false;
     }
+
+    // Reemplaza &nbsp; con un espacio en blanco
+    content = content.replace(/&nbsp;/g, '');
+
+    // Opcional: Reemplaza cualquier espacio adicional por un solo espacio si es necesario
+    content = content.replace(/\s+/g, ' ');
 
     let support = $('#formSendSupport').serialize();
     support = support + '&idGroup=' + group + '&message=' + content;
@@ -53,6 +59,12 @@ $(document).ready(function () {
       toastr.error('Ingrese todos los campos');
       return false;
     }
+
+    // Reemplaza &nbsp; con un espacio en blanco
+    content = content.replace(/&nbsp;/g, '');
+
+    // Opcional: Reemplaza cualquier espacio adicional por un solo espacio si es necesario
+    content = content.replace(/\s+/g, ' ');
 
     let support = $('#formSendSupport').serialize();
     support = support + '&email=' + email + '&message=' + content;
