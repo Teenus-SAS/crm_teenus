@@ -7,10 +7,10 @@ $(document).ready(function () {
 
     let group = $('#slctGroup').val(); 
 
-    if (!group || group == '') {
+    if (group == '') {
       toastr.error('Seleccione un grupo');
       return false;
-    }
+    } 
 
     $('.loading').show(800); 
     document.body.style.overflow = 'hidden';
