@@ -7,7 +7,7 @@ $(document).ready(function () {
 
     let group = $('#slctGroup').val(); 
 
-    if (group == '') {
+    if (!group||group == '') {
       toastr.error('Seleccione un grupo');
       return false;
     } 
