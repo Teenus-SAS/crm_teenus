@@ -56,12 +56,14 @@
                         <div class="menu-title">Facturación</div>
                     </a>
                 </li>
-                <li>
-                    <a href="/support" id="navSupport">
-                        <div class="parent-icon"><i class="bx bx-box"></i></div>
-                        <div class="menu-title">Email Marketing</div>
-                    </a>
-                </li>
+                <?php if ($_SESSION['rol'] == 1) { ?>
+                    <li>
+                        <a href="/support" id="navSupport">
+                            <div class="parent-icon"><i class="bx bx-box"></i></div>
+                            <div class="menu-title">Email Marketing</div>
+                        </a>
+                    </li>
+                <?php } ?>
 
             </ul>
         </nav>
