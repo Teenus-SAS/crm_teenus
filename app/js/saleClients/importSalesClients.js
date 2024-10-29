@@ -95,7 +95,7 @@ $(document).ready(function () {
                     $('.cardBottons').show(400);
                     $('#fileSaleClient').val('');
                     toastr.error(resp.message);
-                    $('#formImportProduct').trigger('reset');
+                    $('#formImportSaleClients').trigger('reset');
                     return false;
                 }
 
