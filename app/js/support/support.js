@@ -1,13 +1,43 @@
 $(document).ready(function () {
+  let chkGroup = [];
+
+  $(document).on('click', '.checkboxGroup', function () {
+    let op;
+    
+    $(`#${this.id}`).is(':checked') ? op = true : op = false;
+    $(`#${this.id}`).prop('checked', op);
+    
+    if (this.id == 'all')
+      $(`.checkboxGroup`).prop('checked', op);
+  
+    if (!$(`#${this.id}`).is(':checked')) {
+      if (this.id == 'all') {
+        for (i = 0; i < chkGroup.length; i++) {
+          chkGroup.splice(i, 1);
+        }
+      } else
+        if (this.id == 'all') {
+          chkGroup = [];
+          $(`#all`).prop('checked', op);
+        }
+        else
+          for (let i = 0; i < chkGroup.length; i++) {
+            if (chkGroup[i] == this.id) chkGroup.splice(i, 1);
+          }
+    } else {
+      if (this.id == 'all')
+        chkGroup = [];
+      chkGroup.push(this.id);
+    }
+  });
+
   // Enviar email
   $('#btnSend').click(function (e) {
     e.preventDefault();
     
     $('.cardSelectGroup').show(800);
 
-    let group = $('#slctGroup').val();
-
-    if (!group || group == '') {
+    if (chkGroup.length == 0) {
       toastr.error('Seleccione un grupo');
       return false;
     }
@@ -15,6 +45,7 @@ $(document).ready(function () {
     $('.loading').show(800);
     document.body.style.overflow = 'hidden';
     $('.cardTo').hide(800);
+    let ccHeader = $('#ccHeader').val();
     let subject = $('#subject').val();
     let content = $("#compose-editor").html();
 
@@ -31,12 +62,17 @@ $(document).ready(function () {
     // // Opcional: Reemplaza cualquier espacio adicional por un solo espacio si es necesario
     // content = content.replace(/\s+/g, ' ');
 
-    let support = $('#formSendSupport').serialize();
-    support = support + '&idGroup=' + group + '&message=' + content;
+    let dataSupport = {};
+    dataSupport['ccHeader'] = ccHeader;
+    dataSupport['subject'] = subject;
+    dataSupport['message'] = content;
 
+    let group = chkGroup.toString();
+    dataSupport['group'] = group;
+ 
     $.post(
       '../api/sendEmailSupport',
-      support,
+      dataSupport,
       function (data, textStatus, jqXHR) {
         message(data);
         $('.loading').hide(800);

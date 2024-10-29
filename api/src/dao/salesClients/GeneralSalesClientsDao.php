@@ -37,8 +37,8 @@ class GeneralSalesClientsDao
         $connection = Connection::getInstance()->getConnection();
 
         $stmt = $connection->prepare("SELECT * FROM sales_clients
-                                      WHERE id_group = :id_group");
-        $stmt->execute(['id_group' => $id_group]);
+                                      WHERE id_group IN ($id_group)");
+        $stmt->execute();
         $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
         $client = $stmt->fetchAll($connection::FETCH_ASSOC);
         return $client;
