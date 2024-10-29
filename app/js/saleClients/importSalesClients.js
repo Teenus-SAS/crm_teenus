@@ -168,7 +168,7 @@ $(document).ready(function () {
                 $('.cardLoading').remove();
                 $('.cardBottons').show(400);
                 $('#fileSaleClient').val('');
-                message(r);
+                messageSClients(r);
             },
         });
     };
