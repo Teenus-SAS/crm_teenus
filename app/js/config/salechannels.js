@@ -16,7 +16,7 @@ tableSalesChannels = $('#tableSalesChannels').dataTable({
         dataSrc: '',
     },
     language: {
-        url: '//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json',
+        url: '//cdn.datatables.net/plug-ins/2.1.8/i18n/es-MX.json',
     },
     columns: [{
             title: 'No.',
@@ -79,7 +79,7 @@ $(document).ready(function() {
         e.preventDefault()
         let id = $(this).prop('id')
         let row = $(this).parent().parent()[0]
-        let data = tableSalesChannels.fnGetData(row)
+        let data = tableSalesChannels.DataTable().row(row).data();
 
         $('#salesChannels').show(500)
         $('#id_saleChannel').val(data.id_sales_channels)
@@ -94,7 +94,7 @@ $(document).ready(function() {
         e.preventDefault()
         let id = $(this).prop('id')
         let row = $(this).parent().parent()[0]
-        let data = tableSalesChannels.fnGetData(row)
+        let data = tableSalesChannels.DataTable().row(row).data();
 
         alertify.confirm(
             'teenus',

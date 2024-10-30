@@ -7,7 +7,7 @@
 <link href="../../../app/assets/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
 <link href="../../../app/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
 <link href="../../../app/assets/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-<link href="../../../app/assets/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css" />
 <!-- loader-->
 <link href="../../../app/assets/css/pace.min.css" rel="stylesheet" />
 <script src="../../../app/assets/js/pace.min.js"></script>

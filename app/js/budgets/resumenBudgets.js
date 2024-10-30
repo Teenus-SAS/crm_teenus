@@ -7,9 +7,8 @@ $(document).ready(function() {
             dataSrc: '',
         },
         language: {
-            url: '//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json',
+            url: '//cdn.datatables.net/plug-ins/2.1.8/i18n/es-MX.json',
         },
-
         columns: [{
                 title: 'No.',
                 data: null,
@@ -249,7 +248,7 @@ $(document).ready(function() {
     $(document).on('click', '.updateBudget', function(e) {
         e.preventDefault();
         let row = $(this).parent().parent()[0];
-        let data = tableBudgets.fnGetData(row);
+        let data = tableBudgets.DataTable().row(row).data();
 
         $('#modalCreateBudgets').modal('show');
         $('#btnCreateBudget').html('Actualizar Presupuesto');

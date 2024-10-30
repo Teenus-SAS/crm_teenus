@@ -52,7 +52,7 @@ $(document).ready(function () {
     e.preventDefault();
 
     let row = $(this).parent().parent()[0];
-    let data = tableSubCategories.fnGetData(row);
+    let data = tableSubCategories.DataTable().row(row).data();
    
     $("#selectCategory").val(data.id_category);
     $("#subcategory").val(data.subcategory);
@@ -66,7 +66,7 @@ $(document).ready(function () {
     e.preventDefault();
     let id = $(this).prop("id");
     let row = $(this).parent().parent()[0];
-    let data = tableSubCategories.fnGetData(row);
+    let data = tableSubCategories.DataTable().row(row).data();
 
     alertify.confirm(
       "teenus",

@@ -19,7 +19,7 @@
 <!-- datatables -->
 <!-- <link rel="stylesheet" type="text/css" href="/app/assetscom/plugins/datatable/css/dataTables.bootstrap5.min.css"/> -->
 <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css"/> -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.2/css/dataTables.bootstrap5.css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css" />
 
 <!-- loader-->
 <link rel="stylesheet" type="text/css" href="/app/assetscom/css/pace.min.css" />

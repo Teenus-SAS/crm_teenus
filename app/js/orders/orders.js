@@ -40,7 +40,7 @@ $(document).ready(function() {
         e.preventDefault();
 
         let row = $(this).parent().parent()[0];
-        let data = tableOrders.fnGetData(row);
+        let data = tableOrders.DataTable().row(row).data();
 
         alertify
             .confirm(

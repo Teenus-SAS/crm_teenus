@@ -23,9 +23,9 @@
 <!-- <script src="https://cdn.datatables.net/2.0.2/js/dataTables.min.js"></script> -->
 <!-- <script src="/app/assetscom/plugins/datatable/js/dataTables.bootstrap5.min.js"></script> -->
 
-<script src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
-<script src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap5.js"></script>
-<script src="/app/assetscom/plugins/datatable/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+<!-- <script src="https://cdn.datatables.net/2.0.2/js/dataTables.bootstrap5.js"></script> -->
+<!-- <script src="/app/assetscom/plugins/datatable/js/jquery.dataTables.min.js"></script> -->
 <script src="https://unpkg.com/file-saverjs@latest/FileSaver.min.js"></script>
 <script src="https://unpkg.com/xlsx@latest/dist/xlsx.full.min.js"></script>
 

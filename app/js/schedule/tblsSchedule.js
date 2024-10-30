@@ -6,7 +6,7 @@ $(document).ready(function() {
             dataSrc: '',
         },
         language: {
-            url: '//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json',
+            url: '//cdn.datatables.net/plug-ins/2.1.8/i18n/es-MX.json',
         },
         columns: [{
                 title: 'No.',
@@ -72,7 +72,7 @@ $(document).ready(function() {
             dataSrc: '',
         },
         language: {
-            url: '//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json',
+            url: '//cdn.datatables.net/plug-ins/2.1.8/i18n/es-MX.json',
         },
         columns: [{
                 title: 'No.',
@@ -136,7 +136,7 @@ $(document).ready(function() {
             dataSrc: '',
         },
         language: {
-            url: '//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json',
+            url: '//cdn.datatables.net/plug-ins/2.1.8/i18n/es-MX.json',
         },
         columns: [{
                 title: 'No.',
@@ -202,7 +202,7 @@ $(document).ready(function() {
             dataSrc: '',
         },
         language: {
-            url: '//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json',
+            url: '//cdn.datatables.net/plug-ins/2.1.8/i18n/es-MX.json',
         },
         columns: [{
                 title: 'No.',

@@ -29,7 +29,7 @@ $(document).ready(function() {
         e.preventDefault()
         $('#btnCreateCompany').click()
         let row = $(this).parent().parent()[0]
-        let data = tableCompanies.fnGetData(row)
+        let data = tableCompanies.DataTable().row(row).data();
 
         $('#modalCreateCompany').modal('show')
         $('#id').val(data.id_company)

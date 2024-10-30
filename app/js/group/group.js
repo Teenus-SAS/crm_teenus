@@ -33,7 +33,7 @@ $(document).ready(function () {
         $('#btnAddGroup').html('Actualizar');
 
         let row = $(this).parent().parent()[0];
-        let data = tableGroups.fnGetData(row);
+        let data = tableGroups.DataTable().row(row).data();
         sessionStorage.setItem('id_group', data.id_group);
 
         $('#group').val(data.name_group);
@@ -70,7 +70,7 @@ $(document).ready(function () {
 
     deleteGRFunction = () => {
         let row = $(this.activeElement).parent().parent()[0];
-        let data = tableGroups.fnGetData(row);
+        let data = tableGroups.DataTable().row(row).data();
 
         let id_group = data.id_group;
 

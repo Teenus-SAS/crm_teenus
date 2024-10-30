@@ -70,14 +70,14 @@ $(document).ready(function() {
         let id = $(this).prop('id')
         let row = $(this).parent().parent()[0]
 
-        data = tableSchedule.fnGetData(row)
+        data = tableSchedule.DataTable().row(row).data();
 
         if (data == null)
-            data = tableAlertTask.fnGetData(row)
+            data = tableAlertTask.DataTable().row(row).data();
         else if (data == null)
-            data = tableDelayTask.fnGetData(row)
+            data = tableDelayTask.DataTable().row(row).data();
         else if (data == null)
-            data = tableCompletedTask.fnGetData(row)
+            data = tableCompletedTask.DataTable().row(row).data();
 
         $('#modalCreateTask').modal('show')
         $('#id_schedule').val(id);

@@ -54,7 +54,7 @@ $(document).ready(function () {
     e.preventDefault();
 
     let row = $(this).parent().parent()[0];
-    let data = tableCategoriesUnique.fnGetData(row);
+    let data = tableCategoriesUnique.DataTable().row(row).data();
 
     $("#categories").show(500);
     $("#id_category").val(data.id_category);
@@ -69,7 +69,7 @@ $(document).ready(function () {
     e.preventDefault();
     let id = $(this).prop("id");
     let row = $(this).parent().parent()[0];
-    let data = tableCategoriesUnique.fnGetData(row);
+    let data = tableCategoriesUnique.DataTable().row(row).data();
 
     alertify.confirm(
       "teenus",

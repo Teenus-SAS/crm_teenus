@@ -23,8 +23,7 @@ $(document).ready(function () {
     }
 
     const setCheboxGroups = (data) => {
-        sessionStorage.setItem('dataGroups', JSON.stringify(data));
-        
+        // sessionStorage.setItem('dataGroups', JSON.stringify(data));        
         let $div = $('#divCheckboxGroup');
         $div.empty();
          

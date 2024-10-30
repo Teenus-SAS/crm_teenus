@@ -13,7 +13,7 @@ $(document).ready(function () {
         e.preventDefault();
         let id = $(this).prop('id');
         let row = $(this).parent().parent()[0];
-        let data = tableContacts.fnGetData(row);
+        let data = tableContacts.DataTable().row(row).data();
 
         $('#btnSaveContact').html('Actualizar Contacto');
         $('#titleNewContact').html('Actualizar Contacto');

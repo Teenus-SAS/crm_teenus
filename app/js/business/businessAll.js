@@ -27,7 +27,7 @@ $(document).ready(function() {
     $(document).on('click', '.updateBusiness', function(e) {
         e.preventDefault()
         let row = $(this).parent().parent()[0]
-        let data = tableBusiness.fnGetData(row)
+        let data = tableBusiness.DataTable().row(row).data();
 
         $('#modalCreateBusiness').modal('show')
         $('#id_business').val(data.id_business)

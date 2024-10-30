@@ -10,13 +10,12 @@ $('#btnPaymentMethod').click(function(e) {
 
 tablePaymentMethods = $('#tablePaymentMethods').dataTable({
     pageLength: 10,
-
     ajax: {
         url: '/api/paymentMethods',
         dataSrc: '',
     },
     language: {
-        url: '//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json',
+        url: '//cdn.datatables.net/plug-ins/2.1.8/i18n/es-MX.json',
     },
     columns: [{
             title: 'No.',
@@ -79,7 +78,7 @@ $(document).ready(function() {
 
         let id = $(this).prop('id')
         let row = $(this).parent().parent()[0]
-        let data = tablePaymentMethods.fnGetData(row)
+        let data = tablePaymentMethods.DataTable().row(row).data();
 
         $('#paymentMethods').show(500)
         $('#id_paymentMethod').val(data.id_method)
@@ -94,7 +93,7 @@ $(document).ready(function() {
         e.preventDefault()
         let id = $(this).prop('id')
         let row = $(this).parent().parent()[0]
-        let data = tablePaymentMethods.fnGetData(row)
+        let data = tablePaymentMethods.DataTable().row(row).data();
 
         alertify.confirm(
             'teenus',

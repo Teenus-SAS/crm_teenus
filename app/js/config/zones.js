@@ -7,7 +7,7 @@ tableZones = $('#tableZones').dataTable({
         dataSrc: '',
     },
     language: {
-        url: '//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json',
+        url: '//cdn.datatables.net/plug-ins/2.1.8/i18n/es-MX.json',
     },
     columns: [{
             title: 'No.',
@@ -69,7 +69,7 @@ $(document).ready(function() {
 
         let id = $(this).prop('id')
         let row = $(this).parent().parent()[0]
-        let data = tableZones.fnGetData(row)
+        let data = tableZones.DataTable().row(row).data();
 
         $('#zones').show(500)
         $('#inZone').val(data.id_zone);
@@ -85,7 +85,7 @@ $(document).ready(function() {
         e.preventDefault()
         let id = $(this).prop('id')
         let row = $(this).parent().parent()[0]
-        let data = tableZones.fnGetData(row)
+        let data = tableZones.DataTable().row(row).data();
 
         alertify.confirm(
             'teenus',

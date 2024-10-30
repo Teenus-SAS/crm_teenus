@@ -64,7 +64,7 @@ $(document).ready(function () {
         $('#modalSalesClients').modal('show');
 
         let row = $(this).parent().parent()[0];
-        let data = tableSalesClients.fnGetData(row);
+        let data = tableSalesClients.DataTable().row(row).data();
         sessionStorage.setItem('id_sale_client', data.id_sale_client);
 
         $('#firstname').val(data.firstname);
@@ -114,7 +114,7 @@ $(document).ready(function () {
 
     deleteSCFunction = () => {
         let row = $(this.activeElement).parent().parent()[0];
-        let data = tableSalesClients.fnGetData(row); 
+        let data = tableSalesClients.DataTable().row(row).data();
 
         let id_sale_client = data.id_sale_client;
 

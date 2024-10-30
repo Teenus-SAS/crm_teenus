@@ -131,13 +131,19 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalSalesClients.php
 						</div>
 						<div class="row">
 							<div class="card">
-								<div class="card-body">
-									<div class="tab-pane cardSClients">
-										<table class="fixed-table-loading table table-hover" id="tableSalesClients"></table>
-									</div>
-									<div class="tab-pane cardGroups" style="display: none;">
+								<div class="tab-pane cardSClients">
+									<div class="card-body">
 										<div class="table-responsive">
-											<table class="fixed-table-loading table table-hover" id="tableGroups"></table>
+											<table class="fixed-table-loading table table-hover" id="tableSalesClients"></table>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane cardGroups" style="display: none;">
+									<div class="card-body">
+										<div class="table-responsive">
+											<div class="table-responsive">
+												<table class="fixed-table-loading table table-hover" id="tableGroups"></table>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -147,15 +153,16 @@ include_once dirname(dirname(dirname(__DIR__))) . '/modals/modalSalesClients.php
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<!--overlay-->
-		<div class="overlay toggle-icon"></div>
+	<!--overlay-->
+	<div class="overlay toggle-icon"></div>
 
-		<!--Back To Top Button-->
-		<a href="javaScript:;" class="back-to-top noImprimir"><i class='bx bxs-up-arrow-alt'></i></a>
+	<!--Back To Top Button-->
+	<a href="javaScript:;" class="back-to-top noImprimir"><i class='bx bxs-up-arrow-alt'></i></a>
 
-		<!-- footer -->
-		<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/footer.php'; ?>
+	<!-- footer -->
+	<?php include_once dirname(dirname(dirname(__DIR__))) . '/partials/footer.php'; ?>
 	</div>
 
 	<!--switcher-->
