@@ -57,6 +57,14 @@ $(document).ready(function () {
             className: 'uniqueClassName',
         },
         {
+            title: 'Creado por',
+            data: null,
+            className: 'uniqueClassName',
+            render: function (data) {
+                return `${data.firstname} ${data.lastname}`;
+            }
+        },
+        {
             title: 'Acciones',
             data: 'id_sale_client', 
             className: 'uniqueClassName',

@@ -21,33 +21,55 @@ $app->post('/sendEmailSupport', function (Request $request, Response $response, 
     $generalSalesClientsDao
 ) {
     $dataSupport = $request->getParsedBody();
+    $support['status'] = 'success';
+    $support['message'] = 'Correo enviado exitosamente.';
 
+    // Obtener contactos
     if ($dataSupport['group'] == 'all')
         $contacts = $salesClientsDao->findAllSalesClients();
     else {
         $contacts = $generalSalesClientsDao->findAllSalesClientsByGroup($dataSupport['group']);
     }
 
-    foreach ($contacts as $arr) {
-        $dataEmail = $sendMakeEmailDao->sendEmailSupport($dataSupport, $arr['email']);
+    $totalContacts = count($contacts); // Total de contactos para el conteo
+    $currentCount = 0;
 
+    foreach ($contacts as $arr) {
+        $currentCount++;
+        $dataEmail = $sendMakeEmailDao->sendEmailSupport($dataSupport, $arr['email']);
         $support = $sendEmailDao->sendEmail($dataEmail, 'sergio.velandia@teenus.com.co', 'Sergio Velandia');
 
         if (!isset($support['status'])) break;
+
+        // Enviar el progreso actual
+        $progressData = [];
+        $progressData = json_encode([
+            'status' => 'progress',
+            'message' => "{$currentCount}/{$totalContacts}"
+        ]);
+
+        // Enviar la respuesta parcial
+        echo $progressData;
+        ob_flush(); // Limpiar el buffer de salida
+        flush();
+
         // Esperar 15 segundos antes de pasar al siguiente usuario
         sleep(15);
     }
 
-    if ($support['status'] == 'success')
+    // Respuesta final
+    if ($support['status'] == 'success') {
         $resp = array('success' => true, 'message' => $support['message']);
-    elseif ($support['status'] == 'error')
+    } elseif ($support['status'] == 'error') {
         $resp = array('error' => true, 'message' => $support['message']);
-    else
-        $resp = array('error' => true, 'message' => 'Ocurrio un error al enviar el correo. Intente nuevamente');
+    } else {
+        $resp = array('error' => true, 'message' => 'Ocurrió un error al enviar el correo. Intente nuevamente');
+    }
 
     $response->getBody()->write(json_encode($resp));
     return $response->withStatus(200)->withHeader('Content-Type', 'application/json');
 });
+
 
 $app->post('/sendSimEmailSupport', function (Request $request, Response $response, $args) use (
     $sendMakeEmailDao,

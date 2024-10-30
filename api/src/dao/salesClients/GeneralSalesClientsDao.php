@@ -33,7 +33,6 @@ class GeneralSalesClientsDao
 
     public function findAllSalesClientsByGroup($id_group)
     {
-        session_start();
         $connection = Connection::getInstance()->getConnection();
 
         $stmt = $connection->prepare("SELECT * FROM sales_clients

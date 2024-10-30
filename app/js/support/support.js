@@ -35,6 +35,7 @@ $(document).ready(function () {
   $('#btnSend').click(function (e) {
     e.preventDefault();
     
+    $('.cardTo').hide(800);
     $('.cardSelectGroup').show(800);
 
     if (chkGroup.length == 0) {
@@ -44,7 +45,6 @@ $(document).ready(function () {
 
     $('.loading').show(800);
     document.body.style.overflow = 'hidden';
-    $('.cardTo').hide(800);
     let ccHeader = $('#ccHeader').val();
     let subject = $('#subject').val();
     let content = $("#compose-editor").html();
@@ -56,11 +56,11 @@ $(document).ready(function () {
       return false;
     }
 
-    // // Reemplaza &nbsp; con un espacio en blanco
-    // content = content.replace(/&nbsp;/g, '');
+    // Reemplaza &nbsp; con un espacio en blanco
+    content = content.replace(/&nbsp;/g, '');
 
-    // // Opcional: Reemplaza cualquier espacio adicional por un solo espacio si es necesario
-    // content = content.replace(/\s+/g, ' ');
+    // Opcional: Reemplaza cualquier espacio adicional por un solo espacio si es necesario
+    content = content.replace(/\s+/g, ' ');
 
     let dataSupport = {};
     dataSupport['ccHeader'] = ccHeader;
@@ -69,21 +69,55 @@ $(document).ready(function () {
 
     let group = chkGroup.toString();
     dataSupport['group'] = group;
- 
-    $.post(
-      '../api/sendEmailSupport',
-      dataSupport,
-      function (data, textStatus, jqXHR) {
-        message(data);
-        $('.loading').hide(800);
-        document.body.style.overflow = '';
+     
+    $.ajax({
+      url: '/api/sendEmailSupport',
+      type: 'POST',
+      data: dataSupport,
+      xhrFields: {
+        onprogress: function (e) {
+          // Obtener solo la última línea de respuesta
+          const responses = e.target.responseText.split('}{').join('}|{').split('|');
+          const latestResponse = responses[responses.length - 1];
+
+          try {
+            const progress = JSON.parse(latestResponse);
+            $('#messageESP').text(progress.message);
+          } catch (error) {
+            console.error("Error al analizar el JSON:", error);
+          }
+        }
+      },
+      success: function (response) {
+        // Obtener solo la última línea de respuesta
+        const responses = response.split('}{').join('}|{').split('|');
+        const latestResponse = responses[responses.length - 1];
+        const resp = JSON.parse(latestResponse);
+        
+        if (resp.success) {
+          message(resp);
+
+          chkGroup = [];
+          $(`.checkboxGroup`).prop('checked', false);
+
+          $('.loading').hide(800);
+          document.body.style.overflow = '';
+        } else {
+          toastr.error('Error: ' + resp.message);
+        }
+      },
+      error: function () {
+        toastr.error('Error al enviar correos.');
       }
-    );
+    });
+
   });
 
   $('#btnSimSend').click(function (e) {
     e.preventDefault();
 
+    chkGroup = [];
+    $(`.checkboxGroup`).prop('checked', false);
     $('.cardSelectGroup').hide(800); 
     
     $('.cardTo').show(800);

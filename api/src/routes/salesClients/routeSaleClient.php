@@ -89,6 +89,8 @@ $app->post('/addSaleClient', function (Request $request, Response $response, $ar
     $generalSalesClientsDao,
     $groupsDao
 ) {
+    session_start();
+    $id_user = $_SESSION['idUser'];
     $dataClient = $request->getParsedBody();
 
     $count = sizeof($dataClient);
@@ -97,7 +99,7 @@ $app->post('/addSaleClient', function (Request $request, Response $response, $ar
         $client = $generalSalesClientsDao->findSaleClient($dataClient);
 
         if (!$client) {
-            $resolution = $salesClientsDao->addSaleClient($dataClient);
+            $resolution = $salesClientsDao->addSaleClient($dataClient, $id_user);
 
             if ($resolution == null)
                 $resp = ['success' => true, 'message' => 'Cliente creado correctamente'];
@@ -121,7 +123,7 @@ $app->post('/addSaleClient', function (Request $request, Response $response, $ar
                 $clients[$i]['idGroup'] = 0;
 
             if (!$findClient) {
-                $resolution = $salesClientsDao->addSaleClient($clients[$i]);
+                $resolution = $salesClientsDao->addSaleClient($clients[$i], $id_user);
             } else {
                 $clients[$i]['idSaleClient'] = $findClient['id_sale_client'];
                 $resolution = $salesClientsDao->updateSaleClient($clients[$i]);

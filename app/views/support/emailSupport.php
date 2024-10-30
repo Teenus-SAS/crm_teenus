@@ -31,6 +31,7 @@ if (sizeof($_SESSION) == 0)
             <div class="loading">
                 <a href="javascript:;" class="close-btn" style="display: none;"><i class="bi bi-x-circle-fill"></i></a>
                 <div class="loader"></div>
+                <span id="messageESP" style="display: block;position: absolute;top: 67%;margin-top: -3em;left: 52.7%;margin-left: -4em;"></span>
             </div>
 
             <!-- Content -->

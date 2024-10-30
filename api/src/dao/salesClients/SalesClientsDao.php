@@ -18,7 +18,6 @@ class SalesClientsDao
 
     public function findAllSalesClients()
     {
-        session_start();
         $connection = Connection::getInstance()->getConnection();
 
         $stmt = $connection->prepare("SELECT 
@@ -31,16 +30,21 @@ class SalesClientsDao
                                         sc.cellphone,
                                         sc.position,
                                         sc.company,
-                                        sc.sales
+                                        sc.sales,
+                                        IFNULL(u.id_user, 0) AS id_user,
+                                        IFNULL(u.firstname, '') AS firstname,
+                                        IFNULL(u.lastname, '') AS lastname,
+                                        IFNULL(u.email, '') AS email
                                       FROM sales_clients sc
-                                        LEFT JOIN groups g ON g.id_group = sc.id_group");
+                                        LEFT JOIN groups g ON g.id_group = sc.id_group
+                                        LEFT JOIN users u ON u.id_user = sc.id_user");
         $stmt->execute();
         $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
         $client = $stmt->fetchAll($connection::FETCH_ASSOC);
         return $client;
     }
 
-    public function addSaleClient($dataClient)
+    public function addSaleClient($dataClient, $id_user)
     {
         try {
             $connection = Connection::getInstance()->getConnection();
@@ -54,7 +58,8 @@ class SalesClientsDao
                                                 position,
                                                 company,
                                                 sales,
-                                                id_group
+                                                id_group,
+                                                id_user
                                             )
                                           VALUES
                                             (
@@ -65,7 +70,8 @@ class SalesClientsDao
                                                 :position,
                                                 :company,
                                                 :sales,
-                                                :id_group
+                                                :id_group,
+                                                :id_user
                                             )");
             $stmt->execute([
                 'firstname' => trim($dataClient['firstname']),
@@ -76,6 +82,7 @@ class SalesClientsDao
                 'company' => trim($dataClient['company']),
                 'sales' => trim($dataClient['sales']),
                 'id_group' => $dataClient['idGroup'],
+                'id_user' => $id_user
             ]);
         } catch (\Exception $e) {
             return ['info' => true, 'message' => $e->getMessage()];
