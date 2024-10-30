@@ -32,9 +32,9 @@ class SalesClientsDao
                                         sc.company,
                                         sc.sales,
                                         IFNULL(u.id_user, 0) AS id_user,
-                                        IFNULL(u.firstname, '') AS firstname,
-                                        IFNULL(u.lastname, '') AS lastname,
-                                        IFNULL(u.email, '') AS email
+                                        IFNULL(u.firstname, '') AS firstname_user,
+                                        IFNULL(u.lastname, '') AS lastname_user,
+                                        IFNULL(u.email, '') AS email_user
                                       FROM sales_clients sc
                                         LEFT JOIN groups g ON g.id_group = sc.id_group
                                         LEFT JOIN users u ON u.id_user = sc.id_user");

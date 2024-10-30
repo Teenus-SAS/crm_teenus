@@ -61,7 +61,7 @@ $(document).ready(function () {
             data: null,
             className: 'uniqueClassName',
             render: function (data) {
-                return `${data.firstname} ${data.lastname}`;
+                return `${data.firstname_user} ${data.lastname_user}`;
             }
         },
         {
