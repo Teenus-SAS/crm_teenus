@@ -37,7 +37,7 @@ $app->post('/sendEmailSupport', function (Request $request, Response $response, 
     foreach ($contacts as $arr) {
         $currentCount++;
         $dataEmail = $sendMakeEmailDao->sendEmailSupport($dataSupport, $arr['email']);
-        $support = $sendEmailDao->sendEmail($dataEmail, 'sergio.velandia@teenus.com.co', 'Sergio Velandia');
+        $support = $sendEmailDao->sendEmail($dataEmail, 'sergio.velandia@teenus.com.co', 'Sergio Velandia', $arr['email']);
 
         if (!isset($support['status'])) break;
 
@@ -80,7 +80,7 @@ $app->post('/sendSimEmailSupport', function (Request $request, Response $respons
 
     $dataEmail = $sendMakeEmailDao->sendEmailSupport($dataSupport, $dataSupport['email']);
 
-    $support = $sendEmailDao->sendEmail($dataEmail, 'sergio.velandia@teenus.com.co', 'Sergio Velandia');
+    $support = $sendEmailDao->sendEmail($dataEmail, 'sergio.velandia@teenus.com.co', 'Sergio Velandia', $dataSupport['email']);
 
     if ($support['status'] == 'success')
         $resp = array('success' => true, 'message' => $support['message']);

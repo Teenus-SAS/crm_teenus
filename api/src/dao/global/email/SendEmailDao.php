@@ -20,7 +20,7 @@ class SendEmailDao extends PHPMailer
         $this->logger->pushHandler(new RotatingFileHandler(Constants::LOGS_PATH . 'querys.log', 20, Logger::DEBUG));
     }
 
-    public function sendEmail($dataEmail, $email, $name)
+    public function sendEmail($dataEmail, $email, $name, $client)
     {
         require_once dirname(dirname(dirname(dirname(dirname(__DIR__))))) . '/env.php';
 
@@ -61,6 +61,7 @@ class SendEmailDao extends PHPMailer
                 $status = [
                     'status' => 'error',
                     'message' => 'El correo no pudo ser enviado. Error desconocido.',
+                    'email' => $client
                 ];
             }
         } catch (\Exception $e) {
@@ -68,6 +69,7 @@ class SendEmailDao extends PHPMailer
             $status = [
                 'status' => 'error',
                 'message' => 'Error al enviar correo: ' . $e->getMessage(),
+                'email' => $client
             ];
         }
 
