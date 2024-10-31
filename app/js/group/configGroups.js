@@ -1,49 +1,43 @@
 $(document).ready(function () {
     loadAllDataGroups = async () => {
-        let data = await searchData('/api/groups');
-        let viewGroup = document.getElementById('btnNewGroup');
- 
-        if (viewGroup) {
-            setSelectGroups(data);
-            loadTblGroups(data);
-        } else {
-            setCheboxGroups(data);
+        try {
+            const data = await searchData('/api/groups');
+            const viewGroup = document.getElementById('btnNewGroup');
+
+            if (viewGroup) {
+                setSelectGroups(data);
+                loadTblGroups(data);
+            } else {
+                setCheckboxGroups(data);
+            }
+        } catch (error) {
+            console.error("Error loading groups:", error);
         }
-    }
+    };
 
     const setSelectGroups = (data) => {
-        let $select = $('#slctGroup');
-        $select.empty();
+        const $select = $('#slctGroup').empty().append('<option disabled selected>Seleccionar</option>');
+        const options = data.map(value => `<option value="${value.id_group}">${value.name_group}</option>`);
+        $select.append(options);
+    };
 
-        $select.append(`<option disabled selected>Seleccionar</option>`);
-        
-        $.each(data, function (i, value) {
-            $select.append(`<option value='${value.id_group}'>${value.name_group}</option>`);
-        });
-    }
-
-    const setCheboxGroups = (data) => {
-        let $div = $('#divCheckboxGroup');
-        $div.empty();
-         
-        $div.append(`
+    const setCheckboxGroups = (data) => {
+        const $div = $('#divCheckboxGroup').empty();
+        const allCheckbox = `
             <label for="slctGroup" class="form-label">Grupo</label>
-            
             <div class="mt-1 checkbox checkbox-success checkbox-circle">
                 <input class="checkboxGroup" id="all" type="checkbox">
                 <label for="all">Todos</label>
             </div>
+        `;
+        const groupCheckboxes = data.map(value => `
+            <div class="mt-1 checkbox checkbox-success checkbox-circle">
+                <input class="checkboxGroup" id="${value.id_group}" type="checkbox">    
+                <label for="${value.id_group}">${value.name_group}</label>
+            </div>
         `);
-        
-        $.each(data, function (i, value) {
-            $div.append(`
-                <div class="mt-1 checkbox checkbox-success checkbox-circle">
-                    <input class="checkboxGroup" id="${value.id_group}" type="checkbox">
-                    <label for="${value.id_group}">${value.name_group}</label>
-                </div>
-            `);
-        });
-    }
+        $div.append(allCheckbox + groupCheckboxes.join(''));
+    };
 
     loadAllDataGroups();
 });
