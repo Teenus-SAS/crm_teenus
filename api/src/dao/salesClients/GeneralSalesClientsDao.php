@@ -31,13 +31,13 @@ class GeneralSalesClientsDao
         return $client;
     }
 
-    public function findAllSalesClientsByGroup($id_group)
+    public function findAllSalesClientsByGroup($id_user, $id_group)
     {
         $connection = Connection::getInstance()->getConnection();
 
         $stmt = $connection->prepare("SELECT * FROM sales_clients
-                                      WHERE id_group IN ($id_group)");
-        $stmt->execute();
+                                      WHERE id_user = :id_user AND id_group IN ($id_group)");
+        $stmt->execute(['id_user' => $id_user]);
         $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
         $client = $stmt->fetchAll($connection::FETCH_ASSOC);
         return $client;

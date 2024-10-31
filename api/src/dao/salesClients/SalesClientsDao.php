@@ -16,7 +16,7 @@ class SalesClientsDao
         $this->logger->pushHandler(new RotatingFileHandler(Constants::LOGS_PATH . 'querys.log', 20, Logger::DEBUG));
     }
 
-    public function findAllSalesClients()
+    public function findAllSalesClientsByIdUser($id_user)
     {
         $connection = Connection::getInstance()->getConnection();
 
@@ -37,8 +37,9 @@ class SalesClientsDao
                                         IFNULL(u.email, '') AS email_user
                                       FROM sales_clients sc
                                         LEFT JOIN groups g ON g.id_group = sc.id_group
-                                        LEFT JOIN users u ON u.id_user = sc.id_user");
-        $stmt->execute();
+                                        LEFT JOIN users u ON u.id_user = sc.id_user
+                                      WHERE sc.id_user = :id_user");
+        $stmt->execute(['id_user' => $id_user]);
         $this->logger->info(__FUNCTION__, array('query' => $stmt->queryString, 'errors' => $stmt->errorInfo()));
         $client = $stmt->fetchAll($connection::FETCH_ASSOC);
         return $client;

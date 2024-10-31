@@ -28,10 +28,10 @@ $(document).ready(function () {
         form.insertAdjacentHTML(
             'beforeend',
             `<div class="col-sm-1 cardLoading">
-        <div class="spinner-grow text-dark" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-      </div>`
+                <div class="spinner-grow text-dark" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>`
         );
 
         importFile(selectedFile)
@@ -161,8 +161,7 @@ $(document).ready(function () {
     const saveSaleClientTable = (data) => {
         $.ajax({
             type: 'POST',
-            url: '/api/addSaleClient',
-            //data: data,
+            url: '/api/addSaleClient', 
             data: { importClients: data },
             success: function (r) {
                 $('.cardLoading').remove();

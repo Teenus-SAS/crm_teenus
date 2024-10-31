@@ -20,15 +20,19 @@ $app->post('/sendEmailSupport', function (Request $request, Response $response, 
     $salesClientsDao,
     $generalSalesClientsDao
 ) {
+    session_start();
+    $id_user = $_SESSION['idUser'];
+
     $dataSupport = $request->getParsedBody();
+
     $support['status'] = 'success';
     $support['message'] = 'Correo enviado exitosamente.';
 
     // Obtener contactos
     if ($dataSupport['group'] == 'all')
-        $contacts = $salesClientsDao->findAllSalesClients();
+        $contacts = $salesClientsDao->findAllSalesClientsByIdUser($id_user);
     else {
-        $contacts = $generalSalesClientsDao->findAllSalesClientsByGroup($dataSupport['group']);
+        $contacts = $generalSalesClientsDao->findAllSalesClientsByGroup($id_user, $dataSupport['group']);
     }
 
     $totalContacts = count($contacts); // Total de contactos para el conteo

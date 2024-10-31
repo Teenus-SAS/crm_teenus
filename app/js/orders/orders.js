@@ -57,7 +57,6 @@ $(document).ready(function() {
                                     type: 'POST',
                                     url: '/api/cancelOrder',
                                     data: { id: data.id_order, observation: value },
-
                                     success: function(data) {
                                         updateTable();
                                         if (data.success) toastr.success(data.message);

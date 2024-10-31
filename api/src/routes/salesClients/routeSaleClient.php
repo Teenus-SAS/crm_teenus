@@ -16,7 +16,10 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 $app->get('/salesClients', function (Request $request, Response $response, $args) use (
     $salesClientsDao
 ) {
-    $clients = $salesClientsDao->findAllSalesClients();
+    session_start();
+    $id_user = $_SESSION['idUser'];
+
+    $clients = $salesClientsDao->findAllSalesClientsByIdUser($id_user);
     $response->getBody()->write(json_encode($clients));
     return $response->withHeader('Content-Type', 'application/json');
 });
