@@ -1,11 +1,8 @@
 <?php
-if (!isset($_SESSION)) {
+if (!isset($_SESSION))
     session_start();
-    if (sizeof($_SESSION) == 0)
-        header('location: /');
-}
-if (sizeof($_SESSION) == 0)
-    header('location: /');
+
+$_SESSION["timeout"] = time();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -126,7 +123,6 @@ if (sizeof($_SESSION) == 0)
 
     <script src="/app/js/support/support.js"></script>
     <script src="/app/js/group/configGroups.js"></script>
-
 </body>
 
 </html>

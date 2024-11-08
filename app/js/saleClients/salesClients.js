@@ -31,12 +31,12 @@ $(document).ready(function () {
             table.style.width = "100%";
             table.style.width = "100%";
         }
-    });
-    
+    }); 
     /* Abrir panel crear producto */
     $('#btnNewSaleClients').click(function (e) {
         e.preventDefault();
 
+        $('.chkEmail').hide();
         $('.cardImportSaleClients').hide(800);
         $('#modalSalesClients').modal('show');
         $('#formAddSaleClient').trigger('reset');
@@ -91,6 +91,9 @@ $(document).ready(function () {
         let firstname = $('#firstname').val();
         let lastname = $('#lastname').val();
         let email = $('#email').val();
+        let validateEmail = $('#validateEmail')[0];
+
+        let value = getLastText(validateEmail.className); 
 
         if (
             firstname.trim() == '' || !firstname.trim() ||
@@ -99,6 +102,11 @@ $(document).ready(function () {
         ) {
             toastr.error('Ingrese todos los campos');
             return false;
+        }
+        
+        if (value == 0) {
+            toastr.error('Email existente ingrese uno nuevo');
+            return false;            
         }
 
         let dataClient = new FormData(formAddSaleClient);
@@ -109,6 +117,28 @@ $(document).ready(function () {
         let resp = await sendDataPOST(url, dataClient); 
         messageSClients(resp);
     };
+
+    // Revisar si el email existe
+    $(document).on('blur', '#email', function () {
+        let email = this.value.trim();
+
+        if (email) {
+            let dataClient = tableSalesClients.rows().data().toArray();
+
+            let arr = dataClient.find(item => item.email == email);
+            let element = '';
+
+            if (arr) {
+                element = `<a href="javascript:;" <i id="validateEmail" class="bi bi-x-circle-fill 0" data-toggle='tooltip' title='Email Existente' style="color: red;font-size: 30px;"></i></a>`;
+            } else {
+                element = `<a href="javascript:;" <i id="validateEmail" class="bi bi-check-circle-fill 1" data-toggle='tooltip' title='Email Disponible' style="color: green;font-size: 30px;"></i></a>`;
+            }
+
+            $('.chkEmail').empty();
+            $('.chkEmail').append(element);
+            $('.chkEmail').show(800);
+        }
+    });
 
     /* Eliminar proceso */
 

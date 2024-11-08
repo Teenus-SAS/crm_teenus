@@ -16,13 +16,23 @@ class GroupsDao
         $this->logger->pushHandler(new RotatingFileHandler(Constants::LOGS_PATH . 'querys.log', 20, Logger::DEBUG));
     }
 
-    public function findAllGroups()
+    public function findAllGroups($id_user)
     {
         try {
             $connection = Connection::getInstance()->getConnection();
 
-            $stmt = $connection->prepare("SELECT * FROM groups");
-            $stmt->execute();
+            $stmt = $connection->prepare("SELECT 
+                                          -- Columnas 
+                                            g.id_group, 
+                                            g.name_group, 
+                                            u.id_user, 
+                                            u.firstname, 
+                                            u.lastname, 
+                                            u.email
+                                          FROM groups g
+                                            INNER JOIN users u ON u.id_user = g.id_user
+                                          WHERE g.id_user = :id_user");
+            $stmt->execute(['id_user' => $id_user]);
 
             $groups = $stmt->fetchAll($connection::FETCH_ASSOC);
             return $groups;
@@ -46,14 +56,15 @@ class GroupsDao
         }
     }
 
-    public function insertGroup($dataGroup)
+    public function insertGroup($dataGroup, $id_user)
     {
         try {
             $connection = Connection::getInstance()->getConnection();
 
-            $stmt = $connection->prepare("INSERT INTO groups (name_group) VALUES (:name_group)");
+            $stmt = $connection->prepare("INSERT INTO groups (name_group, id_user) VALUES (:name_group, :id_user)");
             $stmt->execute([
-                'name_group' => trim($dataGroup['group'])
+                'name_group' => trim($dataGroup['group']),
+                'id_user' => $id_user
             ]);
         } catch (\Exception $e) {
             return ['info' => true, 'message' => $e->getMessage()];

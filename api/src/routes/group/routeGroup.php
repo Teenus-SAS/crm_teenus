@@ -12,7 +12,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 $app->get('/groups', function (Request $request, Response $response, $args) use (
     $groupsDao
 ) {
-    $groups = $groupsDao->findAllGroups();
+    session_start();
+    $id_user = $_SESSION['idUser'];
+    $groups = $groupsDao->findAllGroups($id_user);
     $response->getBody()->write(json_encode($groups));
     return $response->withHeader('Content-Type', 'application/json');
 });
@@ -74,6 +76,8 @@ $app->post('/salesClientsDataValidation', function (Request $request, Response $
 $app->post('/addGroup', function (Request $request, Response $response, $args) use (
     $groupsDao
 ) {
+    session_start();
+    $id_user = $_SESSION['idUser'];
     $dataGroup = $request->getParsedBody();
 
     // $count = sizeof($dataClient);
@@ -82,7 +86,7 @@ $app->post('/addGroup', function (Request $request, Response $response, $args) u
     $group = $groupsDao->findGroup($dataGroup);
 
     if (!$group) {
-        $resolution = $groupsDao->insertGroup($dataGroup);
+        $resolution = $groupsDao->insertGroup($dataGroup, $id_user);
 
         if ($resolution == null)
             $resp = ['success' => true, 'message' => 'Grupo creado correctamente'];

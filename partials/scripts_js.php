@@ -56,4 +56,5 @@
 <!--app JS-->
 <script src="/app/js/global/searchData.js"></script>
 <script src="/app/assetscom/js/app.js"></script>
+<script src="/app/js/global/lastText.js"></script>
 <script src="/app/js/global/logout.js"></script>

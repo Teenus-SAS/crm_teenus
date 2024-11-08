@@ -34,6 +34,9 @@
                             </div>
                         </div>
 
+                        <div class="col-1 mt-5 chkEmail">
+                        </div>
+
                         <div class="col-md-4">
                             <label for="cellphone" class="form-label">Número celular</label>
                             <input type="text" class="form-control" id="cellphone" name="cellphone">

@@ -16,7 +16,7 @@ tableSalesChannels = $('#tableSalesChannels').dataTable({
         dataSrc: '',
     },
     language: {
-        url: '//cdn.datatables.net/plug-ins/2.1.8/i18n/es-MX.json',
+        url: 'https://cdn.datatables.net/plug-ins/2.1.8/i18n/es-MX.json',
     },
     columns: [{
             title: 'No.',

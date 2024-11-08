@@ -1,12 +1,12 @@
 $(document).ready(function () {
-    tableSalesClients = $('#tableSalesClients').dataTable({
+    tableSalesClients = $('#tableSalesClients').DataTable({
         pageLength: 50,
         ajax: {
             url: '/api/salesClients',
             dataSrc: '',
-        },
+        }, 
         language: {
-            url: '//cdn.datatables.net/plug-ins/2.1.8/i18n/es-MX.json',
+            url: 'https://cdn.datatables.net/plug-ins/2.1.8/i18n/es-MX.json',
         },
         columns: [{
             title: 'No.',
