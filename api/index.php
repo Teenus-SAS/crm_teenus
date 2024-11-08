@@ -37,6 +37,7 @@ require_once('../api/src/routes/configuration/routePhases.php');
 require_once('../api/src/routes/configuration/routeSalesChannels.php');
 require_once('../api/src/routes/configuration/routeSubcategories.php');
 require_once('../api/src/routes/configuration/routeZones.php');
+require_once('../api/src/routes/sequences/routeSequences.php');
 
 /* Dashboard */
 
